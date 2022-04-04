@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "260746806333",
+    "project_id": "peluqueriacanina-a3906",
+    "storage_bucket": "peluqueriacanina-a3906.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260746806333:android:34ebb600b7097744c91654",
+        "android_client_info": {
+          "package_name": "com.dam.peluqueriacanina"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "260746806333-ju0kf4tajfopacgsjrdg667bki0r3to1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZIX7PT_nrPuk5ywyJRNp0L5PhELx5aAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "260746806333-ju0kf4tajfopacgsjrdg667bki0r3to1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
