@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_veterinaria.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/drawable-anydpi/icono_usuario.xml" value="0.2115" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/drawable-xxxhdpi/fondo_card1.xml" value="0.2105" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/drawable-xxxhdpi/fondo_card2.xml" value="0.2105" />
