@@ -10,4 +10,5 @@
     <string name="tv_categoria">Categorias</string>
     <string name="btn_login">Iniciar Sesion</string>
     <string name="tv_registro">Si aun no formas parte de la familia</string>
+    <string name="tv_tam_citas">No hay ninguna cita</string>
 </resources>

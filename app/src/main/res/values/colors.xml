@@ -4,6 +4,7 @@
     <color name="ColorAccent">#03DAC5</color>
     <color name="color_texto_blanco">#FFFFFFFF</color>
     <color name="color_blanco">#FFFFFFFF</color>
+    <color name="amarillo">#ffffbf</color>
     <color name="color_edit_text">#1403DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="color_texto_negro">#000000</color>
