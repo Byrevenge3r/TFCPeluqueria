@@ -4,36 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_principal"
-    android:layout_gravity="center"
+
+    android:background="@color/color_blanco_prueba"
     tools:context=".MainActivity">
 
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="250dp"
-        android:layout_height="130dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/fondo_card2"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="50dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="fernando apesta"
-            android:textSize="30sp"
-            android:textColor="@color/black"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+
+        <android.widget.Button
+            android:id="@+id/btnPeluqueria"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+
+            android:background="@drawable/fondo_card1" />
+
+        <ImageView
+            android:id="@+id/ivImgperro"
+            android:layout_width="99dp"
+            android:layout_height="100dp"
+            android:background="@drawable/perro"
+            android:elevation="5dp" />
+
+    </RelativeLayout>
+
+
+
+
 </LinearLayout>
