@@ -1,37 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@color/color_blanco_prueba"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="10dp">
 
-    <RelativeLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBotonesMenu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp">
+        android:layout_height="match_parent"/>
 
-        <android.widget.Button
-            android:id="@+id/btnPeluqueria"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-
-            android:background="@drawable/fondo_card1" />
-
-        <ImageView
-            android:id="@+id/ivImgperro"
-            android:layout_width="99dp"
-            android:layout_height="100dp"
-            android:background="@drawable/perro"
-            android:elevation="5dp" />
-
-    </RelativeLayout>
-
-
-
-
-</LinearLayout>
+</RelativeLayout>
