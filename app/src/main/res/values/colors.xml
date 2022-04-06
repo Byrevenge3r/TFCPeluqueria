@@ -10,7 +10,7 @@
     <color name="color_texto_negro">#000000</color>
     <color name="color_negro">#000000</color>
     <color name="color_boton">#1630C0</color>
-    <color name="color_card1">#ea899a</color>
+    <color name="color_card1">#48F689</color>
     <color name="color_card2">#ededaf</color>
     <color name="color_card3">#fcfcda</color>
     <color name="color_card4">#ffb6af</color>
@@ -22,5 +22,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_gris">#66000000</color>
+    <color name="color_blanco_prueba">#FFEBEE</color>
 
 </resources>
