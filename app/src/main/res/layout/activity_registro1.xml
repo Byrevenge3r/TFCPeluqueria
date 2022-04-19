@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_registro"
+    android:orientation="vertical"
+    android:weightSum="4"
+    tools:context=".registro.Registro1">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <ImageView
+            android:id="@+id/ivRegistro"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="130dp"
+            android:background="@drawable/logo_peluqueria" />
+
+        <TextView
+            android:id="@+id/tvregistro1"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivRegistro"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="-30dp"
+            android:text="@string/registro"
+            android:textColor="@color/color_blanco_pero_no_tan_blanco"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_weight="3"
+        android:background="@drawable/fondo_cartas">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombre"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/color_gris"
+                app:hintTextColor="@color/color_gris">
+
+                <EditText
+                    android:id="@+id/etNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginRight="48dp"
+                    android:background="@drawable/fondo_edit_text"
+                    android:drawableTint="@color/color_texto_negro"
+                    android:hint="@string/et_nombre"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilApellidos"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/color_gris"
+                app:hintTextColor="@color/color_gris">
+
+                <EditText
+                    android:id="@+id/etApellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_below="@id/tilNombre"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginRight="48dp"
+                    android:background="@drawable/fondo_edit_text"
+                    android:drawableTint="@color/color_texto_negro"
+                    android:hint="@string/et_apellido"
+                    android:inputType="text"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUsuario"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/color_gris"
+                app:hintTextColor="@color/color_gris">
+
+                <EditText
+                    android:id="@+id/etUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginRight="48dp"
+                    android:background="@drawable/fondo_edit_text"
+                    android:drawableTint="@color/color_texto_negro"
+                    android:hint="@string/et_usuario"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <android.widget.Button
+                android:id="@+id/btnIniciar"
+                android:layout_width="150dp"
+                android:layout_height="52dp"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="150dp"
+               android:layout_gravity="right|bottom"
+                android:background="@drawable/fondo_btn"
+                android:text="@string/btn_registro1"
+                android:textAllCaps="false"
+                android:textColor="@color/color_texto_blanco"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

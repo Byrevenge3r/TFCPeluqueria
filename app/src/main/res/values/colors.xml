@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="color_principal">#ea899a</color>
+    <color name="color_registro">#FBD2D7</color>
     <color name="ColorAccent">#03DAC5</color>
     <color name="color_texto_blanco">#FFFFFFFF</color>
     <color name="color_blanco">#FFFFFFFF</color>
+    <color name="color_blanco_pero_no_tan_blanco">#97332D28</color>
     <color name="amarillo">#ffffbf</color>
     <color name="color_edit_text">#1403DAC5</color>
     <color name="teal_700">#FF018786</color>
