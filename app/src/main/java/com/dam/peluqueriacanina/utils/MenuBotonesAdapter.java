@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.model.MenuBotones;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
@@ -59,19 +61,19 @@ public class MenuBotonesAdapter extends RecyclerView.Adapter<MenuBotonesAdapter.
 
     public static class MenuBotonesAdapterVH extends RecyclerView.ViewHolder {
 
-        private Button btnMenu;
-        private ImageView imgMenu;
+        private ShapeableImageView btnMenu;
+       // private ImageView imgMenu;
 
         public MenuBotonesAdapterVH(@NonNull View itemView) {
             super(itemView);
             btnMenu = itemView.findViewById(R.id.btnMenu);
-            imgMenu = itemView.findViewById(R.id.imgMenu);
+            //imgMenu = itemView.findViewById(R.id.imgMenu);
         }
 
         public void bindMenu (MenuBotones menu) {
-            btnMenu.setText(menu.getNombreDepartamento());
+            //btnMenu.setText(menu.getNombreDepartamento());
             btnMenu.setBackground(itemView.getResources().getDrawable(menu.getColorFondo()));
-            imgMenu.setImageResource(menu.getImagen());
+            //imgMenu.setImageResource(menu.getImagen());
         }
 
 

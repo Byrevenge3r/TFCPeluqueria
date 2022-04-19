@@ -11,28 +11,34 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:elevation="1dp">
+        >
 
-        <android.widget.Button
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Hola"
+            android:textSize="27sp"
+            android:textStyle="bold"
+            android:elevation="1dp"
+            android:textColor="@color/color_gris_oscuro"
+            android:gravity="center"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/btnMenu"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="3dp"
-            android:elevation="1dp" />
+            android:adjustViewBounds="true"
+            android:background="@drawable/fondo_card1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/periodico"
+            app:shapeAppearanceOverlay="@style/Circular" />
 
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/imgMenu"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="315dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="10dp"
-        android:elevation="1dp" />
+
 
 
 </RelativeLayout>
