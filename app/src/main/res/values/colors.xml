@@ -22,7 +22,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_gris">#66000000</color>
-    <color name="color_gris_oscuro">#A8000000</color>
+    <color name="color_gris_oscuro">#D0000000</color>
     <color name="color_blanco_prueba">#FFEBEE</color>
 
 </resources>

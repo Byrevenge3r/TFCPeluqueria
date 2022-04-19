@@ -14,9 +14,9 @@
         >
 
         <TextView
+            android:id="@+id/tvNombreOpcionMenu"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="Hola"
             android:textSize="27sp"
             android:textStyle="bold"
             android:elevation="1dp"
@@ -32,7 +32,7 @@
             android:adjustViewBounds="true"
             android:background="@drawable/fondo_card1"
             android:scaleType="centerCrop"
-            android:src="@drawable/periodico2"
+            android:src="@drawable/periodico"
             app:shapeAppearanceOverlay="@style/Circular" />
 
     </RelativeLayout>

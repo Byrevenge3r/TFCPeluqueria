@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -62,18 +63,17 @@ public class MenuBotonesAdapter extends RecyclerView.Adapter<MenuBotonesAdapter.
     public static class MenuBotonesAdapterVH extends RecyclerView.ViewHolder {
 
         private ShapeableImageView btnMenu;
-       // private ImageView imgMenu;
+        private TextView tvNombreOpcionMenu;
 
         public MenuBotonesAdapterVH(@NonNull View itemView) {
             super(itemView);
             btnMenu = itemView.findViewById(R.id.btnMenu);
-            //imgMenu = itemView.findViewById(R.id.imgMenu);
+            tvNombreOpcionMenu = itemView.findViewById(R.id.tvNombreOpcionMenu);
         }
 
         public void bindMenu (MenuBotones menu) {
-            //btnMenu.setText(menu.getNombreDepartamento());
+            tvNombreOpcionMenu.setText(menu.getNombreDepartamento());
             btnMenu.setBackground(itemView.getResources().getDrawable(menu.getColorFondo()));
-            //imgMenu.setImageResource(menu.getImagen());
         }
 
 
