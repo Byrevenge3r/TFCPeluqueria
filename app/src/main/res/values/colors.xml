@@ -26,5 +26,5 @@
     <color name="color_gris">#66000000</color>
     <color name="color_gris_oscuro">#D0000000</color>
     <color name="color_blanco_prueba">#FFEBEE</color>
-
+    <color name="rosa_btn_registrar">#D1587E</color>
 </resources>

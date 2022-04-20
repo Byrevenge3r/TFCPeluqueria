@@ -16,11 +16,13 @@
     <string name="et_nombre">Introduce tu nombre</string>
     <string name="et_apellido">Introduce tus apellidos</string>
     <string name="et_usuario">Introduce tu usuario</string>
-    <string name="btn_registro1">Siguiente</string>
+    <string name="btn_registro_siguiente">Siguiente</string>
+    <string name="btn_registro_atras">Atras</string>
     <string name="tv_peluqueria_menu">Peluqueria</string>
     <string name="tv_veterinaria_menu">Veterinaria</string>
     <string name="tv_tienda_menu">Tienda</string>
     <string name="tv_noticias_menu">Noticias</string>
     <string name="tv_opciones_menu">Opciones</string>
     <string name="tv_cerrar_sesion_menu">Cerrar sesion</string>
+    <string name="tv_registro_dos">Solo un poco mas!!!</string>
 </resources>
