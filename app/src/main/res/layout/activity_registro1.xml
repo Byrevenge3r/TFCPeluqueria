@@ -141,13 +141,13 @@
                     android:layout_width="150dp"
                     android:layout_height="52dp"
                     android:layout_gravity="end|bottom"
-                    android:layout_marginEnd="10dp"
                     android:layout_marginStart="250dp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/fondo_btn_registrar"
                     android:text="@string/btn_registro_siguiente"
                     android:textAllCaps="false"
                     android:textColor="@color/color_texto_blanco"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
             </LinearLayout>
 

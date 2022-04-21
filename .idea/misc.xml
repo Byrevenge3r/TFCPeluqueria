@@ -18,8 +18,9 @@
         <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_main.xml" value="0.36102564102564105" />
         <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_peluqueria.xml" value="0.26296296296296295" />
         <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_registro1.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_registro2.xml" value="0.33" />
+        <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_registro2.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_registro3.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_registro4.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_veterinaria.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/boton_menu_rv.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/citas_recicler_view_vet.xml" value="0.1" />
@@ -42,10 +43,6 @@
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/drawable/prueba_fondo_quitar.xml" value="0.2335" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_registro1.xml" value="0.381025641025641" />
-        <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_registro2.xml" value="0.381025641025641" />
-        <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_registro3.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_registro4.xml" value="0.38697916666666665" />
       </map>
     </option>
   </component>

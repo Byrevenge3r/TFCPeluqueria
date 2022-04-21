@@ -66,10 +66,10 @@
                     android:layout_marginTop="70dp"
                     android:layout_marginRight="48dp"
                     android:background="@drawable/fondo_edit_text"
-                    android:textColor="@color/color_texto_negro"
                     android:hint="@string/et_correo"
                     android:paddingLeft="26dp"
-                    android:paddingRight="26dp" />
+                    android:paddingRight="26dp"
+                    android:textColor="@color/color_texto_negro" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,15 +92,13 @@
                     android:layout_marginTop="70dp"
                     android:layout_marginRight="48dp"
                     android:background="@drawable/fondo_edit_text"
-                    android:drawableTint="@color/color_texto_negro"
+                    android:textColor="@color/color_texto_negro"
                     android:hint="@string/et_ConfirmarCorreo"
-                    android:inputType="text"
+                    android:inputType="textEmailAddress"
                     android:paddingLeft="26dp"
                     android:paddingRight="26dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-
 
 
             <LinearLayout
@@ -118,20 +116,20 @@
                     android:text="@string/btn_registro_atras"
                     android:textAllCaps="false"
                     android:textColor="@color/color_texto_blanco"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <android.widget.Button
                     android:id="@+id/btnSiguienteRegDos"
                     android:layout_width="150dp"
                     android:layout_height="52dp"
                     android:layout_gravity="end|bottom"
-                    android:layout_marginEnd="10dp"
                     android:layout_marginStart="91dp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/fondo_btn_registrar"
                     android:text="@string/btn_registro_siguiente"
                     android:textAllCaps="false"
                     android:textColor="@color/color_texto_blanco"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
             </LinearLayout>
 

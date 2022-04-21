@@ -28,4 +28,7 @@
     <string name="et_conf_contrasenia">Confirmar Contraseña</string>
     <string name="btn_registro_verificar">Verificar</string>
     <string name="et_ConfirmarCorreo">Confirma tu correo</string>
+    <string name="tv_registro_tres">Te hemos mandado un sms de confirmacion!!!</string>
+    <string name="tv_mandar_sms_otra_vez">No lo has recibido?</string>
+    <string name="btn_volver_enviar">mandar otra vez</string>
 </resources>

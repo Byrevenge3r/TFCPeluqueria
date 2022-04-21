@@ -33,7 +33,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
             i = new Intent(this, Registro3.class);
             startActivity(i);
 
-            overridePendingTransition(R.anim.animacion_izquierda_izquierda,R.anim.animacion_derecha_izquierda);
+           overridePendingTransition(R.anim.animacion_derecha_izquierda,R.anim.animacion_izquierda_izquierda);
         } else if (v.equals(btnAtrasRegDos)) {
            i = new Intent(this, Registro1.class);
            startActivity(i);
