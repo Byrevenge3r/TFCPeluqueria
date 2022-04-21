@@ -27,4 +27,5 @@
     <string name="tv_registro_dos">Solo un poco mas!!!\n</string>
     <string name="et_conf_contrasenia">Confirmar Contraseña</string>
     <string name="btn_registro_verificar">Verificar</string>
+    <string name="et_ConfirmarCorreo">Confirma tu correo</string>
 </resources>

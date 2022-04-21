@@ -49,7 +49,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilNombre"
+                android:id="@+id/tilEmailRegDos"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 app:hintTextColor="@color/color_gris">
 
                 <EditText
-                    android:id="@+id/etNombre"
+                    android:id="@+id/etEmailRegDos"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:layout_marginLeft="48dp"
@@ -67,14 +67,14 @@
                     android:layout_marginRight="48dp"
                     android:background="@drawable/fondo_edit_text"
                     android:textColor="@color/color_texto_negro"
-                    android:hint="@string/et_nombre"
+                    android:hint="@string/et_correo"
                     android:paddingLeft="26dp"
                     android:paddingRight="26dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilApellidos"
+                android:id="@+id/tilConfirmarEmailRegDos"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                 app:hintTextColor="@color/color_gris">
 
                 <EditText
-                    android:id="@+id/etApellido"
+                    android:id="@+id/etConfirmarEmailRegDos"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:layout_below="@id/tilNombre"
@@ -93,7 +93,7 @@
                     android:layout_marginRight="48dp"
                     android:background="@drawable/fondo_edit_text"
                     android:drawableTint="@color/color_texto_negro"
-                    android:hint="@string/et_apellido"
+                    android:hint="@string/et_ConfirmarCorreo"
                     android:inputType="text"
                     android:paddingLeft="26dp"
                     android:paddingRight="26dp" />
@@ -101,30 +101,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilUsuario"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:inputType="textEmailAddress"
-                android:textColorHint="@color/color_gris"
-                app:hintTextColor="@color/color_gris">
 
-                <EditText
-                    android:id="@+id/etUsuario"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:layout_marginLeft="48dp"
-                    android:layout_marginTop="70dp"
-                    android:layout_marginRight="48dp"
-                    android:background="@drawable/fondo_edit_text"
-                    android:drawableTint="@color/color_texto_negro"
-                    android:hint="@string/et_usuario"
-                    android:paddingLeft="26dp"
-                    android:paddingRight="26dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
