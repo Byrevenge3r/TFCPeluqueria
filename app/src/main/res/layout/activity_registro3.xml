@@ -1,10 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registro.Registro3"
-    android:background="@drawable/fondo_btn_registrar">
+    android:background="@color/color_registro"
+    android:orientation="vertical"
+    android:weightSum="4"
+    tools:context=".registro.Registro3">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/ivRegistro"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="140dp"
+            android:background="@drawable/logo_peluqueria" />
+
+        <TextView
+            android:id="@+id/tvRegistroDos"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivRegistro"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="-30dp"
+            android:gravity="center"
+            android:text="@string/tv_registro_dos"
+            android:textColor="@color/color_blanco_pero_no_tan_blanco"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:background="@drawable/fondo_cartas">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilContraRegTres"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/color_gris"
+                app:hintTextColor="@color/color_gris">
+
+                <EditText
+                    android:id="@+id/etContraRegTres"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginRight="48dp"
+                    android:background="@drawable/fondo_edit_text"
+                    android:hint="@string/et_contrasenia"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp"
+                    android:textColor="@color/color_texto_negro" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilConfContraRegTres"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/color_gris"
+                app:hintTextColor="@color/color_gris">
+
+                <EditText
+                    android:id="@+id/etConfContraRegTres"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_below="@id/tilNombre"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginRight="48dp"
+                    android:background="@drawable/fondo_edit_text"
+                    android:drawableTint="@color/color_texto_negro"
+                    android:hint="@string/et_conf_contrasenia"
+                    android:inputType="text"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <android.widget.Button
+                    android:id="@+id/btnAtrasRegTres"
+                    android:layout_width="150dp"
+                    android:layout_height="52dp"
+                    android:layout_gravity="start|bottom"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/fondo_btn_registrar"
+                    android:text="@string/btn_registro_atras"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_texto_blanco"
+                    android:textSize="16sp" />
+
+                <android.widget.Button
+                    android:id="@+id/btnSiguienteRegTres"
+                    android:layout_width="150dp"
+                    android:layout_height="52dp"
+                    android:layout_gravity="end|bottom"
+                    android:layout_marginStart="91dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fondo_btn_registrar"
+                    android:text="@string/btn_registro_siguiente"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_texto_blanco"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>

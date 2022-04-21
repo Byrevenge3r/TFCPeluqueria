@@ -12,7 +12,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1">
 
 
@@ -30,9 +30,9 @@
             android:layout_below="@id/ivRegistro"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="-30dp"
+            android:gravity="center"
             android:text="@string/registro"
             android:textColor="@color/color_blanco_pero_no_tan_blanco"
-            android:gravity="center"
             android:textSize="20sp"
             android:textStyle="italic" />
 
@@ -41,7 +41,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_weight="3"
         android:background="@drawable/fondo_cartas">
 
@@ -122,25 +122,34 @@
                     android:layout_marginTop="70dp"
                     android:layout_marginRight="48dp"
                     android:background="@drawable/fondo_edit_text"
-                    android:textColor="@color/color_texto_negro"
                     android:hint="@string/et_usuario"
                     android:paddingLeft="26dp"
-                    android:paddingRight="26dp" />
+                    android:paddingRight="26dp"
+                    android:textColor="@color/color_texto_negro" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <android.widget.Button
-                android:id="@+id/btnSiguienteRegUno"
-                android:layout_width="150dp"
-                android:layout_height="52dp"
-                android:layout_gravity="end|bottom"
-                android:layout_marginTop="150dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/fondo_btn_registrar"
-                android:text="@string/btn_registro_siguiente"
-                android:textAllCaps="false"
-                android:textColor="@color/color_texto_blanco"
-                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <android.widget.Button
+                    android:id="@+id/btnSiguienteRegUno"
+                    android:layout_width="150dp"
+                    android:layout_height="52dp"
+                    android:layout_gravity="end|bottom"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="250dp"
+                    android:background="@drawable/fondo_btn_registrar"
+                    android:text="@string/btn_registro_siguiente"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_texto_blanco"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

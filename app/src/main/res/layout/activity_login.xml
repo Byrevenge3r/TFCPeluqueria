@@ -97,7 +97,7 @@
                 app:hintTextColor="@color/color_gris">
 
                 <EditText
-                    android:id="@+id/etContraseña"
+                    android:id="@+id/etContrasenia"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:layout_marginLeft="48dp"

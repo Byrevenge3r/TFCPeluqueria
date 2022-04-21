@@ -2,7 +2,7 @@
     <string name="app_name">PeluqueriaCanina</string>
     <string name="bienvenida">Bienvenido!</string>
     <string name="bienvenida2">Inicia sesion para empezar</string>
-        <string name="login">Inicia Sesión</string>
+    <string name="login">Inicia Sesión</string>
     <string name="et_correo">Introduce tu correo</string>
     <string name="et_contrasenia">Introduce tu contraseña</string>
     <string name="check_recordar">Recuerdame</string>
@@ -24,5 +24,7 @@
     <string name="tv_noticias_menu">Noticias</string>
     <string name="tv_opciones_menu">Opciones</string>
     <string name="tv_cerrar_sesion_menu">Cerrar sesion</string>
-    <string name="tv_registro_dos">Solo un poco mas!!!</string>
+    <string name="tv_registro_dos">Solo un poco mas!!!\n</string>
+    <string name="et_conf_contrasenia">Confirmar Contraseña</string>
+    <string name="btn_registro_verificar">Verificar</string>
 </resources>
