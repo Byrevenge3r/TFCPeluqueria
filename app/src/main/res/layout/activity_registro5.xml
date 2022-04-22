@@ -29,7 +29,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="-30dp"
             android:gravity="center"
-            android:text="@string/tv_registro_tres"
+            android:text="@string/tv_registro_cinco"
             android:textColor="@color/color_blanco_pero_no_tan_blanco"
             android:textSize="20sp"
             android:textStyle="italic" />
@@ -72,7 +72,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/color_blanco"
                         android:gravity="center"
-                        android:imeOptions="actionNext"
+                        android:nextFocusRight="@id/inputCode2"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:maxLength="1"
@@ -214,7 +214,7 @@
                 android:orientation="horizontal">
 
                 <android.widget.Button
-                    android:id="@+id/btnSiguienteRegCuatro"
+                    android:id="@+id/btnSiguienteRegCua"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:layout_gravity="bottom"

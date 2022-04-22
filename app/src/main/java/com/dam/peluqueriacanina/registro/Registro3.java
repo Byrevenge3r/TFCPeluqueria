@@ -31,7 +31,7 @@ public class Registro3 extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if (v.equals(btnSiguienteRegTres)) {
-            i = new Intent(this, Registro5.class);
+            i = new Intent(this, Registro4.class);
             startActivity(i);
 
             overridePendingTransition(R.anim.animacion_derecha_izquierda,R.anim.animacion_izquierda_izquierda);
