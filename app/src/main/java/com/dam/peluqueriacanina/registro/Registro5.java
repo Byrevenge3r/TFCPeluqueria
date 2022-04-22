@@ -132,7 +132,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-    //TODO Hacer la ultima clase registrar
+    //TODO Hacer la ultima clase registrar y comprobar que el codigo de verificacion mandado es correcto
 
     }
 

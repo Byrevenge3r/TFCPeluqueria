@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="color_principal">#ea899a</color>
+    <color name="color_principal_citas">#2CEA899A</color>
     <color name="color_registro">#FBD2D7</color>
     <color name="ColorAccent">#03DAC5</color>
     <color name="color_texto_blanco">#FFFFFFFF</color>
