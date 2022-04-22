@@ -19,15 +19,16 @@ import android.widget.CalendarView;
 import android.widget.DatePicker;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.model.DatosFecha;
 import com.dam.peluqueriacanina.utils.CitasAdapter;
 
 public class Citas extends DialogFragment {
 
     CalendarView calendarioCitas;
-    Button btnCita;
     RecyclerView rv;
     LinearLayoutManager llm;
     CitasAdapter adapter;
+    DatosFecha datos;
 
 
     public Citas() {
@@ -53,13 +54,16 @@ public class Citas extends DialogFragment {
         calendarioCitas.setDate(System.currentTimeMillis(),false,true);
         llm = new LinearLayoutManager(getContext());
         llm.setOrientation(RecyclerView.VERTICAL);
+        rv = v.findViewById(R.id.rvCitasPelu);
         rv.setLayoutManager(llm);
 
 
         calendarioCitas.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int anio, int mes, int dia) {
-
+                datos = new DatosFecha();
+                adapter = new CitasAdapter(datos.getListaCitas());
+                rv.setAdapter(adapter);
             }
         });
 
