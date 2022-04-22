@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dam.peluqueriacanina">
+    package="com.dam.peluqueriacanina" >
 
     <application
         android:allowBackup="true"
@@ -8,9 +8,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PeluqueriaCanina">
+        android:theme="@style/Theme.PeluqueriaCanina" >
         <activity
             android:name=".registro.Registro4"
+            android:exported="false" />
+        <activity
+            android:name=".registro.Registro5"
             android:exported="false" />
         <activity
             android:name=".registro.Registro3"
@@ -20,7 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".registro.Registro1"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +38,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
