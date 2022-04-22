@@ -57,6 +57,8 @@ public class Citas extends DialogFragment {
         rv = v.findViewById(R.id.rvCitasPelu);
         rv.setLayoutManager(llm);
 
+        //TODO: Cargar las horas libres del dia actual
+
 
         calendarioCitas.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
