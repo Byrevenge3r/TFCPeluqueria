@@ -31,4 +31,6 @@
     <string name="tv_registro_tres">Te hemos mandado un sms de confirmacion!!!</string>
     <string name="tv_mandar_sms_otra_vez">No lo has recibido?</string>
     <string name="btn_volver_enviar">mandar otra vez</string>
+    <string name="tv_telefono">Introduce tu telefono</string>
+    <string name="tv_registro_cuatro">ya casi estamos!!!</string>
 </resources>

@@ -1,9 +1,303 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_registro"
+    android:orientation="vertical"
+    android:weightSum="4"
     tools:context=".registro.Registro4">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/ivRegistro"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="140dp"
+            android:background="@drawable/logo_peluqueria" />
+
+        <TextView
+            android:id="@+id/tvRegistroDos"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivRegistro"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="-30dp"
+            android:gravity="center"
+            android:text="@string/tv_registro_cuatro"
+            android:textColor="@color/color_blanco_pero_no_tan_blanco"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:background="@drawable/fondo_cartas">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/etTelefonoRegDos"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:gravity="center"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:text="@string/tv_telefono"
+                android:textColor="@color/color_texto_negro"
+                android:textSize="24sp"
+                android:textStyle="italic|bold" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textColorHint="@color/color_gris"
+                    app:hintTextColor="@color/color_gris">
+
+                    <EditText
+                        android:id="@+id/inputCode1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_blanco"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:textColor="@color/color_texto_negro" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textColorHint="@color/color_gris"
+                    app:hintTextColor="@color/color_gris">
+
+                    <EditText
+                        android:id="@+id/inputCode2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_blanco"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:textColor="@color/color_texto_negro" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textColorHint="@color/color_gris"
+                    app:hintTextColor="@color/color_gris">
+
+                    <EditText
+                        android:id="@+id/inputCode3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_blanco"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:textColor="@color/color_texto_negro" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textColorHint="@color/color_gris"
+                    app:hintTextColor="@color/color_gris">
+
+                    <EditText
+                        android:id="@+id/inputCode4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:background="@color/color_blanco"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:textColor="@color/color_texto_negro" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textColorHint="@color/color_gris"
+                    app:hintTextColor="@color/color_gris">
+
+                    <EditText
+                        android:id="@+id/inputCode5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_blanco"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:textColor="@color/color_texto_negro" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textColorHint="@color/color_gris"
+                    app:hintTextColor="@color/color_gris">
+
+                    <EditText
+                        android:id="@+id/inputCode6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_blanco"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:textColor="@color/color_texto_negro" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textColorHint="@color/color_gris"
+                    app:hintTextColor="@color/color_gris">
+
+                    <EditText
+                        android:id="@+id/inputCode7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_blanco"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:textColor="@color/color_texto_negro" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textColorHint="@color/color_gris"
+                    app:hintTextColor="@color/color_gris">
+
+                    <EditText
+                        android:id="@+id/inputCode8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_blanco"
+
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:textColor="@color/color_texto_negro" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/color_gris"
+                    app:hintTextColor="@color/color_gris">
+
+                    <EditText
+                        android:id="@+id/inputCode9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_blanco"
+
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="1"
+
+                        android:textColor="@color/color_texto_negro" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <android.widget.Button
+                    android:id="@+id/btnAtrasRegDos"
+                    android:layout_width="150dp"
+                    android:layout_height="52dp"
+                    android:layout_gravity="start|bottom"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/fondo_btn_registrar"
+                    android:text="@string/btn_registro_atras"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_texto_blanco"
+                    android:textSize="16sp" />
+
+                <android.widget.Button
+                    android:id="@+id/btnSiguienteRegDos"
+                    android:layout_width="150dp"
+                    android:layout_height="52dp"
+                    android:layout_gravity="end|bottom"
+                    android:layout_marginStart="91dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fondo_btn_registrar"
+                    android:text="@string/btn_registro_siguiente"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_texto_blanco"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>
