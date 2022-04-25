@@ -28,9 +28,9 @@
             android:layout_below="@id/ivRegistro"
             android:layout_marginStart="50dp"
             android:layout_marginTop="-30dp"
+            android:gravity="center"
             android:text="@string/tv_registro_dos"
             android:textColor="@color/color_blanco_pero_no_tan_blanco"
-            android:gravity="center"
             android:textSize="20sp"
             android:textStyle="italic" />
 
@@ -92,9 +92,64 @@
                     android:layout_marginTop="70dp"
                     android:layout_marginRight="48dp"
                     android:background="@drawable/fondo_edit_text"
-                    android:textColor="@color/color_texto_negro"
                     android:hint="@string/et_ConfirmarCorreo"
                     android:inputType="textEmailAddress"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp"
+                    android:textColor="@color/color_texto_negro" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilContraRegTres"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/color_gris"
+                app:hintTextColor="@color/color_gris">
+
+
+                <EditText
+                    android:id="@+id/etContraRegDos"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="48dp"
+                    android:background="@drawable/fondo_edit_text"
+                    android:hint="@string/et_contrasenia"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp"
+                    android:textColor="@color/color_texto_negro" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilConfContraRegTres"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/color_gris"
+                app:hintTextColor="@color/color_gris">
+
+
+                <EditText
+                    android:id="@+id/etConfContraRegDos"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_below="@id/tilNombre"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginRight="48dp"
+                    android:background="@drawable/fondo_edit_text"
+                    android:drawableTint="@color/color_texto_negro"
+                    android:hint="@string/et_conf_contrasenia"
+                    android:inputType="text"
                     android:paddingLeft="26dp"
                     android:paddingRight="26dp" />
 

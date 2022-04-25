@@ -37,5 +37,8 @@
     <string name="tv_registro_tres">Ya casi has acabado!!!\n</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_data">Debes introducir datos para iniciar sesion</string>
+    <string name="msj_no_accede">Has introducido algun dato incorrecto</string>
+    <string name="tst_fill">Rellena todos los campos</string>
     <string name="mas_btn">+</string>
 </resources>
