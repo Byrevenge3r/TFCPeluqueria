@@ -30,32 +30,18 @@
         app:strokeColor="@color/color_blanco"
         app:strokeWidth="3dp" />
 
-    <LinearLayout
-        android:id="@+id/llBotonesMascotas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/ivPerfil"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-
-        
-    </LinearLayout>
-
     <TextView
         android:id="@+id/tvNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:textColor="@color/color_blanco"
-        android:textSize="26sp"
+        android:layout_marginTop="260dp"
         android:text="Fernando pasquin"
+        android:textColor="#FFF"
+        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivPerfil" />
+        app:layout_constraintTop_toTopOf="@id/ivPerfil" />
 
     <android.widget.Button
         android:id="@+id/btnAniadirMascota"
@@ -69,8 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.877"
         app:layout_constraintStart_toStartOf="@id/tvNombre"
-        android:textFontWeight="1"
-        android:textAlignment="center"
+        android:textFontWeight="@integer/material_motion_duration_long_1"
         app:layout_constraintTop_toTopOf="parent" />
 
 
