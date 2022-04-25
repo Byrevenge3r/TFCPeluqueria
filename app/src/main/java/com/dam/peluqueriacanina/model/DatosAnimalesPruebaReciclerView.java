@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DatosAnimalesPruebaReciclerView {
 
-    private ArrayList<AnimalReservaPelu> listaAnimales;
+    private final ArrayList<AnimalReservaPelu> listaAnimales;
 
     public DatosAnimalesPruebaReciclerView() {
         listaAnimales = new ArrayList<>();

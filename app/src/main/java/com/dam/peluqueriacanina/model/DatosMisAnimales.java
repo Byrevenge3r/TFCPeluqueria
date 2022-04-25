@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class DatosMisAnimales {
 
-    private ArrayList<MisAnimales> listaAnimales;
+    private final ArrayList<MisAnimales> listaAnimales;
 
     public DatosMisAnimales() {
         listaAnimales = new ArrayList<>();

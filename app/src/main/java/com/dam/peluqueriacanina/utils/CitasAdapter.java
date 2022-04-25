@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class CitasAdapter extends RecyclerView.Adapter<CitasAdapter.CitasAdapterVH>
     implements View.OnClickListener {
 
-    private ArrayList<CitasReserva> datos;
+    private final ArrayList<CitasReserva> datos;
     private View.OnClickListener listener;
 
     public CitasAdapter(ArrayList<CitasReserva> datos) {
@@ -56,7 +56,7 @@ public class CitasAdapter extends RecyclerView.Adapter<CitasAdapter.CitasAdapter
     }
 
     public static class CitasAdapterVH extends RecyclerView.ViewHolder {
-        private Button btnHora;
+        private final Button btnHora;
 
         public CitasAdapterVH(@NonNull View itemView) {
             super(itemView);

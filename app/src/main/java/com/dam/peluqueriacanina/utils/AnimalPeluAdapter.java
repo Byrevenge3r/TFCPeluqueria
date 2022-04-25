@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.AnimalPeluAdapterVH>
         implements View.OnClickListener{
 
-    private ArrayList<AnimalReservaPelu> datos;
+    private final ArrayList<AnimalReservaPelu> datos;
     private View.OnClickListener listener;
 
 
@@ -57,9 +57,9 @@ public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.An
 
 
     public static class AnimalPeluAdapterVH extends RecyclerView.ViewHolder {
-        private TextView tvNom;
-        private TextView tvFecha;
-        private TextView tvHora;
+        private final TextView tvNom;
+        private final TextView tvFecha;
+        private final TextView tvHora;
 
         public AnimalPeluAdapterVH(@NonNull View itemView) {
             super(itemView);

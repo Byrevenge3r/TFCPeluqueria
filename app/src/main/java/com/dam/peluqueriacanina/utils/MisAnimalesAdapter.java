@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class MisAnimalesAdapter extends RecyclerView.Adapter<MisAnimalesAdapter.MisAnimalesAdapterVH>
             implements View.OnClickListener {
 
-    private ArrayList<MisAnimales> datos;
+    private final ArrayList<MisAnimales> datos;
     private View.OnClickListener listener;
 
 
@@ -58,7 +58,7 @@ public class MisAnimalesAdapter extends RecyclerView.Adapter<MisAnimalesAdapter.
 
     public static class MisAnimalesAdapterVH extends RecyclerView.ViewHolder {
 
-        private ShapeableImageView imagenAnimal;
+        private final ShapeableImageView imagenAnimal;
 
 
         public MisAnimalesAdapterVH(@NonNull View itemView) {

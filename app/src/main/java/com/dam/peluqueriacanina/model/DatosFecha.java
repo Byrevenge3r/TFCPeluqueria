@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DatosFecha {
 
-    private ArrayList<CitasReserva> listaCitas;
+    private final ArrayList<CitasReserva> listaCitas;
 
     public DatosFecha(){
         listaCitas = new ArrayList<>();
