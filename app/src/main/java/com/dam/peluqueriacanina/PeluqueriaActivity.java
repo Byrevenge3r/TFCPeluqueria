@@ -1,30 +1,29 @@
 package com.dam.peluqueriacanina;
 
-import android.os.Bundle;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dam.peluqueriacanina.model.DatosAnimalesPruebaReciclerView;
-import com.dam.peluqueriacanina.utils.AnimalPeluAdapter;
+import android.os.Bundle;
+
+import com.dam.peluqueriacanina.model.DatosMisAnimales;
+import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
+import com.google.android.material.imageview.ShapeableImageView;
 
 public class PeluqueriaActivity extends AppCompatActivity {
 
     RecyclerView rv;
     LinearLayoutManager llm;
-    AnimalPeluAdapter adapter;
-    TextView tvTamCitas;
-    DatosAnimalesPruebaReciclerView datos;
+    MisAnimalesAdapter adapter;
+    ShapeableImageView imagenAnimal;
+    DatosMisAnimales datos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peluqueria);
 
-        tvTamCitas = findViewById(R.id.tvTamCitas);
+        imagenAnimal = findViewById(R.id.siAnimal);
 
         rv = findViewById(R.id.rvReservarVet);
 
@@ -33,13 +32,10 @@ public class PeluqueriaActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rv.setLayoutManager(llm);
 
-        datos = new DatosAnimalesPruebaReciclerView();
+        datos = new DatosMisAnimales();
 
-        adapter = new AnimalPeluAdapter(datos.getListaAnimales());
-        if (datos.getListaAnimales().isEmpty()) {
-            tvTamCitas.setText(getResources().getString(R.string.tv_tam_citas));
-        } else {
-            rv.setAdapter(adapter);
-        }
+        adapter = new MisAnimalesAdapter(datos.getListaAnimales());
+
+        rv.setAdapter(adapter);
     }
 }

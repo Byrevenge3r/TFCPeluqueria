@@ -37,4 +37,5 @@
     <string name="tv_registro_tres">Ya casi has acabado!!!\n</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mas_btn">+</string>
 </resources>
