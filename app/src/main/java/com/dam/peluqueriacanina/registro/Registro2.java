@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -42,9 +43,9 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
         fAuth = FirebaseAuth.getInstance();
         dbRef = fb.getReference();
 
-        etCorreo = findViewById(R.id.etCorreo);
+        etCorreo = findViewById(R.id.etEmailRegDos);
         etConfCorreo = findViewById(R.id.etConfirmarEmailRegDos);
-        etContra = findViewById(R.id.etContrasenia);
+        etContra = findViewById(R.id.etContraRegDos);
         etConfContra = findViewById(R.id.etConfContraRegDos);
 
         btnAtrasRegDos = findViewById(R.id.btnAtrasRegDos);
@@ -66,6 +67,9 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
             if (correo.isEmpty() || confcorreo.isEmpty() || contra.isEmpty() || confcontra.isEmpty()) {
                 Snackbar.make(v, R.string.tst_fill, Snackbar.LENGTH_LONG).show();
             } else if (v.equals(btnSiguienteRegDos)) {
+                ((MiApplication)getApplicationContext()).setCorreo(correo);
+                ((MiApplication)getApplicationContext()).setContrasenia(contra  );
+
                 i = new Intent(this, Registro3.class);
                 startActivity(i);
 
@@ -78,37 +82,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
             }
         }
     }
-    private void registrarse( String correo, String Confcorreo, String contra, String confContra) {
-        if (check){
-            if (contra.length()>=6){
-                if (contra.equals(confContra) ){
-                    fAuth.createUserWithEmailAndPassword(correo, contra)
-                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        dbRef.child("usuarios").child(nombre).setValue(new User(nombre, contra, correo));
-                                        Intent data = new Intent();
-                                        data.putExtra(CLAVE_USER, correo);
-                                        data.putExtra(CLAVE_CONTRA, contra);
-                                        setResult(RESULT_OK,data);
-                                        finish();
-                                    } else {
-                                        Snackbar.make(btnRegistrar, R.string.tst_correo_exist, Snackbar.LENGTH_LONG)
-                                                .show();
-                                    }
-                                }
-                            });
-                }else{
-                    Snackbar.make(btnRegistrar,R.string.tst_contra_coin,Snackbar.LENGTH_LONG).show();
-                }
-            }else{
-                Snackbar.make(btnRegistrar,R.string.tst_contra_leng,Snackbar.LENGTH_LONG).show();
-            }
-        }else{
-            Snackbar.make(btnRegistrar,R.string.tst_user_exist,Snackbar.LENGTH_LONG).show();
-        }
-    }
+
 
         @Override
         public void onBackPressed(){

@@ -9,12 +9,18 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.dam.peluqueriacanina.LoginActivity;
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.model.User;
+import com.dam.peluqueriacanina.utils.MiApplication;
 
 public class Registro4 extends AppCompatActivity implements View.OnClickListener {
     Button btnSiguienteRegCuatro, btnMandarOtraVezRegCuatro;
     Intent i;
+
+    User user;
     EditText inputCode1,inputCode2,inputCode3,inputCode4,inputCode5,inputCode6;
     TextWatcher t;
 
@@ -36,6 +42,13 @@ public class Registro4 extends AppCompatActivity implements View.OnClickListener
         btnMandarOtraVezRegCuatro.setOnClickListener(this);
 
         listenerEditText(inputCode1,inputCode2,inputCode3,inputCode4,inputCode5,inputCode6);
+        user = new User(((MiApplication)getApplicationContext()).getNombre(),
+                ((MiApplication)getApplicationContext()).getApellidos(),
+                ((MiApplication)getApplicationContext()).getUsuario(),
+                ((MiApplication)getApplicationContext()).getCorreo(),
+                ((MiApplication)getApplicationContext()).getContrasenia(),
+                ((MiApplication)getApplicationContext()).getTelefono());
+        Toast.makeText(Registro4.this,  user.toString(), Toast.LENGTH_LONG).show();
 
     }
 

@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.model.User;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.material.snackbar.Snackbar;
 
 public class Registro3 extends AppCompatActivity implements View.OnClickListener {
@@ -38,6 +40,8 @@ public class Registro3 extends AppCompatActivity implements View.OnClickListener
             if (telefono.isEmpty()) {
                 Snackbar.make(v, R.string.tst_fill, Snackbar.LENGTH_LONG).show();
             } else if (v.equals(btnSiguienteRegTres)) {
+                ((MiApplication)getApplicationContext()).setTelefono(telefono);
+
                     i = new Intent(this, Registro4.class);
                     startActivity(i);
                 }
