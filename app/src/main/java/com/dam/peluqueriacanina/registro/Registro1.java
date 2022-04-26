@@ -1,5 +1,6 @@
 package com.dam.peluqueriacanina.registro;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,7 +11,10 @@ import android.widget.EditText;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.fragmentos.Citas;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -70,6 +74,16 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
 
                 overridePendingTransition(R.anim.animacion_derecha_izquierda, R.anim.animacion_izquierda_izquierda);
             }
+        }
+    }
+
+    private void registrarse(String nombre, String apellido, String usuario) {
+        if (check){
+
+                Snackbar.make(btnSiguienteRegUno,R.string.tst_contra_leng,Snackbar.LENGTH_LONG).show();
+            }
+        }else{
+            Snackbar.make(btnSiguienteRegUno,R.string.tst_user_exist,Snackbar.LENGTH_LONG).show();
         }
     }
 }

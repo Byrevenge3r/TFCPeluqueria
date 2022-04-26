@@ -52,8 +52,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
-                        etCorreo.setText(result.getData().getStringExtra(Registro2.CLAVE_USER));
-                        etContrasenia.setText(result.getData().getStringExtra(Registro2.CLAVE_CONTRA));
+                      //  etCorreo.setText(result.getData().getStringExtra(Registro2.CLAVE_USER));
+                        //etContrasenia.setText(result.getData().getStringExtra(Registro2.CLAVE_CONTRA));
                     }
                 }
             }
