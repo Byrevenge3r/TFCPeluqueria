@@ -50,4 +50,5 @@
     <string name="et_raza_animal">Introduce la raza</string>
     <string name="error_permisos">Se necesitan permisos para poder sacar una foto</string>
     <string name="error_registrar_animal_vacio">Se necesita todos los campos para poder continuar</string>
+
 </resources>

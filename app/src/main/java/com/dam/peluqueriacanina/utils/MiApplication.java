@@ -2,7 +2,7 @@ package com.dam.peluqueriacanina.utils;
 
 import android.app.Application;
 
-public class miApplication extends Application {
+public class MiApplication extends Application {
 
     private String nombre;
     private String apellidos;
@@ -20,7 +20,9 @@ public class miApplication extends Application {
     public String getNombre() {
         return nombre;
     }
-
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     public String getApellidos() { return apellidos; }
 
     public void setApellidos(String apellidos) { this.apellidos = apellidos; }
@@ -41,19 +43,7 @@ public class miApplication extends Application {
 
     public void setTelefono(String telefono) { this.telefono = telefono; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
-    public miApplication(String nombre, String apellidos, String usuario, String correo, String contrasenia, String telefono) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.usuario = usuario;
-        this.correo = correo;
-        this.contrasenia = contrasenia;
-        this.telefono = telefono;
-    }
 
-    public miApplication() {
-    }
+
 }

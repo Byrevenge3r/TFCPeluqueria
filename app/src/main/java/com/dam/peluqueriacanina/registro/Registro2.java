@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.model.User;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -43,9 +43,9 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
         fAuth = FirebaseAuth.getInstance();
         dbRef = fb.getReference();
 
-        etCorreo = findViewById(R.id.etCorreo);
+        etCorreo = findViewById(R.id.etEmailRegDos);
         etConfCorreo = findViewById(R.id.etConfirmarEmailRegDos);
-        etContra = findViewById(R.id.etContrasenia);
+        etContra = findViewById(R.id.etContraRegDos);
         etConfContra = findViewById(R.id.etConfContraRegDos);
 
         btnAtrasRegDos = findViewById(R.id.btnAtrasRegDos);
@@ -67,6 +67,9 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
             if (correo.isEmpty() || confcorreo.isEmpty() || contra.isEmpty() || confcontra.isEmpty()) {
                 Snackbar.make(v, R.string.tst_fill, Snackbar.LENGTH_LONG).show();
             } else if (v.equals(btnSiguienteRegDos)) {
+                ((MiApplication)getApplicationContext()).setCorreo(correo);
+                ((MiApplication)getApplicationContext()).setContrasenia(contra  );
+
                 i = new Intent(this, Registro3.class);
                 startActivity(i);
 
@@ -79,6 +82,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
             }
         }
     }
+
 
     @Override
     public void onBackPressed() {

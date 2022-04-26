@@ -17,11 +17,9 @@ import android.widget.Toast;
 
 import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.registro.Registro1;
-import com.dam.peluqueriacanina.registro.Registro2;
-import com.dam.peluqueriacanina.utils.miApplication;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -132,8 +130,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot datasnap : snapshot.getChildren()){
-                    ((miApplication)getApplicationContext()).setNombre((datasnap.getValue(User.class)).getNom());
-                    dbRef.child(datasnap.getValue(User.class).getNom()+"/contra").setValue(contra);
+                    ((MiApplication)getApplicationContext()).setNombre((datasnap.getValue(User.class)).getNombre());
+                    dbRef.child(datasnap.getValue(User.class).getNombre()+"/contra").setValue(contra);
                 }
             }
             @Override

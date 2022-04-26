@@ -88,7 +88,7 @@
                         android:inputType="number"
                         android:hint="@string/hint_et_telefono_reg_cua"
                         android:background="@drawable/fondo_edit_text"
-                        android:maxLength="1"
+                        android:maxLength="9"
                         android:textColor="@color/color_texto_negro" />
 
                 </com.google.android.material.textfield.TextInputLayout>
