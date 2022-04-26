@@ -63,8 +63,8 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
         String apellidos = etApellido.getText().toString().trim();
         String usuario = etUsuario.getText().toString().trim();
 
-        if (v.equals(btnSiguienteRegUno)){
-            if (nombre.isEmpty() || apellidos.isEmpty() || usuario.isEmpty()){
+        if (v.equals(btnSiguienteRegUno)) {
+            if (nombre.isEmpty() || apellidos.isEmpty() || usuario.isEmpty()) {
                 Snackbar.make(v, R.string.tst_fill, Snackbar.LENGTH_LONG).show();
             } else {
                 // citas.show(getSupportFragmentManager(),"onCreateDialog");
@@ -78,12 +78,14 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
     }
 
     private void registrarse(String nombre, String apellido, String usuario) {
-        if (check){
+        if (check) {
 
-                Snackbar.make(btnSiguienteRegUno,R.string.tst_contra_leng,Snackbar.LENGTH_LONG).show();
-            }
-        }else{
-            Snackbar.make(btnSiguienteRegUno,R.string.tst_user_exist,Snackbar.LENGTH_LONG).show();
+            Snackbar.make(btnSiguienteRegUno, R.string.tst_contra_leng, Snackbar.LENGTH_LONG).show();
         }
+    }else
+
+    {
+        Snackbar.make(btnSiguienteRegUno, R.string.tst_user_exist, Snackbar.LENGTH_LONG).show();
     }
+}
 }

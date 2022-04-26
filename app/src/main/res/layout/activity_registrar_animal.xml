@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrarAnimal"
+    android:orientation="vertical"
+    android:weightSum="4"
+    android:background="@color/color_registro">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/ivRegistro"
+            android:layout_width="120dp"
+
+            android:layout_height="120dp"
+            android:layout_marginStart="140dp"
+            android:background="@drawable/logo_peluqueria" />
+
+        <TextView
+            android:id="@+id/tvRegistroDos"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivRegistro"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="-30dp"
+            android:gravity="center"
+            android:text="@string/tv_registro_dos"
+            android:textColor="@color/color_blanco_pero_no_tan_blanco"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:background="@drawable/fondo_cartas">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/image_view_bordes" />
+
+
+                <TextView
+                    android:layout_width="197dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="55dp"
+                    android:text="Pulsa para poner una foto de tu mascota"
+                    android:textSize="25sp" />
+
+            </RelativeLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmailRegDos"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/color_gris"
+                app:hintTextColor="@color/color_gris">
+
+                <EditText
+                    android:id="@+id/etEmailRegDos"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginRight="48dp"
+                    android:background="@drawable/fondo_edit_text"
+                    android:hint="@string/et_correo"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp"
+                    android:textColor="@color/color_texto_negro" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilConfirmarEmailRegDos"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/color_gris"
+                app:hintTextColor="@color/color_gris">
+
+                <EditText
+                    android:id="@+id/etConfirmarEmailRegDos"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_below="@id/tilNombre"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginRight="48dp"
+                    android:background="@drawable/fondo_edit_text"
+                    android:hint="@string/et_ConfirmarCorreo"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp"
+                    android:textColor="@color/color_texto_negro" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

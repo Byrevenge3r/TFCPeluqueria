@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PeluqueriaCanina">
         <activity
+            android:name=".RegistrarAnimal"
+            android:exported="false" />
+        <activity
             android:name=".PeluqueriaActivity"
             android:exported="true">
             <intent-filter>
@@ -35,7 +38,7 @@
             android:exported="false" />
         <activity
             android:name=".registro.Registro1"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
