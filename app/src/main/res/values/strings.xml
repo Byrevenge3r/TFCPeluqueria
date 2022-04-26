@@ -50,5 +50,9 @@
     <string name="et_raza_animal">Introduce la raza</string>
     <string name="error_permisos">Se necesitan permisos para poder sacar una foto</string>
     <string name="error_registrar_animal_vacio">Se necesita todos los campos para poder continuar</string>
+    <string name="tv_datos_animal">Datos sobre tu animal</string>
+    <string name="tv_datos_nom_animal">Nombre: %1$s</string>
+    <string name="tv_datos_raza_animal">Raza: %1$s</string>
+    <string name="btn_datos_animal_borrar">Borrar</string>
 
 </resources>

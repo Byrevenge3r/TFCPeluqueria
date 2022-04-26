@@ -23,13 +23,17 @@ import java.util.ArrayList;
 
 public class VeterinariaActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String CLAVE_ANIMAL = "ANIMAL_VET";
+
     RecyclerView rv;
     LinearLayoutManager llm;
     MisAnimalesAdapter adapter;
     AnimalesDao dao;
     AnimalesDB db;
+    Animal animalVet;
     ShapeableImageView imagenAnimal;
     Button btnAniadirMascotaVet;
+    ArrayList<Animal> listaAnimalesVet;
     Intent i;
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
@@ -39,6 +43,7 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
                         adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarTodo());
+                        listenerRv();
                         rv.setAdapter(adapter);
                     }
                 }
@@ -63,11 +68,25 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
 
         if (!dao.sacarTodo().isEmpty()) {
             adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarTodo());
+            listenerRv();
         }
 
         rv.setAdapter(adapter);
 
         btnAniadirMascotaVet.setOnClickListener(this);
+    }
+
+    private void listenerRv() {
+        adapter.setListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listaAnimalesVet = (ArrayList<Animal>) dao.sacarTodo();
+                i = new Intent(VeterinariaActivity.this, DatosAnimalActivity.class);
+                animalVet = listaAnimalesVet.get(rv.getChildAdapterPosition(v));
+                i.putExtra(CLAVE_ANIMAL, animalVet.getRuta());
+                arl.launch(i);
+            }
+        });
     }
 
     @Override

@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
@@ -39,7 +41,7 @@ import java.util.ArrayList;
 public class RegistrarAnimal extends AppCompatActivity implements View.OnClickListener {
 
     Button btnRegistrarAnimal;
-    EditText etNomAnimal,etRazaAnimal;
+    EditText etNomAnimal, etRazaAnimal;
     ShapeableImageView ivFotoAnimal;
     TextView tvPonerMascota;
     String ruta;
@@ -48,6 +50,7 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
     Intent i;
     AnimalesDao dao;
     AnimalesDB db;
+    CharSequence[] opcion = {"Tomar foto", "Elegir de galeria", "Cancelar"};
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -57,7 +60,7 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                     if (result.getResultCode() == RESULT_OK) {
                         Bitmap imgBitmap = BitmapFactory.decodeFile(ruta);
                         tvPonerMascota.setVisibility(View.INVISIBLE);
-                        ivFotoAnimal.setStrokeColor(ColorStateList.valueOf(ContextCompat.getColor(getBaseContext(),R.color.color_principal)));
+                        ivFotoAnimal.setStrokeColor(ColorStateList.valueOf(ContextCompat.getColor(getBaseContext(), R.color.color_principal)));
                         ivFotoAnimal.bringToFront();
                         ivFotoAnimal.setImageBitmap(imgBitmap);
 
@@ -65,6 +68,7 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                 }
             }
     );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +91,7 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if (v.equals(ivFotoAnimal)) {
+
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
                     ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1000);
@@ -94,17 +99,17 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
             } else {
                 //TODO: Arreglar error si se rechaza mas de dos veces no sale mas el mensaje
                 i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (i.resolveActivity(getPackageManager())!=null) {
+                if (i.resolveActivity(getPackageManager()) != null) {
                     File foto = null;
                     try {
                         foto = GuardarImagen();
                     } catch (IOException ex) {
-                        Log.e("error",ex.toString());
+                        Log.e("error", ex.toString());
                     }
 
                     if (foto != null) {
-                        Uri uri = FileProvider.getUriForFile(this,"com.peluqueriacanina.mycamera.fileprovider",foto);
-                        i.putExtra(MediaStore.EXTRA_OUTPUT,uri);
+                        Uri uri = FileProvider.getUriForFile(this, "com.peluqueriacanina.mycamera.fileprovider", foto);
+                        i.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                         arl.launch(i);
                     }
                 }
@@ -114,9 +119,9 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
             raza = etRazaAnimal.getText().toString();
 
             if (nombre.isEmpty() || raza.isEmpty()) {
-                Toast.makeText(this,R.string.error_registrar_animal_vacio,Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.error_registrar_animal_vacio, Toast.LENGTH_SHORT).show();
             } else {
-                dao.insert(new Animal(ruta,nombre,raza));
+                dao.insert(new Animal(ruta, nombre, raza));
                 setResult(RESULT_OK);
                 finish();
             }
@@ -126,11 +131,12 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
     //TODO: Arreglar que si se pulsa muchas veces se sigue guardando, hay que hacer que se guarde solo en el registrar
     //TODO: Mira la pagina que esta en marcadores en el android studio
 
-    private File GuardarImagen() throws IOException{
+    private File GuardarImagen() throws IOException {
         String nombreFoto = "Foto_";
         File directorio = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File foto = File.createTempFile(nombreFoto,".jpg",directorio);
+        File foto = File.createTempFile(nombreFoto, ".jpg", directorio);
         ruta = foto.getAbsolutePath();
         return foto;
     }
+
 }

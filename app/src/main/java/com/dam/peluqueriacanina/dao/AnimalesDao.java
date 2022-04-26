@@ -15,6 +15,12 @@ public interface AnimalesDao {
     @Query("SELECT * FROM ANIMALES")
     List<Animal> sacarTodo();
 
+    @Query("SELECT * FROM ANIMALES WHERE ruta = :ruta")
+    Animal sacarAnimal(String ruta);
+
     @Insert
     void insert(Animal animal);
+
+    @Delete
+    void delete(Animal animal);
 }

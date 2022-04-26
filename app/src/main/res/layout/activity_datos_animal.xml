@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="4"
+    android:orientation="vertical"
+    android:background="@color/color_registro"
+    tools:context=".DatosAnimalActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/ivRegistro"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="140dp"
+            android:background="@drawable/logo_peluqueria" />
+
+        <TextView
+            android:id="@+id/tvDatosAnimal"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivRegistro"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="-30dp"
+            android:gravity="center_horizontal"
+            android:text="@string/tv_datos_animal"
+            android:textColor="@color/color_blanco_pero_no_tan_blanco"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/fondo_cartas">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivfotoDatosAnimal"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/Circular"
+                app:strokeColor="@color/color_blanco"
+                app:strokeWidth="3dp" />
+
+
+                <TextView
+                    android:id="@+id/tvDatosNomAnimal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/color_principal"
+                    android:text="@string/tv_datos_nom_animal"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/tvDatosRazaAnimal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/color_principal"
+                    android:text="@string/tv_datos_raza_animal"
+                    android:layout_gravity="center_horizontal"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <android.widget.Button
+                    android:id="@+id/btnDatosAnimalBorrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_gravity="end|bottom"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fondo_btn_registrar"
+                    android:text="@string/btn_datos_animal_borrar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_texto_blanco"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>

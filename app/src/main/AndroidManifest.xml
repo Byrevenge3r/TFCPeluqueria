@@ -20,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PeluqueriaCanina">
         <activity
+            android:name=".DatosAnimalActivity"
+            android:exported="false" />
+        <activity
             android:name=".VeterinariaActivity"
             android:exported="false" />
         <activity
@@ -27,10 +30,7 @@
             android:exported="false" />
         <activity
             android:name=".PeluqueriaActivity"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true"></activity>
         <activity
             android:name=".registro.Registro6"
             android:exported="false" />
@@ -54,7 +54,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -69,7 +69,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
 

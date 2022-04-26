@@ -2,9 +2,10 @@ package com.dam.peluqueriacanina.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "ANIMALES")
+@Entity(tableName = "ANIMALES", indices = {@Index(value={"ruta"},unique = true)})
 public class Animal {
     @PrimaryKey(autoGenerate = true)
     public int id;

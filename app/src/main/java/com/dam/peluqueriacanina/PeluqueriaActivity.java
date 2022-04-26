@@ -22,15 +22,18 @@ import com.google.android.material.imageview.ShapeableImageView;
 import java.util.ArrayList;
 
 public class PeluqueriaActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final String CLAVE_ANIMAL = "ANIMAL_PEL";
 
     RecyclerView rv;
     LinearLayoutManager llm;
     MisAnimalesAdapter adapter;
     AnimalesDao dao;
     AnimalesDB db;
+    Animal animalPel;
     ShapeableImageView imagenAnimal;
     Button btnAniadirMascotaPel;
     Intent i;
+    ArrayList<Animal> listaAnimalesPel;
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -64,7 +67,20 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
 
         if (!dao.sacarTodo().isEmpty()) {
             adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarTodo());
+
+            adapter.setListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listaAnimalesPel = (ArrayList<Animal>) dao.sacarTodo();
+                    i = new Intent(PeluqueriaActivity.this, DatosAnimalActivity.class);
+                    animalPel = listaAnimalesPel.get(rv.getChildAdapterPosition(v));
+                    i.putExtra(CLAVE_ANIMAL, animalPel.getRuta());
+                    arl.launch(i);
+                }
+            });
         }
+
+
 
         rv.setAdapter(adapter);
 
