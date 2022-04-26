@@ -44,6 +44,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                 }
             }
     );
+    //TODO: ns quiero que me deje updatear
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
