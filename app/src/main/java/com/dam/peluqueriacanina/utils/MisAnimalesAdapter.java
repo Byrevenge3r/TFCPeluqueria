@@ -1,5 +1,6 @@
 package com.dam.peluqueriacanina.utils;
 
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.model.MisAnimales;
+import com.dam.peluqueriacanina.entity.Animal;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
@@ -16,11 +17,11 @@ import java.util.ArrayList;
 public class MisAnimalesAdapter extends RecyclerView.Adapter<MisAnimalesAdapter.MisAnimalesAdapterVH>
             implements View.OnClickListener {
 
-    private final ArrayList<MisAnimales> datos;
+    private final ArrayList<Animal> datos;
     private View.OnClickListener listener;
 
 
-    public MisAnimalesAdapter(ArrayList<MisAnimales> datos) {
+    public MisAnimalesAdapter(ArrayList<Animal> datos) {
         this.datos = datos;
     }
 
@@ -67,8 +68,8 @@ public class MisAnimalesAdapter extends RecyclerView.Adapter<MisAnimalesAdapter.
 
         }
 
-        public void bindMenu (MisAnimales animal) {
-            imagenAnimal.setBackground(itemView.getResources().getDrawable(animal.getImagen()));
+        public void bindMenu (Animal animal) {
+            imagenAnimal.setImageBitmap(BitmapFactory.decodeFile(animal.getRuta()));
         }
     }
 }

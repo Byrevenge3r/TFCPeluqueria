@@ -44,7 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             i = new Intent(this, PeluqueriaActivity.class);
             startActivity(i);
         } else if (v.equals(cvVeterinaria)) {
-            Toast.makeText(this,"Veterinaria",Toast.LENGTH_SHORT).show();
+            i = new Intent(this, VeterinariaActivity.class);
+            startActivity(i);
         } else if (v.equals(cvTienda)) {
             Toast.makeText(this,"Tienda",Toast.LENGTH_SHORT).show();
         } else if (v.equals(cvNoticias)) {

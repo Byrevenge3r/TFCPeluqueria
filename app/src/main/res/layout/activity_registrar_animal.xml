@@ -31,7 +31,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="-30dp"
             android:gravity="center"
-            android:text="@string/tv_registro_dos"
+            android:text="@string/tv_registro_animal"
             android:textColor="@color/color_blanco_pero_no_tan_blanco"
             android:textSize="20sp"
             android:textStyle="italic" />
@@ -56,43 +56,52 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivFotoAnimal"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:background="@drawable/image_view_bordes" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/Circular"
+                    app:strokeColor="@color/color_blanco"
+                    android:scaleType="centerCrop"
+                    app:strokeWidth="3dp" />
 
 
                 <TextView
+                    android:id="@+id/tvPonerMascota"
                     android:layout_width="197dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="55dp"
-                    android:text="Pulsa para poner una foto de tu mascota"
+                    android:background="@drawable/image_view_bordes"
+                    android:text="@string/iv_texto_registrar_animal"
                     android:textSize="25sp" />
 
             </RelativeLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilEmailRegDos"
+                android:id="@+id/etNombreAnimal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:inputType="textEmailAddress"
+                android:inputType="textPersonName"
                 android:textColorHint="@color/color_gris"
                 app:hintTextColor="@color/color_gris">
 
                 <EditText
-                    android:id="@+id/etEmailRegDos"
+                    android:id="@+id/etNomAnimal"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:layout_marginLeft="48dp"
                     android:layout_marginTop="70dp"
                     android:layout_marginRight="48dp"
                     android:background="@drawable/fondo_edit_text"
-                    android:hint="@string/et_correo"
+                    android:hint="@string/et_nombre_animal"
                     android:paddingLeft="26dp"
                     android:paddingRight="26dp"
                     android:textColor="@color/color_texto_negro" />
@@ -105,12 +114,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:inputType="textEmailAddress"
+                android:inputType="textPersonName"
                 android:textColorHint="@color/color_gris"
                 app:hintTextColor="@color/color_gris">
 
                 <EditText
-                    android:id="@+id/etConfirmarEmailRegDos"
+                    android:id="@+id/etRazaAnimal"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:layout_below="@id/tilNombre"
@@ -118,19 +127,29 @@
                     android:layout_marginTop="70dp"
                     android:layout_marginRight="48dp"
                     android:background="@drawable/fondo_edit_text"
-                    android:hint="@string/et_ConfirmarCorreo"
-                    android:inputType="textEmailAddress"
+                    android:hint="@string/et_raza_animal"
                     android:paddingLeft="26dp"
                     android:paddingRight="26dp"
                     android:textColor="@color/color_texto_negro" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <android.widget.Button
+                android:id="@+id/btnRegistrarAnimal"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="55dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/fondo_btn_registrar"
+                android:text="@string/btn_registro_animal"
+                android:textAllCaps="false"
+                android:textColor="@color/color_texto_blanco"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
-
     </RelativeLayout>
-
 
 </LinearLayout>

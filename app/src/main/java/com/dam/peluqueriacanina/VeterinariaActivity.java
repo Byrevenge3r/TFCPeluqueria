@@ -21,7 +21,7 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
-public class PeluqueriaActivity extends AppCompatActivity implements View.OnClickListener {
+public class VeterinariaActivity extends AppCompatActivity implements View.OnClickListener {
 
     RecyclerView rv;
     LinearLayoutManager llm;
@@ -29,7 +29,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     AnimalesDao dao;
     AnimalesDB db;
     ShapeableImageView imagenAnimal;
-    Button btnAniadirMascotaPel;
+    Button btnAniadirMascotaVet;
     Intent i;
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
@@ -47,14 +47,14 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_peluqueria);
+        setContentView(R.layout.activity_veterinaria);
 
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
 
         imagenAnimal = findViewById(R.id.siAnimal);
-        btnAniadirMascotaPel = findViewById(R.id.btnAniadirMascotaPel);
-        rv = findViewById(R.id.rvReservarPel);
+        btnAniadirMascotaVet = findViewById(R.id.btnAniadirMascotaVet);
+        rv = findViewById(R.id.rvReservarVet);
 
 
         llm = new LinearLayoutManager(this);
@@ -67,12 +67,12 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
 
         rv.setAdapter(adapter);
 
-        btnAniadirMascotaPel.setOnClickListener(this);
+        btnAniadirMascotaVet.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.equals(btnAniadirMascotaPel)) {
+        if (v.equals(btnAniadirMascotaVet)) {
             i = new Intent(this,RegistrarAnimal.class);
             arl.launch(i);
         }

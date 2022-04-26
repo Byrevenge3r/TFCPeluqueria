@@ -43,4 +43,11 @@
     <string name="mas_btn">+</string>
     <string name="enhorabuena">Enhorabuena has completado el registro!</string>
     <string name="btn_registro_final">Finalizar</string>
+    <string name="et_nombre_animal">Introduce su nombre</string>
+    <string name="tv_registro_animal">Que bien vas a guardar a una mascota!!!</string>
+    <string name="iv_texto_registrar_animal">Pulsa para poner una foto de tu mascota</string>
+    <string name="btn_registro_animal">Registrar</string>
+    <string name="et_raza_animal">Introduce la raza</string>
+    <string name="error_permisos">Se necesitan permisos para poder sacar una foto</string>
+    <string name="error_registrar_animal_vacio">Se necesita todos los campos para poder continuar</string>
 </resources>

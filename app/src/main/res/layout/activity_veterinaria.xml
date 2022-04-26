@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PeluqueriaActivity">
+    tools:context=".VeterinariaActivity">
 
     <View
-        android:id="@+id/viewPeluqueria"
+        android:id="@+id/viewVeterania"
         android:layout_width="650dp"
         android:layout_height="500dp"
         android:background="@drawable/forma_header"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ivPerfilPel"
+        android:id="@+id/ivPerfilVet"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="68dp"
@@ -33,16 +33,16 @@
         app:strokeWidth="3dp" />
 
     <LinearLayout
-        android:id="@+id/llBotonesMascotasPel"
+        android:id="@+id/llBotonesMascotasVet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/ivPerfilPel">
+        app:layout_constraintTop_toBottomOf="@id/ivPerfilVet">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvReservarPel"
+            android:id="@+id/rvReservarVet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -51,7 +51,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tvNombre"
+        android:id="@+id/tvNombreVet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -61,10 +61,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llBotonesMascotasPel" />
+        app:layout_constraintTop_toBottomOf="@id/llBotonesMascotasVet" />
 
     <android.widget.Button
-        android:id="@+id/btnAniadirMascotaPel"
+        android:id="@+id/btnAniadirMascotaVet"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="360dp"
@@ -76,14 +76,14 @@
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.877"
-        app:layout_constraintStart_toStartOf="@id/tvNombre"
+        app:layout_constraintStart_toStartOf="@id/tvNombreVet"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/viewPeluqueria"
+        app:layout_constraintTop_toBottomOf="@id/viewVeterania"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="50dp"
         android:scrollbars="none">
@@ -257,7 +257,5 @@
 
 
     </HorizontalScrollView>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

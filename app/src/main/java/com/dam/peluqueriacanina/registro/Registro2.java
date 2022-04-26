@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -78,45 +79,13 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
             }
         }
     }
-    private void registrarse( String correo, String Confcorreo, String contra, String confContra) {
-        if (check){
-            if (contra.length()>=6){
-                if (contra.equals(confContra) ){
-                    fAuth.createUserWithEmailAndPassword(correo, contra)
-                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        dbRef.child("usuarios").child(nombre).setValue(new User(nombre, contra, correo));
-                                        Intent data = new Intent();
-                                        data.putExtra(CLAVE_USER, correo);
-                                        data.putExtra(CLAVE_CONTRA, contra);
-                                        setResult(RESULT_OK,data);
-                                        finish();
-                                    } else {
-                                        Snackbar.make(btnRegistrar, R.string.tst_correo_exist, Snackbar.LENGTH_LONG)
-                                                .show();
-                                    }
-                                }
-                            });
-                }else{
-                    Snackbar.make(btnRegistrar,R.string.tst_contra_coin,Snackbar.LENGTH_LONG).show();
-                }
-            }else{
-                Snackbar.make(btnRegistrar,R.string.tst_contra_leng,Snackbar.LENGTH_LONG).show();
-            }
-        }else{
-            Snackbar.make(btnRegistrar,R.string.tst_user_exist,Snackbar.LENGTH_LONG).show();
-        }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        i = new Intent(this, Registro1.class);
+        startActivity(i);
+
+        overridePendingTransition(R.anim.animacion_derecha_derecha, R.anim.animacion_izquierda_derecha);
     }
-
-        @Override
-        public void onBackPressed(){
-            super.onBackPressed();
-            i = new Intent(this, Registro1.class);
-            startActivity(i);
-
-            overridePendingTransition(R.anim.animacion_derecha_derecha, R.anim.animacion_izquierda_derecha);
-        }
-
 }

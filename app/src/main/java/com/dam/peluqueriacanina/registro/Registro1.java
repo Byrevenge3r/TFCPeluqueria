@@ -76,16 +76,4 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
             }
         }
     }
-
-    private void registrarse(String nombre, String apellido, String usuario) {
-        if (check) {
-
-            Snackbar.make(btnSiguienteRegUno, R.string.tst_contra_leng, Snackbar.LENGTH_LONG).show();
-        }
-    }else
-
-    {
-        Snackbar.make(btnSiguienteRegUno, R.string.tst_user_exist, Snackbar.LENGTH_LONG).show();
     }
-}
-}
