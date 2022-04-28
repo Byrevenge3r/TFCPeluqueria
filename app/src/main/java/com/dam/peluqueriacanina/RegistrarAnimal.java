@@ -50,7 +50,7 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
     Intent i;
     AnimalesDao dao;
     AnimalesDB db;
-    CharSequence[] opcion = {"Tomar foto", "Elegir de galeria", "Cancelar"};
+    //CharSequence[] opcion = {"Tomar foto", "Elegir de galeria", "Cancelar"};
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),

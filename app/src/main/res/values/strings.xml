@@ -54,5 +54,6 @@
     <string name="tv_datos_nom_animal">Nombre: %1$s</string>
     <string name="tv_datos_raza_animal">Raza: %1$s</string>
     <string name="btn_datos_animal_borrar">Borrar</string>
+    <string name="title_activity_ubicacion_tiempo_real">UbicacionTiempoRealActivity</string>
 
 </resources>
