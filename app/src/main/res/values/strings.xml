@@ -55,5 +55,6 @@
     <string name="tv_datos_raza_animal">Raza: %1$s</string>
     <string name="btn_datos_animal_borrar">Borrar</string>
     <string name="title_activity_ubicacion_tiempo_real">UbicacionTiempoRealActivity</string>
+    <string name="error_verificar_codigo">Ha habido un problema verificando el codigo por favor mandalo otra vez</string>
 
 </resources>

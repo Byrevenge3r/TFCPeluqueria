@@ -43,7 +43,7 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
         fAuth = FirebaseAuth.getInstance();
         dbRef = fb.getReference();
 
-        etNombre = findViewById(R.id.etUsuario);
+        etNombre = findViewById(R.id.etNombre);
         etApellido = findViewById(R.id.etApellido);
         etUsuario = findViewById(R.id.etUsuario);
 

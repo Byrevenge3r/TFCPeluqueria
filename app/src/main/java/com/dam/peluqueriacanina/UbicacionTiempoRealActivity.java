@@ -71,11 +71,13 @@ public class UbicacionTiempoRealActivity extends FragmentActivity implements OnM
                     marker.remove();
                 }
 
-                marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.furgo_canina))
-                                    .position(new LatLng(latitud, longitud)));
+
 
                 ubicacion = CameraUpdateFactory.newLatLng(new LatLng(latitud,longitud));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitud,longitud), 13));
+
+                marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker())
+                        .position(new LatLng(latitud, longitud)));
                     countDownTimer();
                 }
 

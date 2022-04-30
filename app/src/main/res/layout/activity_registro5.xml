@@ -9,7 +9,6 @@
     android:weightSum="4"
     tools:context=".registro.Registro5">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -36,201 +35,60 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_marginTop="5dp"
+
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/fondo_cartas">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
+
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/estrella"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/enhorabuena"
+                android:textSize="22sp" />
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:background="@drawable/verificar_sms" />
-
-            <LinearLayout
+            <android.widget.Button
+                android:id="@+id/btnSiguienteRegCua"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                android:layout_height="52dp"
+                android:layout_gravity="bottom"
                 android:layout_marginStart="10dp"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/inputCode1"
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/color_blanco"
-                        android:gravity="center"
-                        android:nextFocusRight="@id/inputCode2"
-                        android:importantForAutofill="no"
-                        android:inputType="number"
-                        android:maxLength="1"
-                        android:textColor="@color/color_texto_negro" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/inputCode2"
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/color_blanco"
-                        android:gravity="center"
-                        android:imeOptions="actionNext"
-                        android:importantForAutofill="no"
-                        android:inputType="number"
-                        android:maxLength="1"
-                        android:textColor="@color/color_texto_negro" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/color_gris"
-                    app:hintTextColor="@color/color_gris">
-
-                    <EditText
-                        android:id="@+id/inputCode3"
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/color_blanco"
-                        android:gravity="center"
-                        android:imeOptions="actionNext"
-                        android:importantForAutofill="no"
-                        android:inputType="number"
-                        android:maxLength="1"
-                        android:textColor="@color/color_texto_negro" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/color_gris"
-                    app:hintTextColor="@color/color_gris">
-
-                    <EditText
-                        android:id="@+id/inputCode4"
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/color_blanco"
-                        android:gravity="center"
-                        android:imeOptions="actionNext"
-                        android:importantForAutofill="no"
-                        android:inputType="number"
-                        android:maxLength="1"
-                        android:textColor="@color/color_texto_negro" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/color_gris"
-                    app:hintTextColor="@color/color_gris">
-
-                    <EditText
-                        android:id="@+id/inputCode5"
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/color_blanco"
-                        android:gravity="center"
-                        android:imeOptions="actionNext"
-                        android:importantForAutofill="no"
-                        android:inputType="number"
-                        android:maxLength="1"
-                        android:textColor="@color/color_texto_negro" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/color_gris"
-                    app:hintTextColor="@color/color_gris">
-
-                    <EditText
-                        android:id="@+id/inputCode6"
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/color_blanco"
-                        android:gravity="center"
-                        android:imeOptions="actionNext"
-                        android:importantForAutofill="no"
-                        android:inputType="number"
-                        android:maxLength="1"
-                        android:textColor="@color/color_texto_negro" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/tv_mandar_sms_otra_vez" />
-
-                <Button
-                    android:id="@+id/btnMandarOtraVezRegCuatro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="-13dp"
-                    android:background="@android:color/transparent"
-                    android:text="@string/btn_volver_enviar"
-                    android:textAllCaps="false"
-                    android:textColor="@color/color_principal" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
-
-                <android.widget.Button
-                    android:id="@+id/btnSiguienteRegCua"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/fondo_btn_registrar"
-                    android:text="@string/btn_registro_verificar"
-                    android:textAllCaps="false"
-                    android:textColor="@color/color_texto_blanco"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/fondo_btn_registrar"
+                android:text="@string/btn_registro_final"
+                android:textAllCaps="false"
+                android:textColor="@color/color_texto_blanco"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>
 
