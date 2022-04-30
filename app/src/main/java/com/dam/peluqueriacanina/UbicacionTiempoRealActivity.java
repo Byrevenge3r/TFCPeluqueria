@@ -30,11 +30,11 @@ import com.google.firebase.database.ValueEventListener;
 public class UbicacionTiempoRealActivity extends FragmentActivity implements OnMapReadyCallback {
 
     GoogleMap mMap;
-    ActivityUbicacionTiempoRealBinding binding;
     FirebaseDatabase fdb;
     DatabaseReference dbr;
     Marker marker;
-    CameraUpdate ubicacion;
+    Double latitud;
+    Double longitud;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,19 +62,12 @@ public class UbicacionTiempoRealActivity extends FragmentActivity implements OnM
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Mapa mp = snapshot.getValue(Mapa.class);
                 if (mp.getLatitud() != 0.0 && mp.getLongitud() != 0.0) {
-                    Double latitud = mp.getLatitud();
-                    Double longitud = mp.getLongitud();
-
-                    Log.e("ubicaa",latitud + " " + longitud);
+                    latitud = mp.getLatitud();
+                    longitud = mp.getLongitud();
 
                 if (marker != null) {
                     marker.remove();
                 }
-
-
-
-                ubicacion = CameraUpdateFactory.newLatLng(new LatLng(latitud,longitud));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitud,longitud), 13));
 
                 marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker())
                         .position(new LatLng(latitud, longitud)));
@@ -116,6 +109,9 @@ public class UbicacionTiempoRealActivity extends FragmentActivity implements OnM
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.4165,-3.70256), 11));
+        marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker())
+                .position(new LatLng(40.4165, -3.70256)));
         coorMapa();
     }
 }

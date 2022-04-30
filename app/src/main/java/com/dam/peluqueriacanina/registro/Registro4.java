@@ -25,6 +25,7 @@ import com.dam.peluqueriacanina.SmsListener;
 import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
