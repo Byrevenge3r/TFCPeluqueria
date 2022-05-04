@@ -1,5 +1,6 @@
 package com.dam.peluqueriacanina.registro;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -31,28 +32,29 @@ import java.util.ArrayList;
 
 public class Registro4 extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
+    //private static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
     Button btnSiguienteRegCuatro, btnMandarOtraVezRegCuatro;
     Intent i;
-    //User user;
     String codigo;
     SmsManager sms;
     int numeroConfirmar;
     EditText inputCode1, inputCode2, inputCode3, inputCode4, inputCode5, inputCode6;
 
-    SmsListener smsListener = new SmsListener() {
+    //Listener de mensajes estoy bastante seguro de que solo escucha mensajes de numeros de telefonos distintos al mio aunque me parece raro
+    /*SmsListener smsListener = new SmsListener() {
         @Override
         public void onReceive(Context context, Intent intent) {
             super.onReceive(context, intent);
 
-            codigo = msg;
+        codigo = msg;
 
-            inputCode1.setText(String.valueOf(codigo.charAt(0)));
-            inputCode2.setText(String.valueOf(codigo.charAt(1)));
-            inputCode3.setText(String.valueOf(codigo.charAt(2)));
-            inputCode4.setText(String.valueOf(codigo.charAt(3)));
-            inputCode5.setText(String.valueOf(codigo.charAt(4)));
-            inputCode6.setText(String.valueOf(codigo.charAt(5)));
+        inputCode1.setText(String.valueOf(codigo.charAt(0)));
+        inputCode2.setText(String.valueOf(codigo.charAt(1)));
+        inputCode3.setText(String.valueOf(codigo.charAt(2)));
+        inputCode4.setText(String.valueOf(codigo.charAt(3)));
+        inputCode5.setText(String.valueOf(codigo.charAt(4)));
+        inputCode6.setText(String.valueOf(codigo.charAt(5)));
+
 
         }
     };
@@ -68,7 +70,7 @@ public class Registro4 extends AppCompatActivity implements View.OnClickListener
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(smsListener);
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +95,19 @@ public class Registro4 extends AppCompatActivity implements View.OnClickListener
                 ((MiApplication) getApplicationContext()).getCorreo(),
                 ((MiApplication) getApplicationContext()).getContrasenia(),
                 ((MiApplication) getApplicationContext()).getTelefono());*/
+
+        if ((ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) +
+                ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS))
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS, Manifest.permission.SEND_SMS}, 1001);
+        } else {
+            numeroConfirmar = (int) ((Math.random() * 9 + 1) * 100000);
+            setearCodigo(numeroConfirmar);
+
+        }
+
+
     }
 
 
@@ -100,14 +115,12 @@ public class Registro4 extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         if (v.equals(btnMandarOtraVezRegCuatro)) {
             numeroConfirmar = (int) ((Math.random() * 9 + 1) * 100000);
-            sms = SmsManager.getDefault();
-            sms.sendTextMessage("+34"+((MiApplication)getApplicationContext()).getTelefono(), null, String.valueOf(numeroConfirmar), null, null);
-
+            setearCodigo(numeroConfirmar);
         } else {
             if (inputCode1.getText().toString().isEmpty()) {
-                Toast.makeText(this,R.string.error_verificar_codigo,Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.error_verificar_codigo, Toast.LENGTH_SHORT).show();
             } else {
-                i = new Intent(this,Registro5.class);
+                i = new Intent(this, Registro5.class);
                 startActivity(i);
 
                 overridePendingTransition(R.anim.animacion_derecha_izquierda, R.anim.animacion_izquierda_izquierda);
@@ -123,6 +136,33 @@ public class Registro4 extends AppCompatActivity implements View.OnClickListener
         startActivity(i);
 
         overridePendingTransition(R.anim.animacion_derecha_derecha, R.anim.animacion_izquierda_derecha);
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            SmsManager sms = SmsManager.getDefault();
+            sms.sendTextMessage("+34" + ((MiApplication) getApplicationContext()).getTelefono(), null, String.valueOf(numeroConfirmar), null, null);
+
+        } else {
+            Toast.makeText(getApplicationContext(), "Se debe dar permisos", Toast.LENGTH_SHORT).show();
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private void setearCodigo(int codigoNum) {
+        sms = SmsManager.getDefault();
+        sms.sendTextMessage("+34" + ((MiApplication) getApplicationContext()).getTelefono(), null, String.valueOf(numeroConfirmar), null, null);
+
+        codigo = String.valueOf(codigoNum);
+
+        inputCode1.setText(String.valueOf(codigo.charAt(0)));
+        inputCode2.setText(String.valueOf(codigo.charAt(1)));
+        inputCode3.setText(String.valueOf(codigo.charAt(2)));
+        inputCode4.setText(String.valueOf(codigo.charAt(3)));
+        inputCode5.setText(String.valueOf(codigo.charAt(4)));
+        inputCode6.setText(String.valueOf(codigo.charAt(5)));
 
     }
 

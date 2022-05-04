@@ -33,7 +33,4 @@ public class SmsListener extends BroadcastReceiver {
         }
     }
 
-    public String getMsg() {
-        return msg;
-    }
 }
