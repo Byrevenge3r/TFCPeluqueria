@@ -46,7 +46,6 @@ public class Citas extends DialogFragment {
     ArrayList<CitasReserva> listaCitas;
 
     ArrayList<CitasReserva> listaCitasMes;
-    ArrayList<CitasReserva> listaMostrar;
 
     public Citas() {
     }
@@ -83,7 +82,6 @@ public class Citas extends DialogFragment {
         listaCitas = datos.getListaCitas();
 
         listaCitasMes = new ArrayList<>();
-        listaMostrar = new ArrayList<>();
         //TODO: Cargar las horas libres del dia actual
 
         calendarioCitas.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
