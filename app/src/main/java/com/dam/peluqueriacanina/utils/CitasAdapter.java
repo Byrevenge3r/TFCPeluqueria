@@ -3,8 +3,7 @@ package com.dam.peluqueriacanina.utils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CalendarView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,15 +55,15 @@ public class CitasAdapter extends RecyclerView.Adapter<CitasAdapter.CitasAdapter
     }
 
     public static class CitasAdapterVH extends RecyclerView.ViewHolder {
-        private final Button btnHora;
+        private final TextView tvHoraCita;
 
         public CitasAdapterVH(@NonNull View itemView) {
             super(itemView);
-            btnHora = itemView.findViewById(R.id.btnHoraCita);
+            tvHoraCita = itemView.findViewById(R.id.tvHoraCita);
         }
 
         public void bindCita(CitasReserva cita) {
-            btnHora.setText(cita.getHora());
+            tvHoraCita.setText(cita.getHora());
         }
     }
 }

@@ -2,17 +2,16 @@ package com.dam.peluqueriacanina;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.location.Location;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 
+import com.dam.peluqueriacanina.fragmentos.Citas;
 import com.dam.peluqueriacanina.model.Mapa;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -21,27 +20,26 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.dam.peluqueriacanina.databinding.ActivityUbicacionTiempoRealBinding;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-public class UbicacionTiempoRealActivity extends FragmentActivity implements OnMapReadyCallback {
+public class UbicacionTiempoRealActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     GoogleMap mMap;
     FirebaseDatabase fdb;
     DatabaseReference dbr;
-    Marker marker;
+    Marker markerMap;
     Double latitud;
     Double longitud;
-    int height = 130;
-    int width = 130;
+    int altura = 130;
+    int anchura = 130;
     BitmapDrawable bitmapdraw;
     Bitmap b;
     Bitmap smallMarker;
+    Citas citas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,11 +51,11 @@ public class UbicacionTiempoRealActivity extends FragmentActivity implements OnM
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
         bitmapdraw =(BitmapDrawable)getResources().getDrawable(R.drawable.furgo_canina);
         b = bitmapdraw.getBitmap();
-        smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+        smallMarker = Bitmap.createScaledBitmap(b, anchura, altura, false);
 
+        citas = new Citas();
 
     }
 
@@ -76,11 +74,10 @@ public class UbicacionTiempoRealActivity extends FragmentActivity implements OnM
                     latitud = mp.getLatitud();
                     longitud = mp.getLongitud();
 
-                if (marker != null) {
-                    marker.remove();
+                if (markerMap != null) {
+                    markerMap.remove();
                 }
-
-                marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
+                    markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
                         .position(new LatLng(latitud, longitud)));
                     countDownTimer();
                 }
@@ -121,8 +118,17 @@ public class UbicacionTiempoRealActivity extends FragmentActivity implements OnM
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.4165,-3.70256), 11));
-        marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
+        markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
                 .position(new LatLng(40.4165, -3.70256)));
+        mMap.setOnMarkerClickListener(this);
         coorMapa();
+    }
+
+    @Override
+    public boolean onMarkerClick(@NonNull Marker marker) {
+        if (marker.equals(markerMap)) {
+            citas.show(getSupportFragmentManager(),"Citas");
+        }
+        return false;
     }
 }
