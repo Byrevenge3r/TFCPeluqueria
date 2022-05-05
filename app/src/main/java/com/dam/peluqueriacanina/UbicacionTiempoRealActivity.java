@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -35,7 +37,11 @@ public class UbicacionTiempoRealActivity extends FragmentActivity implements OnM
     Marker marker;
     Double latitud;
     Double longitud;
-
+    int height = 130;
+    int width = 130;
+    BitmapDrawable bitmapdraw;
+    Bitmap b;
+    Bitmap smallMarker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,11 @@ public class UbicacionTiempoRealActivity extends FragmentActivity implements OnM
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+        bitmapdraw =(BitmapDrawable)getResources().getDrawable(R.drawable.furgo_canina);
+        b = bitmapdraw.getBitmap();
+        smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
 
 
     }
@@ -69,7 +80,7 @@ public class UbicacionTiempoRealActivity extends FragmentActivity implements OnM
                     marker.remove();
                 }
 
-                marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker())
+                marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
                         .position(new LatLng(latitud, longitud)));
                     countDownTimer();
                 }
@@ -110,7 +121,7 @@ public class UbicacionTiempoRealActivity extends FragmentActivity implements OnM
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.4165,-3.70256), 11));
-        marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker())
+        marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
                 .position(new LatLng(40.4165, -3.70256)));
         coorMapa();
     }
