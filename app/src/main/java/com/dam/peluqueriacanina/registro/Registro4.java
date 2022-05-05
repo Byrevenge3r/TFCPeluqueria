@@ -89,12 +89,6 @@ public class Registro4 extends AppCompatActivity implements View.OnClickListener
         btnSiguienteRegCuatro.setOnClickListener(this);
         btnMandarOtraVezRegCuatro.setOnClickListener(this);
 
-       /* user = new User(((MiApplication) getApplicationContext()).getNombre(),
-                ((MiApplication) getApplicationContext()).getApellidos(),
-                ((MiApplication) getApplicationContext()).getUsuario(),
-                ((MiApplication) getApplicationContext()).getCorreo(),
-                ((MiApplication) getApplicationContext()).getContrasenia(),
-                ((MiApplication) getApplicationContext()).getTelefono());*/
 
         if ((ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) +
                 ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS))

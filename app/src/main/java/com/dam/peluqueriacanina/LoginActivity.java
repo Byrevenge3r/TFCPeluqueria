@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void buscarUsuario(String correo,String contra){
+    private void buscarUsuario(String correo,String contra) {
         Query q = dbRef.orderByChild("correo").equalTo(correo);
         q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

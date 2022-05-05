@@ -40,8 +40,7 @@ public class CitasAdapter extends RecyclerView.Adapter<CitasAdapter.CitasAdapter
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.citas_recicler_view_pelu_crear_cita, parent, false);
         v.setOnClickListener(this);
-        CitasAdapterVH vh = new CitasAdapterVH(v);
-        return vh;
+        return new CitasAdapterVH(v);
     }
 
     @Override

@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -126,6 +127,30 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                 finish();
             }
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (i.resolveActivity(getPackageManager()) != null) {
+                File foto = null;
+                try {
+                    foto = GuardarImagen();
+                } catch (IOException ex) {
+                    Log.e("error", ex.toString());
+                }
+
+                if (foto != null) {
+                    Uri uri = FileProvider.getUriForFile(this, "com.peluqueriacanina.mycamera.fileprovider", foto);
+                    i.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                    arl.launch(i);
+                }
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Se debe dar permisos", Toast.LENGTH_SHORT).show();
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     //TODO: Arreglar que si se pulsa muchas veces se sigue guardando, hay que hacer que se guarde solo en el registrar
