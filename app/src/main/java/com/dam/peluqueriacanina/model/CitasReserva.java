@@ -3,6 +3,8 @@ package com.dam.peluqueriacanina.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Nullable;
+
 public class CitasReserva implements Parcelable {
 
     private String fecha;

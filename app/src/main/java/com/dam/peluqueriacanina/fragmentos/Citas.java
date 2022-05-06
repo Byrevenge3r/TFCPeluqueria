@@ -51,7 +51,7 @@ public class Citas extends DialogFragment {
     ArrayList<CitasReserva> listaCitas;
     ArrayList<CitasReserva> listaCitasMes;
     TextView tvNoHayCitas;
-
+    Bundle bundle;
     SimpleDateFormat formatter;
     Date diaSeleccionado;
     Date diaActual;
@@ -98,6 +98,8 @@ public class Citas extends DialogFragment {
         formatter = new SimpleDateFormat("dd/MM/yyyy");
         diaSeleccionado = new Date();
         diaActual = new Date();
+
+        bundle = new Bundle();
         try {
             diaActual = formatter.parse(formatter.format(diaActual));
         } catch (ParseException e) {
@@ -186,15 +188,14 @@ public class Citas extends DialogFragment {
                                         citaFecha = dia+"/"+(mesD+1)+"/"+anio;
                                         citaHora = listaCitas.get(rv.getChildAdapterPosition(v)).getHora();
 
-                                        HashMap<String,Object> listaCitasPelu = new HashMap<>();
+                                        bundle.putString("citaFecha", citaFecha);
+                                        bundle.putString("citaHora", citaHora);
+                                        bundle.putString("mesN",mes);
+                                        bundle.putString("mes", String.valueOf(mesD+1));
 
-                                        listaCitasPelu.put("fecha", citaFecha);
-                                        listaCitasPelu.put("hora",citaHora);
-
-                                        dbr.child("coche/reservas/"+mes).push().updateChildren(listaCitasPelu);
+                                        getParentFragmentManager().setFragmentResult("Key",bundle);
 
                                         citasAnimal.show(getParentFragmentManager(),"CitasAnimal");
-
                                         dismiss();
                                     }
                                 });

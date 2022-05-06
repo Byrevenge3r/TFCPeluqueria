@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
@@ -69,7 +70,9 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
 
         if (!dao.sacarTodo().isEmpty()) {
             adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarTodo());
-
+                if ((dao.sacarTodo()).isEmpty()) {
+                    cvUbicacionTiempoReal.setEnabled(false);
+                }
             adapter.setListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -94,8 +97,13 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
             i = new Intent(this,RegistrarAnimal.class);
             arl.launch(i);
         } else if (v.equals(cvUbicacionTiempoReal)) {
-            i = new Intent(this,UbicacionTiempoRealActivity.class);
-            startActivity(i);
+           // if (((dao.sacarTodo()).isEmpty())) {
+               // Toast.makeText(this,R.string.error_no_hay_animales,Toast.LENGTH_SHORT).show();
+          //  } else {
+                i = new Intent(this,UbicacionTiempoRealActivity.class);
+                startActivity(i);
+            //}
+
         }
     }
 }

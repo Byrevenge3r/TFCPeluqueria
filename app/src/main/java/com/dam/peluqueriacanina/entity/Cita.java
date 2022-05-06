@@ -30,4 +30,8 @@ public class Cita {
     public String getRuta() {
         return ruta;
     }
+
+    public String getFecha() {
+        return fecha;
+    }
 }

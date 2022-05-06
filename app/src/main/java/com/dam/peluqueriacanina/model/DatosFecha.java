@@ -9,14 +9,14 @@ public class DatosFecha {
     public DatosFecha(){
         listaCitas = new ArrayList<>();
 
-        listaCitas.add(new CitasReserva(null,"10:00"));
-        listaCitas.add(new CitasReserva(null,"11:00"));
-        listaCitas.add(new CitasReserva(null,"12:00"));
-        listaCitas.add(new CitasReserva(null,"13:00"));
-        listaCitas.add(new CitasReserva(null,"14:00"));
-        listaCitas.add(new CitasReserva(null,"15:00"));
-        listaCitas.add(new CitasReserva(null,"16:00"));
-        listaCitas.add(new CitasReserva(null,"17:00"));
+        listaCitas.add(new CitasReserva("","10:00"));
+        listaCitas.add(new CitasReserva("","11:00"));
+        listaCitas.add(new CitasReserva("","12:00"));
+        listaCitas.add(new CitasReserva("","13:00"));
+        listaCitas.add(new CitasReserva("","14:00"));
+        listaCitas.add(new CitasReserva("","15:00"));
+        listaCitas.add(new CitasReserva("","16:00"));
+        listaCitas.add(new CitasReserva("","17:00"));
     }
 
     public ArrayList<CitasReserva> getListaCitas() {

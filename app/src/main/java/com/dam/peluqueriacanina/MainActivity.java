@@ -7,9 +7,13 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.dam.peluqueriacanina.dao.CitasDao;
+import com.dam.peluqueriacanina.db.CitasDB;
+import com.dam.peluqueriacanina.entity.Cita;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +25,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,10 +36,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     DatabaseReference dbr;
     DateTimeFormatter dtf;
     LocalDateTime now;
+    CitasDao daoCitas;
+    CitasDB dbCitas;
     Date date1;
     Date date2;
+    Date dateModificar;
     SimpleDateFormat formatter;
     String mes = "";
+    ArrayList<Cita> listaCitas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +52,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         fdb = FirebaseDatabase.getInstance();
         dbr = fdb.getReference("dia");
+
+        dbCitas = CitasDB.getDatabase(this);
+        daoCitas = dbCitas.citaDao();
+
+        listaCitas = new ArrayList<>();
 
         cvPeluqueria = findViewById(R.id.cvPeluqueria);
         cvVeterinaria = findViewById(R.id.cvVeterinaria);
@@ -61,22 +75,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         formatter = new SimpleDateFormat("dd/MM/yyyy");
         date1 = new Date();
         date2 = new Date();
+        dateModificar = new Date();
 
-
-     /*   dbr.addValueEventListener(new ValueEventListener() {
+        dbr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-
-
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         try {
                             dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                             now = LocalDateTime.now();
                             date1 = formatter.parse(now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear());
-                            date2 = formatter.parse(String.valueOf(snapshot.child("dia").getValue()));
-                            System.out.println(date2);
-                            System.out.println(date1);
+                            date2 = formatter.parse(String.valueOf(snapshot.getValue()));
 
                         } catch (ParseException e) {
                             e.printStackTrace();
@@ -86,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (date1.after(date2)) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                             dbr.setValue(now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear());
-
+                            dbr = fdb.getReference();
                             switch (now.getMonthValue()) {
                                 case 1:
                                     mes = "enero";
@@ -125,8 +135,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     mes = "diciembre";
                                     break;
                             }
+                            for (int i = 0;i < now.getDayOfMonth();i++) {
+                                Query q = dbr.child("coche/reservas/" + mes).orderByChild("fecha").equalTo((now.getDayOfMonth()-i) + "/" + now.getMonthValue() + "/" + now.getYear());
+                                q.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        for (DataSnapshot appleSnapshot : dataSnapshot.getChildren()) {
+                                            appleSnapshot.getRef().removeValue();
+                                            try {
+                                                borrarFechasDao();
+                                            } catch (ParseException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }
 
-                            Query applesQuery = dbr.child("coche/reservas/" + mes).orderByChild("fecha").equalTo("Apple");
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+                                        Log.e("erroraa", "onCancelled", databaseError.toException());
+                                    }
+                                });
+                            }
 
                         }
                     }
@@ -137,9 +166,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
+        });
 
 
+    }
+
+    private void borrarFechasDao() throws ParseException {
+        listaCitas = (ArrayList<Cita>) daoCitas.sacarTodo();
+        for (int i = 0; i < listaCitas.size(); i++) {
+            dateModificar = formatter.parse(listaCitas.get(i).getFecha());
+            if (date1.after(dateModificar)) {
+                daoCitas.delete(listaCitas.get(i));
+            }
+        }
     }
 
     @Override
