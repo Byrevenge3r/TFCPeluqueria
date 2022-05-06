@@ -30,7 +30,7 @@
         app:shapeAppearanceOverlay="@style/Circular"
         app:strokeColor="@color/color_blanco"
         android:scaleType="centerCrop"
-        app:strokeWidth="3dp" />
+        app:strokeWidth="3dp"/>
 
     <LinearLayout
         android:id="@+id/llBotonesMascotasPel"
@@ -46,8 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:orientation="horizontal" />
-
+            android:orientation="horizontal"/>
     </LinearLayout>
 
     <TextView
@@ -101,6 +100,7 @@
                 android:columnOrderPreserved="false">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvUbicacionTiempoReal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"

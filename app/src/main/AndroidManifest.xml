@@ -40,7 +40,9 @@
         <activity
             android:name=".UbicacionTiempoRealActivity"
             android:exported="true"
-            android:label="@string/title_activity_ubicacion_tiempo_real" />
+            android:label="@string/title_activity_ubicacion_tiempo_real" >
+
+        </activity>
 
         <activity
             android:name=".DatosAnimalActivity"
@@ -76,15 +78,18 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true" >
+
+
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

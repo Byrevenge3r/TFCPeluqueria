@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,6 +33,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     Animal animalPel;
     ShapeableImageView imagenAnimal;
     Button btnAniadirMascotaPel;
+    CardView cvUbicacionTiempoReal;
     Intent i;
     ArrayList<Animal> listaAnimalesPel;
 
@@ -59,7 +61,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         imagenAnimal = findViewById(R.id.siAnimal);
         btnAniadirMascotaPel = findViewById(R.id.btnAniadirMascotaPel);
         rv = findViewById(R.id.rvReservarPel);
-
+        cvUbicacionTiempoReal = findViewById(R.id.cvUbicacionTiempoReal);
 
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -80,11 +82,10 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
             });
         }
 
-
-
         rv.setAdapter(adapter);
 
         btnAniadirMascotaPel.setOnClickListener(this);
+        cvUbicacionTiempoReal.setOnClickListener(this);
     }
 
     @Override
@@ -92,6 +93,9 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         if (v.equals(btnAniadirMascotaPel)) {
             i = new Intent(this,RegistrarAnimal.class);
             arl.launch(i);
+        } else if (v.equals(cvUbicacionTiempoReal)) {
+            i = new Intent(this,UbicacionTiempoRealActivity.class);
+            startActivity(i);
         }
     }
 }

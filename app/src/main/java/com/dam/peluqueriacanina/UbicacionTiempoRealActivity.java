@@ -2,7 +2,6 @@ package com.dam.peluqueriacanina;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.graphics.Bitmap;
@@ -26,7 +25,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class UbicacionTiempoRealActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class UbicacionTiempoRealActivity
+        extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     GoogleMap mMap;
     FirebaseDatabase fdb;

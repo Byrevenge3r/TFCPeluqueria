@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.TextView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.model.CitasReserva;
@@ -26,7 +27,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Citas extends DialogFragment {
@@ -43,10 +47,14 @@ public class Citas extends DialogFragment {
     FirebaseDatabase fdb;
     DatabaseReference dbr;
     //Cotiene todas las horas
+    CitasAnimalFragment citasAnimal;
     ArrayList<CitasReserva> listaCitas;
-
     ArrayList<CitasReserva> listaCitasMes;
+    TextView tvNoHayCitas;
 
+    SimpleDateFormat formatter;
+    Date diaSeleccionado;
+    Date diaActual;
     public Citas() {
     }
 
@@ -71,6 +79,9 @@ public class Citas extends DialogFragment {
         calendarioCitas = v.findViewById(R.id.calReserva);
         calendarioCitas.setDate(System.currentTimeMillis(),false,true);
 
+        tvNoHayCitas = v.findViewById(R.id.tvNoHayCitas);
+        tvNoHayCitas.setVisibility(View.INVISIBLE);
+
         llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
@@ -82,14 +93,20 @@ public class Citas extends DialogFragment {
         listaCitas = datos.getListaCitas();
 
         listaCitasMes = new ArrayList<>();
-        //TODO: Cargar las horas libres del dia actual
 
+        citasAnimal = new CitasAnimalFragment();
+        formatter = new SimpleDateFormat("dd/MM/yyyy");
+        diaSeleccionado = new Date();
+        diaActual = new Date();
+        try {
+            diaActual = formatter.parse(formatter.format(diaActual));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         calendarioCitas.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int anio, int mesD, int dia) {
                 datos = new DatosFecha();
-                //TODO: Cargar los datos de firebase (esto esta incompleto)
-                //Hacer la consulta aqui (Hacer un if para diferenciar)
 
                 switch (mesD+1) {
                     case 1:
@@ -130,45 +147,68 @@ public class Citas extends DialogFragment {
                         break;
                 }
 
-                dbr.child("coche/reservas/"+mes).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                       if (snapshot.exists()) {
-                           for (DataSnapshot ds : snapshot.getChildren()) {
-                               cr = ds.getValue(CitasReserva.class);
-                               listaCitasMes.add(cr);
-                           }
-                           listaCitas = filtroLista(listaCitasMes,anio,(mesD+1),dia);
-                           listaCitasMes.clear();
+                try {
+                    diaSeleccionado = formatter.parse(dia+"/"+(mesD+1)+"/"+anio);
 
-                           adapter = new CitasAdapter(listaCitas);
-                           rv.setAdapter(adapter);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-                           adapter.setListener(new View.OnClickListener() {
-                               @Override
-                               public void onClick(View v) {
+                if (diaActual.after(diaSeleccionado)) {
+                    tvNoHayCitas.setVisibility(View.VISIBLE);
+                    listaCitas.clear();
+                    adapter = new CitasAdapter(listaCitas);
+                    rv.setAdapter(adapter);
+                } else {
+                    tvNoHayCitas.setVisibility(View.INVISIBLE);
+                    dbr.child("coche/reservas/"+mes).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                for (DataSnapshot ds : snapshot.getChildren()) {
+                                    cr = ds.getValue(CitasReserva.class);
+                                    listaCitasMes.add(cr);
+                                }
 
-                                   citaFecha = dia+"/"+(mesD+1)+"/"+anio;
-                                   citaHora = listaCitas.get(rv.getChildAdapterPosition(v)).getHora();
+                                listaCitas = filtroLista(listaCitasMes,anio,(mesD+1),dia);
+                                if (listaCitas.isEmpty()) {
+                                    tvNoHayCitas.setVisibility(View.VISIBLE);
+                                }
+                                listaCitasMes.clear();
 
-                                   HashMap<String,Object> listaCitasPelu = new HashMap<>();
+                                adapter = new CitasAdapter(listaCitas);
+                                rv.setAdapter(adapter);
 
-                                   listaCitasPelu.put("fecha", citaFecha);
-                                   listaCitasPelu.put("hora",citaHora);
+                                adapter.setListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
 
-                                   dbr.child("coche/reservas/"+mes).push().updateChildren(listaCitasPelu);
+                                        citaFecha = dia+"/"+(mesD+1)+"/"+anio;
+                                        citaHora = listaCitas.get(rv.getChildAdapterPosition(v)).getHora();
 
-                                   dismiss();
-                               }
-                           });
-                       }
-                    }
+                                        HashMap<String,Object> listaCitasPelu = new HashMap<>();
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                                        listaCitasPelu.put("fecha", citaFecha);
+                                        listaCitasPelu.put("hora",citaHora);
 
-                    }
-                });
+                                        dbr.child("coche/reservas/"+mes).push().updateChildren(listaCitasPelu);
+
+                                        citasAnimal.show(getParentFragmentManager(),"CitasAnimal");
+
+                                        dismiss();
+                                    }
+                                });
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+
+
             }
         });
         return builder.create();
