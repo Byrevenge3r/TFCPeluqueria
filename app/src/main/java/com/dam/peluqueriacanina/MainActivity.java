@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
-
+    //Puede fallar no lo he probado aun pero vamos estoy al 90% seguro de que no
     private void borrarFechasDao() throws ParseException {
         listaCitas = (ArrayList<Cita>) daoCitas.sacarTodo();
         for (int i = 0; i < listaCitas.size(); i++) {
