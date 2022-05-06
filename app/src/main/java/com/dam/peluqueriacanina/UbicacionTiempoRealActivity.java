@@ -44,7 +44,8 @@ public class UbicacionTiempoRealActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fdb = FirebaseDatabase.getInstance();
-        dbr = fdb.getReference();
+        dbr = fdb.getReference("coche");
+
         setContentView(R.layout.activity_ubicacion_tiempo_real);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -79,7 +80,7 @@ public class UbicacionTiempoRealActivity
                 }
                     markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
                         .position(new LatLng(latitud, longitud)));
-                    countDownTimer();
+                   // countDownTimer();
                 }
 
             }
@@ -100,7 +101,7 @@ public class UbicacionTiempoRealActivity
         });
     }
 
-    private void countDownTimer() {
+   /* private void countDownTimer() {
         new CountDownTimer(  2000, 1000) {
             public void onTick (long millisuntilFinished) {
                 onMapReady(mMap);
@@ -111,15 +112,15 @@ public class UbicacionTiempoRealActivity
             }
 
         }.start ();
-    }
+    }*/
 
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.4165,-3.70256), 11));
-        markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
-                .position(new LatLng(40.4165, -3.70256)));
+       /* markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
+                .position(new LatLng(40.4165, -3.70256)));*/
         mMap.setOnMarkerClickListener(this);
         coorMapa();
     }
