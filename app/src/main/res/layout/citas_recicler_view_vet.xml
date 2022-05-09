@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/llCitasVet"
-    android:background="@drawable/forma_linear_layout_rv"
+    android:background="@drawable/fondo_btn_registrar"
     android:layout_marginTop="10dp">
 
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shAnimal"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/perro_icono_vet_rv"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         app:strokeWidth="3dp"
@@ -30,7 +30,7 @@
             android:id="@+id/tvNomAnimal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#172646"
+            android:textColor="@color/color_blanco"
             android:textSize="16sp"
             android:text="Nombre Animal"/>
 
@@ -38,7 +38,7 @@
             android:id="@+id/tvDia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#172646"
+            android:textColor="@color/color_blanco"
             android:textSize="16sp"
             android:text="Dia"/>
 
@@ -46,7 +46,7 @@
             android:id="@+id/tvHora"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#172646"
+            android:textColor="@color/color_blanco"
             android:textSize="16sp"
             android:text="Hora"/>
 

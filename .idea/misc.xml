@@ -31,6 +31,7 @@
         <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/fragment_citas.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/mascotas_recicler_view.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable-v24/fondo_btn_registrar.xml" value="0.3075" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable/fondo_btn.xml" value="0.3235" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable/fondo_btn_aniadir_mascota.xml" value="0.139" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable/image_view_bordes.xml" value="0.3105" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_datos_animal.xml" value="0.35260416666666666" />
@@ -45,6 +46,7 @@
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_registro5.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_registro6.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_ubicacion_tiempo_real.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_ver_tus_citas.xml" value="0.22" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_veterinaria.xml" value="0.36102564102564105" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/citas_recicler_view_citas_adapter.xml" value="0.264" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/citas_recicler_view_pelu_crear_cita.xml" value="0.24074074074074073" />

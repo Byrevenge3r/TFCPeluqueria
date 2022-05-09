@@ -59,5 +59,7 @@
     <string name="tv_texto_titulo_selecciona_animal">Selecciona con que mascota quieres hacer la reserva!!!</string>
     <string name="error_no_hay_animales">Debes guardar a tu primer animal para poder reservar cita</string>
     <string name="tv_ver_tus_citas">Ver tus citas</string>
+    <string name="btn_cancelar_cita">Cancelar cita</string>
+    <string name="tv_no_hay_citas">No tienes ninguna cita</string>
 
 </resources>

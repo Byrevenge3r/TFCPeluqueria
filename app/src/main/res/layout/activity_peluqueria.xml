@@ -146,7 +146,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:src="@drawable/peluqueria_menu"
+                            android:src="@drawable/calendario"
                             android:layout_width="100dp"
                             android:layout_height="100dp"/>
 

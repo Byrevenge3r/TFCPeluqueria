@@ -1,5 +1,6 @@
 package com.dam.peluqueriacanina.utils;
 
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +10,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.model.AnimalReservaPelu;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
 public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.AnimalPeluAdapterVH>
         implements View.OnClickListener{
 
-    private final ArrayList<AnimalReservaPelu> datos;
+    private final ArrayList<TusCitas> datos;
     private View.OnClickListener listener;
 
 
-    public AnimalPeluAdapter(ArrayList<AnimalReservaPelu> datos) {
+    public AnimalPeluAdapter(ArrayList<TusCitas> datos) {
         this.datos = datos;
     }
 
@@ -60,16 +63,19 @@ public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.An
         private final TextView tvNom;
         private final TextView tvFecha;
         private final TextView tvHora;
+        private final ShapeableImageView shAnimal;
 
         public AnimalPeluAdapterVH(@NonNull View itemView) {
             super(itemView);
+            shAnimal = itemView.findViewById(R.id.shAnimal);
             tvNom = itemView.findViewById(R.id.tvNomAnimal);
             tvFecha = itemView.findViewById(R.id.tvDia);
             tvHora = itemView.findViewById(R.id.tvHora);
         }
 
-        public void bindAnimal(AnimalReservaPelu animal) {
-            tvNom.setText(animal.getNombreA());
+        public void bindAnimal(TusCitas animal) {
+            shAnimal.setImageBitmap(BitmapFactory.decodeFile(animal.getRuta()));
+            tvNom.setText(animal.getNombre());
             tvFecha.setText(animal.getFecha());
             tvHora.setText(animal.getHora());
         }

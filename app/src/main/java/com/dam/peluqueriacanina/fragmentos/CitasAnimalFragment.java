@@ -21,10 +21,13 @@ import android.view.animation.Animation;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.dao.CitasDao;
+import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.db.CitasDB;
+import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.Cita;
+import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.utils.CitasAnimalesFotoAdapter;
 import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -42,6 +45,9 @@ public class CitasAnimalFragment extends DialogFragment {
     AnimalesDB dbAnimal;
     CitasDao daoCitas;
     CitasDB dbCitas;
+    TusCitasDao daoTusCitas;
+    TusCitasDB dbTusCitas;
+    Animal animal;
     CitasAnimalesFotoAdapter adapter;
     RecyclerView rv;
     LinearLayoutManager llm;
@@ -93,6 +99,9 @@ public class CitasAnimalFragment extends DialogFragment {
         dbAnimal = AnimalesDB.getDatabase(getContext());
         daoAnimal = dbAnimal.animalDao();
 
+        dbTusCitas = TusCitasDB.getDatabase(getContext());
+        daoTusCitas = dbTusCitas.citaDao();
+
         dbCitas = CitasDB.getDatabase(getContext());
         daoCitas = dbCitas.citaDao();
 
@@ -114,8 +123,9 @@ public class CitasAnimalFragment extends DialogFragment {
 
                 dbr.child("coche/reservas/"+mesN).push().updateChildren(listaCitasPelu);
 
-                ruta = (daoAnimal.sacarTodo()).get(rv.getChildAdapterPosition(v)).getRuta();
-                daoCitas.insert(new Cita(ruta, citaFecha,citaHora));
+                animal = (daoAnimal.sacarTodo()).get(rv.getChildAdapterPosition(v));
+                daoCitas.insert(new Cita(animal.getRuta(), citaFecha,citaHora));
+                daoTusCitas.insert(new TusCitas(animal.getRuta(),animal.getNombre(),citaFecha,citaHora));
 
                 dismiss();
             }
