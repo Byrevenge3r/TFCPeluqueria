@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                             dbr.setValue(now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear());
                             dbr = fdb.getReference();
+
                             switch (now.getMonthValue()) {
                                 case 1:
                                     mes = "enero";
@@ -135,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     mes = "diciembre";
                                     break;
                             }
+
                             for (int i = 0;i < now.getDayOfMonth();i++) {
                                 Query q = dbr.child("coche/reservas/" + mes).orderByChild("fecha").equalTo((now.getDayOfMonth()-i) + "/" + now.getMonthValue() + "/" + now.getYear());
                                 q.addListenerForSingleValueEvent(new ValueEventListener() {

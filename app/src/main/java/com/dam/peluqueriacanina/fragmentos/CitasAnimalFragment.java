@@ -7,16 +7,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
@@ -29,13 +26,10 @@ import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.Cita;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.utils.CitasAnimalesFotoAdapter;
-import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -43,8 +37,8 @@ public class CitasAnimalFragment extends DialogFragment {
 
     AnimalesDao daoAnimal;
     AnimalesDB dbAnimal;
-    CitasDao daoCitas;
     CitasDB dbCitas;
+    CitasDao daoCitas;
     TusCitasDao daoTusCitas;
     TusCitasDB dbTusCitas;
     Animal animal;

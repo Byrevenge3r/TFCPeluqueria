@@ -14,6 +14,9 @@ public interface CitasDao {
     @Query("SELECT * FROM CITAS")
     List<Cita> sacarTodo();
 
+    @Query("SELECT * FROM CITAS WHERE ruta = :ruta")
+    Cita sacarCitasRuta(String ruta);
+
     @Insert
     void insert(Cita cita);
 

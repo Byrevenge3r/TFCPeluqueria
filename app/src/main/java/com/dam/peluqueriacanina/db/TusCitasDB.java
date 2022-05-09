@@ -6,9 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.dam.peluqueriacanina.dao.CitasDao;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
-import com.dam.peluqueriacanina.entity.Cita;
 import com.dam.peluqueriacanina.entity.TusCitas;
 
 @Database(entities = {TusCitas.class},version = 1)
