@@ -151,6 +151,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                 break;
         }
 
+        //TODO: Error aqui preguntar a David mañana
         Query q = dbr.child(mesN).orderByChild("fecha").equalTo(tusCitas.getFecha());
         q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
