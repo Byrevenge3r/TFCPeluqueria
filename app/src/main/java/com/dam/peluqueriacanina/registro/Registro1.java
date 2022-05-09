@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.fragmentos.Citas;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +34,7 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
 
     Button btnSiguienteRegUno;
     Intent i;
+    Citas citas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
         btnSiguienteRegUno = findViewById(R.id.btnSiguienteRegUno);
 
         btnSiguienteRegUno.setOnClickListener(this);
+        citas = new Citas();
     }
 
     @Override
@@ -60,9 +64,14 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
 
 
         if (v.equals(btnSiguienteRegUno)) {
-            if (nombre.isEmpty() || apellidos.isEmpty() || usuario.isEmpty()) {
-                    Snackbar.make(v, R.string.tst_fill, Snackbar.LENGTH_LONG).show();
+            if (TextUtils.isEmpty(nombre)) {
+                etNombre.setError("Introduzca un nombre");
+            } else if (TextUtils.isEmpty(apellidos)) {
+                etApellido.setError("Introduzca los apellidos");
+            } else if (TextUtils.isEmpty(usuario)) {
+                etUsuario.setError("Introduzca una contraseña");
             } else {
+                // citas.show(getSupportFragmentManager(),"onCreateDialog");
 
                 ((MiApplication)getApplicationContext()).setNombre(nombre);
                 ((MiApplication)getApplicationContext()).setApellidos(apellidos);

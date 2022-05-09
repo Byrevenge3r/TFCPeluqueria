@@ -61,5 +61,8 @@
     <string name="tv_ver_tus_citas">Ver tus citas</string>
     <string name="btn_cancelar_cita">Cancelar cita</string>
     <string name="tv_no_hay_citas">No tienes ninguna cita</string>
+    <string name="correo_inco">Los correos deben coincidir</string>
+    <string name="correo_coincide">Los correos deben de coincidir</string>
+    <string name="contra_coincide">Las contraseñas deben de coincidir</string>
 
 </resources>

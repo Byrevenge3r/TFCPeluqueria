@@ -4,11 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.dam.peluqueriacanina.LoginActivity;
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.model.User;
+import com.dam.peluqueriacanina.utils.MiApplication;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.firebase.database.DatabaseReference;
@@ -19,10 +30,16 @@ import java.util.HashMap;
 public class Registro5 extends AppCompatActivity implements View.OnClickListener {
 
     Button btnFinalizar;
+    Button btnFInalizar;
     Intent i;
     User user;
     FirebaseDatabase fb;
     DatabaseReference dbRef;
+
+
+    // creating a variable for our Database
+    // Reference for Firebase.
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +96,6 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
 
         overridePendingTransition(R.anim.animacion_derecha_derecha, R.anim.animacion_izquierda_derecha);
     }
-
-
 
 
 }
