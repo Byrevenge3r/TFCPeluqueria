@@ -26,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 public class VerTusCitasActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -67,8 +68,6 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
 
         formatter = new SimpleDateFormat("dd/MM/yyyy");
         fecha = new Date();
-
-
 
         btnCancelarCita.setOnClickListener(this);
         vista = new View(this);
@@ -142,6 +141,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         }
 
         dbr = fdb.getReference("coche/reservas/"+mesN);
+
         dbr.child(tusCitas.getKey()).removeValue();
         daoTusCitas.delete(tusCitas);
 
@@ -150,6 +150,8 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         if (daoTusCitas.sacarTodo().isEmpty()) {
             tvNoHayCitasVTC.setVisibility(View.VISIBLE);
         }
+
+        dbr = fdb.getReference("coche/reservas/"+mesN);
         btnCancelarCita.setVisibility(View.INVISIBLE);
         rv.setAdapter(adapter);
     }

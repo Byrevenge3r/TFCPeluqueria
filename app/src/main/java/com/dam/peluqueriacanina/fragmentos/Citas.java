@@ -10,7 +10,6 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +30,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 public class Citas extends DialogFragment {
 
@@ -55,6 +53,8 @@ public class Citas extends DialogFragment {
     SimpleDateFormat formatter;
     Date diaSeleccionado;
     Date diaActual;
+    ArrayList<String> listaMeses;
+    String[] listaMesesCompleta = {"enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"};
     public Citas() {
     }
 
@@ -93,6 +93,7 @@ public class Citas extends DialogFragment {
         listaCitas = datos.getListaCitas();
 
         listaCitasMes = new ArrayList<>();
+        listaMeses = new ArrayList<>();
 
         citasAnimal = new CitasAnimalFragment();
         formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -100,6 +101,10 @@ public class Citas extends DialogFragment {
         diaActual = new Date();
 
         bundle = new Bundle();
+
+       //comprobarMesBorrado();
+        dbr = fdb.getReference();
+
         try {
             diaActual = formatter.parse(formatter.format(diaActual));
         } catch (ParseException e) {
@@ -214,6 +219,35 @@ public class Citas extends DialogFragment {
             }
         });
         return builder.create();
+    }
+
+    //Esta perfecto pero no sube
+    private void comprobarMesBorrado() {
+        dbr = fdb.getReference("coche/reservas");
+        dbr.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+             if (snapshot.exists()) {
+
+                 for (DataSnapshot ds : snapshot.getChildren()) {
+                     String mes = ds.getKey();
+                     listaMeses.add(mes);
+                 }
+
+                 for (int i = 0; i < listaMesesCompleta.length; i++) {
+                         if (!listaMeses.contains(listaMesesCompleta[i])) {
+                             dbr.child(listaMesesCompleta[i]).push();
+                         }
+                 }
+             }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private ArrayList<CitasReserva> filtroLista(ArrayList<CitasReserva> listaCitasMes, int anio, int mesD, int dia){

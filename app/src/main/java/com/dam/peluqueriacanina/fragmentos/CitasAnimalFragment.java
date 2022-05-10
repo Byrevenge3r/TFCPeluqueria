@@ -108,6 +108,7 @@ public class CitasAnimalFragment extends DialogFragment {
 
                 listaCitasPelu.put("fecha",citaFecha);
                 listaCitasPelu.put("hora",citaHora);
+
                 dbr = fdb.getReference("coche/reservas/"+mesN);
                 String key = dbr.push().getKey();
 
