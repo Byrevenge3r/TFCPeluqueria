@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_producto"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/image_producto_fav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:src="AQUI VA IMAGEN"
+                android:background="null"
+                android:layout_alignParentEnd="true"/>
+            <ImageView
+                android:id="@+id/tv_image_producto"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="AQUI VA IMAGEN"
+                android:layout_below="@id/image_producto_fav"
+                android:layout_centerHorizontal="true"/>
+            <TextView
+                android:id="@+id/tv_nombre_producto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pienso_perro"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:layout_below="@id/tv_image_producto"
+                android:layout_centerHorizontal="true"/>
+            <TextView
+                android:id="@+id/tv_pienso_producto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kilo"
+                android:textColor="@color/black"
+                android:layout_below="@id/tv_nombre_producto"
+                android:layout_centerHorizontal="true"/>
+            <TextView
+                android:id="@+id/tv_precion_final_producto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/precio_final_1"
+                android:layout_margin="6dp"
+                android:textColor="@color/black"
+                android:layout_below="@id/tv_pienso_producto"/>
+            <TextView
+                android:id="@+id/tv_precio_producto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/precio_2"
+                android:layout_margin="6dp"
+                android:layout_below="@id/tv_pienso_producto"
+                android:layout_toEndOf="@id/tv_precion_final_producto"
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

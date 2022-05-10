@@ -24,6 +24,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PeluqueriaCanina">
         <activity
+            android:name=".DetalleTiendaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Tienda2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TiendaActivity"
+            android:exported="false" />
+        <activity
             android:name=".VerTusCitasActivity"
             android:exported="false" />
 
@@ -43,7 +52,7 @@
         <activity
             android:name=".UbicacionTiempoRealActivity"
             android:exported="false"
-            android:label="@string/title_activity_ubicacion_tiempo_real"/>
+            android:label="@string/title_activity_ubicacion_tiempo_real" />
         <activity
             android:name=".DatosAnimalActivity"
             android:exported="false" />
@@ -55,7 +64,7 @@
             android:exported="false" />
         <activity
             android:name=".PeluqueriaActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".registro.Registro4"
             android:exported="false" />
@@ -73,11 +82,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
-
-
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
