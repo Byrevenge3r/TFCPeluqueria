@@ -163,6 +163,7 @@ public class Citas extends DialogFragment {
                     rv.setAdapter(adapter);
                 } else {
                     tvNoHayCitas.setVisibility(View.INVISIBLE);
+
                     dbr.child("coche/reservas/"+mes).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {

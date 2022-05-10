@@ -11,9 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.dam.peluqueriacanina.dao.CitasDao;
-import com.dam.peluqueriacanina.db.CitasDB;
-import com.dam.peluqueriacanina.entity.Cita;
+import com.dam.peluqueriacanina.dao.TusCitasDao;
+import com.dam.peluqueriacanina.db.TusCitasDB;
+import com.dam.peluqueriacanina.entity.TusCitas;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,14 +36,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     DatabaseReference dbr;
     DateTimeFormatter dtf;
     LocalDateTime now;
-    CitasDao daoCitas;
-    CitasDB dbCitas;
+    TusCitasDao daoCitas;
+    TusCitasDB dbCitas;
     Date date1;
     Date date2;
     Date dateModificar;
     SimpleDateFormat formatter;
     String mes = "";
-    ArrayList<Cita> listaCitas;
+    ArrayList<TusCitas> listaCitas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fdb = FirebaseDatabase.getInstance();
         dbr = fdb.getReference("dia");
 
-        dbCitas = CitasDB.getDatabase(this);
+        dbCitas = TusCitasDB.getDatabase(this);
         daoCitas = dbCitas.citaDao();
 
         listaCitas = new ArrayList<>();
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     //Puede fallar no lo he probado aun pero vamos estoy al 90% seguro de que no
     private void borrarFechasDao() throws ParseException {
-        listaCitas = (ArrayList<Cita>) daoCitas.sacarTodo();
+        listaCitas = (ArrayList<TusCitas>) daoCitas.sacarTodo();
         for (int i = 0; i < listaCitas.size(); i++) {
             dateModificar = formatter.parse(listaCitas.get(i).getFecha());
             if (date1.after(dateModificar)) {

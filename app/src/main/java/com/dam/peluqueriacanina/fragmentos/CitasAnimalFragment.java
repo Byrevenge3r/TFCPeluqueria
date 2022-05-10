@@ -17,13 +17,10 @@ import android.view.ViewGroup;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
-import com.dam.peluqueriacanina.dao.CitasDao;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
-import com.dam.peluqueriacanina.db.CitasDB;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.Animal;
-import com.dam.peluqueriacanina.entity.Cita;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.utils.CitasAnimalesFotoAdapter;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -37,8 +34,7 @@ public class CitasAnimalFragment extends DialogFragment {
 
     AnimalesDao daoAnimal;
     AnimalesDB dbAnimal;
-    CitasDB dbCitas;
-    CitasDao daoCitas;
+
     TusCitasDao daoTusCitas;
     TusCitasDB dbTusCitas;
     Animal animal;
@@ -96,8 +92,6 @@ public class CitasAnimalFragment extends DialogFragment {
         dbTusCitas = TusCitasDB.getDatabase(getContext());
         daoTusCitas = dbTusCitas.citaDao();
 
-        dbCitas = CitasDB.getDatabase(getContext());
-        daoCitas = dbCitas.citaDao();
 
         rv = v.findViewById(R.id.rvCitasDatosFotoAnimal);
         llm = new LinearLayoutManager(getContext());
@@ -114,12 +108,13 @@ public class CitasAnimalFragment extends DialogFragment {
 
                 listaCitasPelu.put("fecha",citaFecha);
                 listaCitasPelu.put("hora",citaHora);
+                dbr = fdb.getReference("coche/reservas/"+mesN);
+                String key = dbr.push().getKey();
 
-                dbr.child("coche/reservas/"+mesN).push().updateChildren(listaCitasPelu);
+                dbr.child(key).setValue(listaCitasPelu);
 
                 animal = (daoAnimal.sacarTodo()).get(rv.getChildAdapterPosition(v));
-                daoCitas.insert(new Cita(animal.getRuta(), citaFecha,citaHora));
-                daoTusCitas.insert(new TusCitas(animal.getRuta(),animal.getNombre(),citaFecha,citaHora));
+                daoTusCitas.insert(new TusCitas(animal.getRuta(),key,animal.getNombre(),citaFecha,citaHora));
 
                 dismiss();
             }

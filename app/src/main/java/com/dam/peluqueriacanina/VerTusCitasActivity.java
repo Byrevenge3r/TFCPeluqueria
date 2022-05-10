@@ -10,13 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.dam.peluqueriacanina.dao.CitasDao;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
-import com.dam.peluqueriacanina.db.CitasDB;
 import com.dam.peluqueriacanina.db.TusCitasDB;
-import com.dam.peluqueriacanina.entity.Cita;
 import com.dam.peluqueriacanina.entity.TusCitas;
-import com.dam.peluqueriacanina.fragmentos.Citas;
 import com.dam.peluqueriacanina.utils.AnimalPeluAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,13 +32,9 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
     RecyclerView rv;
     LinearLayoutManager llm;
     TusCitas tusCitas;
-    Cita citas;
-    int mes = 0;
     String mesN = "";
     FirebaseDatabase fdb;
     DatabaseReference dbr;
-    CitasDao citasDao;
-    CitasDB citasDB;
     TusCitasDao daoTusCitas;
     TusCitasDB dbTusCitas;
     TextView tvNoHayCitasVTC;
@@ -58,13 +50,11 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_ver_tus_citas);
 
         fdb = FirebaseDatabase.getInstance();
-        dbr = fdb.getReference("coche/reservas");
+        dbr = fdb.getReference();
 
         dbTusCitas = TusCitasDB.getDatabase(this);
         daoTusCitas = dbTusCitas.citaDao();
 
-        citasDB = CitasDB.getDatabase(this);
-        citasDao = citasDB.citaDao();
 
         rv = findViewById(R.id.rvVerTusCitas);
         llm = new LinearLayoutManager(this);
@@ -151,20 +141,16 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                 break;
         }
 
-        //TODO: Error aqui preguntar a David mañana
-        Query q = dbr.child(mesN).orderByChild("fecha").equalTo(tusCitas.getFecha());
-        q.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot appleSnapshot : dataSnapshot.getChildren()) {
-                    appleSnapshot.getRef().removeValue();
-                }
-            }
+        dbr = fdb.getReference("coche/reservas/"+mesN);
+        dbr.child(tusCitas.getKey()).removeValue();
+        daoTusCitas.delete(tusCitas);
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.e("erroraa", "onCancelled", databaseError.toException());
-            }
-        });
+        adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarTodo());
+
+        if (daoTusCitas.sacarTodo().isEmpty()) {
+            tvNoHayCitasVTC.setVisibility(View.VISIBLE);
+        }
+        btnCancelarCita.setVisibility(View.INVISIBLE);
+        rv.setAdapter(adapter);
     }
 }

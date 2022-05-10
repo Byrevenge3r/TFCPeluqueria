@@ -119,8 +119,8 @@ public class UbicacionTiempoRealActivity
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.4165,-3.70256), 11));
-       /* markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
-                .position(new LatLng(40.4165, -3.70256)));*/
+        markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
+                .position(new LatLng(40.4165, -3.70256)));
         mMap.setOnMarkerClickListener(this);
         coorMapa();
     }

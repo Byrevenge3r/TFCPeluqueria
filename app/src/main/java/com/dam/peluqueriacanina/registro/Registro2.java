@@ -83,7 +83,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
                 Snackbar.make(v, R.string.correo_coincide, Snackbar.LENGTH_LONG).show();
             } else if (!etContra.equals(etConfContra)) {
                 Snackbar.make(v, R.string.contra_coincide, Snackbar.LENGTH_LONG).show();
-
+                //arreglar error
             } else  {
                 ((MiApplication) getApplicationContext()).setCorreo(correo);
                 ((MiApplication) getApplicationContext()).setContrasenia(contra);

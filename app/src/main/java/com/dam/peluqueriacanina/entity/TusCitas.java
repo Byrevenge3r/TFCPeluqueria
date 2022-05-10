@@ -14,6 +14,9 @@ public class TusCitas {
     @ColumnInfo(name="ruta")
     public String ruta;
 
+    @ColumnInfo(name = "key")
+    public String key;
+
     @ColumnInfo(name = "nombre")
     public String nombre;
 
@@ -26,11 +29,20 @@ public class TusCitas {
     public TusCitas() {
     }
 
-    public TusCitas(String ruta, String nombre, String fecha, String hora) {
+    public TusCitas(String ruta, String key, String nombre, String fecha, String hora) {
         this.ruta = ruta;
+        this.key = key;
         this.nombre = nombre;
         this.fecha = fecha;
         this.hora = hora;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public int getId() {
