@@ -99,7 +99,7 @@ public class Citas extends DialogFragment {
         formatter = new SimpleDateFormat("dd/MM/yyyy");
         diaSeleccionado = new Date();
         diaActual = new Date();
-//
+
         bundle = new Bundle();
 
        //comprobarMesBorrado();
