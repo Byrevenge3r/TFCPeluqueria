@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     break;
                             }
 
-                            for (int i = 0;i < now.getDayOfMonth();i++) {
+                            for (int i = 1;i < now.getDayOfMonth();i++) {
                                 Query q = dbr.child("coche/reservas/" + mes).orderByChild("fecha").equalTo((now.getDayOfMonth()-i) + "/" + now.getMonthValue() + "/" + now.getYear());
                                 q.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override

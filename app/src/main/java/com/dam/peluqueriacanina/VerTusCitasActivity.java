@@ -44,6 +44,8 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
     SimpleDateFormat formatter;
     Date fecha;
     View vista;
+    Calendar cal;
+    int mesActual = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,9 +99,9 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
             e.printStackTrace();
         }
 
-        Calendar cal = Calendar.getInstance();
+        cal = Calendar.getInstance();
         cal.setTime(fecha);
-        int mesActual = cal.get(Calendar.MONTH)+1;
+        mesActual = cal.get(Calendar.MONTH)+1;
 
         switch (mesActual) {
             case 1:
@@ -154,5 +156,12 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         dbr = fdb.getReference("coche/reservas/"+mesN);
         btnCancelarCita.setVisibility(View.INVISIBLE);
         rv.setAdapter(adapter);
+        adapter.setListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnCancelarCita.setVisibility(View.VISIBLE);
+                vista = v;
+            }
+        });
     }
 }

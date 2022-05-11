@@ -49,6 +49,7 @@ public class CitasAnimalFragment extends DialogFragment {
     String ruta = "";
     FirebaseDatabase fdb;
     DatabaseReference dbr;
+    String key = "";
 
 
     public CitasAnimalFragment() {
@@ -110,12 +111,12 @@ public class CitasAnimalFragment extends DialogFragment {
                 listaCitasPelu.put("hora",citaHora);
 
                 dbr = fdb.getReference("coche/reservas/"+mesN);
-                String key = dbr.push().getKey();
+                key = dbr.push().getKey();
 
                 dbr.child(key).setValue(listaCitasPelu);
 
                 animal = (daoAnimal.sacarTodo()).get(rv.getChildAdapterPosition(v));
-                daoTusCitas.insert(new TusCitas(animal.getRuta(),key,animal.getNombre(),citaFecha,citaHora));
+                daoTusCitas.insert(new TusCitas(animal.getRuta(),key,animal.getNombre(),"5/5/2022",citaHora));
 
                 dismiss();
             }

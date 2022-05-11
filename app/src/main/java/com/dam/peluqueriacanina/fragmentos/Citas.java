@@ -102,7 +102,7 @@ public class Citas extends DialogFragment {
 
         bundle = new Bundle();
 
-       //comprobarMesBorrado();
+
         dbr = fdb.getReference();
 
         try {
@@ -169,6 +169,7 @@ public class Citas extends DialogFragment {
                 } else {
                     tvNoHayCitas.setVisibility(View.INVISIBLE);
 
+
                     dbr.child("coche/reservas/"+mes).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -191,18 +192,18 @@ public class Citas extends DialogFragment {
                                     @Override
                                     public void onClick(View v) {
 
-                                        citaFecha = dia+"/"+(mesD+1)+"/"+anio;
-                                        citaHora = listaCitas.get(rv.getChildAdapterPosition(v)).getHora();
+                                        pasarCitaFragment(v, dia, mesD, anio);
+                                    }
+                                });
+                            } else {
+                                listaCitas = datos.getListaCitas();
+                                adapter = new CitasAdapter(listaCitas);
+                                rv.setAdapter(adapter);
+                                adapter.setListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
 
-                                        bundle.putString("citaFecha", citaFecha);
-                                        bundle.putString("citaHora", citaHora);
-                                        bundle.putString("mesN",mes);
-                                        bundle.putString("mes", String.valueOf(mesD+1));
-
-                                        getParentFragmentManager().setFragmentResult("Key",bundle);
-
-                                        citasAnimal.show(getParentFragmentManager(),"CitasAnimal");
-                                        dismiss();
+                                        pasarCitaFragment(v, dia, mesD, anio);
                                     }
                                 });
                             }
@@ -221,34 +222,21 @@ public class Citas extends DialogFragment {
         return builder.create();
     }
 
-    //Esta perfecto pero no sube
-    private void comprobarMesBorrado() {
-        dbr = fdb.getReference("coche/reservas");
-        dbr.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-             if (snapshot.exists()) {
+    private void pasarCitaFragment(View v, int dia, int mesD, int anio) {
+        citaFecha = dia+"/"+(mesD+1)+"/"+anio;
+        citaHora = listaCitas.get(rv.getChildAdapterPosition(v)).getHora();
 
-                 for (DataSnapshot ds : snapshot.getChildren()) {
-                     String mes = ds.getKey();
-                     listaMeses.add(mes);
-                 }
+        bundle.putString("citaFecha", citaFecha);
+        bundle.putString("citaHora", citaHora);
+        bundle.putString("mesN",mes);
+        bundle.putString("mes", String.valueOf(mesD+1));
 
-                 for (int i = 0; i < listaMesesCompleta.length; i++) {
-                         if (!listaMeses.contains(listaMesesCompleta[i])) {
-                             dbr.child(listaMesesCompleta[i]).push();
-                         }
-                 }
-             }
+        getParentFragmentManager().setFragmentResult("Key",bundle);
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        citasAnimal.show(getParentFragmentManager(),"CitasAnimal");
+        dismiss();
     }
+
 
     private ArrayList<CitasReserva> filtroLista(ArrayList<CitasReserva> listaCitasMes, int anio, int mesD, int dia){
        listaCitas = datos.getListaCitas();
