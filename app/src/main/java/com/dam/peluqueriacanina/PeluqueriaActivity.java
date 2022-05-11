@@ -99,20 +99,16 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_peluqueria);
 
         tusCitasLista = new ArrayList<>();
-
-        /*if(!((ArrayList<TusCitas>) getIntent().getSerializableExtra("listaCistas")).isEmpty()) {
-            tusCitasLista = (ArrayList<TusCitas>) getIntent().getSerializableExtra("listaCistas");
-        }*/
-
-        if ((getIntent().getSerializableExtra("cita")) != null) {
-            tusCitas = (TusCitas) getIntent().getSerializableExtra("cita");
+        tusCitas = new TusCitas();
+        if ((getIntent().getParcelableExtra("cita")) != null) {
+            tusCitas = getIntent().getParcelableExtra("cita");
         }
-        /*if ((ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECEIVE_SMS) +
+        if ((ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECEIVE_SMS) +
                 ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.SEND_SMS))
                 != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECEIVE_SMS, Manifest.permission.SEND_SMS}, 1001);
-        }*/
+        }
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
 
@@ -129,7 +125,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
         rv.setLayoutManager(llm);
 
-        tusCitas = new TusCitas();
+
 
         if (!dao.sacarTodo().isEmpty()) {
             adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarTodo());
