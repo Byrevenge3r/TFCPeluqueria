@@ -123,7 +123,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         usuario.put("telefono", user.getTelefono());
 
         dbRef.child("usuarios").push().updateChildren(usuario);
-
+//pene
         //se setee automaticamente los datos (el email y la contraseña)
         //TODO: Hacer que se registre en el authentification user de firebase
 
