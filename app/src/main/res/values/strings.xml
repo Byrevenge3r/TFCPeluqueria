@@ -65,5 +65,6 @@
     <string name="correo_coincide">Los correos deben de coincidir</string>
     <string name="contra_coincide">Las contraseñas deben de coincidir</string>
     <string name="tv_chat_peluqueria_menu">Chat</string>
+    <string name="tst_correo_exist">Este correo ya existe</string>
 
 </resources>
