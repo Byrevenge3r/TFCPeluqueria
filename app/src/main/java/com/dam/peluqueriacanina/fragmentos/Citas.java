@@ -2,6 +2,7 @@ package com.dam.peluqueriacanina.fragmentos;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,9 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.comunicacion.Comunicacion;
+import com.dam.peluqueriacanina.comunicacion.Comunicacion2;
+import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.model.CitasReserva;
 import com.dam.peluqueriacanina.model.DatosFecha;
 import com.dam.peluqueriacanina.utils.CitasAdapter;
@@ -53,8 +57,10 @@ public class Citas extends DialogFragment {
     SimpleDateFormat formatter;
     Date diaSeleccionado;
     Date diaActual;
+    TusCitas tusCitas;
     ArrayList<String> listaMeses;
-    String[] listaMesesCompleta = {"enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"};
+    Comunicacion2 comunicacion2;
+
     public Citas() {
     }
 
@@ -82,6 +88,8 @@ public class Citas extends DialogFragment {
         tvNoHayCitas = v.findViewById(R.id.tvNoHayCitas);
         tvNoHayCitas.setVisibility(View.INVISIBLE);
 
+        tusCitas = new TusCitas();
+
         llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
@@ -101,7 +109,6 @@ public class Citas extends DialogFragment {
         diaActual = new Date();
 
         bundle = new Bundle();
-
 
         dbr = fdb.getReference();
 
@@ -234,7 +241,7 @@ public class Citas extends DialogFragment {
         getParentFragmentManager().setFragmentResult("Key",bundle);
 
         citasAnimal.show(getParentFragmentManager(),"CitasAnimal");
-        dismiss();
+
     }
 
 
@@ -258,4 +265,8 @@ public class Citas extends DialogFragment {
          }
         return listaCitas;
     }
+
+
+
+
 }

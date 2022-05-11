@@ -64,5 +64,6 @@
     <string name="correo_inco">Los correos deben coincidir</string>
     <string name="correo_coincide">Los correos deben de coincidir</string>
     <string name="contra_coincide">Las contraseñas deben de coincidir</string>
+    <string name="tv_chat_peluqueria_menu">Chat</string>
 
 </resources>

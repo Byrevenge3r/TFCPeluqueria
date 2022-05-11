@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         date2 = new Date();
         dateModificar = new Date();
 
+        //Borrar fechas anteriores al dia actual
         dbr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -170,9 +171,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-
     }
-    //Puede fallar no lo he probado aun pero vamos estoy al 90% seguro de que no
+
     private void borrarFechasDao() throws ParseException {
         listaCitas = (ArrayList<TusCitas>) daoCitas.sacarTodo();
         for (int i = 0; i < listaCitas.size(); i++) {

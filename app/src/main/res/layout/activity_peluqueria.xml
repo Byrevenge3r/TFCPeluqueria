@@ -176,7 +176,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:src="@drawable/peluqueria_menu"
+                            android:src="@drawable/chat"
                             android:layout_width="100dp"
                             android:layout_height="100dp"/>
 
@@ -185,7 +185,7 @@
                             android:layout_marginTop="12dp"
                             android:textColor="@color/color_texto_negro"
                             android:layout_width="wrap_content"
-                            android:text="@string/tv_peluqueria_menu"
+                            android:text="@string/tv_chat_peluqueria_menu"
                             android:layout_height="wrap_content"/>
 
                     </LinearLayout>

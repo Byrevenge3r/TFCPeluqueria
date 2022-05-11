@@ -67,7 +67,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
 
         if (v.equals(btnSiguienteRegDos)) {
 
-            if (TextUtils.isEmpty(correo)) {
+            /*if (TextUtils.isEmpty(correo)) {
                 etCorreo.setError("Introduzca un correo");
             } else if (TextUtils.isEmpty(confcorreo)) {
                 etConfCorreo.setError("Introduzca una confirmacion de correo");
@@ -84,7 +84,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
             } else if (!etContra.equals(etConfContra)) {
                 Snackbar.make(v, R.string.contra_coincide, Snackbar.LENGTH_LONG).show();
                 //arreglar error
-            } else  {
+            } else  {*/
                 ((MiApplication) getApplicationContext()).setCorreo(correo);
                 ((MiApplication) getApplicationContext()).setContrasenia(contra);
 
@@ -92,7 +92,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
                 startActivity(i);
 
                 overridePendingTransition(R.anim.animacion_derecha_izquierda, R.anim.animacion_izquierda_izquierda);
-            }
+            //}
         } else if (v.equals(btnAtrasRegDos)) {
             i = new Intent(this, Registro1.class);
             startActivity(i);

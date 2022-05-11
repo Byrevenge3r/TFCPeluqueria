@@ -130,8 +130,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot datasnap : snapshot.getChildren()){
-                    ((MiApplication)getApplicationContext()).setNombre((datasnap.getValue(User.class)).getNombre());
-                    dbRef.child(datasnap.getValue(User.class).getNombre()+"/contra").setValue(contra);
+                    ((MiApplication) getApplicationContext()).setNombre((datasnap.getValue(User.class)).getNombre());
+                    ((MiApplication) getApplicationContext()).setApellidos((datasnap.getValue(User.class)).getApellidos());
+                    ((MiApplication) getApplicationContext()).setUsuario((datasnap.getValue(User.class)).getUsuario());
+                    ((MiApplication) getApplicationContext()).setCorreo((datasnap.getValue(User.class)).getCorreo());
+                    ((MiApplication) getApplicationContext()).setTelefono((datasnap.getValue(User.class)).getTelefono());
+
+                    //dbRef.child(datasnap.getValue(User.class).getNombre()+"/contra").setValue(contra);
                 }
             }
             @Override

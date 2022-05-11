@@ -79,6 +79,7 @@ public class Registro4 extends AppCompatActivity implements View.OnClickListener
 
         btnMandarOtraVezRegCuatro = findViewById(R.id.btnMandarOtraVezRegCuatro);
         btnSiguienteRegCuatro = findViewById(R.id.btnSiguienteRegCua);
+
         inputCode1 = findViewById(R.id.inputCode1);
         inputCode2 = findViewById(R.id.inputCode2);
         inputCode3 = findViewById(R.id.inputCode3);
@@ -90,11 +91,11 @@ public class Registro4 extends AppCompatActivity implements View.OnClickListener
         btnMandarOtraVezRegCuatro.setOnClickListener(this);
 
 
-        if ((ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) +
+        if ((ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS) +
                 ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS))
                 != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS, Manifest.permission.SEND_SMS}, 1001);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECEIVE_SMS, Manifest.permission.SEND_SMS}, 1001);
         } else {
             numeroConfirmar = (int) ((Math.random() * 9 + 1) * 100000);
             setearCodigo(numeroConfirmar);
