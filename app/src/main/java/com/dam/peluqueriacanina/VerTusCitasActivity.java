@@ -75,6 +75,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         vista = new View(this);
 
         adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarTodo());
+        rv.setAdapter(adapter);
         if (daoTusCitas.sacarTodo().isEmpty()) {
             tvNoHayCitasVTC.setVisibility(View.VISIBLE);
         }
@@ -85,9 +86,6 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                 vista = v;
             }
         });
-
-        rv.setAdapter(adapter);
-
     }
 
     @Override
