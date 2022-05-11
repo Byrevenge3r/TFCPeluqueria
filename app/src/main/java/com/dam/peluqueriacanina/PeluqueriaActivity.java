@@ -54,20 +54,14 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     CardView cvUbicacionTiempoReal, cvTusCitas;
     Intent i;
     ArrayList<Animal> listaAnimalesPel;
-    String citaRuta = "";
-    String citaKey = "";
-    String citaNombre = "";
-    String citaFechaB = "";
-    String citaHoraB = "";
     TusCitas tusCitas;
-
+    ArrayList<TusCitas> tusCitasLista;
 
     SmsListener smsListener = new SmsListener() {
         @Override
         public void onReceive(Context context, Intent intent) {
             super.onReceive(context, intent);
             if (msg.contains("confirmado")) {
-                Toast.makeText(getApplicationContext(),tusCitas.toString(),Toast.LENGTH_LONG).show();
                 daoTusCitas.insert(tusCitas);
             }
         }
@@ -104,17 +98,21 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peluqueria);
 
-        getSupportFragmentManager().setFragmentResultListener("Key", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                citaRuta = bundle.getString("citaRuta");
-                citaKey = bundle.getString("citaKey");
-                citaNombre = bundle.getString("citaNombre");
-                citaFechaB = bundle.getString("citaFecha");
-                citaHoraB = bundle.getString("citaHora");
-            }
-        });
+        tusCitasLista = new ArrayList<>();
 
+        /*if(!((ArrayList<TusCitas>) getIntent().getSerializableExtra("listaCistas")).isEmpty()) {
+            tusCitasLista = (ArrayList<TusCitas>) getIntent().getSerializableExtra("listaCistas");
+        }*/
+
+        if ((getIntent().getSerializableExtra("cita")) != null) {
+            tusCitas = (TusCitas) getIntent().getSerializableExtra("cita");
+        }
+        /*if ((ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECEIVE_SMS) +
+                ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.SEND_SMS))
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECEIVE_SMS, Manifest.permission.SEND_SMS}, 1001);
+        }*/
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
 

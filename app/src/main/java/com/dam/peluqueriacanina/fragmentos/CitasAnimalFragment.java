@@ -70,6 +70,7 @@ public class CitasAnimalFragment extends DialogFragment {
     String numeroTelConduc = "";
     Bundle bundleCita;
 
+    Comunicacion listener;
 
     public CitasAnimalFragment() {
     }
@@ -119,12 +120,13 @@ public class CitasAnimalFragment extends DialogFragment {
         rv.setLayoutManager(llm);
 
         bundleCita = new Bundle();
-        /*if ((ContextCompat.checkSelfPermission(getContext(), Manifest.permission.RECEIVE_SMS) +
+
+        if ((ContextCompat.checkSelfPermission(getContext(), Manifest.permission.RECEIVE_SMS) +
                 ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS))
                 != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.RECEIVE_SMS, Manifest.permission.SEND_SMS}, 1001);
-        }*/
+        }
 
         dbr.child("coche/tel").addValueEventListener(new ValueEventListener() {
             @Override
@@ -153,18 +155,32 @@ public class CitasAnimalFragment extends DialogFragment {
                     dbr = fdb.getReference("coche/reservas/"+mesN);
                     key = dbr.push().getKey();
 
-                        SmsManager sms = SmsManager.getDefault();
-                        //TODO: hacer que le muestre al conductor en que calle esta el usuario
-                        sms.sendTextMessage("+34" + 619303732, null, "628842401" + "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
-                        //comunicacion.info(new TusCitas(animal.getRuta(),key,animal.getNombre(),citaFecha,citaHora));
+                    SmsManager sms = SmsManager.getDefault();
+
+                    sms.sendTextMessage("+34" + 619303732, null, "628842401" + "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
+                    listener.info(new TusCitas(animal.getRuta(),key,animal.getNombre(),citaFecha,citaHora));
                 }
                 dismiss();
             }
         });
         rv.setAdapter(adapter);
-
         return builder.create();
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof Comunicacion) {
+            listener = (Comunicacion) context;
+        } else {
+            throw new RuntimeException(context
+                    + " must implement OnComunicationFragmentListener");
+        }
+    }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
 }

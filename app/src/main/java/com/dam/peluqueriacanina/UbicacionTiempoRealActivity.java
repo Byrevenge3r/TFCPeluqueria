@@ -4,13 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Parcelable;
+import android.widget.Toast;
 
+import com.dam.peluqueriacanina.comunicacion.Comunicacion;
+import com.dam.peluqueriacanina.comunicacion.Comunicacion2;
+import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.fragmentos.Citas;
 import com.dam.peluqueriacanina.model.Mapa;
+import com.dam.peluqueriacanina.registro.Registro1;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -25,8 +32,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class UbicacionTiempoRealActivity
-        extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+        extends FragmentActivity
+        implements OnMapReadyCallback,
+        GoogleMap.OnMarkerClickListener,
+        Comunicacion {
 
     GoogleMap mMap;
     FirebaseDatabase fdb;
@@ -40,6 +52,9 @@ public class UbicacionTiempoRealActivity
     Bitmap b;
     Bitmap smallMarker;
     Citas citas;
+    TusCitas tusCitas;
+    Intent i;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +73,7 @@ public class UbicacionTiempoRealActivity
 
         citas = new Citas();
 
+        tusCitas = new TusCitas();
     }
 
     private void coorMapa() {
@@ -132,4 +148,22 @@ public class UbicacionTiempoRealActivity
         }
         return false;
     }
+
+    @Override
+    public void info(TusCitas cita) {
+        tusCitas = cita;
+        i = new Intent(this, PeluqueriaActivity.class);
+        i.putExtra("cita", tusCitas);
+        startActivity(i);
+    }
+
+   /* @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        i = new Intent(this, PeluqueriaActivity.class);
+        i.putExtra("listaCistas",tusCitasLista);
+        startActivity(i);
+
+        overridePendingTransition(R.anim.animacion_derecha_derecha, R.anim.animacion_izquierda_derecha);
+    }*/
 }
