@@ -35,7 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Citas extends DialogFragment {
+public class Citas extends DialogFragment{
 
     CalendarView calendarioCitas;
     RecyclerView rv;
@@ -59,7 +59,6 @@ public class Citas extends DialogFragment {
     Date diaActual;
     TusCitas tusCitas;
     ArrayList<String> listaMeses;
-    Comunicacion2 comunicacion2;
 
     public Citas() {
     }
@@ -241,7 +240,7 @@ public class Citas extends DialogFragment {
         getParentFragmentManager().setFragmentResult("Key",bundle);
 
         citasAnimal.show(getParentFragmentManager(),"CitasAnimal");
-
+        dismiss();
     }
 
 
@@ -265,8 +264,5 @@ public class Citas extends DialogFragment {
          }
         return listaCitas;
     }
-
-
-
 
 }
