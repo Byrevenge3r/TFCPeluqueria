@@ -156,7 +156,7 @@ public class CitasAnimalFragment extends DialogFragment {
                     key = dbr.push().getKey();
 
                     SmsManager sms = SmsManager.getDefault();
-
+//
                     sms.sendTextMessage("+34" + 619303732, null, "628842401" + "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
                     listener.info(new TusCitas(animal.getRuta(),key,animal.getNombre(),citaFecha,citaHora));
                 }
