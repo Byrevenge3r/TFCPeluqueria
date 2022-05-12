@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_principal_citas"
+    tools:context=".TiendaDetallesActivity">
+
+
+    <ImageButton
+        android:id="@+id/imagen_btn_flecha_tienda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:background="@null"
+        android:foreground="?attr/selectableItemBackground"/>
+
+    <ImageButton
+        android:id="@+id/imagen_compra_tienda_detalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="6dp"
+        android:src="@drawable/ic_baseline_shopping_cart_24"
+        android:background="@null"
+        android:foreground="?attr/selectableItemBackground"/>
+
+    <ScrollView
+        android:id="@+id/scroll_tienda_detalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imagen_btn_flecha_tienda">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imagen_tienda_detalle"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:src="" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_tienda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardBackgroundColor="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_nombre_producto_tienda_detalle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/pienso_perro"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_pienso_producto_tienda_detalles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_nombre_producto_tienda_detalle"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/kilo"
+                        android:textColor="@color/black" />
+
+                    <RatingBar
+                        android:id="@+id/rat_tienda_detalles"
+                        style="@style/Widget.AppCompat.RatingBar.Indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_pienso_producto_tienda_detalles"
+                        android:layout_marginStart="16dp"
+                        android:isIndicator="false"
+                        android:layout_marginEnd="16dp" />
+
+                    <ImageButton
+                        android:id="@+id/imagen_add_tienda_detalles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="16dp"
+                        android:background="@null"
+                        android:src="@drawable/ic_baseline_add_circle_outline_24"
+                        android:foreground="?attr/selectableItemBackground"/>
+
+                    <TextView
+                        android:id="@+id/tv_comprar_detalle_producto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imagen_add_tienda_detalles"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="16dp"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <ImageButton
+                        android:id="@+id/imagen_remove_tienda_detalles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_comprar_detalle_producto"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="16dp"
+                        android:background="@null"
+                        android:src="@drawable/ic_baseline_remove_circle_outline_24"
+                        android:foreground="?attr/selectableItemBackground"/>
+
+                    <TextView
+                        android:id="@+id/tv_producto_detalle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rat_tienda_detalles"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="@string/detalle_producto"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_info_tienda_detalle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_producto_detalle"
+                        android:layout_margin="16dp"
+                        android:text="AQUI VA LA INFO DE CADA PRODUCTO"
+                        android:textColor="@color/black" />
+                    <TextView
+                        android:id="@+id/tv_precio_final_producto_tienda_detalle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/precio_final_1"
+                        android:textColor="@color/black"
+                        android:layout_margin="16dp"
+                        android:layout_below="@id/tv_info_tienda_detalle"/>
+                    <TextView
+                        android:id="@+id/tv_precio_producto_tienda_detalle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/precio_2"
+                        android:layout_margin="16dp"
+                        android:layout_toEndOf="@id/tv_precio_final_producto_tienda_detalle"
+                        android:layout_below="@id/tv_info_tienda_detalle"/>
+                    <Button
+                        android:id="@+id/btn_add_cesta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:text="@string/add_cesta"
+                        android:layout_below="@id/tv_precio_final_producto_tienda_detalle"
+                        app:icon="@drawable/ic_baseline_shopping_cart_24"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

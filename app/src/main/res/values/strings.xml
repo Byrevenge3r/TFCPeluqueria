@@ -65,6 +65,18 @@
     <string name="correo_coincide">Los correos deben de coincidir</string>
     <string name="contra_coincide">Las contraseñas deben de coincidir</string>
     <string name="tv_chat_peluqueria_menu">Chat</string>
+    <string name="kilo">1 Kg</string>
+    <string name="pienso_perro">Pienso para perros</string>
+    <string name="test">test</string>
+    <string name="hint_buscar">Buscar...</string>
+    <string name="piensos">piensos</string>
+    <string name="precio_final_1">25€</string>
+    <string name="precio_2">30€</string>
+    <string name="tienda_online">Tienda Online</string>
+    <string name="tienda_categoria">Categoria</string>
+    <string name="producto_popular">Productos Populares</string>
+    <string name="detalle_producto">Detalle Producto</string>
+    <string name="add_cesta">AÑADIR A LA CESTA</string>
     <string name="tst_correo_exist">Este correo ya existe</string>
 
 </resources>

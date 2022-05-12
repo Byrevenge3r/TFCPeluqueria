@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
         android:src="@drawable/ic_baseline_arrow_back_24"
-        android:background="@null"/>
+        android:background="@null"
+        android:foreground="?attr/selectableItemBackground"/>
     <TextView
         android:id="@+id/tv_test"
         android:layout_width="wrap_content"
@@ -29,7 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:src="@drawable/ic_baseline_shopping_cart_24"
-        android:background="@null"/>
+        android:background="@null"
+        android:foreground="?attr/selectableItemBackground"/>
     <ScrollView
         android:id="@+id/scroll_tienda"
         android:layout_width="match_parent"
@@ -69,7 +71,7 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_margin="6dp"
-                        android:src="AQUI VA IMAGEN"/>
+                        android:src=""/>
                     <TextView
                         android:id="@+id/tv_nombre_producto_tienda"
                         android:layout_width="wrap_content"
@@ -93,6 +95,7 @@
                         android:layout_margin="6dp"
                         android:src="@drawable/ic_baseline_favorite_border_24"
                         android:background="@null"
+                        android:foreground="?attr/selectableItemBackground"
                         android:layout_alignParentEnd="true"/>
                     <TextView
                         android:id="@+id/tv_precio_final_producto_tienda"

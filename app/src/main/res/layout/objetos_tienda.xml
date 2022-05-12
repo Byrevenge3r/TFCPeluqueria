@@ -8,9 +8,11 @@
         android:id="@+id/image_producto_tienda"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_margin="64dp"
-        android:src="AQUI VA IMAGEN"
-        android:background="@color/color_principal_citas"/>
+        android:layout_margin="6dp"
+        android:padding="9dp"
+        android:src="@drawable/background_tienda"
+        android:background="@color/color_principal_citas"
+        android:foreground="?attr/selectableItemBackground"/>
     <TextView
         android:id="@+id/tv_objeto_nombre_tienda"
         android:layout_width="wrap_content"
