@@ -33,6 +33,8 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "ERROR";
     public static String COD_EMAIL = "EMAIL";
+    public static String COD_CONTRA = "CONTRA";
+
 
 
     FirebaseAuth fAuth;
@@ -42,6 +44,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText etCorreo, etContrasenia;
     Button btnInicSes;
     Button btnReg;
+    User user;
     Intent i;
 
     ActivityResultLauncher<Intent> startForResult = registerForActivityResult(
@@ -111,7 +114,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 i = new Intent(LoginActivity.this,
                                         MainActivity.class);
                                 i.putExtra(COD_EMAIL, fUser.getEmail());
+
                                 buscarUsuario(email,contra);
+
                                 startActivity(i);
                                 finish();
                             } else {

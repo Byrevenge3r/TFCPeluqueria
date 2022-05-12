@@ -8,16 +8,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.os.Parcelable;
-import android.widget.Toast;
 
 import com.dam.peluqueriacanina.comunicacion.Comunicacion;
-import com.dam.peluqueriacanina.comunicacion.Comunicacion2;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.fragmentos.Citas;
 import com.dam.peluqueriacanina.model.Mapa;
-import com.dam.peluqueriacanina.registro.Registro1;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -31,8 +26,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
 
 public class UbicacionTiempoRealActivity
         extends FragmentActivity

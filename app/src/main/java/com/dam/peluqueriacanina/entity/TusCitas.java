@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 
 @Entity(tableName = "TUSCITAS", indices = {@Index(value={"ruta"},unique = true)})
-public class TusCitas implements Serializable {
+public class TusCitas implements Parcelable{
 
     @PrimaryKey(autoGenerate = true)
     public int id;
@@ -42,6 +42,7 @@ public class TusCitas implements Serializable {
         this.hora = hora;
     }
 
+
     protected TusCitas(Parcel in) {
         id = in.readInt();
         ruta = in.readString();
@@ -51,7 +52,17 @@ public class TusCitas implements Serializable {
         hora = in.readString();
     }
 
+    public static final Creator<TusCitas> CREATOR = new Creator<TusCitas>() {
+        @Override
+        public TusCitas createFromParcel(Parcel in) {
+            return new TusCitas(in);
+        }
 
+        @Override
+        public TusCitas[] newArray(int size) {
+            return new TusCitas[size];
+        }
+    };
 
     public String getKey() {
         return key;
@@ -110,5 +121,21 @@ public class TusCitas implements Serializable {
                 ", fecha='" + fecha + '\'' +
                 ", hora='" + hora + '\'' +
                 '}';
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(ruta);
+        parcel.writeString(key);
+        parcel.writeString(nombre);
+        parcel.writeString(fecha);
+        parcel.writeString(hora);
     }
 }

@@ -4,12 +4,10 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,20 +17,15 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.dam.peluqueriacanina.comunicacion.Comunicacion;
-import com.dam.peluqueriacanina.comunicacion.Comunicacion2;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.TusCitas;
-import com.dam.peluqueriacanina.fragmentos.CitasAnimalFragment;
 import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -99,20 +92,16 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_peluqueria);
 
         tusCitasLista = new ArrayList<>();
-
-        /*if(!((ArrayList<TusCitas>) getIntent().getSerializableExtra("listaCistas")).isEmpty()) {
-            tusCitasLista = (ArrayList<TusCitas>) getIntent().getSerializableExtra("listaCistas");
-        }*/
-
-        if ((getIntent().getSerializableExtra("cita")) != null) {
-            tusCitas = (TusCitas) getIntent().getSerializableExtra("cita");
+        tusCitas = new TusCitas();
+        if ((getIntent().getParcelableExtra("cita")) != null) {
+            tusCitas = getIntent().getParcelableExtra("cita");
         }
-        /*if ((ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECEIVE_SMS) +
+        if ((ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECEIVE_SMS) +
                 ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.SEND_SMS))
                 != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECEIVE_SMS, Manifest.permission.SEND_SMS}, 1001);
-        }*/
+        }
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
 
@@ -129,7 +118,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
         rv.setLayoutManager(llm);
 
-        tusCitas = new TusCitas();
+
 
         if (!dao.sacarTodo().isEmpty()) {
             adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarTodo());

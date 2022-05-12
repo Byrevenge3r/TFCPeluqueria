@@ -22,6 +22,7 @@ public class User {
         this.telefono = telefono;
     }
 
+
     public String getNombre() {
         return nombre;
     }

@@ -2,7 +2,6 @@ package com.dam.peluqueriacanina.fragmentos;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,8 +17,6 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.comunicacion.Comunicacion;
-import com.dam.peluqueriacanina.comunicacion.Comunicacion2;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.model.CitasReserva;
 import com.dam.peluqueriacanina.model.DatosFecha;
@@ -35,7 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Citas extends DialogFragment{
+public class Citas extends DialogFragment {
 
     CalendarView calendarioCitas;
     RecyclerView rv;
@@ -75,14 +72,14 @@ public class Citas extends DialogFragment{
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        View v = getActivity().getLayoutInflater().inflate(R.layout.fragment_citas,null);
+        View v = getActivity().getLayoutInflater().inflate(R.layout.fragment_citas, null);
         builder.setView(v);
 
         fdb = FirebaseDatabase.getInstance();
         dbr = fdb.getReference();
 
         calendarioCitas = v.findViewById(R.id.calReserva);
-        calendarioCitas.setDate(System.currentTimeMillis(),false,true);
+        calendarioCitas.setDate(System.currentTimeMillis(), false, true);
 
         tvNoHayCitas = v.findViewById(R.id.tvNoHayCitas);
         tvNoHayCitas.setVisibility(View.INVISIBLE);
@@ -121,7 +118,7 @@ public class Citas extends DialogFragment{
             public void onSelectedDayChange(@NonNull CalendarView view, int anio, int mesD, int dia) {
                 datos = new DatosFecha();
 
-                switch (mesD+1) {
+                switch (mesD + 1) {
                     case 1:
                         mes = "enero";
                         break;
@@ -161,7 +158,7 @@ public class Citas extends DialogFragment{
                 }
 
                 try {
-                    diaSeleccionado = formatter.parse(dia+"/"+(mesD+1)+"/"+anio);
+                    diaSeleccionado = formatter.parse(dia + "/" + (mesD + 1) + "/" + anio);
 
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -174,9 +171,8 @@ public class Citas extends DialogFragment{
                     rv.setAdapter(adapter);
                 } else {
                     tvNoHayCitas.setVisibility(View.INVISIBLE);
-
-
-                    dbr.child("coche/reservas/"+mes).addValueEventListener(new ValueEventListener() {
+                    
+                    dbr.child("coche/reservas/" + mes).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
@@ -185,7 +181,7 @@ public class Citas extends DialogFragment{
                                     listaCitasMes.add(cr);
                                 }
 
-                                listaCitas = filtroLista(listaCitasMes,anio,(mesD+1),dia);
+                                listaCitas = filtroLista(listaCitasMes, anio, (mesD + 1), dia);
                                 if (listaCitas.isEmpty()) {
                                     tvNoHayCitas.setVisibility(View.VISIBLE);
                                 }
@@ -229,27 +225,27 @@ public class Citas extends DialogFragment{
     }
 
     private void pasarCitaFragment(View v, int dia, int mesD, int anio) {
-        citaFecha = dia+"/"+(mesD+1)+"/"+anio;
+        citaFecha = dia + "/" + (mesD + 1) + "/" + anio;
         citaHora = listaCitas.get(rv.getChildAdapterPosition(v)).getHora();
 
         bundle.putString("citaFecha", citaFecha);
         bundle.putString("citaHora", citaHora);
-        bundle.putString("mesN",mes);
-        bundle.putString("mes", String.valueOf(mesD+1));
+        bundle.putString("mesN", mes);
+        bundle.putString("mes", String.valueOf(mesD + 1));
 
-        getParentFragmentManager().setFragmentResult("Key",bundle);
+        getParentFragmentManager().setFragmentResult("Key", bundle);
 
-        citasAnimal.show(getParentFragmentManager(),"CitasAnimal");
+        citasAnimal.show(getParentFragmentManager(), "CitasAnimal");
         dismiss();
     }
 
 
-    private ArrayList<CitasReserva> filtroLista(ArrayList<CitasReserva> listaCitasMes, int anio, int mesD, int dia){
-       listaCitas = datos.getListaCitas();
+    private ArrayList<CitasReserva> filtroLista(ArrayList<CitasReserva> listaCitasMes, int anio, int mesD, int dia) {
+        listaCitas = datos.getListaCitas();
         int posicion = 0;
         boolean existe = false;
-         for (int i = 0; i < listaCitasMes.size();i++) {
-            if (listaCitasMes.get(i).getFecha().equals(dia+"/"+mesD+"/"+anio)) {
+        for (int i = 0; i < listaCitasMes.size(); i++) {
+            if (listaCitasMes.get(i).getFecha().equals(dia + "/" + mesD + "/" + anio)) {
                 for (int x = 0; x < listaCitas.size(); x++) {
                     if (listaCitasMes.get(i).getHora().equals(listaCitas.get(x).getHora())) {
                         existe = true;
@@ -261,7 +257,7 @@ public class Citas extends DialogFragment{
                 listaCitas.remove(posicion);
             }
             existe = false;
-         }
+        }
         return listaCitas;
     }
 

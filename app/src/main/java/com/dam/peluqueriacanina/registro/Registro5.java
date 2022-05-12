@@ -1,5 +1,6 @@
 package com.dam.peluqueriacanina.registro;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,6 +18,10 @@ import com.dam.peluqueriacanina.LoginActivity;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.utils.MiApplication;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,11 +34,14 @@ import java.util.HashMap;
 
 public class Registro5 extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String CLAVE_USER = "USER";
+    public static final String CLAVE_CONTRA = "CONTRA";
     Button btnFinalizar;
-    Button btnFInalizar;
+
     Intent i;
     User user;
     FirebaseDatabase fb;
+    FirebaseAuth fAuth;
     DatabaseReference dbRef;
 
 
@@ -47,7 +55,8 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_registro5);
 
         fb = FirebaseDatabase.getInstance();
-        dbRef = fb.getReference("usuarios");
+        fAuth = FirebaseAuth.getInstance();
+        dbRef = fb.getReference();
 
         user = new User();
         btnFinalizar = findViewById(R.id.btnSiguienteRegCua);
@@ -57,7 +66,42 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+
+        if (v.equals(btnFinalizar)) {
             registrar();
+         registrarAuth(  user.getNombre(), user.getCorreo(),user.getContrasenia());
+           /* i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+            */
+
+        }
+
+    }
+
+
+
+    private void registrarAuth( String nombre, String correo, String contra) {
+
+
+        fAuth.createUserWithEmailAndPassword(correo, contra)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Snackbar.make(btnFinalizar, "tusmuertos", Snackbar.LENGTH_LONG)
+                                    .show();
+                          /*  dbRef.child("usuarios").child(nombre).setValue(user);
+                            Intent data = new Intent();
+                            data.putExtra(CLAVE_USER, correo);
+                            data.putExtra(CLAVE_CONTRA, contra);
+                            setResult(RESULT_OK, data);
+                            finish();*/
+                        } else {
+                            Snackbar.make(btnFinalizar, R.string.tst_correo_exist, Snackbar.LENGTH_LONG)
+                                    .show();
+                        }
+                    }
+                });
     }
 
 
@@ -69,23 +113,22 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
                 ((MiApplication) getApplicationContext()).getContrasenia(),
                 ((MiApplication) getApplicationContext()).getTelefono());
 
-        HashMap<String,Object> usuario = new HashMap<>();
+        HashMap<String, Object> usuario = new HashMap<>();
 
-        usuario.put("nombre",user.getNombre());
-        usuario.put("apellidos",user.getApellidos());
-        usuario.put("usuario",user.getUsuario());
-        usuario.put("correo",user.getCorreo());
-        usuario.put("contrasenia",user.getContrasenia());
-        usuario.put("telefono",user.getTelefono());
+        usuario.put("nombre", user.getNombre());
+        usuario.put("apellidos", user.getApellidos());
+        usuario.put("usuario", user.getUsuario());
+        usuario.put("correo", user.getCorreo());
+        usuario.put("contrasenia", user.getContrasenia());
+        usuario.put("telefono", user.getTelefono());
 
-        dbRef.push().updateChildren(usuario);
-
-        //TODO: Hacer que se pase los datos al login y que se setee automaticamente los datos (el email y la contraseña)
+        dbRef.child("usuarios").push().updateChildren(usuario);
+//pene
+        //se setee automaticamente los datos (el email y la contraseña)
         //TODO: Hacer que se registre en el authentification user de firebase
-        //TODO: Hacer las comprobaciones del que el email sea igual a su confirmacion igual que al contraseña
-        // ademas de hacer que la contraseña tenga que tener una mayuscula y sea 8 caracteres de largo
-        i = new Intent(this, LoginActivity.class);
-        startActivity(i);
+
+
+
     }
 
     @Override
