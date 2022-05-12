@@ -19,6 +19,7 @@ public class Tienda2Activity extends AppCompatActivity implements View.OnClickLi
         cardTienda.setOnClickListener(this);
     }
 
+    //hola
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
