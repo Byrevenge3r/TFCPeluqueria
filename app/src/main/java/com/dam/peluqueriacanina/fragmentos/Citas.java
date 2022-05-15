@@ -2,6 +2,7 @@ package com.dam.peluqueriacanina.fragmentos;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -74,6 +75,7 @@ public class Citas extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View v = getActivity().getLayoutInflater().inflate(R.layout.fragment_citas, null);
         builder.setView(v);
+
 
         fdb = FirebaseDatabase.getInstance();
         dbr = fdb.getReference();

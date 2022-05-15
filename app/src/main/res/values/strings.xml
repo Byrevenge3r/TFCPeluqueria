@@ -78,5 +78,7 @@
     <string name="detalle_producto">Detalle Producto</string>
     <string name="add_cesta">AÑADIR A LA CESTA</string>
     <string name="tst_correo_exist">Este correo ya existe</string>
+    <string name="tv_datos_cita">Ver detalles de la cita</string>
+    <string name="tv_furgoneta_camino">La furgoneta esta en camino!!!</string>
 
 </resources>

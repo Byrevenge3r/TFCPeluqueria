@@ -102,7 +102,6 @@ public class CitasAnimalFragment extends DialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         fdb = FirebaseDatabase.getInstance();
         dbr = fdb.getReference();
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View v = getActivity().getLayoutInflater().inflate(R.layout.fragment_citas_animal, null);
         builder.setView(v);
@@ -156,8 +155,8 @@ public class CitasAnimalFragment extends DialogFragment {
                     key = dbr.push().getKey();
 
                     SmsManager sms = SmsManager.getDefault();
-//
-                    sms.sendTextMessage("+34" + numeroTelConduc, null, "671393685" + "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
+                    //TODO:Poner que recoja el telefono del usuario cuando inicie sesion            JUSTO AQUI
+                    sms.sendTextMessage("+34" + numeroTelConduc, null, "688022844" + "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
                     listener.info(new TusCitas(animal.getRuta(),key,animal.getNombre(),citaFecha,citaHora));
                 }
                 dismiss();

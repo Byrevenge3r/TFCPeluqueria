@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import com.dam.peluqueriacanina.comunicacion.Comunicacion;
@@ -89,7 +90,6 @@ public class UbicacionTiempoRealActivity
                 }
                     markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
                         .position(new LatLng(latitud, longitud)));
-                   // countDownTimer();
                 }
 
             }
@@ -109,20 +109,6 @@ public class UbicacionTiempoRealActivity
             }
         });
     }
-
-   /* private void countDownTimer() {
-        new CountDownTimer(  2000, 1000) {
-            public void onTick (long millisuntilFinished) {
-                onMapReady(mMap);
-            }
-
-            public void onFinish () {
-
-            }
-
-        }.start ();
-    }*/
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -149,14 +135,4 @@ public class UbicacionTiempoRealActivity
         i.putExtra("cita", tusCitas);
         startActivity(i);
     }
-
-   /* @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        i = new Intent(this, PeluqueriaActivity.class);
-        i.putExtra("listaCistas",tusCitasLista);
-        startActivity(i);
-
-        overridePendingTransition(R.anim.animacion_derecha_derecha, R.anim.animacion_izquierda_derecha);
-    }*/
 }

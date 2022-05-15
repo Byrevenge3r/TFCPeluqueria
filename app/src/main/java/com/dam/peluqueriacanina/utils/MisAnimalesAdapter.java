@@ -42,8 +42,7 @@ public class MisAnimalesAdapter extends RecyclerView.Adapter<MisAnimalesAdapter.
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.mascotas_recicler_view, parent, false);
         v.setOnClickListener(this);
-        MisAnimalesAdapter.MisAnimalesAdapterVH vh = new MisAnimalesAdapter.MisAnimalesAdapterVH(v);
-        return vh;
+        return new MisAnimalesAdapterVH(v);
     }
 
     @Override

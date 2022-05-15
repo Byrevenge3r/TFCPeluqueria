@@ -9,11 +9,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.TusCitas;
+import com.dam.peluqueriacanina.model.BotonTusCitas;
+import com.dam.peluqueriacanina.model.datos.BotonTusCitasLista;
 import com.dam.peluqueriacanina.utils.AnimalPeluAdapter;
+import com.dam.peluqueriacanina.utils.MostrarDatosTusCitasAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +35,9 @@ import java.util.HashMap;
 public class VerTusCitasActivity extends AppCompatActivity implements View.OnClickListener {
 
     RecyclerView rv;
+    RecyclerView rvVerCita;
     LinearLayoutManager llm;
+    LinearLayoutManager llmDetalles;
     TusCitas tusCitas;
     String mesN = "";
     FirebaseDatabase fdb;
@@ -41,11 +47,13 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
     TextView tvNoHayCitasVTC;
     Button btnCancelarCita;
     AnimalPeluAdapter adapter;
+    MostrarDatosTusCitasAdapter adapterDetallesCita;
     SimpleDateFormat formatter;
     Date fecha;
     View vista;
     Calendar cal;
     int mesActual = 0;
+    BotonTusCitasLista boton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +66,16 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         dbTusCitas = TusCitasDB.getDatabase(this);
         daoTusCitas = dbTusCitas.citaDao();
 
+        boton = new BotonTusCitasLista();
 
         rv = findViewById(R.id.rvVerTusCitas);
+        llmDetalles = new LinearLayoutManager(this);
         llm = new LinearLayoutManager(this);
+
         tvNoHayCitasVTC = findViewById(R.id.tvNoHayCitasVTC);
         btnCancelarCita = findViewById(R.id.btnCancelarCita);
 
+        llmDetalles.setOrientation(LinearLayoutManager.VERTICAL);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
         rv.setLayoutManager(llm);
@@ -75,17 +87,51 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         vista = new View(this);
 
         adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarTodo());
+        adapterDetallesCita = new MostrarDatosTusCitasAdapter(boton.getBoton());
         rv.setAdapter(adapter);
+
         if (daoTusCitas.sacarTodo().isEmpty()) {
             tvNoHayCitasVTC.setVisibility(View.VISIBLE);
         }
+
+
+        /*LinearLayoutManager llm = new LinearLayoutManager(
+                rv.getContext(),
+                LinearLayoutManager.VERTICAL,
+                false
+        );
+
+        rv.setLayoutManager(llm);
+        BotonTusCitasLista lista = new BotonTusCitasLista();
+        MostrarDatosTusCitasAdapter datosCita = new MostrarDatosTusCitasAdapter(lista.getBoton());
+        rv.setAdapter(datosCita);
+
+        rv.getChildAdapterPosition(v);
+        datosCita.setListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(v.getContext(), "Posicion"+datosCita.getItemId(rv.getChildAdapterPosition(v)),Toast.LENGTH_LONG).show();
+            }
+        });*/
+
+        //TODO: Activar el segundo boton para ir al segundo activity
         adapter.setListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+
+                //setContentView(R.layout.citas_recicler_view_vet);
+
+                rvVerCita = findViewById(R.id.rvVerTusCitasSegundaPantalla);
                 btnCancelarCita.setVisibility(View.VISIBLE);
-                vista = v;
+                rvVerCita.setLayoutManager(llmDetalles);
+
+                rvVerCita.setAdapter(adapterDetallesCita);
+
+                vista = view;
             }
         });
+
+
     }
 
     @Override
