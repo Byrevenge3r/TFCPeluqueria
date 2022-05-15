@@ -7,13 +7,22 @@
     tools:context=".VerDatosTusCitasActivity"
     android:background="@color/color_principal_citas">
 
+    <ImageView
+        android:id="@+id/ivRegistroDatosTusCitas"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/logo_peluqueria" />
+
     <!--Poner gif furgoneta en movimiento -->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivFurgoneta"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/ivRegistroDatosTusCitas"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
@@ -30,8 +39,14 @@
 
     <TextView
         android:id="@+id/tvTiempo"
+        app:layout_constraintBottom_toTopOf="@id/fcvUbicacionConductorDetalles"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="@string/tv_tiempo_estimado"
+        android:gravity="center_horizontal"
+        android:textColor="@color/color_gris"
+        android:textSize="23sp"
+        android:layout_marginBottom="10dp"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcvUbicacionConductorDetalles"
