@@ -136,10 +136,9 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        i = new Intent(this, Registro4.class);
+        i = new Intent(this, LoginActivity.class);
         startActivity(i);
 
-        overridePendingTransition(R.anim.animacion_derecha_derecha, R.anim.animacion_izquierda_derecha);
     }
 
 
