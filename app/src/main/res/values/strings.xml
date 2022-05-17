@@ -82,5 +82,6 @@
     <string name="tv_furgoneta_camino">La furgoneta esta en camino!!!</string>
     <string name="tv_tiempo_estimado_horas">Tiempo estimado: %,.0f hora</string>
     <string name="tv_tiempo_estimado_minutos">Tiempo estimado: %,.0f minutos</string>
+    <string name="et_chat">Escribe un mensaje</string>
 
 </resources>

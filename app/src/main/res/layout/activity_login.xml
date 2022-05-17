@@ -81,7 +81,6 @@
                     android:background="@drawable/fondo_edit_text"
                     android:hint="@string/et_correo"
                     android:paddingLeft="26dp"
-
                     android:paddingRight="26dp"
                     android:textColor="@color/color_texto_negro" />
             </com.google.android.material.textfield.TextInputLayout>
