@@ -125,6 +125,8 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         key = dbRef.push().getKey();
         dbRef.child("usuarios").child(key).updateChildren(usuario);
         dbRef.child("usuarios").child(key).child("chat").push();
+        dbRef.child("usuarios").child(key).child("chat/conductor").push();
+        dbRef.child("usuarios").child(key).child("chat/usuario").push();
 
         //se setee automaticamente los datos (el email y la contraseña)
         //TODO: Hacer que se registre en el authentification user de firebase
