@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChatActivity"
-    android:background="@color/color_principal_citas"
-    android:fitsSystemWindows="true">
+    android:background="@color/color_principal_citas">
 
     <RelativeLayout
         android:id="@+id/rlChat"
@@ -24,16 +23,27 @@
         android:layout_marginStart="5dp"
         android:background="@drawable/logo_peluqueria"/>
 
+    <LinearLayout
+        android:id="@+id/llChat"
+        android:layout_width="match_parent"
+        android:layout_height="596dp"
+        app:layout_constraintTop_toBottomOf="@id/rlChat">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvChatUsuario"
-            app:layout_constraintTop_toBottomOf="@id/rlChat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
 
+
+    </LinearLayout>
+
+
     <LinearLayout
+        android:id="@+id/llMus"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
