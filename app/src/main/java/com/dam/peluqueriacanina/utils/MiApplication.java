@@ -10,7 +10,7 @@ public class MiApplication extends Application {
     private String correo;
     private String contrasenia;
     private String telefono;
-
+    private String key;
 
     @Override
     public void onCreate() {
@@ -23,6 +23,15 @@ public class MiApplication extends Application {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     public String getApellidos() { return apellidos; }
 
     public void setApellidos(String apellidos) { this.apellidos = apellidos; }

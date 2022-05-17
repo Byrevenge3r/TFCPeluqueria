@@ -43,7 +43,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
     FirebaseDatabase fb;
     FirebaseAuth fAuth;
     DatabaseReference dbRef;
-
+    String key;
 
     // creating a variable for our Database
     // Reference for Firebase.
@@ -122,7 +122,8 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         usuario.put("contrasenia", user.getContrasenia());
         usuario.put("telefono", user.getTelefono());
 
-        dbRef.child("usuarios").push().updateChildren(usuario);
+        key = dbRef.push().getKey();
+        dbRef.child("usuarios").child(key).updateChildren(usuario);
 
         //se setee automaticamente los datos (el email y la contraseña)
         //TODO: Hacer que se registre en el authentification user de firebase

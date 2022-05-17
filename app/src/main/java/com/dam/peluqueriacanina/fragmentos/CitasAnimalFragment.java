@@ -156,7 +156,7 @@ public class CitasAnimalFragment extends DialogFragment {
 
                     SmsManager sms = SmsManager.getDefault();
                     //TODO:Poner que recoja el telefono del usuario cuando inicie sesion            JUSTO AQUI
-                    sms.sendTextMessage("+34" + numeroTelConduc, null, "688022844" + "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
+                    sms.sendTextMessage("+34" + numeroTelConduc, null, ((MiApplication) getContext()).getTelefono() + "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
                     listener.info(new TusCitas(animal.getRuta(),key,animal.getNombre(),citaFecha,citaHora));
                 }
                 dismiss();
