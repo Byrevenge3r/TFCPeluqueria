@@ -10,6 +10,9 @@ public class Chat {
         this.codigoPer = codigoPer;
     }
 
+    public Chat() {
+    }
+
     public String getMensaje() {
         return mensaje;
     }

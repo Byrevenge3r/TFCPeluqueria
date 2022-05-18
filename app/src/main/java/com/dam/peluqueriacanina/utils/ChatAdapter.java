@@ -23,6 +23,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatAdapterVH>
         this.datos = datos;
     }
 
+    public void aniadirMensaje (Chat mensaje) {
+        datos.add(mensaje);
+    }
+
     @NonNull
     @Override
     public ChatAdapterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -52,10 +56,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatAdapterVH>
         }
 
         public void bindMensaje (Chat mensaje) {
-            if (mensaje.getCodigoPer().equals("U")) {
-                ll.setGravity(Gravity.END);
-            } else {
+            if (!mensaje.getCodigoPer().equals("U")) {
                 ll.setGravity(Gravity.START);
+            } else {
+                ll.setGravity(Gravity.END);
             }
             tvUsuario.setText(mensaje.getMensaje());
 

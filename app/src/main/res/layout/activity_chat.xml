@@ -23,23 +23,16 @@
         android:layout_marginStart="5dp"
         android:background="@drawable/logo_peluqueria"/>
 
-    <LinearLayout
-        android:id="@+id/llChat"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChatUsuario"
         android:layout_width="match_parent"
-        android:layout_height="596dp"
-        app:layout_constraintTop_toBottomOf="@id/rlChat">
+        android:scrollbars="vertical"
+        android:layout_height="530dp"
+        app:layout_constraintTop_toBottomOf="@id/rlChat"
+        />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvChatUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/llMus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -61,6 +54,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="5dp"
+            android:layout_alignParentRight="true"
             android:background="@drawable/fondo_btn_chat"
             android:textAllCaps="false"
             android:textColor="@color/color_texto_blanco"
@@ -71,9 +65,6 @@
             app:strokeWidth="3dp"
             android:layout_marginBottom="10dp"/>
 
-
-
-    </LinearLayout>
-
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
