@@ -27,7 +27,6 @@ public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.An
     private View.OnClickListener listener;
 
 
-
     public AnimalPeluAdapter(ArrayList<TusCitas> datos) {
         this.datos = datos;
     }
@@ -69,14 +68,12 @@ public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.An
         private final TextView tvFecha;
         private final TextView tvHora;
         private final ShapeableImageView shAnimal;
-        private final RecyclerView rv;
         public AnimalPeluAdapterVH(@NonNull View itemView) {
             super(itemView);
             shAnimal = itemView.findViewById(R.id.shAnimal);
             tvNom = itemView.findViewById(R.id.tvNomAnimal);
             tvFecha = itemView.findViewById(R.id.tvDia);
             tvHora = itemView.findViewById(R.id.tvHora);
-            rv = itemView.findViewById(R.id.rvVerTusCitasSegundaPantalla);
         }
 
         public void bindAnimal(TusCitas animal) {
@@ -84,9 +81,6 @@ public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.An
             tvNom.setText(animal.getNombre());
             tvFecha.setText(animal.getFecha());
             tvHora.setText(animal.getHora());
-            BotonTusCitasLista lista = new BotonTusCitasLista();
-            MostrarDatosTusCitasAdapter datosCita = new MostrarDatosTusCitasAdapter(lista.getBoton());
-            rv.setAdapter(datosCita);
         }
     }
 }

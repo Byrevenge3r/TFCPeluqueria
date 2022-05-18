@@ -8,12 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.dam.peluqueriacanina.model.Chat;
 import com.dam.peluqueriacanina.utils.ChatAdapter;
 import com.dam.peluqueriacanina.utils.MiApplication;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,7 +36,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<Chat> mensajes;
     ChatAdapter adapter;
     EditText etMensajeIntroducido;
-    ImageButton ibEnviar;
+    Button ibEnviar;
     HashMap<String,Object> chat;
     Chat mensaje;
     boolean recoger = true;
@@ -49,7 +52,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
        rv = findViewById(R.id.rvChatUsuario);
        llm = new LinearLayoutManager(this);
        etMensajeIntroducido = findViewById(R.id.etChat);
-       ibEnviar = findViewById(R.id.btnEnviar);
+       ibEnviar = findViewById(R.id.btnEnviarMensaje);
 
        ibEnviar.setOnClickListener(this);
 
@@ -57,46 +60,27 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
        rv.setLayoutManager(llm);
 
        mensajes = new ArrayList<>();
+       adapter = new ChatAdapter(mensajes);
 
+       //Funciona pero no recoge cuando se inicia la app
 
-       //Peta aqui mirar mañana un momento hay que cambiar las claves y que recoja los objetos directamente
-
-       dbr.child("usuarios/"+"-N1optheLLOVSoaaBkiS"+"/chat").addChildEventListener(new ChildEventListener() {
+       dbr.child("usuarios/"+"-N1optheLLOVSoaaBkiS"+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
            @Override
-           public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+           public void onComplete(@NonNull Task<DataSnapshot> task) {
                if (recoger) {
 
-                   mensaje = snapshot.getValue(Chat.class);
-                   mensajes.add(mensaje);
+                   for (DataSnapshot sp:task.getResult().getChildren()) {
+                       mensaje = sp.getValue(Chat.class);
+                       mensajes.add(mensaje);
+                   }
 
+                   rv.setAdapter(adapter);
 
                }
-           }
-
-           @Override
-           public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-           }
-
-           @Override
-           public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-           }
-
-           @Override
-           public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-           }
-
-           @Override
-           public void onCancelled(@NonNull DatabaseError error) {
-
            }
        });
 
 
-
-       adapter = new ChatAdapter(mensajes);
        rv.setAdapter(adapter);
 
 
@@ -121,6 +105,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                recoger = false;
                rv.setAdapter(adapter);
                rv.scrollToPosition(adapter.getItemCount()-1);
+               etMensajeIntroducido.setText("");
            }
        }
     }

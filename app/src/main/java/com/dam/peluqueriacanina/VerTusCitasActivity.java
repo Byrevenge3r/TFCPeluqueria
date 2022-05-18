@@ -87,7 +87,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         vista = new View(this);
 
         adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarTodo());
-        adapterDetallesCita = new MostrarDatosTusCitasAdapter(boton.getBoton());
+        //adapterDetallesCita = new MostrarDatosTusCitasAdapter(boton.getBoton());
         rv.setAdapter(adapter);
 
         if (daoTusCitas.sacarTodo().isEmpty()) {

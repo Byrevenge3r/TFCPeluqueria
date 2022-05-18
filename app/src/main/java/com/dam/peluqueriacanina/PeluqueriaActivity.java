@@ -54,7 +54,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         @Override
         public void onReceive(Context context, Intent intent) {
             super.onReceive(context, intent);
-            if (msg.contains("confirmado")) {
+            if (msg.contains("confirmado") && tusCitas.getKey() != null) {
                 daoTusCitas.insert(tusCitas);
             }
         }

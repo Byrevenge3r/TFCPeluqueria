@@ -154,9 +154,9 @@ public class CitasAnimalFragment extends DialogFragment {
                     dbr = fdb.getReference("coche/reservas/"+mesN);
                     key = dbr.push().getKey();
 
-                    SmsManager sms = SmsManager.getDefault();
+                    SmsManager sms = SmsManager.getDefault(); //((MiApplication) getContext()).getTelefono()
                     //TODO:Poner que recoja el telefono del usuario cuando inicie sesion            JUSTO AQUI
-                    sms.sendTextMessage("+34" + numeroTelConduc, null, ((MiApplication) getContext()).getTelefono() + "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
+                    sms.sendTextMessage("+34" + numeroTelConduc, null,  "671393685"+ "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
                     listener.info(new TusCitas(animal.getRuta(),key,animal.getNombre(),citaFecha,citaHora));
                 }
                 dismiss();
