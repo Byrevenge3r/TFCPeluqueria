@@ -89,7 +89,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
     @Override
     public void onClick(View view) {
        if (view.equals(ibEnviar)) {
