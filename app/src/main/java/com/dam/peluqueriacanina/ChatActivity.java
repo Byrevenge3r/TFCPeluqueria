@@ -82,7 +82,9 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
 
        rv.setAdapter(adapter);
-
+       if (!mensajes.isEmpty()) {
+           rv.scrollToPosition(adapter.getItemCount()-1);
+       }
 
     }
 
