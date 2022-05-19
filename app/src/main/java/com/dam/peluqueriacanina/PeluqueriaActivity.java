@@ -19,6 +19,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
@@ -44,7 +45,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     Animal animalPel;
     ShapeableImageView imagenAnimal;
     Button btnAniadirMascotaPel;
-    CardView cvUbicacionTiempoReal, cvTusCitas;
+    CardView cvUbicacionTiempoReal, cvTusCitas, cvChat;
     Intent i;
     ArrayList<Animal> listaAnimalesPel;
     TusCitas tusCitas;
@@ -117,7 +118,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
         rv.setLayoutManager(llm);
-
+        cvChat = findViewById(R.id.cvChat);
 
 
         if (!dao.sacarTodo().isEmpty()) {
@@ -143,6 +144,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         btnAniadirMascotaPel.setOnClickListener(this);
         cvUbicacionTiempoReal.setOnClickListener(this);
         cvTusCitas.setOnClickListener(this);
+        cvChat.setOnClickListener(this);
     }
 
     @Override
@@ -161,6 +163,14 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         } else if (v.equals(cvTusCitas)) {
             i = new Intent(this, VerTusCitasActivity.class);
             startActivity(i);
+        } else if (v.equals(cvChat)) {
+            if (!daoTusCitas.sacarTodo().isEmpty()) {
+                i = new Intent(this, ChatActivity.class);
+                startActivity(i);
+            } else {
+                Toast.makeText(this,R.string.error_no_hay_citas,Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 

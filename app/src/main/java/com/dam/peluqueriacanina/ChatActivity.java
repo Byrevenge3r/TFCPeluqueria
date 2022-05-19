@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +41,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     HashMap<String,Object> chat;
     Chat mensaje;
     boolean recoger = true;
+    String numeroTelConduc;
    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +64,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
        mensajes = new ArrayList<>();
        adapter = new ChatAdapter(mensajes);
 
-       //Funciona pero no recoge cuando se inicia la app
-
-       dbr.child("usuarios/"+"-N1optheLLOVSoaaBkiS"+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+       dbr.child("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
            @Override
            public void onComplete(@NonNull Task<DataSnapshot> task) {
                if (recoger) {
@@ -79,7 +79,24 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                }
            }
        });
+       dbr.child("coche/tel").addValueEventListener(new ValueEventListener() {
+           @Override
+           public void onDataChange(@NonNull DataSnapshot snapshot) {
+               if (snapshot.exists()) {
+                   numeroTelConduc = String.valueOf(snapshot.getValue());
+               }
+           }
 
+           @Override
+           public void onCancelled(@NonNull DatabaseError error) {
+
+           }
+       });
+
+       if (mensajes.isEmpty()) {
+           SmsManager sms = SmsManager.getDefault();
+           sms.sendTextMessage("+34" + numeroTelConduc, null,  ((MiApplication) getApplicationContext()).getKey(), null, null);
+       }
 
        rv.setAdapter(adapter);
        if (!mensajes.isEmpty()) {

@@ -162,6 +162,7 @@
 
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvChat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:cardElevation="12dp"
