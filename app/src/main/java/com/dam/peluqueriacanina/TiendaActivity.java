@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TiendaActivity extends AppCompatActivity {
+public class TiendaActivity extends AppCompatActivity implements View.OnClickListener {
 
     LinearLayout linearTienda, linearProducto;
     ImageView imageProductoTienda;
@@ -80,5 +80,10 @@ public class TiendaActivity extends AppCompatActivity {
 
             linearTienda.addView(view);
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

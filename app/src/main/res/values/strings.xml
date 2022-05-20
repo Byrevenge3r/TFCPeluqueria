@@ -65,6 +65,9 @@
     <string name="correo_coincide">Los correos deben de coincidir</string>
     <string name="contra_coincide">Las contraseñas deben de coincidir</string>
     <string name="tv_chat_peluqueria_menu">Chat</string>
+
+    <string name="nosepuedo">No se pudo crear el usuario</string>
+    <string name="et_direccion">Introduce tu direccion</string>
     <string name="kilo">1 Kg</string>
     <string name="pienso_perro">Pienso para perros</string>
     <string name="test">test</string>

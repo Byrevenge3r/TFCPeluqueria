@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.registro.Registro1;
+import com.dam.peluqueriacanina.registro.Registro2;
+import com.dam.peluqueriacanina.registro.Registro5;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -53,8 +55,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
-                      //  etCorreo.setText(result.getData().getStringExtra(Registro2.CLAVE_USER));
-                        //etContrasenia.setText(result.getData().getStringExtra(Registro2.CLAVE_CONTRA));
+                        etCorreo.setText(result.getData().getStringExtra(Registro5.CLAVE_USER));
+                        etContrasenia.setText(result.getData().getStringExtra(Registro5.CLAVE_CONTRA));
                     }
                 }
             }

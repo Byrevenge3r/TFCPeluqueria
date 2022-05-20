@@ -67,7 +67,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
 
         if (v.equals(btnSiguienteRegDos)) {
 
-            /*if (TextUtils.isEmpty(correo)) {
+            /*joakinif (TextUtils.isEmpty(correo)) {
                 etCorreo.setError("Introduzca un correo");
             } else if (TextUtils.isEmpty(confcorreo)) {
                 etConfCorreo.setError("Introduzca una confirmacion de correo");

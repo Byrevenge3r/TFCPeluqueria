@@ -25,13 +25,15 @@
         android:theme="@style/Theme.PeluqueriaCanina">
         <activity
             android:name=".ChatActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".VerDatosTusCitasActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".TiendaDetallesActivity"
@@ -64,10 +66,8 @@
 
         <activity
             android:name=".UbicacionTiempoRealActivity"
-            android:exported="true"
-            android:label="@string/title_activity_ubicacion_tiempo_real" >
-
-        </activity>
+            android:exported="false"
+            android:label="@string/title_activity_ubicacion_tiempo_real" />
         <activity
             android:name=".DatosAnimalActivity"
             android:exported="false" />
@@ -85,13 +85,7 @@
             android:exported="false" />
         <activity
             android:name=".registro.Registro5"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".registro.Registro3"
             android:exported="false" />
@@ -106,9 +100,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
