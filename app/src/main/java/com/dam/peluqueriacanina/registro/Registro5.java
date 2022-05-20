@@ -68,11 +68,11 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
 
         if (v.equals(btnFinalizar)) {
-            registrar();
-         registrarAuth( user.getCorreo(),user.getContrasenia());
-           /* i = new Intent(this, LoginActivity.class);
+           registrar();
+         registrarAuth( user.getCorreo(), user.getContrasenia());
+           i = new Intent(this, LoginActivity.class);
             startActivity(i);
-            */
+
 
         }
 
@@ -88,12 +88,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
                         if (task.isSuccessful()) {
                             Snackbar.make(btnFinalizar, "tusmuertos", Snackbar.LENGTH_LONG)
                                     .show();
-                          /*  dbRef.child("usuarios").child(nombre).setValue(user);
-                            Intent data = new Intent();
-                            data.putExtra(CLAVE_USER, correo);
-                            data.putExtra(CLAVE_CONTRA, contra);
-                            setResult(RESULT_OK, data);
-                            finish();*/
+
                         } else {
 
                             Snackbar.make(btnFinalizar, R.string.tst_correo_exist, Snackbar.LENGTH_LONG)
@@ -110,6 +105,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
                 ((MiApplication) getApplicationContext()).getUsuario(),
                 ((MiApplication) getApplicationContext()).getCorreo(),
                 ((MiApplication) getApplicationContext()).getContrasenia(),
+                ((MiApplication) getApplicationContext()).getDireccion(),
                 ((MiApplication) getApplicationContext()).getTelefono());
 
         HashMap<String, Object> usuario = new HashMap<>();
@@ -124,10 +120,8 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         key = dbRef.push().getKey();
         ((MiApplication) getApplicationContext()).setKey(key);
         dbRef.child("usuarios").child(key).updateChildren(usuario);
-        dbRef.child("usuarios").child(key).child("chat").push();
 
-        //se setee automaticamente los datos (el email y la contraseña)
-        //TODO: Hacer que se registre en el authentification user de firebase
+
 
     }
 
