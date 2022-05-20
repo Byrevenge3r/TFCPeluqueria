@@ -5,13 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.dam.peluqueriacanina.LoginActivity;
@@ -23,10 +18,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.dam.peluqueriacanina.model.User;
-import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -54,8 +45,8 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro5);
 
-        fb = FirebaseDatabase.getInstance();
         fAuth = FirebaseAuth.getInstance();
+        fb = FirebaseDatabase.getInstance();
         dbRef = fb.getReference();
 
         user = new User();
@@ -66,10 +57,9 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-
         if (v.equals(btnFinalizar)) {
-            registrar();
-         registrarAuth(  user.getNombre(), user.getCorreo(),user.getContrasenia());
+            //registrar();
+             registrarAuth( "ferpa2scan@gmail.com","patata");
            /* i = new Intent(this, LoginActivity.class);
             startActivity(i);
             */
@@ -80,9 +70,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
 
 
 
-    private void registrarAuth( String nombre, String correo, String contra) {
-
-
+    private void registrarAuth(String correo, String contra) {
         fAuth.createUserWithEmailAndPassword(correo, contra)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -97,6 +85,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
                             setResult(RESULT_OK, data);
                             finish();*/
                         } else {
+
                             Snackbar.make(btnFinalizar, R.string.tst_correo_exist, Snackbar.LENGTH_LONG)
                                     .show();
                         }

@@ -2,7 +2,7 @@ package com.dam.peluqueriacanina.fragmentos;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -30,6 +30,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -57,7 +60,14 @@ public class Citas extends DialogFragment {
     Date diaActual;
     TusCitas tusCitas;
     ArrayList<String> listaMeses;
-
+    String horaActual;
+    LocalDateTime now;
+    ArrayList<CitasReserva> listaCitasHoy;
+    Date horaActualD;
+    Date horaBbdd;
+    SimpleDateFormat formatterH;
+    boolean continuar = true;
+    int i = 0;
     public Citas() {
     }
 
@@ -100,15 +110,30 @@ public class Citas extends DialogFragment {
 
         listaCitasMes = new ArrayList<>();
         listaMeses = new ArrayList<>();
+        listaCitasHoy = new ArrayList<>();
 
         citasAnimal = new CitasAnimalFragment();
         formatter = new SimpleDateFormat("dd/MM/yyyy");
+        formatterH = new SimpleDateFormat("HH:mm");
         diaSeleccionado = new Date();
         diaActual = new Date();
+        horaActualD = new Date();
+        horaBbdd = new Date();
 
         bundle = new Bundle();
 
         dbr = fdb.getReference();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            now = LocalDateTime.now();
+            ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Europe/Paris"));
+            horaActual = time.getHour() +":"+ time.getMinute();
+            try {
+                horaActualD = formatterH.parse(horaActual);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
 
         try {
             diaActual = formatter.parse(formatter.format(diaActual));
@@ -184,6 +209,9 @@ public class Citas extends DialogFragment {
                                 }
 
                                 listaCitas = filtroLista(listaCitasMes, anio, (mesD + 1), dia);
+
+                                filtrarDia();
+
                                 if (listaCitas.isEmpty()) {
                                     tvNoHayCitas.setVisibility(View.VISIBLE);
                                 }
@@ -199,17 +227,6 @@ public class Citas extends DialogFragment {
                                         pasarCitaFragment(v, dia, mesD, anio);
                                     }
                                 });
-                            } else {
-                                listaCitas = datos.getListaCitas();
-                                adapter = new CitasAdapter(listaCitas);
-                                rv.setAdapter(adapter);
-                                adapter.setListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-
-                                        pasarCitaFragment(v, dia, mesD, anio);
-                                    }
-                                });
                             }
                         }
 
@@ -218,12 +235,36 @@ public class Citas extends DialogFragment {
 
                         }
                     });
+
                 }
 
 
             }
         });
         return builder.create();
+    }
+
+    private void filtrarDia() {
+        if (diaActual.equals(diaSeleccionado)) {
+            while (continuar) {
+                try {
+                    horaBbdd = formatterH.parse(listaCitas.get(i).getHora());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                if (horaActualD.after(horaBbdd)){
+                    listaCitas.remove(i);
+                    i = 0;
+                } else {
+                    i++;
+                }
+                if (listaCitas.size()==i) {
+                    continuar = false;
+                }
+            }
+            continuar = true;
+        }
     }
 
     private void pasarCitaFragment(View v, int dia, int mesD, int anio) {
@@ -246,6 +287,7 @@ public class Citas extends DialogFragment {
         listaCitas = datos.getListaCitas();
         int posicion = 0;
         boolean existe = false;
+
         for (int i = 0; i < listaCitasMes.size(); i++) {
             if (listaCitasMes.get(i).getFecha().equals(dia + "/" + mesD + "/" + anio)) {
                 for (int x = 0; x < listaCitas.size(); x++) {
