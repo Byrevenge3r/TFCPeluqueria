@@ -206,10 +206,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <ImageView
-                            android:src="@drawable/foto_perfil"
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/ivPerfil"
                             android:layout_width="100dp"
-                            android:layout_height="100dp"/>
+                            android:layout_height="100dp"
+                            android:background="@drawable/foto_perfil"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:shapeAppearanceOverlay="@style/Circular"
+                            app:strokeColor="@color/color_blanco"
+                            android:scaleType="centerCrop"
+                            app:strokeWidth="1dp"/>
 
                         <TextView
                             android:textSize="18sp"

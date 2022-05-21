@@ -64,7 +64,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
        mensajes = new ArrayList<>();
        adapter = new ChatAdapter(mensajes);
 
-       dbr.child("usuarios/"+"-N2YH5TcapHAAXHNITH9"+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+
+       dbr.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
 
            @Override
            public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -125,11 +126,11 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
            }
        });
 
-      /* if (mensajes.isEmpty()) {
+       if (mensajes.isEmpty()) {
            SmsManager sms = SmsManager.getDefault();
            sms.sendTextMessage("+34" + numeroTelConduc, null,  ((MiApplication) getApplicationContext()).getKey(), null, null);
        }
-*/
+
        rv.setAdapter(adapter);
        if (!mensajes.isEmpty()) {
            rv.scrollToPosition(adapter.getItemCount()-1);

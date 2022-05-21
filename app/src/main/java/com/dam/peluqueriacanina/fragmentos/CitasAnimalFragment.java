@@ -141,12 +141,12 @@ public class CitasAnimalFragment extends DialogFragment {
             }
         });
         dbr = fdb.getReference();
-        adapter = new CitasAnimalesFotoAdapter((ArrayList<Animal>) daoAnimal.sacarTodo());
+
         adapter.setListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                animal = (daoAnimal.sacarTodo()).get(rv.getChildAdapterPosition(v));
+                adapter = new CitasAnimalesFotoAdapter((ArrayList<Animal>) daoAnimal.sacarAnimalKey(((MiApplication) getContext()).getKey()));
+                animal = (daoAnimal.sacarAnimalKey(((MiApplication) getContext()).getKey())).get(rv.getChildAdapterPosition(v));
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     now = LocalDateTime.now();
@@ -158,6 +158,7 @@ public class CitasAnimalFragment extends DialogFragment {
                     //TODO:Poner que recoja el telefono del usuario cuando inicie sesion            JUSTO AQUI
                     sms.sendTextMessage("+34" + numeroTelConduc, null,  "671393685"+ "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
                     listener.info(new TusCitas(animal.getRuta(),key,animal.getNombre(),citaFecha,citaHora));
+
                 }
                 dismiss();
             }

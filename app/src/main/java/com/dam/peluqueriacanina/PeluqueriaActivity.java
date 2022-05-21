@@ -58,7 +58,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         @Override
         public void onReceive(Context context, Intent intent) {
             super.onReceive(context, intent);
-            if (msg.contains("confirmado") && tusCitas.getKey() != null) {
+             if (msg.contains("confirmado") && tusCitas.getKey() != null) {
                 daoTusCitas.insert(tusCitas);
             }
         }
@@ -107,6 +107,8 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
 
         tusCitasLista = new ArrayList<>();
         tusCitas = new TusCitas();
+
+        //Peta aqui pero puede ser por que la ruta es null luego lo miro que me da pereza
         if ((getIntent().getParcelableExtra("cita")) != null) {
             tusCitas = getIntent().getParcelableExtra("cita");
         }
@@ -135,8 +137,8 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         tvNombrePel = findViewById(R.id.tvNombrePel);
 
         tvNombrePel.setText(((MiApplication) getApplicationContext()).getNombre());
-    //
-        if (!dao.sacarTodo().isEmpty()) {
+
+        if (!dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()).isEmpty()) {
             adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()));
             cvUbicacionTiempoReal.setEnabled(true);
             adapter.setListener(new View.OnClickListener() {

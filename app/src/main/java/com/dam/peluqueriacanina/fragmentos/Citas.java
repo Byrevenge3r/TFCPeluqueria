@@ -71,7 +71,6 @@ public class Citas extends DialogFragment {
     public Citas() {
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,7 +84,6 @@ public class Citas extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View v = getActivity().getLayoutInflater().inflate(R.layout.fragment_citas, null);
         builder.setView(v);
-
 
         fdb = FirebaseDatabase.getInstance();
         dbr = fdb.getReference();
