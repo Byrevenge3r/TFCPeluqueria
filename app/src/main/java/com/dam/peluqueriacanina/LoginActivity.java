@@ -37,8 +37,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public static String COD_EMAIL = "EMAIL";
     public static String COD_CONTRA = "CONTRA";
 
-
-
     FirebaseAuth fAuth;
     FirebaseUser fUser;
     FirebaseDatabase fdb;

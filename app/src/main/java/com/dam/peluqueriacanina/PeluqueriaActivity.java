@@ -19,6 +19,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dam.peluqueriacanina.dao.AnimalesDao;
@@ -27,6 +28,7 @@ import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.TusCitas;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -46,6 +48,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     ShapeableImageView imagenAnimal;
     Button btnAniadirMascotaPel;
     CardView cvUbicacionTiempoReal, cvTusCitas, cvChat;
+    TextView tvNombrePel;
     Intent i;
     ArrayList<Animal> listaAnimalesPel;
     TusCitas tusCitas;
@@ -80,7 +83,17 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
-                        adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarTodo());
+                        adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()));
+                        adapter.setListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                listaAnimalesPel = (ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey());
+                                i = new Intent(PeluqueriaActivity.this, DatosAnimalActivity.class);
+                                animalPel = listaAnimalesPel.get(rv.getChildAdapterPosition(v));
+                                i.putExtra(CLAVE_ANIMAL, animalPel.getRuta());
+                                arl.launch(i);
+                            }
+                        });
                         rv.setAdapter(adapter);
                     }
                 }
@@ -119,17 +132,17 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
         rv.setLayoutManager(llm);
         cvChat = findViewById(R.id.cvChat);
+        tvNombrePel = findViewById(R.id.tvNombrePel);
 
+        tvNombrePel.setText(((MiApplication) getApplicationContext()).getNombre());
 
         if (!dao.sacarTodo().isEmpty()) {
-            adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarTodo());
-            if ((dao.sacarTodo()).isEmpty()) {
-                cvUbicacionTiempoReal.setEnabled(false);
-            }
+            adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()));
+            cvUbicacionTiempoReal.setEnabled(true);
             adapter.setListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listaAnimalesPel = (ArrayList<Animal>) dao.sacarTodo();
+                    listaAnimalesPel = (ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey());
                     i = new Intent(PeluqueriaActivity.this, DatosAnimalActivity.class);
                     animalPel = listaAnimalesPel.get(rv.getChildAdapterPosition(v));
                     i.putExtra(CLAVE_ANIMAL, animalPel.getRuta());
@@ -137,6 +150,8 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                 }
             });
 
+        } else {
+            cvUbicacionTiempoReal.setEnabled(false);
         }
 
         rv.setAdapter(adapter);

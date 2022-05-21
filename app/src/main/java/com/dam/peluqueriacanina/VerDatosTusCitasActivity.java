@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.dam.peluqueriacanina.model.Mapa;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -69,7 +70,7 @@ public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMa
         locDestino = new Location("ubicacionDestino");
 
         //Meter la ubicacion de la persona aqui
-        adress = getLocationFromAddress(this,"c. Brasil, 16, Villanueva  de la cañada, Madrid");
+        adress = getLocationFromAddress(this,"");
 
         mapFragment.getMapAsync( this);
 

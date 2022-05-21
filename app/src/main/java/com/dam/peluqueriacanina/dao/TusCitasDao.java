@@ -5,6 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.TusCitas;
 
 import java.util.List;
@@ -13,6 +14,9 @@ import java.util.List;
 public interface TusCitasDao {
     @Query("SELECT * FROM TUSCITAS")
     List<TusCitas> sacarTodo();
+
+    @Query("SELECT * FROM TUSCITAS WHERE `key` = :key")
+    List<TusCitas> sacarCitasKey(String key);
 
     @Query("SELECT * FROM TUSCITAS WHERE ruta = :ruta")
     TusCitas sacarCitaRuta(String ruta);

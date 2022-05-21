@@ -17,6 +17,7 @@ import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.model.BotonTusCitas;
 import com.dam.peluqueriacanina.model.datos.BotonTusCitasLista;
 import com.dam.peluqueriacanina.utils.AnimalPeluAdapter;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MostrarDatosTusCitasAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -86,7 +87,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         btnCancelarCita.setOnClickListener(this);
         vista = new View(this);
 
-        adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarTodo());
+        adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarCitasKey(((MiApplication) getApplicationContext()).getKey()));
         //adapterDetallesCita = new MostrarDatosTusCitasAdapter(boton.getBoton());
         rv.setAdapter(adapter);
 

@@ -68,11 +68,12 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
 
         if (v.equals(btnFinalizar)) {
-            registrar();
-         registrarAuth( user.getCorreo(),user.getContrasenia());
-           /* i = new Intent(this, LoginActivity.class);
-            startActivity(i);
-            */
+           // registrar();
+           // registrarAuth(user.getCorreo(),user.getContrasenia());
+            finish();
+            /*i = new Intent(this, LoginActivity.class);
+            startActivity(i);*/
+
 
         }
 
