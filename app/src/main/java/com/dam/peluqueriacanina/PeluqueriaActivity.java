@@ -135,7 +135,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         tvNombrePel = findViewById(R.id.tvNombrePel);
 
         tvNombrePel.setText(((MiApplication) getApplicationContext()).getNombre());
-
+    //
         if (!dao.sacarTodo().isEmpty()) {
             adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()));
             cvUbicacionTiempoReal.setEnabled(true);
