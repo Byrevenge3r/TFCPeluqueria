@@ -134,6 +134,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ((MiApplication) getApplicationContext()).setKey(snapshot.getKey());
                 for (DataSnapshot datasnap : snapshot.getChildren()){
                     ((MiApplication) getApplicationContext()).setNombre((datasnap.getValue(User.class)).getNombre());
                     ((MiApplication) getApplicationContext()).setApellidos((datasnap.getValue(User.class)).getApellidos());
