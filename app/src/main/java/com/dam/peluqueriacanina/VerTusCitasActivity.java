@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +18,6 @@ import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.model.BotonTusCitas;
 import com.dam.peluqueriacanina.model.datos.BotonTusCitasLista;
 import com.dam.peluqueriacanina.utils.AnimalPeluAdapter;
-import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MostrarDatosTusCitasAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class VerTusCitasActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -87,8 +88,8 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         btnCancelarCita.setOnClickListener(this);
         vista = new View(this);
 
-        adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarCitasKey(((MiApplication) getApplicationContext()).getKey()));
-        //adapterDetallesCita = new MostrarDatosTusCitasAdapter(boton.getBoton());
+        adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarTodo());
+        adapterDetallesCita = new MostrarDatosTusCitasAdapter(boton.getBoton());
         rv.setAdapter(adapter);
 
         if (daoTusCitas.sacarTodo().isEmpty()) {
@@ -114,21 +115,24 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                 Toast.makeText(v.getContext(), "Posicion"+datosCita.getItemId(rv.getChildAdapterPosition(v)),Toast.LENGTH_LONG).show();
             }
         });*/
-
         //TODO: Activar el segundo boton para ir al segundo activity
         adapter.setListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                //setContentView(R.layout.citas_recicler_view_vet);
+                switch (view.getId()) { // getId() -> 10230132012301203
+                    case R.id.llCitasVet: // si el id == 10230132012301203
+                        // TODO - cancelar y deselección
+                        rvVerCita = view.findViewById(R.id.rlContainer).findViewById(R.id.rvVerTusCitasSegundaPantalla);
+                        rvVerCita.setLayoutManager(new LinearLayoutManager(view.findViewById(R.id.llCitasVet).getContext()));
+                        rvVerCita.setAdapter(adapterDetallesCita);
 
-                rvVerCita = findViewById(R.id.rvVerTusCitasSegundaPantalla);
-                btnCancelarCita.setVisibility(View.VISIBLE);
-                rvVerCita.setLayoutManager(llmDetalles);
+                        btnCancelarCita.setVisibility(View.VISIBLE);
 
-                rvVerCita.setAdapter(adapterDetallesCita);
+                        vista = view;
 
-                vista = view;
+                        break;
+                }
             }
         });
 
