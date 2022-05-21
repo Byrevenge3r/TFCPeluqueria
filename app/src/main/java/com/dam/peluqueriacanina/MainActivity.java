@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.TusCitas;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Intent i;
     FirebaseDatabase fdb;
     DatabaseReference dbr;
+    FirebaseAuth fAuth;
+    FirebaseUser fUser;
     DateTimeFormatter dtf;
     LocalDateTime now;
     TusCitasDao daoCitas;
@@ -52,6 +57,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         fdb = FirebaseDatabase.getInstance();
         dbr = fdb.getReference("dia");
+
+        fAuth = FirebaseAuth.getInstance();
+        fUser = fAuth.getCurrentUser();
+
 
         dbCitas = TusCitasDB.getDatabase(this);
         daoCitas = dbCitas.citaDao();
@@ -76,6 +85,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         date1 = new Date();
         date2 = new Date();
         dateModificar = new Date();
+
+
+
+
 
         //Borrar fechas anteriores al dia actual
         dbr.addValueEventListener(new ValueEventListener() {
@@ -138,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     break;
                             }
 
+
                             for (int i = 1;i < now.getDayOfMonth();i++) {
                                 Query q = dbr.child("coche/reservas/" + mes).orderByChild("fecha").equalTo((now.getDayOfMonth()-i) + "/" + now.getMonthValue() + "/" + now.getYear());
                                 q.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -169,10 +183,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
+
+
         });
 
+
+
+    }
+    @Override
+    protected void onStart(){
+        super.onStart();
+        FirebaseUser mFirebaseUser=fAuth.getCurrentUser();
+        if(mFirebaseUser!=null){
+            // there is some user logged in
+
+        }else{
+            // no one logged in
+            startActivity(new Intent(this,LoginActivity.class));
+            finish();
+        }
     }
 
+public void logout(){
+        fAuth.signOut();
+}
     private void borrarFechasDao() throws ParseException {
         listaCitas = (ArrayList<TusCitas>) daoCitas.sacarTodo();
         for (int i = 0; i < listaCitas.size(); i++) {
@@ -182,6 +217,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
 
     @Override
     public void onClick(View v) {
@@ -198,6 +234,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Noticias", Toast.LENGTH_SHORT).show();
         } else if (v.equals(cvOpciones)) {
             Toast.makeText(this, "Opciones", Toast.LENGTH_SHORT).show();
+        }else if (v.equals(cvCerrarSesion)) {
+          logout();
+            i = new Intent(this, LoginActivity.class);
+            startActivity(i);
         } else {
             Toast.makeText(this, "Cerrar sesion", Toast.LENGTH_SHORT).show();
         }
@@ -205,3 +245,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 }
+
+
