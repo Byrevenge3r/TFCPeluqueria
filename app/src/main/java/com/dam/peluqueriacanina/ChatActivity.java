@@ -64,7 +64,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
        mensajes = new ArrayList<>();
        adapter = new ChatAdapter(mensajes);
 
-       dbr.child("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+       dbr.child("usuarios/"+"-N2YH5TcapHAAXHNITH9"+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+
            @Override
            public void onComplete(@NonNull Task<DataSnapshot> task) {
                if (recoger) {
@@ -75,10 +76,41 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                    }
 
                    rv.setAdapter(adapter);
-
+                   rv.scrollToPosition(adapter.getItemCount()-1);
                }
            }
        });
+       dbr.child("usuarios/"+ ((MiApplication)getApplicationContext()).getKey()+"/chat").addChildEventListener(new ChildEventListener() {
+           @Override
+           public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+               mensajes.add(snapshot.getValue(Chat.class));
+               rv.setAdapter(adapter);
+               rv.scrollToPosition(adapter.getItemCount()-1);
+           }
+
+           @Override
+           public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+           }
+
+           @Override
+           public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+           }
+
+           @Override
+           public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+           }
+
+           @Override
+           public void onCancelled(@NonNull DatabaseError error) {
+
+           }
+       });
+
+
+
        dbr.child("coche/tel").addValueEventListener(new ValueEventListener() {
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -93,11 +125,11 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
            }
        });
 
-       if (mensajes.isEmpty()) {
+      /* if (mensajes.isEmpty()) {
            SmsManager sms = SmsManager.getDefault();
            sms.sendTextMessage("+34" + numeroTelConduc, null,  ((MiApplication) getApplicationContext()).getKey(), null, null);
        }
-
+*/
        rv.setAdapter(adapter);
        if (!mensajes.isEmpty()) {
            rv.scrollToPosition(adapter.getItemCount()-1);
@@ -111,14 +143,14 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
        if (view.equals(ibEnviar)) {
            String mensaje = etMensajeIntroducido.getText().toString().trim();
            if (!etMensajeIntroducido.getText().toString().isEmpty()) {
-              adapter.aniadirMensaje(new Chat(mensaje,"U"));
+               //   adapter.aniadirMensaje(new Chat(mensaje,"U"));
 
                String key = dbr.push().getKey();
 
                chat.put("mensaje",mensaje);
                chat.put("codigoPer","U");
                //Cambiar todo por la ruta correcta
-               dbr.child("usuarios").child("-N1optheLLOVSoaaBkiS").child("chat").child(key).setValue(chat);
+               dbr.child("usuarios").child( ((MiApplication)getApplicationContext()).getKey()).child("chat").child(key).setValue(chat);
 
                recoger = false;
                rv.setAdapter(adapter);
