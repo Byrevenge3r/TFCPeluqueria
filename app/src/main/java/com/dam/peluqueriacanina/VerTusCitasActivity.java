@@ -123,6 +123,13 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                 switch (view.getId()) { // getId() -> 10230132012301203
                     case R.id.llCitasVet: // si el id == 10230132012301203
                         // TODO - cancelar y deselección
+                        // TODO - cancelar y deselección
+                        if(vista != null && vista.findViewById(R.id.rlContainer) != null) {
+                            rvVerCita = vista.findViewById(R.id.rlContainer).findViewById(R.id.rvVerTusCitasSegundaPantalla);
+                            rvVerCita.removeAllViews();
+                            rvVerCita.removeAllViewsInLayout();
+                        }
+
                         rvVerCita = view.findViewById(R.id.rlContainer).findViewById(R.id.rvVerTusCitasSegundaPantalla);
                         rvVerCita.setLayoutManager(new LinearLayoutManager(view.findViewById(R.id.llCitasVet).getContext()));
                         rvVerCita.setAdapter(adapterDetallesCita);
