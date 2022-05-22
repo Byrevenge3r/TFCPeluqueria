@@ -84,16 +84,6 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
                         adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()));
-                        adapter.setListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                listaAnimalesPel = (ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey());
-                                i = new Intent(PeluqueriaActivity.this, DatosAnimalActivity.class);
-                                animalPel = listaAnimalesPel.get(rv.getChildAdapterPosition(v));
-                                i.putExtra(CLAVE_ANIMAL, animalPel.getRuta());
-                                arl.launch(i);
-                            }
-                        });
                         rv.setAdapter(adapter);
                     }
                 }

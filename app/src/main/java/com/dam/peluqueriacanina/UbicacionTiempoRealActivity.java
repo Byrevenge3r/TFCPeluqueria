@@ -14,6 +14,7 @@ import com.dam.peluqueriacanina.comunicacion.Comunicacion;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.fragmentos.Citas;
 import com.dam.peluqueriacanina.model.Mapa;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -48,6 +49,7 @@ public class UbicacionTiempoRealActivity
     Citas citas;
     TusCitas tusCitas;
     Intent i;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,8 @@ public class UbicacionTiempoRealActivity
         citas = new Citas();
 
         tusCitas = new TusCitas();
+
+        bundle = new Bundle();
     }
 
     private void coorMapa() {
@@ -123,6 +127,8 @@ public class UbicacionTiempoRealActivity
     @Override
     public boolean onMarkerClick(@NonNull Marker marker) {
         if (marker.equals(markerMap)) {
+            bundle.putString("keyB",((MiApplication) getApplicationContext()).getKey());
+            getSupportFragmentManager().setFragmentResult("key", bundle);
             citas.show(getSupportFragmentManager(),"Citas");
         }
         return false;

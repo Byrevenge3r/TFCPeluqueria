@@ -9,7 +9,6 @@ public class User {
     private String telefono;
     private String direccion;
 
-
     public User() {
 
     }
@@ -19,7 +18,7 @@ public class User {
         return direccion;
     }
 
-    public User(String nombre, String apellidos, String usuario, String correo, String contrasenia, String telefono, String direccion) {
+    public User(String nombre, String apellidos, String usuario, String correo, String contrasenia, String telefono, String direccion, String key) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.usuario = usuario;
@@ -28,6 +27,8 @@ public class User {
         this.telefono = telefono;
         this.direccion = direccion;
     }
+
+
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;

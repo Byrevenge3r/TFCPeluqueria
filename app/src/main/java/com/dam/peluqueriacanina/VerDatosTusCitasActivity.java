@@ -82,7 +82,6 @@ public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMa
         //Meter la ubicacion de la persona aqui
         adress = getLocationFromAddress(this,((MiApplication) getApplicationContext()).getDireccion());
 
-
         mapFragment.getMapAsync( this);
 
     }
@@ -127,7 +126,6 @@ public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMa
                         tiempoD += hora;
 
                     }
-
 
                     if (tiempoD > 60) {
                         tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_horas,tiempoD/60));

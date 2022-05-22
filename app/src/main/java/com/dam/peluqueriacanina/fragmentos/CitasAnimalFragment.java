@@ -69,7 +69,7 @@ public class CitasAnimalFragment extends DialogFragment {
     String fechaActual = "";
     String numeroTelConduc = "";
     Bundle bundleCita;
-
+    String keyB;
     Comunicacion listener;
 
     public CitasAnimalFragment() {
@@ -78,15 +78,7 @@ public class CitasAnimalFragment extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getParentFragmentManager().setFragmentResultListener("Key", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                citaFecha = bundle.getString("citaFecha");
-                citaHora = bundle.getString("citaHora");
-                mes = bundle.getString("mes");
-                mesN = bundle.getString("mesN");
-            }
-        });
+
 
     }
 
@@ -105,6 +97,40 @@ public class CitasAnimalFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View v = getActivity().getLayoutInflater().inflate(R.layout.fragment_citas_animal, null);
         builder.setView(v);
+
+
+        getParentFragmentManager().setFragmentResultListener("Key", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                citaFecha = bundle.getString("citaFecha");
+                citaHora = bundle.getString("citaHora");
+                mes = bundle.getString("mes");
+                mesN = bundle.getString("mesN");
+                keyB = bundle.getString("KeyB");
+
+                adapter = new CitasAnimalesFotoAdapter((ArrayList<Animal>) daoAnimal.sacarAnimalKey(keyB));
+
+                adapter.setListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        animal = (daoAnimal.sacarAnimalKey(keyB)).get(rv.getChildAdapterPosition(v));
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            now = LocalDateTime.now();
+                            fechaActual = now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear();
+                            dbr = fdb.getReference("coche/reservas/"+mesN);
+
+                            SmsManager sms = SmsManager.getDefault(); //((MiApplication) getContext()).getTelefono()
+                            //TODO:Poner que recoja el telefono del usuario cuando inicie sesion            JUSTO AQUI
+                            sms.sendTextMessage("+34" + numeroTelConduc, null,  "671393685"+ "-" + citaFecha + "-" + citaHora + "-" + keyB, null, null);
+                            listener.info(new TusCitas(animal.getRuta(),keyB,animal.getNombre(),citaFecha,citaHora));
+
+                        }
+                        dismiss();
+                    }
+                });
+                rv.setAdapter(adapter);
+            }
+        });
 
         dbAnimal = AnimalesDB.getDatabase(getContext());
         daoAnimal = dbAnimal.animalDao();
@@ -142,28 +168,7 @@ public class CitasAnimalFragment extends DialogFragment {
         });
         dbr = fdb.getReference();
 
-        adapter.setListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                adapter = new CitasAnimalesFotoAdapter((ArrayList<Animal>) daoAnimal.sacarAnimalKey(((MiApplication) getContext()).getKey()));
-                animal = (daoAnimal.sacarAnimalKey(((MiApplication) getContext()).getKey())).get(rv.getChildAdapterPosition(v));
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    now = LocalDateTime.now();
-                    fechaActual = now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear();
-                    dbr = fdb.getReference("coche/reservas/"+mesN);
-                    key = dbr.push().getKey();
-
-                    SmsManager sms = SmsManager.getDefault(); //((MiApplication) getContext()).getTelefono()
-                    //TODO:Poner que recoja el telefono del usuario cuando inicie sesion            JUSTO AQUI
-                    sms.sendTextMessage("+34" + numeroTelConduc, null,  "671393685"+ "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
-                    listener.info(new TusCitas(animal.getRuta(),key,animal.getNombre(),citaFecha,citaHora));
-
-                }
-                dismiss();
-            }
-        });
-        rv.setAdapter(adapter);
         return builder.create();
     }
 

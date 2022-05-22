@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -66,9 +67,21 @@ public class Citas extends DialogFragment {
     Date horaActualD;
     Date horaBbdd;
     SimpleDateFormat formatterH;
+    String key;
     boolean continuar = true;
     int i = 0;
     public Citas() {
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getParentFragmentManager().setFragmentResultListener("key", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                key = bundle.getString("keyB");
+            }
+        });
     }
 
     @Override
@@ -273,6 +286,7 @@ public class Citas extends DialogFragment {
         bundle.putString("citaHora", citaHora);
         bundle.putString("mesN", mes);
         bundle.putString("mes", String.valueOf(mesD + 1));
+        bundle.putString("KeyB",key);
 
         getParentFragmentManager().setFragmentResult("Key", bundle);
 

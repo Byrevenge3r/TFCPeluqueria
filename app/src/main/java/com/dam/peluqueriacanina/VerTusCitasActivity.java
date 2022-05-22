@@ -117,11 +117,12 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                         rvVerCita = view.findViewById(R.id.rlContainer).findViewById(R.id.rvVerTusCitasSegundaPantalla);
                         rvVerCita.setLayoutManager(new LinearLayoutManager(view.findViewById(R.id.llCitasVet).getContext()));
                         rvVerCita.setAdapter(adapterDetallesCita);
-                        tusCitas = daoTusCitas.sacarCitasKey(((MiApplication)getApplicationContext()).getKey()).get(rv.getChildAdapterPosition(vista));
+
 
                         adapterDetallesCita.setListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                tusCitas = daoTusCitas.sacarCitasKey(((MiApplication)getApplicationContext()).getKey()).get(rv.getChildAdapterPosition(vista));
                                 i = new Intent(VerTusCitasActivity.this,VerDatosTusCitasActivity.class);
                                 i.putExtra("hora",tusCitas.getHora());
                                 startActivity(i);

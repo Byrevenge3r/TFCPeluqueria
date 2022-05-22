@@ -123,7 +123,8 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
             if (nombre.isEmpty() || raza.isEmpty()) {
                 Toast.makeText(this, R.string.error_registrar_animal_vacio, Toast.LENGTH_SHORT).show();
             } else {
-                dao.insert(new Animal(((MiApplication) getApplicationContext()).getKey(),ruta, nombre, raza));
+                String key = ((MiApplication) getApplicationContext()).getKey();
+                dao.insert(new Animal(key,ruta, nombre, raza));
                 setResult(RESULT_OK);
                 finish();
             }
