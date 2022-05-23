@@ -93,5 +93,6 @@
     <string name="tv_accesorios_tienda">Accesorios</string>
     <string name="tv_juguetes_tienda">Juguetes</string>
     <string name="conductor_a_punto_llegar">El conductor debe de estar a punto de llegar</string>
+    <string name="fecha_distinta_hoy">Solo se puede mirar las fechas de las citas de hoy</string>
 
 </resources>

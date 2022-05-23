@@ -31,6 +31,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONArray;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -89,7 +91,7 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
         mapFragment.getMapAsync(this);
 
     }
-////
+
     private void coorMapa() {
         dbr.addChildEventListener(new ChildEventListener() {
             @Override
@@ -115,7 +117,8 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
                     locOrigen.setLatitude(latitud);
                     locOrigen.setLongitude(longitud);
 
-                    adress = getLocationFromAddress(VerDatosTusCitasActivity.this, ((MiApplication) getApplicationContext()).getDireccion());
+                    adress = getLocationFromAddress(VerDatosTusCitasActivity.this,((MiApplication) getApplicationContext()).getDireccion());
+
                     locDestino.setLatitude(adress.latitude);
                     locDestino.setLongitude(adress.longitude);
 
@@ -126,12 +129,12 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                         now = LocalDateTime.now();
                         //Esta raro esto mirar
-                        horaR = Integer.parseInt("18");
+                        horaR = Integer.parseInt(horaA[0]);
                         horaB = horaR * 60;
-
-                        tiempoD += horaB;
-
                     }
+
+                    tiempoD += horaB;
+
                     tvMostrarTiempo.setVisibility(View.VISIBLE);
                     tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_horas, formatearMinutosAHoraMinuto((int) tiempoD)));
 
@@ -183,6 +186,8 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
             location.getLongitude();
 
             p1 = new LatLng(location.getLatitude(), location.getLongitude());
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }

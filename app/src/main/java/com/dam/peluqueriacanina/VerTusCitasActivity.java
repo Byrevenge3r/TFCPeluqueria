@@ -1,40 +1,33 @@
 package com.dam.peluqueriacanina;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.TusCitas;
-import com.dam.peluqueriacanina.model.BotonTusCitas;
 import com.dam.peluqueriacanina.model.datos.BotonTusCitasLista;
 import com.dam.peluqueriacanina.utils.AnimalPeluAdapter;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MostrarDatosTusCitasAdapter;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 public class VerTusCitasActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -55,12 +48,13 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
     SimpleDateFormat formatter;
 
     Date fecha;
+    Date fechaHoy;
     View vista;
     Calendar cal;
     int mesActual = 0;
     BotonTusCitasLista boton;
     Intent i;
-
+    LocalDateTime now;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +84,6 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         formatter = new SimpleDateFormat("dd/MM/yyyy");
         fecha = new Date();
 
-
         btnCancelarCita.setOnClickListener(this);
         vista = new View(this);
 
@@ -107,11 +100,10 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onClick(View view) {
 
-                switch (view.getId()) { // getId() -> 10230132012301203
-                    case R.id.llCitasVet: // si el id == 10230132012301203
-                        // TODO - cancelar y deselección
+                switch (view.getId()) {
+                    case R.id.llCitasVet:
 
-                        if(vista != null && vista.findViewById(R.id.rlContainer) != null) {
+                        if (vista != null && vista.findViewById(R.id.rlContainer) != null) {
                             rvVerCita = vista.findViewById(R.id.rlContainer).findViewById(R.id.rvVerTusCitasSegundaPantalla);
                             rvVerCita.removeAllViews();
                             rvVerCita.removeAllViewsInLayout();
@@ -121,15 +113,29 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                         rvVerCita.setLayoutManager(new LinearLayoutManager(view.findViewById(R.id.llCitasVet).getContext()));
                         rvVerCita.setAdapter(adapterDetallesCita);
 
-
                         adapterDetallesCita.setListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                tusCitas = daoTusCitas.sacarCitasKey(((MiApplication)getApplicationContext()).getKey()).get(rv.getChildAdapterPosition(vista));
-                                i = new Intent(VerTusCitasActivity.this,VerDatosTusCitasActivity.class);
-                                i.putExtra("hora",tusCitas.getHora());
+                                tusCitas = daoTusCitas.sacarCitasKey(((MiApplication) getApplicationContext()).getKey()).get(rv.getChildAdapterPosition(vista));
+                                try {
+                                    fecha = formatter.parse(tusCitas.getFecha());
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                        now = LocalDateTime.now();
+                                        fechaHoy = formatter.parse(now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear());
+                                    }
+                                   // if (fecha.equals(fechaHoy)) {
+                                        i = new Intent(VerTusCitasActivity.this, VerDatosTusCitasActivity.class);
+                                        i.putExtra("hora", tusCitas.getHora());
 
-                                startActivity(i);
+                                        startActivity(i);
+                                   // } else {
+                                   //     Toast.makeText(VerTusCitasActivity.this, R.string.fecha_distinta_hoy, Toast.LENGTH_SHORT).show();
+                                    //}
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
+
                             }
                         });
 
@@ -141,13 +147,11 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                 }
             }
         });
-
-
     }
 
     @Override
     public void onClick(View view) {
-        tusCitas = daoTusCitas.sacarCitasKey(((MiApplication)getApplicationContext()).getKey()).get(rv.getChildAdapterPosition(vista));
+        tusCitas = daoTusCitas.sacarCitasKey(((MiApplication) getApplicationContext()).getKey()).get(rv.getChildAdapterPosition(vista));
         try {
             fecha = formatter.parse(tusCitas.getFecha());
         } catch (ParseException e) {
@@ -156,7 +160,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
 
         cal = Calendar.getInstance();
         cal.setTime(fecha);
-        mesActual = cal.get(Calendar.MONTH)+1;
+        mesActual = cal.get(Calendar.MONTH) + 1;
 
         switch (mesActual) {
             case 1:
@@ -197,7 +201,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                 break;
         }
 
-        dbr = fdb.getReference("coche/reservas/"+mesN);
+        dbr = fdb.getReference("coche/reservas/" + mesN);
 
         dbr.child(tusCitas.getKey()).removeValue();
         daoTusCitas.delete(tusCitas);
@@ -208,7 +212,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
             tvNoHayCitasVTC.setVisibility(View.VISIBLE);
         }
 
-        dbr = fdb.getReference("coche/reservas/"+mesN);
+        dbr = fdb.getReference("coche/reservas/" + mesN);
         btnCancelarCita.setVisibility(View.INVISIBLE);
         rv.setAdapter(adapter);
         adapter.setListener(new View.OnClickListener() {
