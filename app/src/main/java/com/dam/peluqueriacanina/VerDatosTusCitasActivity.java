@@ -89,7 +89,7 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
         mapFragment.getMapAsync(this);
 
     }
-
+//
     private void coorMapa() {
         dbr.addChildEventListener(new ChildEventListener() {
             @Override
