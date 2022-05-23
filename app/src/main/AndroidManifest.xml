@@ -24,16 +24,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PeluqueriaCanina">
         <activity
+            android:name=".MapaVeterinariasActivity"
+            android:exported="false" />
+        <activity
             android:name=".VerPerfilActivity"
             android:exported="false" />
         <activity
             android:name=".ChatActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".VerDatosTusCitasActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".NoticiasActivity"
             android:exported="false" />
@@ -48,9 +49,7 @@
             android:exported="false" />
         <activity
             android:name=".VerTusCitasActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"></activity>
 
         <receiver
             android:name=".SmsListener"
@@ -86,7 +85,7 @@
             android:exported="false" />
         <activity
             android:name=".registro.Registro5"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".registro.Registro3"
             android:exported="false" />
@@ -104,13 +103,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"

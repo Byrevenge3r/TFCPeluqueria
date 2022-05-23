@@ -1,0 +1,2372 @@
+[
+  {
+    "clínica": "AAA SUPERVET Clínica Veterinaria Ciudad de los Periodistas",
+    "dirección": "C/ Fermin Caballero 56",
+    "municipio": "Madrid",
+    "cp": "28034"
+  },
+  {
+    "clínica": "AARON   Clínica Veterinaria",
+    "dirección": "Mauricio Legendre  4",
+    "municipio": "Madrid",
+    "cp": "28046"
+  },
+  {
+    "clínica": "ABRANTES  Centro Veterinario",
+    "dirección": "Witerico  17",
+    "municipio": "Madrid",
+    "cp": "28025"
+  },
+  {
+    "clínica": "ALAZORES  Clínica Veterinaria",
+    "dirección": "PUERTO DE ALAZORES  30",
+    "municipio": "Madrid",
+    "cp": "28031"
+  },
+  {
+    "clínica": "ALBA PASTOR HERNANDEZ",
+    "dirección": "calle de la bañeza 24 piso 2 puerta 1",
+    "municipio": "Madrid",
+    "cp": "28029"
+  },
+  {
+    "clínica": "ALEMANA  Clínica Veterinaria",
+    "dirección": "Illescas  42",
+    "municipio": "Madrid",
+    "cp": "28024"
+  },
+  {
+    "clínica": "ALI-KAN  Clínica Veterinaria",
+    "dirección": "C/ De La Iglesia  5",
+    "municipio": "Madrid",
+    "cp": "28019"
+  },
+  {
+    "clínica": "ALONSO CANO  Clínica Veterinaria",
+    "dirección": "Alonso Cano  27",
+    "municipio": "Madrid",
+    "cp": "28010"
+  },
+  {
+    "clínica": "",
+    "dirección": "ALUCHE LAS AGUILAS  CENTRO VETERINARIO",
+    "municipio": "Jose de Cadalso  130",
+    "cp": "Madrid"
+  },
+  {
+    "clínica": "ANAGA  Centro Veterinario",
+    "dirección": "Fernando VII  5     ",
+    "municipio": "Madrid",
+    "cp": "28037"
+  },
+  {
+    "clínica": "ANCORA VETERINARIOS  Clínica Veterinaria",
+    "dirección": "General Lacy  22",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "ANIMAL REVOLUTION",
+    "dirección": "C/ Granada 21",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "Animal Solución",
+    "dirección": "Virgen del Lluc  16",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "Animalandia",
+    "dirección": "Calle Ambroz 3",
+    "municipio": "Madrid",
+    "cp": "28032"
+  },
+  {
+    "clínica": "ANIMALARIO DE FISIOLOGIA",
+    "dirección": "Avda. Puerta de Hierro S/N",
+    "municipio": "Madrid",
+    "cp": "28023"
+  },
+  {
+    "clínica": "ANIMALES EXOTICOS 24H",
+    "dirección": "Cartagena  160",
+    "municipio": "Madrid",
+    "cp": "28002"
+  },
+  {
+    "clínica": "ANIMALES EXÓTICOS GWANA VET ",
+    "dirección": "Gutierre de Cetina 19",
+    "municipio": "Madrid",
+    "cp": "28017"
+  },
+  {
+    "clínica": "Animanía",
+    "dirección": "C/ Villaamil  51",
+    "municipio": "Madrid",
+    "cp": "28039"
+  },
+  {
+    "clínica": "APBA EL REFUGIO",
+    "dirección": "C/ Roquetas de Mar 21 ",
+    "municipio": "Madrid",
+    "cp": "28033"
+  },
+  {
+    "clínica": "ARAVACA  Centro Veterinario",
+    "dirección": "Agustín Lara 1",
+    "municipio": "Madrid",
+    "cp": "28023"
+  },
+  {
+    "clínica": "ARCO IRIS  Clínica Veterinaria",
+    "dirección": "C/ Valverde  48",
+    "municipio": "Madrid",
+    "cp": "28004"
+  },
+  {
+    "clínica": "",
+    "dirección": "ARGANZUELA  Clinica Veterinaria",
+    "municipio": "Paseo Melancólicos  31-33",
+    "cp": "Madrid"
+  },
+  {
+    "clínica": "ARGOS  Centro Veterinario",
+    "dirección": "Tribaldos  16",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "ARGÜELLES  Clínica Veterinaria",
+    "dirección": "Fernando El Católico  78",
+    "municipio": "Madrid",
+    "cp": "28015"
+  },
+  {
+    "clínica": "ARROYO DEL FRESNO  Clínica Veterinaria",
+    "dirección": "Mirador de la Reina nº 99",
+    "municipio": "Madrid",
+    "cp": "28035"
+  },
+  {
+    "clínica": "ARTURO SORIA  Clínica Veterinaria",
+    "dirección": "Puerto de Santa María  128",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "ASC CENTRO QUIRÚGICO VETERINARIO      ",
+    "dirección": "C/ Arturo Soria  319                 ",
+    "municipio": "Madrid",
+    "cp": "28033   "
+  },
+  {
+    "clínica": "ASOCIACION ABRIGA",
+    "dirección": "ARGUMOSA  28 LOCAL 1",
+    "municipio": "Madrid",
+    "cp": "28012"
+  },
+  {
+    "clínica": "",
+    "dirección": "AUDITORIO  Centro Veterinario",
+    "municipio": "Pza. Sagrado Corazon de Jesus   2",
+    "cp": "Madrid"
+  },
+  {
+    "clínica": "AVD. DE VALLADOLID  Clínica Veterinaria",
+    "dirección": "avda. valladolid 43",
+    "municipio": "Madrid",
+    "cp": "28008"
+  },
+  {
+    "clínica": "AVENIDA DE EUROPA  Clínica Veterinaria",
+    "dirección": "Avda. de Europa  25",
+    "municipio": "Madrid",
+    "cp": "28023"
+  },
+  {
+    "clínica": "AYUNTAMIENTO DE MADRID DG POLICIA MUNICIPAL SUBD.GRAL ECONOMICO ADMINISTRATIVA",
+    "dirección": "Av. Principal  6",
+    "municipio": "Madrid",
+    "cp": "28011"
+  },
+  {
+    "clínica": "BARAJAS  Clínica Veterinaria",
+    "dirección": "C/ Jupiter  14",
+    "municipio": "Madrid",
+    "cp": "28042"
+  },
+  {
+    "clínica": "BERROCAL  Clínica Veterinaria",
+    "dirección": "c/ Berrocal  58 local 1",
+    "municipio": "Madrid",
+    "cp": "28021"
+  },
+  {
+    "clínica": "BICHICOS BARAJAS  Clínica Veterinaria",
+    "dirección": "C/Alagón  8",
+    "municipio": "Madrid",
+    "cp": "28042"
+  },
+  {
+    "clínica": "BLANCO INOCENCIO  LAURA",
+    "dirección": "León Felipe  12 - 11º - 3",
+    "municipio": "Madrid",
+    "cp": "28038"
+  },
+  {
+    "clínica": "BLANCO Y NEGRO  Clínica Veterinaria",
+    "dirección": "PLAZA SAN AMARO  5 LOCAL 4",
+    "municipio": "Madrid",
+    "cp": "28020"
+  },
+  {
+    "clínica": "BLANCO  Centro Veterinario",
+    "dirección": "C/ Regalada  7",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "BULEVAR 2  Clínica Veterinaria",
+    "dirección": "CALLE EMILIO FERRARI 133 LOCAL",
+    "municipio": "Madrid",
+    "cp": "28017"
+  },
+  {
+    "clínica": "Bymascota Tetuan",
+    "dirección": "orense 30",
+    "municipio": "Madrid",
+    "cp": "28020"
+  },
+  {
+    "clínica": "CANCHO GARCIA  JAVIER",
+    "dirección": "CALLE LONGARES 34 3ºB  ",
+    "municipio": "Madrid",
+    "cp": "28022"
+  },
+  {
+    "clínica": "CANILLEJAS  Centro Veterinario",
+    "dirección": "C/ Discóbolo  64",
+    "municipio": "Madrid",
+    "cp": "28022"
+  },
+  {
+    "clínica": "CANODROMO  Clínica Veterinaria",
+    "dirección": "Avda. Arcentales  14",
+    "municipio": "Madrid",
+    "cp": "28022"
+  },
+  {
+    "clínica": "CARABANCHEL ALTO  Centro Veterinario",
+    "dirección": "Salvador Allende  24",
+    "municipio": "Madrid",
+    "cp": "28054"
+  },
+  {
+    "clínica": "CARLANCA  Clínica Veterinaria",
+    "dirección": "Alburquerque 19",
+    "municipio": "Madrid",
+    "cp": "28010"
+  },
+  {
+    "clínica": "Carmen Puebla Hermida",
+    "dirección": "calle Lopez de Hoyos 7",
+    "municipio": "Madrid",
+    "cp": "28006"
+  },
+  {
+    "clínica": "CASA DE CAMPO  Clínica Veterinaria",
+    "dirección": "Ctra. de Boadilla del Monte  34",
+    "municipio": "Madrid",
+    "cp": "28024"
+  },
+  {
+    "clínica": "caservet",
+    "dirección": "archiduque alberto 9",
+    "municipio": "Madrid",
+    "cp": "28050"
+  },
+  {
+    "clínica": "Caservet Las tablas",
+    "dirección": "Calle Valcarlos 35",
+    "municipio": "Madrid",
+    "cp": "28050"
+  },
+  {
+    "clínica": "CASTELLANA  CENTRO VETERINARIO",
+    "dirección": "García de Paredes  86 bajo",
+    "municipio": "Madrid",
+    "cp": "28010"
+  },
+  {
+    "clínica": "Centro de Protección de animales Parla ",
+    "dirección": "Calle/Bruselas  4",
+    "municipio": "Madrid",
+    "cp": "28981"
+  },
+  {
+    "clínica": "Centro de Transfusión Veterinario",
+    "dirección": "Carretera de Canillas 24",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "CENTRO MEDICO VETERINARIO DELICIAS SL",
+    "dirección": "CALLE DELICIAS 35",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "CENTRO PROTECCION ANIMAL DE MADRID SALUD",
+    "dirección": "Ctra. Barrio de la Fortuna  33",
+    "municipio": "Madrid",
+    "cp": "28054"
+  },
+  {
+    "clínica": "CENTRO QUIRÚRGICO  VETERINARIO",
+    "dirección": "CALLE EL ALGABEÑO 57",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "CENTRO VET SLP",
+    "dirección": "avd Alberto Alcocer 45",
+    "municipio": "Madrid",
+    "cp": "28016"
+  },
+  {
+    "clínica": "CENTRO VETERINARIO ALGODON SLPU",
+    "dirección": "C/ Mayolicas  2",
+    "municipio": "Madrid",
+    "cp": "28037"
+  },
+  {
+    "clínica": "CENTRO VETERINARIO AMANIEL",
+    "dirección": "Amaniel  18",
+    "municipio": "Madrid",
+    "cp": "28015"
+  },
+  {
+    "clínica": "Centro Veterinario Arakela",
+    "dirección": "Calle Golondrina  31",
+    "municipio": "Madrid",
+    "cp": "28023"
+  },
+  {
+    "clínica": "CENTRO VETERINARIO CAMALEO",
+    "dirección": "C/ Oñate  7",
+    "municipio": "Madrid",
+    "cp": "28020"
+  },
+  {
+    "clínica": "CENTRO VETERINARIO CERES",
+    "dirección": "Calle Alerce  8",
+    "municipio": "Madrid",
+    "cp": "28041"
+  },
+  {
+    "clínica": "Centro Veterinario Ciudad Lineal",
+    "dirección": "Torrelaguna  61",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "Centro Veterinario Doctor Castelo",
+    "dirección": "Calle Doctor Castelo 16",
+    "municipio": "Madrid",
+    "cp": "28009"
+  },
+  {
+    "clínica": "Centro Veterinario Eraso",
+    "dirección": "C/ Eraso   57",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "CENTRO VETERINARIO ESPRONCEDA",
+    "dirección": "ESPRONCEDA  14",
+    "municipio": "Madrid",
+    "cp": "28003"
+  },
+  {
+    "clínica": "Centro Veterinario Huellas SLP",
+    "dirección": "C/ Vía  7",
+    "municipio": "Madrid",
+    "cp": "28019"
+  },
+  {
+    "clínica": "Centro Veterinario José del Hierro",
+    "dirección": "Calle José del Hierro 41",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "CENTRO VETERINARIO LOS SAUCES",
+    "dirección": "CALLE SANTA ENGRACIA 63",
+    "municipio": "Madrid",
+    "cp": "28010"
+  },
+  {
+    "clínica": "CENTRO VETERINARIO MACAO",
+    "dirección": "CALLE QUERO 105",
+    "municipio": "Madrid",
+    "cp": "28024"
+  },
+  {
+    "clínica": "CENTRO VETERINARIO OPERA SLP",
+    "dirección": "Trva de los Señores de Luzón  2 planta baja local1",
+    "municipio": "Madrid",
+    "cp": "28013"
+  },
+  {
+    "clínica": "Centro Veterinario Pacífico",
+    "dirección": "Calle Granada 34",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "CENTRO VETERINARIO PACIFICO SC",
+    "dirección": "Calle Granada  34 - local",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "CENTRO VETERINARIO PALOMERAS",
+    "dirección": "Santa Cruz de Retamar  18 local",
+    "municipio": "Madrid",
+    "cp": "28018"
+  },
+  {
+    "clínica": "Centro Veterinario Peñascales",
+    "dirección": "Calle Peñascales 7",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "Centro Veterinario RICAN",
+    "dirección": "Santa Rita  2",
+    "municipio": "Madrid",
+    "cp": "28002"
+  },
+  {
+    "clínica": "Centro Veterinario San Julio",
+    "dirección": "Calle San Julio 9",
+    "municipio": "Madrid",
+    "cp": "28002"
+  },
+  {
+    "clínica": "Centro Veterinario Valle Suchil",
+    "dirección": "Plaza del Conde del Valle de Súchil  20",
+    "municipio": "Madrid",
+    "cp": "28015"
+  },
+  {
+    "clínica": "Centro Veterinario Yubarta",
+    "dirección": "Bravo Murillo  84",
+    "municipio": "Madrid",
+    "cp": "28003"
+  },
+  {
+    "clínica": "CENTRO VETERINATIO FINAT",
+    "dirección": "RAFAEL FINAT 45",
+    "municipio": "Madrid",
+    "cp": "28044"
+  },
+  {
+    "clínica": "CESVET",
+    "dirección": "CALLE TENIENTE MUÑOZ DIAZ 19",
+    "municipio": "Madrid",
+    "cp": "28018"
+  },
+  {
+    "clínica": "CHAMBERI  Centro Veterinario",
+    "dirección": "Gral. Álvarez de Castro  24",
+    "municipio": "Madrid",
+    "cp": "28010"
+  },
+  {
+    "clínica": "Chelsea  zona mascotas ",
+    "dirección": "C/valderribas 13",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "CHIHUAHUA-JAVERVET SL  Clínica Veterinaria",
+    "dirección": "C/ Barón del Castillo de Chirel  5",
+    "municipio": "Madrid",
+    "cp": "28039"
+  },
+  {
+    "clínica": "CHUECA VET",
+    "dirección": "Calle San Bartolomé 15",
+    "municipio": "Madrid",
+    "cp": "28004"
+  },
+  {
+    "clínica": "CICAM MAJADAHONDA",
+    "dirección": "AVDA MANOTERAS 46 BIS",
+    "municipio": "Madrid",
+    "cp": "28050"
+  },
+  {
+    "clínica": "",
+    "dirección": "CIUDAD DE LOS ANGELES  Centro Veterinario",
+    "municipio": "C/ Pan y Toros  21 local",
+    "cp": "Madrid"
+  },
+  {
+    "clínica": "CLINICA ARGOS",
+    "dirección": "Alfredo Aleix  54",
+    "municipio": "Madrid",
+    "cp": "28044"
+  },
+  {
+    "clínica": "CLINICA CONGOSTO",
+    "dirección": "Sierra del Sabiñar  1",
+    "municipio": "Madrid",
+    "cp": "28031"
+  },
+  {
+    "clínica": "clinica mediterraneo",
+    "dirección": "castello 52",
+    "municipio": "Madrid",
+    "cp": "28001"
+  },
+  {
+    "clínica": "CLINICA SAN GUMERSINDO",
+    "dirección": "C/ San Gumersindo  12",
+    "municipio": "Madrid",
+    "cp": "28017"
+  },
+  {
+    "clínica": "CLINICA SERENA",
+    "dirección": "Cazorla  11 (Serena  21 posterior)",
+    "municipio": "Madrid",
+    "cp": "28053"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA",
+    "dirección": "C/ SAN TELESFORO  17",
+    "municipio": "Madrid",
+    "cp": "28014"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA ALCORISA",
+    "dirección": "C/ Alcorisa  83",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "CLÍNICA VETERINARIA ALTAMIRA",
+    "dirección": "Cuevas de Altamira  14",
+    "municipio": "Madrid",
+    "cp": "28054"
+  },
+  {
+    "clínica": "Clínica Veterinaria Animansión",
+    "dirección": "Calle Molina 8",
+    "municipio": "Madrid",
+    "cp": "28029"
+  },
+  {
+    "clínica": "CLÍNICA VETERINARIA ANTÓN MARTÍN",
+    "dirección": "CALLE DUQUE DE FERNAN NUÑEZ  4",
+    "municipio": "Madrid",
+    "cp": "28012"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA ASCAO",
+    "dirección": "C/EZEQUIEL SOLANA 82. ",
+    "municipio": "Madrid",
+    "cp": "28017"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA AYALA",
+    "dirección": "Ayala  79",
+    "municipio": "Madrid",
+    "cp": "28006"
+  },
+  {
+    "clínica": "CLÍNICA VETERINARIA BICHOS",
+    "dirección": "Fermín Caballero  23",
+    "municipio": "Madrid",
+    "cp": "28034"
+  },
+  {
+    "clínica": "Clínica veterinaria BONN",
+    "dirección": "Avenida de Bonn  12",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA CALIDAD SIN FRONTERA",
+    "dirección": "ARROYO FONTARRON 49 LOCAL POSTERIOR",
+    "municipio": "Madrid",
+    "cp": "28030"
+  },
+  {
+    "clínica": "Clinica veterinaria can contento",
+    "dirección": "C/san carlos 6",
+    "municipio": "Madrid",
+    "cp": "28012"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA CANILLAS ",
+    "dirección": "Carretera de Canillas  116",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "clinica veterinaria chisperos",
+    "dirección": "c/manuel cortina 7",
+    "municipio": "Madrid",
+    "cp": "28010"
+  },
+  {
+    "clínica": "CLÍNICA VETERINARIA CONDE DUQUE ",
+    "dirección": "Conde Duque  46       ",
+    "municipio": "Madrid",
+    "cp": "28015     "
+  },
+  {
+    "clínica": "CLINICA VETERINARIA DCONTRERAS",
+    "dirección": "Puerto de la Bonaigua  58",
+    "municipio": "Madrid",
+    "cp": "28018"
+  },
+  {
+    "clínica": "CLÍNICA VETERINARIA EBOLI",
+    "dirección": "C/ Princesa de Éboli   22",
+    "municipio": "Madrid",
+    "cp": "28050"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA EL BOSQUE",
+    "dirección": "c/ Mesena  102",
+    "municipio": "Madrid",
+    "cp": "28033"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA GINZO DE LIMIA",
+    "dirección": "GINZO DE LIMIA  33",
+    "municipio": "Madrid",
+    "cp": "28029"
+  },
+  {
+    "clínica": "Clínica Veterinaria GUZMÁN EL BUENO",
+    "dirección": "guzman el bueno nº 58",
+    "municipio": "Madrid",
+    "cp": "28015"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA KISSY",
+    "dirección": "Pza. Sta. Cristina  2",
+    "municipio": "Madrid",
+    "cp": "28011"
+  },
+  {
+    "clínica": "Clínica Veterinaria La Almudena",
+    "dirección": "Paseo Virgen del Puerto  9",
+    "municipio": "Madrid",
+    "cp": "28005"
+  },
+  {
+    "clínica": "CLÍNICA VETERINARIA LA CASETA",
+    "dirección": "CALLE ARTURO SORIA 320",
+    "municipio": "Madrid",
+    "cp": "28033"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA LA ESTRELLA",
+    "dirección": "C/ Cruz del Sur  7 ",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "CLÍNICA VETERINARIA MADRIDRÍO",
+    "dirección": "Pº. de la Chopera  3 Sótano B",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA MANTUANO",
+    "dirección": "c/ Mantuano  13",
+    "municipio": "Madrid",
+    "cp": "28002"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA MASCOTITI",
+    "dirección": "CALLE MALDONADO 79",
+    "municipio": "Madrid",
+    "cp": "28006"
+  },
+  {
+    "clínica": "Clínica Veterinaria NUMANCIA ",
+    "dirección": "C/ Puerto Canfranc  7",
+    "municipio": "Madrid",
+    "cp": "28038"
+  },
+  {
+    "clínica": "Clínica Veterinaria NUMANCIA II ",
+    "dirección": "C/ Seco   5",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "Clínica Veterinaria Omega",
+    "dirección": "Calle Huerta del Convento 20  posterior",
+    "municipio": "Madrid",
+    "cp": "28032"
+  },
+  {
+    "clínica": "CLÍNICA VETERINARIA OPORTO",
+    "dirección": "C/ CAMINO VIEJO DE LEGANÉS  56",
+    "municipio": "Madrid",
+    "cp": "28019"
+  },
+  {
+    "clínica": "Clinica Veterinaria Perseo Montecarmelo",
+    "dirección": "Avenida Monasterio de Silos  51  local 3",
+    "municipio": "Madrid",
+    "cp": "28049"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA PETS MADRID",
+    "dirección": "Marqués de Viana  35",
+    "municipio": "Madrid",
+    "cp": "28039"
+  },
+  {
+    "clínica": "Clínica Veterinaria Planetario",
+    "dirección": "C/Bolivar Nº15 (entrada porc/Plomo sn)",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "",
+    "dirección": "Clínica Veterinaria PU CAN",
+    "municipio": "Gasómetro  5",
+    "cp": "Madrid"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA QUINTANA",
+    "dirección": "Rio Ulla 15",
+    "municipio": "Madrid",
+    "cp": "28017"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA RIOS ROSAS",
+    "dirección": "C/ RIOS ROSAS  Nº 12",
+    "municipio": "Madrid",
+    "cp": "28003"
+  },
+  {
+    "clínica": "Clínica veterinaria Robión",
+    "dirección": "Doctor Gomez Ulla  12",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "Clinica Veterinaria San Fermin",
+    "dirección": "C/ Navascues 7 B",
+    "municipio": "Madrid",
+    "cp": "28041"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA SANAVET",
+    "dirección": "Mercedes Arteaga  49 local 10",
+    "municipio": "Madrid",
+    "cp": "28019"
+  },
+  {
+    "clínica": "Clinica veterinaria Suanzes",
+    "dirección": "ALCALA 457  28027  MADRID. (ENTRADA POR CALLE PASTRANA)",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA TETUAN SLP",
+    "dirección": "C/ Doctor Mariani  1",
+    "municipio": "Madrid",
+    "cp": "28039"
+  },
+  {
+    "clínica": "clinica veterinaria vallecas",
+    "dirección": "C/ MARTINEZ DE LA RIVA 38 LOCAL",
+    "municipio": "Madrid",
+    "cp": "28053"
+  },
+  {
+    "clínica": "CLÍNICA VETERINARIA VALMEDA",
+    "dirección": "calle Valencia  20",
+    "municipio": "Madrid",
+    "cp": "28012"
+  },
+  {
+    "clínica": "CLÍNICA VETERINARIA VELAZQUEZ",
+    "dirección": "CALLE VELAZQUEZ 109",
+    "municipio": "Madrid",
+    "cp": "28006"
+  },
+  {
+    "clínica": "Clínica Veterinaria Vera Valdebebas",
+    "dirección": "Cesar Cort Botí  16",
+    "municipio": "Madrid",
+    "cp": "28055"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA VIVERO CASTELLANA",
+    "dirección": "JUAN HURTADO DE MENDOZA",
+    "municipio": "Madrid",
+    "cp": "28036"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA WECAN MOMO",
+    "dirección": "CALLE AQUITANIA 8",
+    "municipio": "Madrid",
+    "cp": "28032"
+  },
+  {
+    "clínica": "Clinica Veterinaria Zafra",
+    "dirección": "Pº Marques de Zafra  34",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "Clínica Veterinaria Zoa Chamartín",
+    "dirección": "Avenida de Burgos 40",
+    "municipio": "Madrid",
+    "cp": "28036"
+  },
+  {
+    "clínica": "CLINICA VETERINARIA ZOA ZURBANO ",
+    "dirección": "Calle Zurbano  83",
+    "municipio": "Madrid",
+    "cp": "28003"
+  },
+  {
+    "clínica": "Clinicanimal Alcalá 330",
+    "dirección": "Calle Alcalá 330",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "Clinicanimal Alegra",
+    "dirección": "c/Salvador de Madariaga local M2B",
+    "municipio": "Madrid",
+    "cp": "28702"
+  },
+  {
+    "clínica": "Clinicanimal Las Rejas Plenilunio",
+    "dirección": "CC Las Rejas. C/ Samaniego  7 - Local 3. ",
+    "municipio": "Madrid",
+    "cp": "28022"
+  },
+  {
+    "clínica": "Clinicanimal Lopez de Hoyos",
+    "dirección": "Calle Lopez de Hoyos 100",
+    "municipio": "Madrid",
+    "cp": "28002"
+  },
+  {
+    "clínica": "Clinicanimal mirasierra ",
+    "dirección": "calle costa brava 36",
+    "municipio": "Madrid",
+    "cp": "28035"
+  },
+  {
+    "clínica": "CLINICAS VETERINARIAS PEÑAGRANDE - ISLAS MARSHALL",
+    "dirección": "C/ Islas Marshall  3",
+    "municipio": "Madrid",
+    "cp": "28035"
+  },
+  {
+    "clínica": "COLORES  Clínica Veterinaria",
+    "dirección": "Paseo de Santa María de la Cabeza  68 A",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "CONDE DE ORGAZ  Centro Veterinario",
+    "dirección": "C/ Moscatelar  2 L",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "CONSUELO SERRES DALMAU",
+    "dirección": "--",
+    "municipio": "Madrid",
+    "cp": "28015"
+  },
+  {
+    "clínica": "CONSULTA DE JAVI",
+    "dirección": "Olmo  24",
+    "municipio": "Madrid",
+    "cp": "28012"
+  },
+  {
+    "clínica": "Consultorio veterinario Praga",
+    "dirección": "Parador del Sol 5 Bajo",
+    "municipio": "Madrid",
+    "cp": "28019"
+  },
+  {
+    "clínica": "Consultorio veterinario  tienda y peluquerí­a de mascotas",
+    "dirección": "Castelló  Nº10",
+    "municipio": "Madrid",
+    "cp": "28001"
+  },
+  {
+    "clínica": "CTRO SANIDAD ANIMAL LOS CACHORROS  S.L.",
+    "dirección": "Aramayona   5 local 4 A",
+    "municipio": "Madrid",
+    "cp": "28022"
+  },
+  {
+    "clínica": "Ctro. Veterinario Tabarca",
+    "dirección": "C/ Isla de Tabarca  nº 40",
+    "municipio": "Madrid",
+    "cp": "28035"
+  },
+  {
+    "clínica": "CV DIEGO DE LEON",
+    "dirección": "Alonso Heredia  nº 11",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "CV EL ENSANCHE DE VALLECAS",
+    "dirección": "Av. El Ensanche de Vallecas  102",
+    "municipio": "Madrid",
+    "cp": "28051"
+  },
+  {
+    "clínica": "cv fuentelarreina",
+    "dirección": "C/ALFONSO RODRIGUEZ CASTELAO SN  LOCAL 37",
+    "municipio": "Madrid",
+    "cp": "28035"
+  },
+  {
+    "clínica": "CV INSTINTO ANIMAL",
+    "dirección": "AUGUSTOBRIGA  9 LOCAL 4 (RES.JARDINES MANZANARES)",
+    "municipio": "Madrid",
+    "cp": "28021"
+  },
+  {
+    "clínica": "CV LUCERO",
+    "dirección": "C/ Concejal Francisco José Jiménez Martín 164  local 4",
+    "municipio": "Madrid",
+    "cp": "28047"
+  },
+  {
+    "clínica": "CV MARGALLO  Centro Veterinario",
+    "dirección": "Gral. Margallo  22",
+    "municipio": "Madrid",
+    "cp": "28020"
+  },
+  {
+    "clínica": "CV MORATALAZ",
+    "dirección": "Encomienda de Palacios  222 Bajo Izda.",
+    "municipio": "Madrid",
+    "cp": "28030"
+  },
+  {
+    "clínica": "CV REINO ANIMAL",
+    "dirección": "Avenida Ciudad de Barcelona 101 ",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "DALMATA  Clínica Veterinaria",
+    "dirección": "Avda. Menendez Pelayo  20",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "DARWIN  Clínica Veterinaria",
+    "dirección": "C/ Trueba y Fernández  7",
+    "municipio": "Madrid",
+    "cp": "28016"
+  },
+  {
+    "clínica": "DEHESA DE LA VILLA  Clínica Veterinaria",
+    "dirección": "C/ Antonio Machado  29",
+    "municipio": "Madrid",
+    "cp": "28035"
+  },
+  {
+    "clínica": "DELICIAS  Centro Médico Veterinario",
+    "dirección": "Delicias  35",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "DIVINO VALLES  Clinica Veterinaria",
+    "dirección": "C/ Divino Valles  38",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "DM2 MARTIN´2 ASESORES S.L.",
+    "dirección": "C/ Tegucigalpa nº 24",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "DOCTOR ESQUERDO  Centro Veterinario",
+    "dirección": "Doctor Esquerdo  118",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "DOCTORAS VET  Clínica Veterinaria",
+    "dirección": "Maqueda  26 local 2",
+    "municipio": "Madrid",
+    "cp": "28024"
+  },
+  {
+    "clínica": "DOG & CAT  Clínica Veterinaria",
+    "dirección": "C/ Félix Boix  1",
+    "municipio": "Madrid",
+    "cp": "28036"
+  },
+  {
+    "clínica": "DOGGYCLINIC BY TU DOGTORA",
+    "dirección": "AVENIDA MENÉNDEZ PELAYO  16",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "DON CANITO  Centro Veterinario",
+    "dirección": "C/ Martínez Villergas  22",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "DON QUIJOTE  Clínica Veterinaria",
+    "dirección": "C/ Alejandro Rodríguez  10",
+    "municipio": "Madrid",
+    "cp": "28039"
+  },
+  {
+    "clínica": "Dpto. Producción Animal  Facultad de Veterinaria  UCM",
+    "dirección": "Avda. Puerta de Hierro s/n",
+    "municipio": "Madrid",
+    "cp": "28040"
+  },
+  {
+    "clínica": "DRACO  Clínica Veterinaria",
+    "dirección": "C/ Canillas  20",
+    "municipio": "Madrid",
+    "cp": "28002"
+  },
+  {
+    "clínica": "EL CAPRICHO  Clínica Veterinaria",
+    "dirección": "Calle Joaquín Ibarra  38.",
+    "municipio": "Madrid",
+    "cp": "28042"
+  },
+  {
+    "clínica": "EL OLIVAR  Clínica Veterinaria",
+    "dirección": "Avda. Buenos Aires  19",
+    "municipio": "Madrid",
+    "cp": "28018"
+  },
+  {
+    "clínica": "EL PARQUE I  Clínica Veterinaria",
+    "dirección": "Virgen de Lluc  8   ",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "EL PARQUE II  Clínica Veterinaria",
+    "dirección": "Nicolasa Gómez  71   ",
+    "municipio": "Madrid",
+    "cp": "28022"
+  },
+  {
+    "clínica": "EL PARQUE  Clinica Veterinaria",
+    "dirección": "Candilejas  58  bajo ",
+    "municipio": "Madrid",
+    "cp": "28018"
+  },
+  {
+    "clínica": "EL VISO  Clínica Veterinaria",
+    "dirección": "C/ Leizaran  29",
+    "municipio": "Madrid",
+    "cp": "28002"
+  },
+  {
+    "clínica": "Elena García Menéndez ",
+    "dirección": "Calle Hoyuelo 3 6°J",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "Escuadrón Municipal",
+    "dirección": "Ctra. el Pardo  Km 3 5",
+    "municipio": "Madrid",
+    "cp": "28040"
+  },
+  {
+    "clínica": "ESTACION ARAVACA   Clínica Veterinaria",
+    "dirección": "Golondrina  71",
+    "municipio": "Madrid",
+    "cp": "28023"
+  },
+  {
+    "clínica": "Eurocan Guadarrama  Marques de Santillana",
+    "dirección": "Marques de Santillana 9",
+    "municipio": "Madrid",
+    "cp": "28440"
+  },
+  {
+    "clínica": "EXOVET  Clínica Veterinaria",
+    "dirección": "canarias 4",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "FERNANDO OCHOA  Consulta Veterinaria",
+    "dirección": "C/ Juan Anton  23    Local 3",
+    "municipio": "Madrid",
+    "cp": "28011"
+  },
+  {
+    "clínica": "FERRAZ  Clínica Veterinaria",
+    "dirección": "C/ Ferraz  13",
+    "municipio": "Madrid",
+    "cp": "28008"
+  },
+  {
+    "clínica": "FUENCARRAL  Clínica Veterinaria",
+    "dirección": "C/ Isla Sumatra  1",
+    "municipio": "Madrid",
+    "cp": "28034"
+  },
+  {
+    "clínica": "GABRIEL USERA  Clínica Veterinaria",
+    "dirección": "Gabriel Usera  8",
+    "municipio": "Madrid",
+    "cp": "28026"
+  },
+  {
+    "clínica": "GALILEO  Centro Veterinario",
+    "dirección": "Galileo  90",
+    "municipio": "Madrid",
+    "cp": "28015"
+  },
+  {
+    "clínica": "GAMUSINOS  Clinica Veterinaria",
+    "dirección": "Calle Peñaranda de Bracamonte 20 ",
+    "municipio": "Madrid",
+    "cp": "28051"
+  },
+  {
+    "clínica": "GARCÍA NOBLEJAS  Centro Veterinario",
+    "dirección": "C/ Hnos. García Noblejas  192",
+    "municipio": "Madrid",
+    "cp": "28037"
+  },
+  {
+    "clínica": "GATTOS  Centro Clínico Felino",
+    "dirección": "Pº Reina Cristina  18",
+    "municipio": "Madrid",
+    "cp": "28014"
+  },
+  {
+    "clínica": "GENERAL ARRANDO  Centro Veterinario",
+    "dirección": "C/ Gral. Arrando  9 Duplicado.",
+    "municipio": "Madrid",
+    "cp": "28010"
+  },
+  {
+    "clínica": "GENERAL RICARDOS  Clínica Veterinaria",
+    "dirección": "C/ Saldaña  1",
+    "municipio": "Madrid",
+    "cp": "28019"
+  },
+  {
+    "clínica": "GODIN  Clínica Veterinaria",
+    "dirección": "C/ Olivo  39",
+    "municipio": "Madrid",
+    "cp": "28023"
+  },
+  {
+    "clínica": "GREENCAN SLP",
+    "dirección": "Parque Eugenia de Montijo  38 Bajo",
+    "municipio": "Madrid",
+    "cp": "28047"
+  },
+  {
+    "clínica": "GUFY  Centro Veterinario",
+    "dirección": "C/ISLA DE TABARCA 46 (CLINICA VETERINARIA GUFY",
+    "municipio": "Madrid",
+    "cp": "28035"
+  },
+  {
+    "clínica": "Guillermo Medina Blanco",
+    "dirección": "Calle de la Dulzaina 5",
+    "municipio": "Madrid",
+    "cp": "28033"
+  },
+  {
+    "clínica": "HABITAT  Clínica Veterinaria",
+    "dirección": "Paseo de los Artilleros  2 - Vicálvaro",
+    "municipio": "Madrid",
+    "cp": "28032"
+  },
+  {
+    "clínica": "HIERRO  Clínica Veterinaria",
+    "dirección": "C/ Hierro  4",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "HIPÓDROMO DE LA ZARZUELA",
+    "dirección": "-",
+    "municipio": "Madrid",
+    "cp": "-"
+  },
+  {
+    "clínica": "HORTALEZA  CLINICA VETERINARIA",
+    "dirección": "C/ Malagón  2",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "HOS VET PRÏVET ALUCHE",
+    "dirección": "C/Illescas  215",
+    "municipio": "Madrid",
+    "cp": "28047"
+  },
+  {
+    "clínica": "Hospital Felino Madrid",
+    "dirección": "C/ Martínez Izquierdo  11",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "HOSPITAL VETERINARIO ARTEMISA SL",
+    "dirección": "C/ Franciso Grande Covian s/n local 1",
+    "municipio": "Madrid",
+    "cp": "28052"
+  },
+  {
+    "clínica": "Hospital Veterinario Arturo Soria",
+    "dirección": "C/ Caleruega 97",
+    "municipio": "Madrid",
+    "cp": "28033"
+  },
+  {
+    "clínica": "Hospital Veterinario Complutense",
+    "dirección": "Avda Puerta de Hierro s/n",
+    "municipio": "Madrid",
+    "cp": "28040"
+  },
+  {
+    "clínica": "HOSPITAL VETERINARIO CONDE ORGAZ",
+    "dirección": "AV. MACHUPICHU  59",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "HOSPITAL VETERINARIO EL CAÑAVERAL",
+    "dirección": "AVENIDA MIGUEL DELIBES 25",
+    "municipio": "Madrid",
+    "cp": "28052"
+  },
+  {
+    "clínica": "HOSPITAL VETERINARIO LOS MADRAZO",
+    "dirección": "CALLE CEDACEROS  5",
+    "municipio": "Madrid",
+    "cp": "28014"
+  },
+  {
+    "clínica": "HOSPITAL VETERINARIO MONCAN",
+    "dirección": "AVENIDA MONASTERIO DE EL ESCORIAL 55",
+    "municipio": "Madrid",
+    "cp": "28049"
+  },
+  {
+    "clínica": "HOSPITAL VETERINARIO PARQUE DE BERLIN",
+    "dirección": "Avenida Ramón y Cajal  7",
+    "municipio": "Madrid",
+    "cp": "28016"
+  },
+  {
+    "clínica": "HOSPITAL VETERINARIO PUCHOL",
+    "dirección": "SAUCEDA  8",
+    "municipio": "Madrid",
+    "cp": "28050"
+  },
+  {
+    "clínica": "HUASI-ARA  Clínica Veterinaria",
+    "dirección": "C/ San Manuel  3",
+    "municipio": "Madrid",
+    "cp": "28011"
+  },
+  {
+    "clínica": "Instituto de Técnicas Avanzadas Sinergia S.L.",
+    "dirección": "C/ Núñez Morgado 15-Local",
+    "municipio": "Madrid",
+    "cp": "28036"
+  },
+  {
+    "clínica": "Interzoo Viriato",
+    "dirección": "Calle Viriato 50",
+    "municipio": "Madrid",
+    "cp": "28010"
+  },
+  {
+    "clínica": "irene gonzalez",
+    "dirección": "Calle de la Costa Brava  39",
+    "municipio": "Madrid",
+    "cp": "28034"
+  },
+  {
+    "clínica": "Joe Black Veterinaria",
+    "dirección": "Calle Cabeza Mesada 27  local ",
+    "municipio": "Madrid",
+    "cp": "28031"
+  },
+  {
+    "clínica": "JURA REAL  Clínica Veterinaria",
+    "dirección": "Marqués de Jura Real  28",
+    "municipio": "Madrid",
+    "cp": "28019"
+  },
+  {
+    "clínica": "JURADO GIANNINI SCP  Clínica Veterinaria",
+    "dirección": "Calle Sierra Toledana  5 Posterior",
+    "municipio": "Madrid",
+    "cp": "28038"
+  },
+  {
+    "clínica": "KENNEL  Centro Veterinario",
+    "dirección": "C/ FRANCISCO MEDRANO 5",
+    "municipio": "Madrid",
+    "cp": "28020"
+  },
+  {
+    "clínica": "KIVET BRAVO MURILLO",
+    "dirección": "C/ BRAVO MURILLO 194",
+    "municipio": "Madrid",
+    "cp": "28020"
+  },
+  {
+    "clínica": "KLIPER  Centro Veterinario",
+    "dirección": "Corbeta  10 acceso posterior",
+    "municipio": "Madrid",
+    "cp": "28042"
+  },
+  {
+    "clínica": "KYNOS  Clínica Veterinaria",
+    "dirección": "Aguetol  9",
+    "municipio": "Madrid",
+    "cp": "28042"
+  },
+  {
+    "clínica": "LA CAÑADA  Clínica Veterinaria",
+    "dirección": "Cañada   23",
+    "municipio": "Madrid",
+    "cp": "28030"
+  },
+  {
+    "clínica": "LA CASA DEL PERRO  Clínica Veterinaria",
+    "dirección": "General Ricardos  97",
+    "municipio": "Madrid",
+    "cp": "28019"
+  },
+  {
+    "clínica": "LA CLINICA VETERINARIA",
+    "dirección": "C/ Cabeza de Mesada  32  Local 4",
+    "municipio": "Madrid",
+    "cp": "28031"
+  },
+  {
+    "clínica": "LA GUINDALERA  Clínica Veterinaria",
+    "dirección": "C/ Ferrer del Rio  21",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "LA LATINA  Centro Veterinario",
+    "dirección": "Humilladero  10",
+    "municipio": "Madrid",
+    "cp": "28005"
+  },
+  {
+    "clínica": "LA MADRILEÑA  Protectora de Animales",
+    "dirección": "Carretera Carabanchel a Villaverde km 6 500",
+    "municipio": "Madrid",
+    "cp": "28041"
+  },
+  {
+    "clínica": "LA PEINETA  Clínica Veterinaria",
+    "dirección": "Suecia  40",
+    "municipio": "Madrid",
+    "cp": "28022"
+  },
+  {
+    "clínica": "LA ZARZUELA  Clínica Veterinaria",
+    "dirección": "C/ Pléyades  1",
+    "municipio": "Madrid",
+    "cp": "28023"
+  },
+  {
+    "clínica": "LABRADOR  Clínica Veterinaria",
+    "dirección": "Calle Martín de Vargas  34",
+    "municipio": "Madrid",
+    "cp": "28005"
+  },
+  {
+    "clínica": "",
+    "dirección": "LACLINICAVETERINARIA (Fuente Carrantona)",
+    "municipio": "Avda. Dr. García Tapia   216",
+    "cp": "Madrid"
+  },
+  {
+    "clínica": "",
+    "dirección": "LACLINICAVETERINARIA (Marroquina)",
+    "municipio": "C/ Marroquina  26 Posterior",
+    "cp": "Madrid"
+  },
+  {
+    "clínica": "LAS MUSAS  Clínica Veterinaria",
+    "dirección": "C/ Longares  40",
+    "municipio": "Madrid",
+    "cp": "28022"
+  },
+  {
+    "clínica": "LAS ROSAS  Clínica Veterinaria",
+    "dirección": "C/ Suecia  11-Local 7",
+    "municipio": "Madrid",
+    "cp": "28022"
+  },
+  {
+    "clínica": "LAS TABLAS  Clínica Veterinaria",
+    "dirección": "San Millan de la Cogolla  9",
+    "municipio": "Madrid",
+    "cp": "28050"
+  },
+  {
+    "clínica": "Laura Notario Muñoz",
+    "dirección": "Calle Charleroi 14 4D",
+    "municipio": "Madrid",
+    "cp": "28031"
+  },
+  {
+    "clínica": "LIDERVETERINARIA  Clínica Veterinaria",
+    "dirección": "Ronda de Atocha  13",
+    "municipio": "Madrid",
+    "cp": "28012"
+  },
+  {
+    "clínica": "LOS ALPES  CENTRO VETERINARIO",
+    "dirección": "C/ Suecia  65",
+    "municipio": "Madrid",
+    "cp": "28022"
+  },
+  {
+    "clínica": "LOS MADROÑOS   CLINICA VETERINARIA",
+    "dirección": "C/ Jose Rizal 117 local 4",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "LOS MOLINOS  Clínica Veterinaria",
+    "dirección": "C/ Tumaco  18",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "LOS ROSALES  Clínica",
+    "dirección": "Torrevieja  10",
+    "municipio": "Madrid",
+    "cp": "28021"
+  },
+  {
+    "clínica": "Lourdes Muñoz Esteban ",
+    "dirección": "Avenida de Oporto 24",
+    "municipio": "Madrid",
+    "cp": "28019"
+  },
+  {
+    "clínica": "LUIS DE VERGARA",
+    "dirección": "Guarromán  2",
+    "municipio": "Madrid",
+    "cp": "28053"
+  },
+  {
+    "clínica": "MADAGASCAR  Clínica Veterinaria",
+    "dirección": "Ginzo de Limia  30",
+    "municipio": "Madrid",
+    "cp": "28029"
+  },
+  {
+    "clínica": "MADRID EXÓTICOS  Centro Veterinario",
+    "dirección": "C/ Menéndez Valdes  17",
+    "municipio": "Madrid",
+    "cp": "28015"
+  },
+  {
+    "clínica": "MADRID  Centro Veterinario",
+    "dirección": "Hilarión Eslava  56",
+    "municipio": "Madrid",
+    "cp": "28015"
+  },
+  {
+    "clínica": "MADRIVET Centro Veterinario",
+    "dirección": "Sánchez Preciado  79",
+    "municipio": "Madrid",
+    "cp": "28039"
+  },
+  {
+    "clínica": "MADRIVET VALLEHERMOSO",
+    "dirección": "VALLEHERMOSO  98",
+    "municipio": "Madrid",
+    "cp": "28003"
+  },
+  {
+    "clínica": "MALASAÑA  Clínica Veterinaria",
+    "dirección": "c/ Manuela Malasaña  4",
+    "municipio": "Madrid",
+    "cp": "28004"
+  },
+  {
+    "clínica": "MALDONADO  Centro Veterinario",
+    "dirección": "C/ Maldonado  79",
+    "municipio": "Madrid",
+    "cp": "28006"
+  },
+  {
+    "clínica": "MANADA  CLÍNICA VETERINARIA",
+    "dirección": "Avda. Gran Vía Sureste  32 local",
+    "municipio": "Madrid",
+    "cp": "28051"
+  },
+  {
+    "clínica": "MANOTERAS  Clínica Veterinaria",
+    "dirección": "Velez Rubio  20",
+    "municipio": "Madrid",
+    "cp": "28033"
+  },
+  {
+    "clínica": "MANZANARES  Clínica Veterinaria",
+    "dirección": "Pº. Virgen del Puerto  9",
+    "municipio": "Madrid",
+    "cp": "28005"
+  },
+  {
+    "clínica": "María Álvarez Medina",
+    "dirección": "C/ Valmojado 143 piso 5D",
+    "municipio": "Madrid",
+    "cp": "28047"
+  },
+  {
+    "clínica": "Maria Camarero Ruiz ",
+    "dirección": "Condesa de Trifaldi 22",
+    "municipio": "Madrid",
+    "cp": "28034"
+  },
+  {
+    "clínica": "MARQUES DE CORBERA  Clínica Veterinaria",
+    "dirección": "Avda Marques de Corbera  54",
+    "municipio": "Madrid",
+    "cp": "28017"
+  },
+  {
+    "clínica": "MARTA DEL YERRO MENDIZABAL",
+    "dirección": "Del Arte 27 - 7º D            ",
+    "municipio": "Madrid",
+    "cp": "28033"
+  },
+  {
+    "clínica": "MARTA FERNANDEZ",
+    "dirección": "C/ doce de octubre 19",
+    "municipio": "Madrid",
+    "cp": "28009"
+  },
+  {
+    "clínica": "MARTIN SANTAMARIA  DOLORES",
+    "dirección": "Avda. Donostiarra  1",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "MASCOTAS  Clínica Veterinaria",
+    "dirección": "C/ Encarnación Oviol  3",
+    "municipio": "Madrid",
+    "cp": "28021"
+  },
+  {
+    "clínica": "MASCOTITI",
+    "dirección": "C/ Emilio Ferrari  92",
+    "municipio": "Madrid",
+    "cp": "28017"
+  },
+  {
+    "clínica": "MASTERVET ",
+    "dirección": "Nuria  57 B",
+    "municipio": "Madrid",
+    "cp": "28034"
+  },
+  {
+    "clínica": "Mastervet Academy",
+    "dirección": "Calle Gutenberg 9",
+    "municipio": "Madrid",
+    "cp": "28014"
+  },
+  {
+    "clínica": "MEDICAN  Clínica Veterinaria",
+    "dirección": "Calle Aguileñas  4",
+    "municipio": "Madrid",
+    "cp": "28029"
+  },
+  {
+    "clínica": "MEDITERRANEO  HOSPITAL VETERINARIO",
+    "dirección": "Avda. del Mediterráneo  14",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "MINI  Clínica Veterinaria",
+    "dirección": "C/ Fernán González  31",
+    "municipio": "Madrid",
+    "cp": "28009"
+  },
+  {
+    "clínica": "",
+    "dirección": "MIRASIERRA  Centro Veterinario",
+    "municipio": "C/ Cambrills  14",
+    "cp": "Madrid"
+  },
+  {
+    "clínica": "MISTER CAN  Clinica Veterinaria",
+    "dirección": "c/ Martinez Izquierdo  49 bajo izq.",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "MISTER CAN  Clínica Veterinaria",
+    "dirección": "C/ Martinez Izquierdo  49 Bajo Izq.",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "MOMO  Centro Veterinario",
+    "dirección": "Aquitania  44-46",
+    "municipio": "Madrid",
+    "cp": "28032"
+  },
+  {
+    "clínica": "MUKAY",
+    "dirección": "CALLE ALAMEDA DEL VALLE 36  LOCAL 6 ",
+    "municipio": "Madrid",
+    "cp": "28051"
+  },
+  {
+    "clínica": "MUNDO ANIMAL  Clínica Veterinaria",
+    "dirección": "Avda. Dr Federico Rubio y Gali  108",
+    "municipio": "Madrid",
+    "cp": "28040"
+  },
+  {
+    "clínica": "MUNDOCAN  Clínica Veterinaria",
+    "dirección": "Antonio López  113",
+    "municipio": "Madrid",
+    "cp": "28026"
+  },
+  {
+    "clínica": "NATURAVES MUNDOAZUL",
+    "dirección": "C/ Fray Ceferino González  10",
+    "municipio": "Madrid",
+    "cp": "28005"
+  },
+  {
+    "clínica": "NEVA  Clínica Veterinaria",
+    "dirección": "C/ Benito Castro  12",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "Noelia CABEZAS BUZON",
+    "dirección": "Fuente Carrantona  38 ",
+    "municipio": "Madrid",
+    "cp": "28030"
+  },
+  {
+    "clínica": "NUESTRA SEÑORA DE BEGOÑA  Clínica Veterinaria",
+    "dirección": "C/ Albino Hernández Lázaro  27",
+    "municipio": "Madrid",
+    "cp": "28021"
+  },
+  {
+    "clínica": "NUEVO PARQUE  Centro Veterinario",
+    "dirección": "C/ Bristol  18 Local 3",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "OCAÑA  Clínica Veterinaria",
+    "dirección": "C/ Ocaña  201",
+    "municipio": "Madrid",
+    "cp": "28047"
+  },
+  {
+    "clínica": "OPENVET  Hospital Veterinario",
+    "dirección": "Dr. Juan José López Ibor  30 local        ",
+    "municipio": "Madrid",
+    "cp": "28035    "
+  },
+  {
+    "clínica": "ORCASITAS  Clínica Veterinaria",
+    "dirección": "Gran Avenida  29 posterior",
+    "municipio": "Madrid",
+    "cp": "28041"
+  },
+  {
+    "clínica": "OROQUIETA  Centro Veterinario",
+    "dirección": "Avda. Orovilla  47",
+    "municipio": "Madrid",
+    "cp": "28041"
+  },
+  {
+    "clínica": "ORTEGA Y GASSET  Clínica Veterinaria",
+    "dirección": "C/Jose Ortega y Gasset  70",
+    "municipio": "Madrid",
+    "cp": "28006"
+  },
+  {
+    "clínica": "PABLO NERUDA  Clínica Veterinaria",
+    "dirección": "Pablo Neruda  34",
+    "municipio": "Madrid",
+    "cp": "28038"
+  },
+  {
+    "clínica": "PADILLA  Clínica Veterinaria",
+    "dirección": "Padilla  52",
+    "municipio": "Madrid",
+    "cp": "28006"
+  },
+  {
+    "clínica": "PALACIOS  Clínica Veterinaria",
+    "dirección": "C/ Julio Palacios   37 - Local",
+    "municipio": "Madrid",
+    "cp": "28029"
+  },
+  {
+    "clínica": "Paloma Moliner Roca",
+    "dirección": "Calle Sierra de Cuerda Larga  nº2",
+    "municipio": "Madrid",
+    "cp": "28038"
+  },
+  {
+    "clínica": "Pandora Clínica Veterinaria",
+    "dirección": "C/ Bahía de Palma 4",
+    "municipio": "Madrid",
+    "cp": "28042"
+  },
+  {
+    "clínica": "PARQUE ALUCHE  Clínica Veterinaria",
+    "dirección": "C/ Quero  57",
+    "municipio": "Madrid",
+    "cp": "28024"
+  },
+  {
+    "clínica": "PARQUE DE LA VENTILLA  Clínica Veterinaria",
+    "dirección": "General Pintos  60",
+    "municipio": "Madrid",
+    "cp": "28029"
+  },
+  {
+    "clínica": "PARQUE DE SANTA MARIA  Clínica Veterinaria",
+    "dirección": "C/ Santa Virgilia  33",
+    "municipio": "Madrid",
+    "cp": "28033"
+  },
+  {
+    "clínica": "PARQUE NORTE  Centro Veterinario",
+    "dirección": "C/ Sangenjo  15",
+    "municipio": "Madrid",
+    "cp": "28034"
+  },
+  {
+    "clínica": "PARQUE TIERNO  Centro Médico Veterinario",
+    "dirección": "C/ Puerto de la Cruz Verde  26",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "PARQUE  Clínica Veterinaria",
+    "dirección": "C/ Del Olvido  123",
+    "municipio": "Madrid",
+    "cp": "28026"
+  },
+  {
+    "clínica": "PASEO DE LA ESPERANZA  Clínica Veterinaria",
+    "dirección": "Pº de la Esperanza   27",
+    "municipio": "Madrid",
+    "cp": "28005"
+  },
+  {
+    "clínica": "PASEO IMPERIAL  Clinica Veterinaria",
+    "dirección": "Plaza Francisco Morano 3",
+    "municipio": "Madrid",
+    "cp": "28005"
+  },
+  {
+    "clínica": "PATITAS  CENTRO VETERINARIO",
+    "dirección": "Tarrasa  1 local",
+    "municipio": "Madrid",
+    "cp": "28026"
+  },
+  {
+    "clínica": "PAVONES  CV",
+    "dirección": "Fuente Carrantona  17",
+    "municipio": "Madrid",
+    "cp": "28030"
+  },
+  {
+    "clínica": "PELÍCANO  Clínica Veterinaria",
+    "dirección": "C/ Argüeso  30",
+    "municipio": "Madrid",
+    "cp": "28025"
+  },
+  {
+    "clínica": "PELUDITOS EN APUROS",
+    "dirección": "CALLE EMBAJADORES 192",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "PELUDITOS  Clínica Veterinaria",
+    "dirección": "C/ Embajadores  Nº 192",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "PERRUQUERIA MADRID RIO",
+    "dirección": "Glorieta Marqués deVadillo 1",
+    "municipio": "Madrid",
+    "cp": "28019"
+  },
+  {
+    "clínica": "PIO XII  Centro Veterinario",
+    "dirección": "C/ Nicaragua  20",
+    "municipio": "Madrid",
+    "cp": "28016"
+  },
+  {
+    "clínica": "PIRAMIDES  Clinica Veterinaria",
+    "dirección": "Paseo de las Acacias  59",
+    "municipio": "Madrid",
+    "cp": "28005"
+  },
+  {
+    "clínica": "PLUTOS  Clínica Veterinaria",
+    "dirección": "C/ Rioja  5 duplicado",
+    "municipio": "Madrid",
+    "cp": "28042"
+  },
+  {
+    "clínica": "",
+    "dirección": "PUERTA DE TOLEDO  Centro Veterinario",
+    "municipio": "Gran Vía de San Francisco  9",
+    "cp": "Madrid"
+  },
+  {
+    "clínica": "QUEVEDOG  Clínica Veterinaria",
+    "dirección": "Fernandez de los Ríos  32",
+    "municipio": "Madrid",
+    "cp": "28015"
+  },
+  {
+    "clínica": "RAFAEL ALBERTI  Clínica Veterinaria",
+    "dirección": "Av Rafael Alberti  16 bis",
+    "municipio": "Madrid",
+    "cp": "28038"
+  },
+  {
+    "clínica": "Rainfer",
+    "dirección": "Vereda del Chaparro nº 143  Fuente el Saz de jarama  CP 28140  M",
+    "municipio": "Madrid",
+    "cp": "28140"
+  },
+  {
+    "clínica": "RAMÓN GÓMEZ DE LA SERNA  CV",
+    "dirección": "Plaza de PEña Horcajo  nº15",
+    "municipio": "Madrid",
+    "cp": "28035"
+  },
+  {
+    "clínica": "REINO ANIMAL  Clinica Veterinaria",
+    "dirección": "Jaime el Conquistador  3 C.V.",
+    "municipio": "Madrid",
+    "cp": "28045"
+  },
+  {
+    "clínica": "RETIRO  Hospital Veterinario",
+    "dirección": "Avda. Menendez Pelayo  9",
+    "municipio": "Madrid",
+    "cp": "28009"
+  },
+  {
+    "clínica": "RETRIEVER  Clínica Veterinaria",
+    "dirección": "Guetaria  81 Local 6",
+    "municipio": "Madrid",
+    "cp": "28041"
+  },
+  {
+    "clínica": "ROBLES  Clínica Veterinaria",
+    "dirección": "C/ Robles  2 esq. Melquíades Biencinto  13",
+    "municipio": "Madrid",
+    "cp": "28053"
+  },
+  {
+    "clínica": "ROSA LUXEMBURGO  Clínica Veterinaria",
+    "dirección": "Calle del Seis de Diciembre  local 29",
+    "municipio": "Madrid",
+    "cp": "28023"
+  },
+  {
+    "clínica": "SACONIA  Clínica Veterinaria",
+    "dirección": "Avda. Juan Andrés  64",
+    "municipio": "Madrid",
+    "cp": "28035"
+  },
+  {
+    "clínica": "SALVATIERRA  Clinica Veterinaria",
+    "dirección": "Los Yébenes  89",
+    "municipio": "Madrid",
+    "cp": "28047     "
+  },
+  {
+    "clínica": "SAN BERNARDO  Clínica Veterinaria",
+    "dirección": "Avda. Sta Eugenia  47",
+    "municipio": "Madrid",
+    "cp": "28031"
+  },
+  {
+    "clínica": "SAN LORENZO  Clínica Veterinaria",
+    "dirección": "C/Impala   1- local posterior",
+    "municipio": "Madrid",
+    "cp": "28033"
+  },
+  {
+    "clínica": "SAN MIGUEL  Clínica Veterinaria",
+    "dirección": "Av. Virgen del Carmen  64",
+    "municipio": "Madrid",
+    "cp": "28033"
+  },
+  {
+    "clínica": "SAN ROMÁN  Clínica Veterinaria",
+    "dirección": "Plaza de la Marina Española  6",
+    "municipio": "Madrid",
+    "cp": "28013"
+  },
+  {
+    "clínica": "SANTA EUGENIA  Clínica Veterinaria",
+    "dirección": "C/ Puente Larra  5; local 17",
+    "municipio": "Madrid",
+    "cp": "28031"
+  },
+  {
+    "clínica": "SANTA URSULA  Clínica Veterinaria",
+    "dirección": "C/ Santa Ursula  2",
+    "municipio": "Madrid",
+    "cp": "28011"
+  },
+  {
+    "clínica": "SARRIA  Clínica Veterinaria",
+    "dirección": "C/ Sarria  52 ",
+    "municipio": "Madrid",
+    "cp": "28029"
+  },
+  {
+    "clínica": "Sección Sanidad Veterinaria",
+    "dirección": "Calle Tomás Sanz s/n",
+    "municipio": "Madrid",
+    "cp": "28011"
+  },
+  {
+    "clínica": "SELVA  Clínica Veterinaria",
+    "dirección": "C/ Camarena  251",
+    "municipio": "Madrid",
+    "cp": "28047"
+  },
+  {
+    "clínica": "SENDA  Clínica Veterinaria Leonor Ruiz",
+    "dirección": "Avda. de Pedro Diez  20",
+    "municipio": "Madrid",
+    "cp": "28019"
+  },
+  {
+    "clínica": "SERVICIO DE FISIOTERAPIA ANIMAL AMBULANTE",
+    "dirección": "c/ Rios Rosas",
+    "municipio": "Madrid",
+    "cp": "28003"
+  },
+  {
+    "clínica": "SERVICIOS VETERINARIOS IRENE FERRERO",
+    "dirección": "C/ Isabel Clara Eugenia 8  Portal C  6º-D",
+    "municipio": "Madrid",
+    "cp": "28050"
+  },
+  {
+    "clínica": "SERVICIOS VETERINARIOS LOS MADRAZO",
+    "dirección": "calle naves nº 9",
+    "municipio": "Madrid",
+    "cp": "28005"
+  },
+  {
+    "clínica": "SIMANCAS  CLINICA VETERINARIA",
+    "dirección": "C/ Zalamea  4",
+    "municipio": "Madrid",
+    "cp": "28037"
+  },
+  {
+    "clínica": "SIRKAN  Clínica Veterinaria",
+    "dirección": "Av. Ntra Sra de Fátima  75",
+    "municipio": "Madrid",
+    "cp": "28047"
+  },
+  {
+    "clínica": "SOCIEDAD PROTECTORA",
+    "dirección": "Ochagavia  34    ",
+    "municipio": "Madrid",
+    "cp": "28039"
+  },
+  {
+    "clínica": "SOTOMAYOR  Clínica Veterinaria",
+    "dirección": "Sotomayor  11",
+    "municipio": "Madrid",
+    "cp": "28003"
+  },
+  {
+    "clínica": "SUR  Centro Veterinario",
+    "dirección": "Avda. Pablo Neruda  69",
+    "municipio": "Madrid",
+    "cp": "28018"
+  },
+  {
+    "clínica": "SURBATAN  Clínica Veterinaria",
+    "dirección": "Cebreros  101 local 13",
+    "municipio": "Madrid",
+    "cp": "28011"
+  },
+  {
+    "clínica": "Tatiana DELGADO GUERRERO",
+    "dirección": "c/de las infantas 42",
+    "municipio": "Madrid",
+    "cp": "28004"
+  },
+  {
+    "clínica": "TELLEZ  Centro Veterinario",
+    "dirección": "C/ Tellez  3",
+    "municipio": "Madrid",
+    "cp": "28007"
+  },
+  {
+    "clínica": "THE CAT´S SMILE VETERINARIOS ",
+    "dirección": "Marqués de Pico de Velasco  60 ",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "THE GORILLA VETS COMPANY - BARAJAS",
+    "dirección": "C/ Aries  4",
+    "municipio": "Madrid",
+    "cp": "28042"
+  },
+  {
+    "clínica": "The Gorilla Vets Company - ESCOSURA",
+    "dirección": "C/ Escosura  19",
+    "municipio": "Madrid",
+    "cp": "28015"
+  },
+  {
+    "clínica": "The Gorilla Vets Company - FAUNA",
+    "dirección": "C/Boltaña  84",
+    "municipio": "Madrid",
+    "cp": "28022"
+  },
+  {
+    "clínica": "THE GORILLA VETS COMPANY - PARQUE EL CALERO",
+    "dirección": "CALLE VIRGEN DE NURIA 17",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "The Gorilla Vets Company - PILAR DE ZARAGOZA",
+    "dirección": "C/Pilar de Zaragoza  47",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "The Gorilla Vets Company - PRÍNCIPE PÍO",
+    "dirección": "C/Aniceto Marinas  48",
+    "municipio": "Madrid",
+    "cp": "28008"
+  },
+  {
+    "clínica": "The Gorilla Vets Company - RAMÓN Y CAJAL",
+    "dirección": "Calle de Torrelaguna  106",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "The Gorilla Vets Company - SANCHINARRO",
+    "dirección": "C/OÑA  99",
+    "municipio": "Madrid",
+    "cp": "28050"
+  },
+  {
+    "clínica": "The Gorilla Vets Company- Parque Pinar del Rey",
+    "dirección": "Carretera de canillas 18",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "The Gorilla Vets Company- SALAMANCA",
+    "dirección": "C/Hermosilla  81",
+    "municipio": "Madrid",
+    "cp": "28001"
+  },
+  {
+    "clínica": "TISCAR  Centro Veterinario",
+    "dirección": "C/ Peal  18. Local Posterior",
+    "municipio": "Madrid",
+    "cp": "28053"
+  },
+  {
+    "clínica": "TREBOL VETERINARIA",
+    "dirección": "Carretera de Canillas  45",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "TRES OLIVOS  CLINICA VETERINARIA",
+    "dirección": "Avda. Campo de Calatrava  9",
+    "municipio": "Madrid",
+    "cp": "28034"
+  },
+  {
+    "clínica": "TU DOGTORA",
+    "dirección": "Malagón  9",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "TUCAN  Clínica Veterinaria",
+    "dirección": "C/ Doce de Octubre  24 Local 1",
+    "municipio": "Madrid",
+    "cp": "28009"
+  },
+  {
+    "clínica": "UNAVETS HEALTHCARE S.L. ",
+    "dirección": "Azofra 29  Local Esquina",
+    "municipio": "Madrid",
+    "cp": "28050"
+  },
+  {
+    "clínica": "UNICORNIO  SERVICIOS VETERINARIOS",
+    "dirección": "C/ Villagarcia  20 Local 5",
+    "municipio": "Madrid",
+    "cp": "28011"
+  },
+  {
+    "clínica": "UNZETA  Clínica Veterinaria",
+    "dirección": "Ferraz   28",
+    "municipio": "Madrid",
+    "cp": "28008"
+  },
+  {
+    "clínica": "URGENCIAS VETERINARIAS MADRILEÑAS",
+    "dirección": "Pso. Reina Cristina  11",
+    "municipio": "Madrid",
+    "cp": "28014"
+  },
+  {
+    "clínica": "URGENCIAS  Consultorio Veterinario ",
+    "dirección": "Plaza Coimbra  5",
+    "municipio": "Madrid",
+    "cp": "28025"
+  },
+  {
+    "clínica": "USERA  Centro Médico Veterinario",
+    "dirección": "Jesús Montoya  5",
+    "municipio": "Madrid",
+    "cp": "28026"
+  },
+  {
+    "clínica": "UTE CONTROL",
+    "dirección": "Casa de Campo",
+    "municipio": "Madrid",
+    "cp": "28011"
+  },
+  {
+    "clínica": "VALDEBERNARDO  Centro Veterinario",
+    "dirección": "C/Nicaragua 3 esc.izda.5-52",
+    "municipio": "Madrid",
+    "cp": "28016"
+  },
+  {
+    "clínica": "Valdepet Clínica Veterinaria",
+    "dirección": "Avda Manuel Fraga Iribarne 35  local 2B",
+    "municipio": "Madrid",
+    "cp": "28055"
+  },
+  {
+    "clínica": "VALLECAS VILLA  Clínica Veterinaria",
+    "dirección": "Real de Arganda nº 34",
+    "municipio": "Madrid",
+    "cp": "28031"
+  },
+  {
+    "clínica": "VALLECAS  Clínica Veterinaria",
+    "dirección": "C/ Martinez de la Riva  38",
+    "municipio": "Madrid",
+    "cp": "28053"
+  },
+  {
+    "clínica": "VALVERDE  Centro Veterinario",
+    "dirección": "Afueras a Valverde  36",
+    "municipio": "Madrid",
+    "cp": "28034"
+  },
+  {
+    "clínica": "VETB",
+    "dirección": "Calle Juanita Cruz  2",
+    "municipio": "Madrid",
+    "cp": "28049"
+  },
+  {
+    "clínica": "VETCLAN VETERINARIOS   ",
+    "dirección": "Corazón de María  64 local (al lado del supermercado Sanchez Romero)  ",
+    "municipio": "Madrid",
+    "cp": "28002    "
+  },
+  {
+    "clínica": "VETCON EXÓTICOS",
+    "dirección": "C/ DE COLOMER Nº18",
+    "municipio": "Madrid",
+    "cp": "28028"
+  },
+  {
+    "clínica": "VETERINALIA  Clínica Veterinaria",
+    "dirección": "Av. del Ferrol  32",
+    "municipio": "Madrid",
+    "cp": "28029"
+  },
+  {
+    "clínica": "Veterinaria ambulante",
+    "dirección": "Calle tembleque 120 11B",
+    "municipio": "Madrid",
+    "cp": "28024"
+  },
+  {
+    "clínica": "VETERINARIA LA GAVIA S.L.",
+    "dirección": "Avda. Villa de Vallecas   21",
+    "municipio": "Madrid",
+    "cp": "28031"
+  },
+  {
+    "clínica": "Vetersalud Dana",
+    "dirección": "c/ Viñegra nº 6-8",
+    "municipio": "Madrid",
+    "cp": "28047"
+  },
+  {
+    "clínica": "VETPA  Clínica veterinaria",
+    "dirección": "C/ Benito Gutiérrez  26",
+    "municipio": "Madrid",
+    "cp": "28008"
+  },
+  {
+    "clínica": "VETSANA",
+    "dirección": "Marroquina  98 ",
+    "municipio": "Madrid",
+    "cp": "28030"
+  },
+  {
+    "clínica": "VICALCAN  Clínica Veterinaria",
+    "dirección": "Dehesa de Vicálvaro  13",
+    "municipio": "Madrid",
+    "cp": "28032"
+  },
+  {
+    "clínica": "VICALVARO  Clínica Veterinaria",
+    "dirección": "Villardondiego  17 post.",
+    "municipio": "Madrid",
+    "cp": "28032"
+  },
+  {
+    "clínica": "",
+    "dirección": "VICTOR DE LA SERNA  Centro Clínico Veterinario. Doctores Alvarez de la Villa",
+    "municipio": "C/ Victor de la Serna  8; Bajo Dcha.",
+    "cp": "Madrid"
+  },
+  {
+    "clínica": "",
+    "dirección": "VINATEROS  Clínica Veterinaria",
+    "municipio": "C/ Camino Vinateros  65",
+    "cp": "Madrid"
+  },
+  {
+    "clínica": "VIRGEN DE BEGOÑA  Clínica Veterinaria",
+    "dirección": "Angel Múgica  9  local 1.",
+    "municipio": "Madrid",
+    "cp": "28034"
+  },
+  {
+    "clínica": "VIRGEN DE BEGOÑA  Clínica Veterinaria",
+    "dirección": "Ángel Mugica  1",
+    "municipio": "Madrid",
+    "cp": "28034"
+  },
+  {
+    "clínica": "VIRGEN DEL CASTAÑAR  Centro Veterinario",
+    "dirección": "C/ Vigen del Castañar  17-19",
+    "municipio": "Madrid",
+    "cp": "28027"
+  },
+  {
+    "clínica": "VISTA ALEGRE  CLÍNICA VETERINARIA",
+    "dirección": "PASEO MARCELINO CAMACHO Nº 15",
+    "municipio": "Madrid",
+    "cp": "28025"
+  },
+  {
+    "clínica": "ZOA OLAVIDE",
+    "dirección": "SANTA FELICIANA 11",
+    "municipio": "Madrid",
+    "cp": "28010"
+  },
+  {
+    "clínica": "ZOA RÍO ROSAS",
+    "dirección": "Cristóbal Bordiú 27",
+    "municipio": "Madrid",
+    "cp": "28003"
+  },
+  {
+    "clínica": "ZOOLIFE CANILLAS",
+    "dirección": "MOTA DEL CUERVO  14",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "Zoological Adviser",
+    "dirección": "Mota del Cuervo  14-16",
+    "municipio": "Madrid",
+    "cp": "28043"
+  },
+  {
+    "clínica": "ZOOSANO  Clinica Veterinaria",
+    "dirección": "Illescas  72",
+    "municipio": "Madrid",
+    "cp": "28047"
+  }
+]
