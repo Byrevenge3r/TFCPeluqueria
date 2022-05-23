@@ -187,7 +187,6 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
 
             p1 = new LatLng(location.getLatitude(), location.getLongitude());
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }

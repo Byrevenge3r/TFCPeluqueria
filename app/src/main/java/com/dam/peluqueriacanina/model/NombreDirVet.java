@@ -1,18 +1,24 @@
 package com.dam.peluqueriacanina.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class NombreDirVet {
-
+    @SerializedName("clinica")
+    @Expose
     private String clínica;
-    private String dirección;
-    private String municipio;
-    private String cp;
 
-    public NombreDirVet(String clínica, String dirección, String municipio, String cp) {
-        this.clínica = clínica;
-        this.dirección = dirección;
-        this.municipio = municipio;
-        this.cp = cp;
-    }
+    @SerializedName("dirección")
+    @Expose
+    private String dirección;
+
+    @SerializedName("municipio")
+    @Expose
+    private String municipio;
+
+    @SerializedName("cp")
+    @Expose
+    private String cp;
 
     public String getClínica() {
         return clínica;
@@ -29,4 +35,6 @@ public class NombreDirVet {
     public String getCp() {
         return cp;
     }
+
+
 }
