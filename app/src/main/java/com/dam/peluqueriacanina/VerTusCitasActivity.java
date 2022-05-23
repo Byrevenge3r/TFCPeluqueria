@@ -53,12 +53,14 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
     AnimalPeluAdapter adapter;
     MostrarDatosTusCitasAdapter adapterDetallesCita;
     SimpleDateFormat formatter;
+
     Date fecha;
     View vista;
     Calendar cal;
     int mesActual = 0;
     BotonTusCitasLista boton;
     Intent i;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
 
         formatter = new SimpleDateFormat("dd/MM/yyyy");
         fecha = new Date();
+
 
         btnCancelarCita.setOnClickListener(this);
         vista = new View(this);
@@ -125,6 +128,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                                 tusCitas = daoTusCitas.sacarCitasKey(((MiApplication)getApplicationContext()).getKey()).get(rv.getChildAdapterPosition(vista));
                                 i = new Intent(VerTusCitasActivity.this,VerDatosTusCitasActivity.class);
                                 i.putExtra("hora",tusCitas.getHora());
+
                                 startActivity(i);
                             }
                         });

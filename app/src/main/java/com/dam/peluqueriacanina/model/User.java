@@ -8,6 +8,7 @@ public class User {
     private String contrasenia;
     private String telefono;
     private String direccion;
+    private String key;
 
     public User() {
 
@@ -26,9 +27,16 @@ public class User {
         this.contrasenia = contrasenia;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.key = key;
     }
 
+    public String getKey() {
+        return key;
+    }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
