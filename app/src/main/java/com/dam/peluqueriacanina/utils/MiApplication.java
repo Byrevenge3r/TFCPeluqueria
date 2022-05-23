@@ -21,6 +21,7 @@ public class MiApplication extends Application {
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -52,7 +53,6 @@ public class MiApplication extends Application {
     public String getTelefono() { return telefono; }
 
     public void setTelefono(String telefono) { this.telefono = telefono; }
-
 
     public String getDireccion() {
         return direccion;

@@ -174,7 +174,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     ((MiApplication) getApplicationContext()).setUsuario((datasnap.getValue(User.class)).getUsuario());
                     ((MiApplication) getApplicationContext()).setCorreo((datasnap.getValue(User.class)).getCorreo());
                     ((MiApplication) getApplicationContext()).setTelefono((datasnap.getValue(User.class)).getTelefono());
-
+                    ((MiApplication) getApplicationContext()).setDireccion((datasnap.getValue(User.class)).getDireccion());
                     //dbRef.child(datasnap.getValue(User.class).getNombre()+"/contra").setValue(contra);
                 }
             }

@@ -12,6 +12,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.dam.peluqueriacanina.model.Mapa;
@@ -30,10 +31,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMapReadyCallback{
+public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     GoogleMap mMap;
     Marker markerMap;
@@ -55,6 +60,8 @@ public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMa
     String hora;
     String[] horaA;
     LocalDateTime now;
+    int horaR;
+    int horaB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,18 +78,15 @@ public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMa
         horaA = hora.split(":");
 
         tvMostrarTiempo = findViewById(R.id.tvTiempo);
-
-        bitmapdraw =(BitmapDrawable)getResources().getDrawable(R.drawable.furgo_canina);
+        tvMostrarTiempo.setVisibility(View.INVISIBLE);
+        bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.furgo_canina);
         b = bitmapdraw.getBitmap();
         smallMarker = Bitmap.createScaledBitmap(b, anchura, altura, false);
 
         locOrigen = new Location("ubicacionOrigen");
         locDestino = new Location("ubicacionDestino");
 
-        //Meter la ubicacion de la persona aqui
-        adress = getLocationFromAddress(this,((MiApplication) getApplicationContext()).getDireccion());
-
-        mapFragment.getMapAsync( this);
+        mapFragment.getMapAsync(this);
 
     }
 
@@ -104,34 +108,33 @@ public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMa
                         markerMap.remove();
                     }
 
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitud,longitud), 10));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitud, longitud), 10));
                     markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
                             .position(new LatLng(latitud, longitud)));
 
                     locOrigen.setLatitude(latitud);
                     locOrigen.setLongitude(longitud);
 
+                    adress = getLocationFromAddress(VerDatosTusCitasActivity.this, ((MiApplication) getApplicationContext()).getDireccion());
                     locDestino.setLatitude(adress.latitude);
                     locDestino.setLongitude(adress.longitude);
 
                     distancia = locOrigen.distanceTo(locDestino);
 
-                    tiempoD = ((distancia / 1000)/23)*60;
+                    tiempoD = ((distancia / 1000) / 23) * 60;
 
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                         now = LocalDateTime.now();
-                        int horaR = Integer.parseInt(horaA[0]) - now.getHour();
-                        int hora = horaR * 60;
+                        //Esta raro esto mirar
+                        horaR = Integer.parseInt("18");
+                        horaB = horaR * 60;
 
-                        tiempoD += hora;
+                        tiempoD += horaB;
 
                     }
+                    tvMostrarTiempo.setVisibility(View.VISIBLE);
+                    tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_horas, formatearMinutosAHoraMinuto((int) tiempoD)));
 
-                    if (tiempoD > 60) {
-                        tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_horas,tiempoD/60));
-                    } else {
-                        tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_minutos,tiempoD));
-                    }
                 }
 
             }
@@ -152,23 +155,27 @@ public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMa
         });
     }
 
+    public String formatearMinutosAHoraMinuto(int minutos) {
+        String formato = "%02d:%02d";
+        long horasReales = TimeUnit.MINUTES.toHours(minutos);
+        long minutosReales = TimeUnit.MINUTES.toMinutes(minutos) - TimeUnit.HOURS.toMinutes(TimeUnit.MINUTES.toHours(minutos));
+        return String.format(formato, horasReales, minutosReales);
+    }
+
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
         coorMapa();
     }
 
-    public LatLng getLocationFromAddress(Context context, String strAddress)
-    {
-        Geocoder coder= new Geocoder(context);
+    public LatLng getLocationFromAddress(Context context, String strAddress) {
+        Geocoder coder = new Geocoder(context);
         List<Address> address;
         LatLng p1 = null;
 
-        try
-        {
+        try {
             address = coder.getFromLocationName(strAddress, 5);
-            if(address==null)
-            {
+            if (address == null) {
                 return null;
             }
             Address location = address.get(0);
@@ -176,9 +183,7 @@ public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMa
             location.getLongitude();
 
             p1 = new LatLng(location.getLatitude(), location.getLongitude());
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return p1;
