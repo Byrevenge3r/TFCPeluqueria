@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +19,7 @@ import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.model.BotonTusCitas;
 import com.dam.peluqueriacanina.model.datos.BotonTusCitasLista;
 import com.dam.peluqueriacanina.utils.AnimalPeluAdapter;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MostrarDatosTusCitasAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class VerTusCitasActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -54,6 +58,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
     Calendar cal;
     int mesActual = 0;
     BotonTusCitasLista boton;
+    Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +91,8 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         btnCancelarCita.setOnClickListener(this);
         vista = new View(this);
 
-        adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarTodo());
+        //Cambuiar por el otre
+        adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarCitasKey(((MiApplication) getApplicationContext()).getKey()));
         adapterDetallesCita = new MostrarDatosTusCitasAdapter(boton.getBoton());
         rv.setAdapter(adapter);
 
@@ -94,40 +100,41 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
             tvNoHayCitasVTC.setVisibility(View.VISIBLE);
         }
 
-
-        /*LinearLayoutManager llm = new LinearLayoutManager(
-                rv.getContext(),
-                LinearLayoutManager.VERTICAL,
-                false
-        );
-
-        rv.setLayoutManager(llm);
-        BotonTusCitasLista lista = new BotonTusCitasLista();
-        MostrarDatosTusCitasAdapter datosCita = new MostrarDatosTusCitasAdapter(lista.getBoton());
-        rv.setAdapter(datosCita);
-
-        rv.getChildAdapterPosition(v);
-        datosCita.setListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(v.getContext(), "Posicion"+datosCita.getItemId(rv.getChildAdapterPosition(v)),Toast.LENGTH_LONG).show();
-            }
-        });*/
-
-        //TODO: Activar el segundo boton para ir al segundo activity
         adapter.setListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                //setContentView(R.layout.citas_recicler_view_vet);
+                switch (view.getId()) { // getId() -> 10230132012301203
+                    case R.id.llCitasVet: // si el id == 10230132012301203
+                        // TODO - cancelar y deselección
 
-                rvVerCita = findViewById(R.id.rvVerTusCitasSegundaPantalla);
-                btnCancelarCita.setVisibility(View.VISIBLE);
-                rvVerCita.setLayoutManager(llmDetalles);
+                        if(vista != null && vista.findViewById(R.id.rlContainer) != null) {
+                            rvVerCita = vista.findViewById(R.id.rlContainer).findViewById(R.id.rvVerTusCitasSegundaPantalla);
+                            rvVerCita.removeAllViews();
+                            rvVerCita.removeAllViewsInLayout();
+                        }
 
-                rvVerCita.setAdapter(adapterDetallesCita);
+                        rvVerCita = view.findViewById(R.id.rlContainer).findViewById(R.id.rvVerTusCitasSegundaPantalla);
+                        rvVerCita.setLayoutManager(new LinearLayoutManager(view.findViewById(R.id.llCitasVet).getContext()));
+                        rvVerCita.setAdapter(adapterDetallesCita);
 
-                vista = view;
+
+                        adapterDetallesCita.setListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                tusCitas = daoTusCitas.sacarCitasKey(((MiApplication)getApplicationContext()).getKey()).get(rv.getChildAdapterPosition(vista));
+                                i = new Intent(VerTusCitasActivity.this,VerDatosTusCitasActivity.class);
+                                i.putExtra("hora",tusCitas.getHora());
+                                startActivity(i);
+                            }
+                        });
+
+                        btnCancelarCita.setVisibility(View.VISIBLE);
+
+                        vista = view;
+
+                        break;
+                }
             }
         });
 
@@ -136,7 +143,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View view) {
-        tusCitas = daoTusCitas.sacarTodo().get(rv.getChildAdapterPosition(vista));
+        tusCitas = daoTusCitas.sacarCitasKey(((MiApplication)getApplicationContext()).getKey()).get(rv.getChildAdapterPosition(vista));
         try {
             fecha = formatter.parse(tusCitas.getFecha());
         } catch (ParseException e) {
@@ -191,7 +198,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         dbr.child(tusCitas.getKey()).removeValue();
         daoTusCitas.delete(tusCitas);
 
-        adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarTodo());
+        adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarCitasKey(((MiApplication) getApplicationContext()).getKey()));
 
         if (daoTusCitas.sacarTodo().isEmpty()) {
             tvNoHayCitasVTC.setVisibility(View.VISIBLE);

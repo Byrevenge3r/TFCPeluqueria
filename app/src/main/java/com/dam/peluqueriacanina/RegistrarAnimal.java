@@ -33,6 +33,7 @@ import android.widget.Toast;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.entity.Animal;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.io.File;
@@ -122,7 +123,8 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
             if (nombre.isEmpty() || raza.isEmpty()) {
                 Toast.makeText(this, R.string.error_registrar_animal_vacio, Toast.LENGTH_SHORT).show();
             } else {
-                dao.insert(new Animal(ruta, nombre, raza));
+                String key = ((MiApplication) getApplicationContext()).getKey();
+                dao.insert(new Animal(key,ruta, nombre, raza));
                 setResult(RESULT_OK);
                 finish();
             }

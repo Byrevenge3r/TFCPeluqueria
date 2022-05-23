@@ -26,6 +26,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
     EditText etCorreo;
     EditText etConfCorreo;
     EditText etContra;
+    EditText etdireccion;
     EditText etConfContra;
     Button btnAtrasRegDos, btnSiguienteRegDos;
     Intent i;
@@ -49,6 +50,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
         etConfCorreo = findViewById(R.id.etConfirmarEmailRegDos);
         etContra = findViewById(R.id.etContraRegDos);
         etConfContra = findViewById(R.id.etConfContraRegDos);
+        etdireccion = findViewById(R.id.etDireccion);
 
         btnAtrasRegDos = findViewById(R.id.btnAtrasRegDos);
         btnSiguienteRegDos = findViewById(R.id.btnSiguienteRegDos);
@@ -64,10 +66,10 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
         String confcorreo = etConfCorreo.getText().toString().trim();
         String contra = etContra.getText().toString().trim();
         String confcontra = etConfContra.getText().toString().trim();
-
+        String direccion = etdireccion.getText().toString().trim();
         if (v.equals(btnSiguienteRegDos)) {
 
-            /*if (TextUtils.isEmpty(correo)) {
+            /*joakinif (TextUtils.isEmpty(correo)) {
                 etCorreo.setError("Introduzca un correo");
             } else if (TextUtils.isEmpty(confcorreo)) {
                 etConfCorreo.setError("Introduzca una confirmacion de correo");
@@ -85,13 +87,14 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
                 Snackbar.make(v, R.string.contra_coincide, Snackbar.LENGTH_LONG).show();
                 //arreglar error
             } else  {*/
-                ((MiApplication) getApplicationContext()).setCorreo(correo);
-                ((MiApplication) getApplicationContext()).setContrasenia(contra);
+            ((MiApplication) getApplicationContext()).setCorreo(correo);
+            ((MiApplication) getApplicationContext()).setContrasenia(contra);
+            ((MiApplication) getApplicationContext()).setDireccion(direccion);
 
-                i = new Intent(this, Registro3.class);
-                startActivity(i);
+            i = new Intent(this, Registro3.class);
+            startActivity(i);
 
-                overridePendingTransition(R.anim.animacion_derecha_izquierda, R.anim.animacion_izquierda_izquierda);
+            overridePendingTransition(R.anim.animacion_derecha_izquierda, R.anim.animacion_izquierda_izquierda);
             //}
         } else if (v.equals(btnAtrasRegDos)) {
             i = new Intent(this, Registro1.class);

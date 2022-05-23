@@ -18,6 +18,9 @@ public interface AnimalesDao {
     @Query("SELECT * FROM ANIMALES WHERE ruta = :ruta")
     Animal sacarAnimal(String ruta);
 
+    @Query("SELECT * FROM ANIMALES WHERE `key` = :key")
+    List<Animal> sacarAnimalKey(String key);
+
     @Insert
     void insert(Animal animal);
 

@@ -1,70 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:id="@+id/llCitasVet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/llCitasVet"
-    android:layout_marginTop="10dp">
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/fondo_btn_registrar"
-        android:elevation="10dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp">
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/shAnimal"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            app:strokeWidth="3dp"
-            app:strokeColor="@color/color_blanco"
-            app:shapeAppearanceOverlay="@style/Circular"/>
+    <RelativeLayout
+        android:id="@+id/rlContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/llDatosCita"
+            android:id="@+id/llSiguientePagina"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tvNomAnimal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_blanco"
-                android:textSize="16sp"
-                android:text="Nombre Animal"/>
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/fondo_btn_registrar"
+            android:elevation="10dp"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvDia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_blanco"
-                android:textSize="16sp"
-                android:text="Dia"/>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/shAnimal"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                app:shapeAppearanceOverlay="@style/Circular"
+                app:strokeColor="@color/color_blanco"
+                app:strokeWidth="3dp" />
 
-            <TextView
-                android:id="@+id/tvHora"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/llDatosCita"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_blanco"
-                android:textSize="16sp"
-                android:text="Hora"/>
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/tvNomAnimal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre Animal"
+                    android:textColor="@color/color_blanco"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvDia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dia"
+                    android:textColor="@color/color_blanco"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvHora"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hora"
+                    android:textColor="@color/color_blanco"
+                    android:textSize="16sp" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvVerTusCitasSegundaPantalla"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layoutAnimation="@anim/layout_animation_2"
-        android:layout_marginEnd="25dp" />
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvVerTusCitasSegundaPantalla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llSiguientePagina"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layoutAnimation="@anim/layout_animation_2" />
+    </RelativeLayout>
 </LinearLayout>

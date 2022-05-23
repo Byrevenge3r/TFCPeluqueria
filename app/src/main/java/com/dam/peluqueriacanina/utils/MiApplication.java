@@ -10,6 +10,7 @@ public class MiApplication extends Application {
     private String correo;
     private String contrasenia;
     private String telefono;
+    private String direccion;
     private String key;
 
     @Override
@@ -53,6 +54,11 @@ public class MiApplication extends Application {
     public void setTelefono(String telefono) { this.telefono = telefono; }
 
 
+    public String getDireccion() {
+        return direccion;
+    }
 
-
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 }

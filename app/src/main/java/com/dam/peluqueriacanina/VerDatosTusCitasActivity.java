@@ -10,10 +10,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.dam.peluqueriacanina.model.Mapa;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,6 +30,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMapReadyCallback{
@@ -49,6 +52,10 @@ public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMa
     TextView tvMostrarTiempo;
     float tiempoD;
     LatLng adress;
+    String hora;
+    String[] horaA;
+    LocalDateTime now;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +65,10 @@ public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMa
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fcvUbicacionConductorDetalles);
+
+        hora = getIntent().getStringExtra("hora");
+
+        horaA = hora.split(":");
 
         tvMostrarTiempo = findViewById(R.id.tvTiempo);
 
@@ -69,7 +80,7 @@ public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMa
         locDestino = new Location("ubicacionDestino");
 
         //Meter la ubicacion de la persona aqui
-        adress = getLocationFromAddress(this,"c. Brasil, 16, Villanueva  de la cañada, Madrid");
+        adress = getLocationFromAddress(this,((MiApplication) getApplicationContext()).getDireccion());
 
         mapFragment.getMapAsync( this);
 
@@ -106,6 +117,15 @@ public class VerDatosTusCitasActivity extends AppCompatActivity  implements OnMa
                     distancia = locOrigen.distanceTo(locDestino);
 
                     tiempoD = ((distancia / 1000)/23)*60;
+
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                        now = LocalDateTime.now();
+                        int horaR = Integer.parseInt(horaA[0]) - now.getHour();
+                        int hora = horaR * 60;
+
+                        tiempoD += hora;
+
+                    }
 
                     if (tiempoD > 60) {
                         tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_horas,tiempoD/60));

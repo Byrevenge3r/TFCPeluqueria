@@ -23,7 +23,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="68dp"
-        android:background="@drawable/mona_lisa_foto_perfil"
+        android:background="@drawable/foto_perfil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -50,13 +50,12 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tvNombre"
+        android:id="@+id/tvNombrePel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="@color/color_blanco"
         android:textSize="26sp"
-        android:text="Fernando pasquin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +74,7 @@
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.877"
-        app:layout_constraintStart_toStartOf="@id/tvNombre"
+        app:layout_constraintStart_toStartOf="@id/tvNombrePel"
         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -162,6 +161,7 @@
 
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvChat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:cardElevation="12dp"
@@ -206,47 +206,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <ImageView
-                            android:src="@drawable/peluqueria_menu"
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/ivPerfil"
                             android:layout_width="100dp"
-                            android:layout_height="100dp"/>
+                            android:layout_height="100dp"
+                            android:background="@drawable/foto_perfil"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:shapeAppearanceOverlay="@style/Circular"
+                            app:strokeColor="@color/color_blanco"
+                            android:scaleType="centerCrop"
+                            app:strokeWidth="1dp"/>
 
                         <TextView
                             android:textSize="18sp"
                             android:layout_marginTop="12dp"
                             android:textColor="@color/color_texto_negro"
                             android:layout_width="wrap_content"
-                            android:text="@string/tv_peluqueria_menu"
+                            android:text="@string/tv_perfil_menu"
                             android:layout_height="wrap_content"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="12dp">
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/peluqueria_menu" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="@string/tv_peluqueria_menu"
-                            android:textColor="@color/color_texto_negro"
-                            android:textSize="18sp" />
 
                     </LinearLayout>
 

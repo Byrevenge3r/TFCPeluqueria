@@ -7,21 +7,32 @@ public class User {
     private String correo;
     private String contrasenia;
     private String telefono;
-
+    private String direccion;
 
     public User() {
 
     }
 
-    public User(String nombre, String apellidos, String usuario, String correo, String contrasenia, String telefono) {
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public User(String nombre, String apellidos, String usuario, String correo, String contrasenia, String telefono, String direccion, String key) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.usuario = usuario;
         this.correo = correo;
         this.contrasenia = contrasenia;
         this.telefono = telefono;
+        this.direccion = direccion;
     }
 
+
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 
     public String getNombre() {
         return nombre;
@@ -80,6 +91,7 @@ public class User {
                 ", correo='" + correo + '\'' +
                 ", contrasenia='" + contrasenia + '\'' +
                 ", telefono='" + telefono + '\'' +
+                ", direccion='" + direccion + '\'' +
                 '}';
     }
 }

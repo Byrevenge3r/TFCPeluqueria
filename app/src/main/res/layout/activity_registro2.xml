@@ -53,7 +53,6 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
                 android:inputType="textEmailAddress"
                 android:textColorHint="@color/color_gris"
                 app:hintTextColor="@color/color_gris">
@@ -160,6 +159,32 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDireccion"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/color_gris"
+                app:hintTextColor="@color/color_gris">
+
+                <EditText
+                    android:id="@+id/etDireccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_below="@id/tilConfirmarEmailRegDos"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginRight="48dp"
+                    android:background="@drawable/fondo_edit_text"
+                    android:hint="@string/et_direccion"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="26dp"
+                    android:paddingRight="26dp"
+                    android:textColor="@color/color_texto_negro" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
 

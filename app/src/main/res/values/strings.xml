@@ -65,6 +65,9 @@
     <string name="correo_coincide">Los correos deben de coincidir</string>
     <string name="contra_coincide">Las contraseñas deben de coincidir</string>
     <string name="tv_chat_peluqueria_menu">Chat</string>
+
+    <string name="nosepuedo">No se pudo crear el usuario</string>
+    <string name="et_direccion">Introduce tu direccion</string>
     <string name="kilo">1 Kg</string>
     <string name="pienso_perro">Pienso para perros</string>
     <string name="test">test</string>
@@ -83,5 +86,8 @@
     <string name="tv_tiempo_estimado_horas">Tiempo estimado: %,.0f hora</string>
     <string name="tv_tiempo_estimado_minutos">Tiempo estimado: %,.0f minutos</string>
     <string name="et_chat">Escribe un mensaje</string>
+    <string name="btn_chat_enviar">Enviar</string>
+    <string name="error_no_hay_citas">Si no reservas una cita no puedes hablar con el conductor</string>
+    <string name="tv_perfil_menu">Ver perfil</string>
 
 </resources>

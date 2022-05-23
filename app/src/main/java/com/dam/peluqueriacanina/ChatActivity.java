@@ -7,13 +7,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.dam.peluqueriacanina.model.Chat;
 import com.dam.peluqueriacanina.utils.ChatAdapter;
 import com.dam.peluqueriacanina.utils.MiApplication;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,10 +37,11 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<Chat> mensajes;
     ChatAdapter adapter;
     EditText etMensajeIntroducido;
-    ImageButton ibEnviar;
+    Button ibEnviar;
     HashMap<String,Object> chat;
     Chat mensaje;
     boolean recoger = true;
+    String numeroTelConduc;
    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +54,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
        rv = findViewById(R.id.rvChatUsuario);
        llm = new LinearLayoutManager(this);
        etMensajeIntroducido = findViewById(R.id.etChat);
-       ibEnviar = findViewById(R.id.btnEnviar);
+       ibEnviar = findViewById(R.id.btnEnviarMensaje);
 
        ibEnviar.setOnClickListener(this);
 
@@ -57,20 +62,31 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
        rv.setLayoutManager(llm);
 
        mensajes = new ArrayList<>();
+       adapter = new ChatAdapter(mensajes);
 
 
-       //Peta aqui mirar mañana un momento hay que cambiar las claves y que recoja los objetos directamente
+       dbr.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
 
-       dbr.child("usuarios/"+"-N1optheLLOVSoaaBkiS"+"/chat").addChildEventListener(new ChildEventListener() {
            @Override
-           public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+           public void onComplete(@NonNull Task<DataSnapshot> task) {
                if (recoger) {
 
-                   mensaje = snapshot.getValue(Chat.class);
-                   mensajes.add(mensaje);
+                   for (DataSnapshot sp:task.getResult().getChildren()) {
+                       mensaje = sp.getValue(Chat.class);
+                       mensajes.add(mensaje);
+                   }
 
-
+                   rv.setAdapter(adapter);
+                   rv.scrollToPosition(adapter.getItemCount()-1);
                }
+           }
+       });
+       dbr.child("usuarios/"+ ((MiApplication)getApplicationContext()).getKey()+"/chat").addChildEventListener(new ChildEventListener() {
+           @Override
+           public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+               mensajes.add(snapshot.getValue(Chat.class));
+               rv.setAdapter(adapter);
+               rv.scrollToPosition(adapter.getItemCount()-1);
            }
 
            @Override
@@ -96,12 +112,31 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-       adapter = new ChatAdapter(mensajes);
-       rv.setAdapter(adapter);
+       dbr.child("coche/tel").addValueEventListener(new ValueEventListener() {
+           @Override
+           public void onDataChange(@NonNull DataSnapshot snapshot) {
+               if (snapshot.exists()) {
+                   numeroTelConduc = String.valueOf(snapshot.getValue());
+               }
+           }
 
+           @Override
+           public void onCancelled(@NonNull DatabaseError error) {
+
+           }
+       });
+
+       if (mensajes.isEmpty()) {
+           SmsManager sms = SmsManager.getDefault();
+           sms.sendTextMessage("+34" + numeroTelConduc, null,  ((MiApplication) getApplicationContext()).getKey(), null, null);
+       }
+
+       rv.setAdapter(adapter);
+       if (!mensajes.isEmpty()) {
+           rv.scrollToPosition(adapter.getItemCount()-1);
+       }
 
     }
-
 
 
     @Override
@@ -109,18 +144,19 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
        if (view.equals(ibEnviar)) {
            String mensaje = etMensajeIntroducido.getText().toString().trim();
            if (!etMensajeIntroducido.getText().toString().isEmpty()) {
-              adapter.aniadirMensaje(new Chat(mensaje,"U"));
+               //   adapter.aniadirMensaje(new Chat(mensaje,"U"));
 
                String key = dbr.push().getKey();
 
                chat.put("mensaje",mensaje);
                chat.put("codigoPer","U");
                //Cambiar todo por la ruta correcta
-               dbr.child("usuarios").child("-N1optheLLOVSoaaBkiS").child("chat").child(key).setValue(chat);
+               dbr.child("usuarios").child( ((MiApplication)getApplicationContext()).getKey()).child("chat").child(key).setValue(chat);
 
                recoger = false;
                rv.setAdapter(adapter);
                rv.scrollToPosition(adapter.getItemCount()-1);
+               etMensajeIntroducido.setText("");
            }
        }
     }

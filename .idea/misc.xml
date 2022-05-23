@@ -31,17 +31,21 @@
         <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/fragment_citas.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/mascotas_recicler_view.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable-anydpi/fondo_btn_ver_detalles_cita.xml" value="0.264" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable-anydpi/fondo_edit_text_chat.xml" value="0.332" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable-v24/fondo_btn_registrar.xml" value="0.3075" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable/background_tienda.xml" value="0.1745" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable/fondo_btn.xml" value="0.3235" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable/fondo_btn_aniadir_mascota.xml" value="0.139" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable/fondo_btn_chat.xml" value="0.2985" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable/fondo_cartas.xml" value="0.183" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable/fondo_dialog_fragment.xml" value="0.3265" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable/fondo_edit_text.xml" value="0.332" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable/forma_header.xml" value="0.1845" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/drawable/image_view_bordes.xml" value="0.3105" />
-        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_chat.xml" value="0.25277777777777777" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_chat.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_datos_animal.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_detalle_tienda.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_peluqueria.xml" value="0.23607427055702918" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_registrar_animal.xml" value="0.36666666666666664" />
@@ -51,8 +55,8 @@
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_registro4.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_registro5.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_registro6.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_tienda.xml" value="0.17708333333333334" />
-        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_tienda2.xml" value="0.17708333333333334" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_tienda.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_tienda2.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_tienda_detalles.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_ubicacion_tiempo_real.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/activity_ver_datos_tus_citas.xml" value="0.3282828282828283" />
@@ -72,6 +76,16 @@
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/objeto_producto.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/layout/ver_datos_tus_citas.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueria-master/app/src/main/res/xml/file_paths.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/drawable/fondo_perfil.xml" value="0.235" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/activity_chat.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/activity_peluqueria.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/activity_registro2.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/activity_registro3.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/activity_ver_datos_tus_citas.xml" value="0.26851851851851855" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/activity_ver_perfil.xml" value="0.34814814814814815" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/activity_ver_tus_citas.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/citas_recicler_view_vet.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/drawable-anydpi/icono_usuario.xml" value="0.2115" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/drawable-xxxhdpi/fondo_card1.xml" value="0.2105" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/drawable-xxxhdpi/fondo_card2.xml" value="0.2105" />
@@ -90,7 +104,7 @@
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/drawable/ic_launcher_background.xml" value="0.209" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/drawable/prueba_fondo_quitar.xml" value="0.2335" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_peluqueria.xml" value="0.19791666666666666" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_registro1.xml" value="0.381025641025641" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_registro2.xml" value="0.33" />
@@ -98,17 +112,9 @@
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_registro4.xml" value="0.33" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_registro5.xml" value="0.381025641025641" />
         <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_registro6.xml" value="0.2015625" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/drawable/background_tienda.xml" value="0.1" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.1" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_detalle_tienda.xml" value="0.2578125" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_noticias.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_tienda.xml" value="0.264" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_tienda2.xml" value="0.4" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_tienda_detalles.xml" value="0.264" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_ubicacion_tiempo_real.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_veterinaria.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/objeto_producto.xml" value="0.264" />
-        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/objetos_tienda.xml" value="0.264" />
+        <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_tienda.xml" value="0.38385416666666666" />
+        <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_tienda2.xml" value="0.38385416666666666" />
+        <entry key="..\:/Users/caral/AndroidStudioProjects/PeluqueriaCanina/app/src/main/res/layout/activity_tienda_detalles.xml" value="0.38385416666666666" />
       </map>
     </option>
   </component>
