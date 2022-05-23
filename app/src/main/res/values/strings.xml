@@ -89,6 +89,9 @@
     <string name="btn_chat_enviar">Enviar</string>
     <string name="error_no_hay_citas">Si no reservas una cita no puedes hablar con el conductor</string>
     <string name="tv_perfil_menu">Ver perfil</string>
+    <string name="tv_alimentacion_tienda">Alimentación</string>
+    <string name="tv_accesorios_tienda">Accesorios</string>
+    <string name="tv_juguetes_tienda">Juguetes</string>
     <string name="conductor_a_punto_llegar">El conductor debe de estar a punto de llegar</string>
 
 </resources>

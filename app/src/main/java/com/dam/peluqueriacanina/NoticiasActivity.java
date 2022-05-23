@@ -18,7 +18,6 @@ public class NoticiasActivity extends AppCompatActivity {
         wVNoticias.setWebViewClient(new WebViewClient());
         wVNoticias.loadUrl("https://elpais.com/noticias/mascotas/");
     }
-    //hola
 
     @Override
     public void onBackPressed() {
