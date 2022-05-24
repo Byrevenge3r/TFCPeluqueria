@@ -4,21 +4,17 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class NombreDirVet {
-    @SerializedName("clinica")
-    @Expose
     private String clínica;
-
-    @SerializedName("dirección")
-    @Expose
     private String dirección;
-
-    @SerializedName("municipio")
-    @Expose
     private String municipio;
-
-    @SerializedName("cp")
-    @Expose
     private String cp;
+
+    public NombreDirVet(String clínica, String dirección, String municipio, String cp) {
+        this.clínica = clínica;
+        this.dirección = dirección;
+        this.municipio = municipio;
+        this.cp = cp;
+    }
 
     public String getClínica() {
         return clínica;

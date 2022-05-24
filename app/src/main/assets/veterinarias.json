@@ -1,5 +1,4 @@
-{
-  "veterinarias": [
+[
     {
       "clínica": "AAA SUPERVET Clínica Veterinaria Ciudad de los Periodistas",
       "dirección": "C/ Fermin Caballero 56",
@@ -49,10 +48,10 @@
       "cp": "28010"
     },
     {
-      "clínica": "",
-      "dirección": "ALUCHE LAS AGUILAS  CENTRO VETERINARIO",
-      "municipio": "Jose de Cadalso  130",
-      "cp": "Madrid"
+      "clínica": "ALUCHE LAS AGUILAS  CENTRO VETERINARIO",
+      "dirección": "Jose de Cadalso  130",
+      "municipio": "Madrid",
+      "cp": "28010"
     },
     {
       "clínica": "ANAGA  Centro Veterinario",
@@ -127,10 +126,10 @@
       "cp": "28004"
     },
     {
-      "clínica": "",
-      "dirección": "ARGANZUELA  Clinica Veterinaria",
-      "municipio": "Paseo Melancólicos  31-33",
-      "cp": "Madrid"
+      "clínica": "ARGANZUELA  Clinica Veterinaria",
+      "dirección": "Paseo Melancólicos  31-33",
+      "municipio": "Madrid",
+      "cp": "28004"
     },
     {
       "clínica": "ARGOS  Centro Veterinario",
@@ -169,10 +168,10 @@
       "cp": "28012"
     },
     {
-      "clínica": "",
-      "dirección": "AUDITORIO  Centro Veterinario",
-      "municipio": "Pza. Sagrado Corazon de Jesus   2",
-      "cp": "Madrid"
+      "clínica": "AUDITORIO  Centro Veterinario",
+      "dirección": "Pza. Sagrado Corazon de Jesus   2",
+      "municipio": "Madrid",
+      "cp": "28012"
     },
     {
       "clínica": "AVD. DE VALLADOLID  Clínica Veterinaria",
@@ -511,10 +510,10 @@
       "cp": "28050"
     },
     {
-      "clínica": "",
-      "dirección": "CIUDAD DE LOS ANGELES  Centro Veterinario",
-      "municipio": "C/ Pan y Toros  21 local",
-      "cp": "Madrid"
+      "clínica": "CIUDAD DE LOS ANGELES  Centro Veterinario",
+      "dirección": "C/ Pan y Toros  21 local",
+      "municipio": "Madrid",
+      "cp": "28050"
     },
     {
       "clínica": "CLINICA ARGOS",
@@ -745,10 +744,10 @@
       "cp": "28045"
     },
     {
-      "clínica": "",
-      "dirección": "Clínica Veterinaria PU CAN",
-      "municipio": "Gasómetro  5",
-      "cp": "Madrid"
+      "clínica": "Clínica Veterinaria PU CAN",
+      "dirección": "Gasómetro  5",
+      "municipio": "Madrid",
+      "cp": "28045"
     },
     {
       "clínica": "CLINICA VETERINARIA QUINTANA",
@@ -1423,16 +1422,16 @@
       "cp": "28005"
     },
     {
-      "clínica": "",
-      "dirección": "LACLINICAVETERINARIA (Fuente Carrantona)",
-      "municipio": "Avda. Dr. García Tapia   216",
-      "cp": "Madrid"
+      "clínica": "LACLINICAVETERINARIA (Fuente Carrantona)",
+      "dirección": "Avda. Dr. García Tapia   216",
+      "municipio": "Madrid",
+      "cp": "28005"
     },
     {
-      "clínica": "",
-      "dirección": "LACLINICAVETERINARIA (Marroquina)",
-      "municipio": "C/ Marroquina  26 Posterior",
-      "cp": "Madrid"
+      "clínica": "LACLINICAVETERINARIA (Marroquina)",
+      "dirección": "C/ Marroquina  26 Posterior",
+      "municipio": "Madrid",
+      "cp": "28005"
     },
     {
       "clínica": "LAS MUSAS  Clínica Veterinaria",
@@ -1639,10 +1638,10 @@
       "cp": "28009"
     },
     {
-      "clínica": "",
-      "dirección": "MIRASIERRA  Centro Veterinario",
-      "municipio": "C/ Cambrills  14",
-      "cp": "Madrid"
+      "clínica": "MIRASIERRA  Centro Veterinario",
+      "dirección": "C/ Cambrills  14",
+      "municipio": "Madrid",
+      "cp": "28009"
     },
     {
       "clínica": "MISTER CAN  Clinica Veterinaria",
@@ -1873,10 +1872,10 @@
       "cp": "28042"
     },
     {
-      "clínica": "",
-      "dirección": "PUERTA DE TOLEDO  Centro Veterinario",
-      "municipio": "Gran Vía de San Francisco  9",
-      "cp": "Madrid"
+      "clínica": "PUERTA DE TOLEDO  Centro Veterinario",
+      "dirección": "Gran Vía de San Francisco  9",
+      "municipio": "Madrid",
+      "cp": "28042"
     },
     {
       "clínica": "QUEVEDOG  Clínica Veterinaria",
@@ -2305,16 +2304,16 @@
       "cp": "28032"
     },
     {
-      "clínica": "",
-      "dirección": "VICTOR DE LA SERNA  Centro Clínico Veterinario. Doctores Alvarez de la Villa",
-      "municipio": "C/ Victor de la Serna  8; Bajo Dcha.",
-      "cp": "Madrid"
+      "clínica": "VICTOR DE LA SERNA  Centro Clínico Veterinario. Doctores Alvarez de la Villa",
+      "dirección": "C/ Victor de la Serna  8; Bajo Dcha.",
+      "municipio": "Madrid",
+      "cp": "28032"
     },
     {
-      "clínica": "",
-      "dirección": "VINATEROS  Clínica Veterinaria",
-      "municipio": "C/ Camino Vinateros  65",
-      "cp": "Madrid"
+      "clínica": "VINATEROS  Clínica Veterinaria",
+      "dirección": "C/ Camino Vinateros  65",
+      "municipio": "Madrid",
+      "cp": "28032"
     },
     {
       "clínica": "VIRGEN DE BEGOÑA  Clínica Veterinaria",
@@ -2371,4 +2370,3 @@
       "cp": "28047"
     }
   ]
-}
