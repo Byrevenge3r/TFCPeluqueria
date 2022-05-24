@@ -94,5 +94,8 @@
     <string name="tv_juguetes_tienda">Juguetes</string>
     <string name="conductor_a_punto_llegar">El conductor debe de estar a punto de llegar</string>
     <string name="fecha_distinta_hoy">Solo se puede mirar las fechas de las citas de hoy</string>
+    <string name="contrasenia_vacia">Introduzca una contraseña</string>
+    <string name="longitud_contra">La contraseña tiene que tener al menos 8 caracteres</string>
+    <string name="direccion_vacia">Debes introducir una direccion</string>
 
 </resources>

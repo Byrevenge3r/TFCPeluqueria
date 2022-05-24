@@ -75,6 +75,7 @@
                     android:id="@+id/etCorreo"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
+                    android:inputType="textEmailAddress"
                     android:layout_marginLeft="48dp"
                     android:layout_marginTop="70dp"
                     android:layout_marginRight="48dp"

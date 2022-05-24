@@ -69,34 +69,40 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
         String direccion = etdireccion.getText().toString().trim();
         if (v.equals(btnSiguienteRegDos)) {
 
-            /*joakinif (TextUtils.isEmpty(correo)) {
+            if (TextUtils.isEmpty(correo)) {
                 etCorreo.setError("Introduzca un correo");
             } else if (TextUtils.isEmpty(confcorreo)) {
                 etConfCorreo.setError("Introduzca una confirmacion de correo");
             } else if (TextUtils.isEmpty(contra)) {
-                etContra.setError("Introduzca una contraseña");
-            } else if (TextUtils.isEmpty(correo)) {
-                etConfContra.setError("Introduzca una confirmacion de contraseña");
-            } else if (etContra.length() < 8) {
-                etContra.setError("La contraseña debe tener al menos 8 caracteres");
-            } else if (etConfContra.length() < 8) {
-                etConfContra.setError("La contraseña debe tener al menos 8 caracteres");
-            } else if (!etCorreo.equals(etConfCorreo )) {
+                Snackbar.make(v, R.string.contrasenia_vacia, Snackbar.LENGTH_LONG).show();
+            } else if (TextUtils.isEmpty(confcontra)) {
+                Snackbar.make(v, R.string.contrasenia_vacia, Snackbar.LENGTH_LONG).show();
+            } else if (contra.length() < 8) {
+                Snackbar.make(v, R.string.longitud_contra, Snackbar.LENGTH_LONG).show();
+            } else if (confcontra.length() < 8) {
+                Snackbar.make(v, R.string.longitud_contra, Snackbar.LENGTH_LONG).show();
+            } else if (!correo.equals(confcorreo)) {
                 Snackbar.make(v, R.string.correo_coincide, Snackbar.LENGTH_LONG).show();
-            } else if (!etContra.equals(etConfContra)) {
+            } else if (!contra.equals(confcontra)) {
                 Snackbar.make(v, R.string.contra_coincide, Snackbar.LENGTH_LONG).show();
-                //arreglar error
-            } else  {*/
-            ((MiApplication) getApplicationContext()).setCorreo(correo);
-            ((MiApplication) getApplicationContext()).setContrasenia(contra);
-            ((MiApplication) getApplicationContext()).setDireccion(direccion);
 
-            i = new Intent(this, Registro3.class);
-            startActivity(i);
+            }  else if (TextUtils.isEmpty(direccion)) {
+            Snackbar.make(v, R.string.direccion_vacia, Snackbar.LENGTH_LONG).show();
 
-            overridePendingTransition(R.anim.animacion_derecha_izquierda, R.anim.animacion_izquierda_izquierda);
-            //}
-        } else if (v.equals(btnAtrasRegDos)) {
+        } else {
+                ((MiApplication) getApplicationContext()).setCorreo(correo);
+                ((MiApplication) getApplicationContext()).setContrasenia(contra);
+                ((MiApplication) getApplicationContext()).setDireccion(direccion);
+
+                i = new Intent(this, Registro3.class);
+                startActivity(i);
+
+                overridePendingTransition(R.anim.animacion_derecha_izquierda, R.anim.animacion_izquierda_izquierda);
+                //}
+            }
+
+
+        }else if (v.equals(btnAtrasRegDos)) {
             i = new Intent(this, Registro1.class);
             startActivity(i);
 
@@ -104,10 +110,10 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
         }
 
 
-    }
 
+    }
     @Override
-    public void onBackPressed() {
+    public void onBackPressed () {
         super.onBackPressed();
         i = new Intent(this, Registro1.class);
         startActivity(i);

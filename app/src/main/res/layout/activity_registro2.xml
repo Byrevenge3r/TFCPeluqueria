@@ -122,7 +122,6 @@
                     android:layout_marginRight="48dp"
                     android:background="@drawable/fondo_edit_text"
                     android:hint="@string/et_contrasenia"
-                    android:maxLength="8"
                     android:inputType="textPassword"
                     android:paddingLeft="26dp"
                     android:paddingRight="26dp"
@@ -153,7 +152,6 @@
                     android:inputType="textPassword"
                     android:drawableTint="@color/color_texto_negro"
                     android:hint="@string/et_conf_contrasenia"
-                    android:maxLength="8"
                     android:paddingLeft="26dp"
                     android:paddingRight="26dp" />
 
