@@ -65,7 +65,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
        adapter = new ChatAdapter(mensajes);
 
 
-       dbr.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+       dbr.child("usuarios/"+"-N2kwgJHK5AHiUScSDn7"+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
 
            @Override
            public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -81,7 +81,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                }
            }
        });
-       dbr.child("usuarios/"+ ((MiApplication)getApplicationContext()).getKey()+"/chat").addChildEventListener(new ChildEventListener() {
+       dbr.child("usuarios/"+ "-N2kwgJHK5AHiUScSDn7"+"/chat").addChildEventListener(new ChildEventListener() {
            @Override
            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                mensajes.add(snapshot.getValue(Chat.class));
@@ -126,10 +126,10 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
            }
        });
 
-       if (mensajes.isEmpty()) {
+      /* if (mensajes.isEmpty()) {
            SmsManager sms = SmsManager.getDefault();
            sms.sendTextMessage("+34" + numeroTelConduc, null,  ((MiApplication) getApplicationContext()).getKey(), null, null);
-       }
+       }*/
 
        rv.setAdapter(adapter);
        if (!mensajes.isEmpty()) {
@@ -151,7 +151,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                chat.put("mensaje",mensaje);
                chat.put("codigoPer","U");
                //Cambiar todo por la ruta correcta
-               dbr.child("usuarios").child( ((MiApplication)getApplicationContext()).getKey()).child("chat").child(key).setValue(chat);
+               dbr.child("usuarios").child("-N2kwgJHK5AHiUScSDn7").child("chat").child(key).setValue(chat);
 
                recoger = false;
                rv.setAdapter(adapter);

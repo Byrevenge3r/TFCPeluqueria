@@ -9,8 +9,7 @@ import retrofit2.http.GET;
 
 public interface ApiRestService {
 
-    //http://myjson.dit.upm.es/api/bins/92tv/
-    public static  final String BASE_URL =  "http://localhost:3000/";
+    public static  final String BASE_URL =  "http://myjson.dit.upm.es/api/bins/ei4f/";
 
     @GET("veterinarias")
     Call<ArrayList<NombreDirVet>> obtenerVeterinarias();
