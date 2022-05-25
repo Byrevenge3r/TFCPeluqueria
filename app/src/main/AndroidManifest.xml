@@ -39,7 +39,10 @@
             android:exported="false" />
         <activity
             android:name=".ChatActivity"
-            android:exported="true"></activity>
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+
+        </activity>
         <activity
             android:name=".VerDatosTusCitasActivity"
             android:exported="true" />

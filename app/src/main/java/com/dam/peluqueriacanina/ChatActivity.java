@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.dam.peluqueriacanina.dao.CoordenadasDao;
+import com.dam.peluqueriacanina.db.CoordenadasDB;
+import com.dam.peluqueriacanina.entity.Coordenadas;
 import com.dam.peluqueriacanina.model.Chat;
 import com.dam.peluqueriacanina.utils.ChatAdapter;
 import com.dam.peluqueriacanina.utils.MiApplication;
@@ -42,10 +45,12 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     Chat mensaje;
     boolean recoger = true;
     String numeroTelConduc;
+
    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
        fdb = FirebaseDatabase.getInstance();
        dbr = fdb.getReference();
 
@@ -65,6 +70,21 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
        adapter = new ChatAdapter(mensajes);
 
 
+       rv.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+           @Override
+           public void onLayoutChange(View view, int i, int i1, int i2, int bottom, int i4, int i5, int i6, int oldBottom) {
+               if ( bottom < oldBottom) {
+                   rv.postDelayed(new Runnable() {
+                       @Override
+                       public void run() {
+                           rv.scrollToPosition(rv.getAdapter().getItemCount() - 1);
+                       }
+                   }, 0);
+               }
+
+           }
+       });
+
        dbr.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
 
            @Override
@@ -81,7 +101,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                }
            }
        });
-       dbr.child("usuarios/"+ ((MiApplication)getApplicationContext()).getKey()+"/chat").addChildEventListener(new ChildEventListener() {
+       dbr.child("usuarios/"+ "-N2kwgJHK5AHiUScSDn7"+"/chat").addChildEventListener(new ChildEventListener() {
            @Override
            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                mensajes.add(snapshot.getValue(Chat.class));
@@ -126,10 +146,10 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
            }
        });
 
-       if (mensajes.isEmpty()) {
+       /*if (mensajes.isEmpty()) {
            SmsManager sms = SmsManager.getDefault();
            sms.sendTextMessage("+34" + numeroTelConduc, null,  ((MiApplication) getApplicationContext()).getKey(), null, null);
-       }
+       }*/
 
        rv.setAdapter(adapter);
        if (!mensajes.isEmpty()) {
