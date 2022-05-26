@@ -85,6 +85,7 @@ public class MapaVeterinariasActivity extends AppCompatActivity implements OnMap
    /* public class  CustomClusterRenderers extends DefaultClusterRenderer<MyItem> {
        private Context context;
     }*/
+    //
 
     public class MyItem implements ClusterItem {
         private final LatLng position;
