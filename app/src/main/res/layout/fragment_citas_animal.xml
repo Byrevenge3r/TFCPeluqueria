@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".fragmentos.CitasAnimalFragment"
+    tools:context=".fragmentosPel.CitasAnimalFragmentPel"
     android:background="@color/color_principal_citas">
 
     <TextView

@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import android.widget.Button;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.entity.Animal;
+import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -35,6 +37,8 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
     Button btnAniadirMascotaVet;
     ArrayList<Animal> listaAnimalesVet;
     Intent i;
+    TusCitas tusCitas;
+    CardView cvVeterinaria;
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -60,7 +64,11 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
         imagenAnimal = findViewById(R.id.siAnimal);
         btnAniadirMascotaVet = findViewById(R.id.btnAniadirMascotaVet);
         rv = findViewById(R.id.rvReservarVet);
+        cvVeterinaria = findViewById(R.id.cvVeterinaria);
 
+        if ((getIntent().getParcelableExtra("cita")) != null) {
+            tusCitas = getIntent().getParcelableExtra("cita");
+        }
 
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -74,6 +82,7 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
         rv.setAdapter(adapter);
 
         btnAniadirMascotaVet.setOnClickListener(this);
+        cvVeterinaria.setOnClickListener(this);
     }
 
     private void listenerRv() {
@@ -94,6 +103,9 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
         if (v.equals(btnAniadirMascotaVet)) {
             i = new Intent(this,RegistrarAnimal.class);
             arl.launch(i);
+        } else if (v.equals(cvVeterinaria)) {
+            i = new Intent(this,MapaVeterinariasActivity.class);
+            startActivity(i);
         }
     }
 }

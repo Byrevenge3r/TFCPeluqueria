@@ -101,6 +101,7 @@
                 android:columnOrderPreserved="false">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvVeterinaria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
@@ -116,13 +117,13 @@
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:src="@drawable/peluqueria_menu" />
+                            android:src="@drawable/veterinaria_icono_mapa" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:text="@string/tv_peluqueria_menu"
+                            android:text="@string/tv_veterinaria_menu"
                             android:textColor="@color/color_texto_negro"
                             android:textSize="18sp" />
 

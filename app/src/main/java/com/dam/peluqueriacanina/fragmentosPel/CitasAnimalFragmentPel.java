@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.fragmentos;
+package com.dam.peluqueriacanina.fragmentosPel;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -18,12 +18,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.telephony.SmsManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dam.peluqueriacanina.PeluqueriaActivity;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.comunicacion.Comunicacion;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
@@ -32,10 +30,8 @@ import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.TusCitas;
-import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.utils.CitasAnimalesFotoAdapter;
 import com.dam.peluqueriacanina.utils.MiApplication;
-import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,9 +40,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class CitasAnimalFragment extends DialogFragment {
+public class CitasAnimalFragmentPel extends DialogFragment {
 
     AnimalesDao daoAnimal;
     AnimalesDB dbAnimal;
@@ -60,11 +55,9 @@ public class CitasAnimalFragment extends DialogFragment {
     LinearLayoutManager llm;
     String citaFecha = "";
     String citaHora = "";
-    String mes = "";
     String mesN = "";
     FirebaseDatabase fdb;
     DatabaseReference dbr;
-    String key = "";
     LocalDateTime now;
     String fechaActual = "";
     String numeroTelConduc = "";
@@ -72,7 +65,7 @@ public class CitasAnimalFragment extends DialogFragment {
     String keyB;
     Comunicacion listener;
 
-    public CitasAnimalFragment() {
+    public CitasAnimalFragmentPel() {
     }
 
     @Override
@@ -104,7 +97,6 @@ public class CitasAnimalFragment extends DialogFragment {
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
                 citaFecha = bundle.getString("citaFecha");
                 citaHora = bundle.getString("citaHora");
-                mes = bundle.getString("mes");
                 mesN = bundle.getString("mesN");
                 keyB = bundle.getString("KeyB");
 
@@ -119,9 +111,9 @@ public class CitasAnimalFragment extends DialogFragment {
                             fechaActual = now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear();
                             dbr = fdb.getReference("coche/reservas/"+mesN);
 
-                            SmsManager sms = SmsManager.getDefault(); //((MiApplication) getContext()).getTelefono()
-                            //TODO:Poner que recoja el telefono del usuario cuando inicie sesion            JUSTO AQUI
-                            sms.sendTextMessage("+34" + numeroTelConduc, null,  "671393685"+ "-" + citaFecha + "-" + citaHora + "-" + keyB, null, null);
+                            SmsManager sms = SmsManager.getDefault();
+                            String key = dbr.push().getKey();
+                            sms.sendTextMessage("+34" + numeroTelConduc, null,  ((MiApplication) getContext()).getTelefono()+ "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
                             listener.info(new TusCitas(animal.getRuta(),keyB,animal.getNombre(),citaFecha,citaHora));
 
                         }
@@ -167,7 +159,6 @@ public class CitasAnimalFragment extends DialogFragment {
             }
         });
         dbr = fdb.getReference();
-
 
         return builder.create();
     }

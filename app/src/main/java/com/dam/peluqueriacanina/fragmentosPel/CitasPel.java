@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.fragmentos;
+package com.dam.peluqueriacanina.fragmentosPel;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -37,7 +37,7 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Citas extends DialogFragment {
+public class CitasPel extends DialogFragment {
 
     CalendarView calendarioCitas;
     RecyclerView rv;
@@ -51,7 +51,7 @@ public class Citas extends DialogFragment {
     FirebaseDatabase fdb;
     DatabaseReference dbr;
     //Cotiene todas las horas
-    CitasAnimalFragment citasAnimal;
+    CitasAnimalFragmentPel citasAnimal;
     ArrayList<CitasReserva> listaCitas;
     ArrayList<CitasReserva> listaCitasMes;
     TextView tvNoHayCitas;
@@ -70,7 +70,7 @@ public class Citas extends DialogFragment {
     String key;
     boolean continuar = true;
     int i = 0;
-    public Citas() {
+    public CitasPel() {
     }
 
     @Override
@@ -123,7 +123,7 @@ public class Citas extends DialogFragment {
         listaMeses = new ArrayList<>();
         listaCitasHoy = new ArrayList<>();
 
-        citasAnimal = new CitasAnimalFragment();
+        citasAnimal = new CitasAnimalFragmentPel();
         formatter = new SimpleDateFormat("dd/MM/yyyy");
         formatterH = new SimpleDateFormat("HH:mm");
         diaSeleccionado = new Date();
@@ -234,7 +234,6 @@ public class Citas extends DialogFragment {
                                 adapter.setListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-
                                         pasarCitaFragment(v, dia, mesD, anio);
                                     }
                                 });
@@ -285,7 +284,6 @@ public class Citas extends DialogFragment {
         bundle.putString("citaFecha", citaFecha);
         bundle.putString("citaHora", citaHora);
         bundle.putString("mesN", mes);
-        bundle.putString("mes", String.valueOf(mesD + 1));
         bundle.putString("KeyB",key);
 
         getParentFragmentManager().setFragmentResult("Key", bundle);

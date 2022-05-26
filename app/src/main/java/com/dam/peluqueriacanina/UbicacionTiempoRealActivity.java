@@ -7,12 +7,11 @@ import androidx.fragment.app.FragmentActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import com.dam.peluqueriacanina.comunicacion.Comunicacion;
 import com.dam.peluqueriacanina.entity.TusCitas;
-import com.dam.peluqueriacanina.fragmentos.Citas;
+import com.dam.peluqueriacanina.fragmentosPel.CitasPel;
 import com.dam.peluqueriacanina.model.Mapa;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -46,7 +45,7 @@ public class UbicacionTiempoRealActivity
     BitmapDrawable bitmapdraw;
     Bitmap b;
     Bitmap smallMarker;
-    Citas citas;
+    CitasPel citasPel;
     TusCitas tusCitas;
     Intent i;
     Bundle bundle;
@@ -67,7 +66,7 @@ public class UbicacionTiempoRealActivity
         b = bitmapdraw.getBitmap();
         smallMarker = Bitmap.createScaledBitmap(b, anchura, altura, false);
 
-        citas = new Citas();
+        citasPel = new CitasPel();
 
         tusCitas = new TusCitas();
 
@@ -129,7 +128,7 @@ public class UbicacionTiempoRealActivity
         if (marker.equals(markerMap)) {
             bundle.putString("keyB",((MiApplication) getApplicationContext()).getKey());
             getSupportFragmentManager().setFragmentResult("key", bundle);
-            citas.show(getSupportFragmentManager(),"Citas");
+            citasPel.show(getSupportFragmentManager(),"Citas");
         }
         return false;
     }

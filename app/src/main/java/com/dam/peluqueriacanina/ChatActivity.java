@@ -96,7 +96,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                }
            }
        });
-       dbr.child("usuarios/"+ "-N2kwgJHK5AHiUScSDn7"+"/chat").addChildEventListener(new ChildEventListener() {
+       dbr.child("usuarios/"+ ((MiApplication)getApplicationContext()).getKey()+"/chat").addChildEventListener(new ChildEventListener() {
            @Override
            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                mensajes.add(snapshot.getValue(Chat.class));

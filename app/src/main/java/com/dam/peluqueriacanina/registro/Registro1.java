@@ -10,9 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.fragmentos.Citas;
+import com.dam.peluqueriacanina.fragmentosPel.CitasPel;
 import com.dam.peluqueriacanina.utils.MiApplication;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,7 +33,7 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
 
     Button btnSiguienteRegUno;
     Intent i;
-    Citas citas;
+    CitasPel citasPel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,7 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
         btnSiguienteRegUno = findViewById(R.id.btnSiguienteRegUno);
 
         btnSiguienteRegUno.setOnClickListener(this);
-        citas = new Citas();
+        citasPel = new CitasPel();
     }
 
     @Override
