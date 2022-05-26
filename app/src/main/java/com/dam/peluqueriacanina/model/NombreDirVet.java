@@ -4,33 +4,37 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class NombreDirVet {
-    private String clínica;
-    private String dirección;
-    private String municipio;
-    private String cp;
+    private String clinica;
+    private String lat;
+    private String lon;
 
-    public NombreDirVet(String clínica, String dirección, String municipio, String cp) {
-        this.clínica = clínica;
-        this.dirección = dirección;
-        this.municipio = municipio;
-        this.cp = cp;
+    public NombreDirVet(String clinica, String lat, String lon) {
+        this.clinica = clinica;
+        this.lat = lat;
+        this.lon = lon;
     }
 
-    public String getClínica() {
-        return clínica;
+    public String getClinica() {
+        return clinica;
     }
 
-    public String getDirección() {
-        return dirección;
+    public void setClinica(String clinica) {
+        this.clinica = clinica;
     }
 
-    public String getMunicipio() {
-        return municipio;
+    public String getLat() {
+        return lat;
     }
 
-    public String getCp() {
-        return cp;
+    public void setLat(String lat) {
+        this.lat = lat;
     }
 
+    public String getLon() {
+        return lon;
+    }
 
+    public void setLon(String lon) {
+        this.lon = lon;
+    }
 }

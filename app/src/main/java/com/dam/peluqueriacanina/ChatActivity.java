@@ -7,15 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 
-import com.dam.peluqueriacanina.dao.CoordenadasDao;
-import com.dam.peluqueriacanina.db.CoordenadasDB;
-import com.dam.peluqueriacanina.entity.Coordenadas;
 import com.dam.peluqueriacanina.model.Chat;
 import com.dam.peluqueriacanina.utils.ChatAdapter;
 import com.dam.peluqueriacanina.utils.MiApplication;
