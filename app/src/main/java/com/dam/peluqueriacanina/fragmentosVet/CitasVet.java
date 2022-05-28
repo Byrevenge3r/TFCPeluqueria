@@ -287,7 +287,7 @@ public class CitasVet extends DialogFragment {
             continuar = true;
         }
     }
-
+//
     private void pasarCitaFragment(View v, int dia, int mesD, int anio) {
         citaFecha = dia + "/" + (mesD + 1) + "/" + anio;
         citaHora = listaCitas.get(rv.getChildAdapterPosition(v)).getHora();
