@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina;
+package com.dam.peluqueriacanina.utils;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

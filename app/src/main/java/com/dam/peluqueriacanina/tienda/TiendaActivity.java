@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina;
+package com.dam.peluqueriacanina.tienda;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.dam.peluqueriacanina.R;
 
 public class TiendaActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -73,7 +75,7 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
                 public void onClick(View view) {
                     String objetoSeleccionado = nombreObjetoTienda[aux];
                     Toast.makeText(getApplicationContext(), "Objeto "+objetoSeleccionado,Toast.LENGTH_LONG).show();
-                    Intent tienda = new Intent(getApplicationContext(),Tienda2Activity.class);
+                    Intent tienda = new Intent(getApplicationContext(), Tienda2Activity.class);
                     startActivity(tienda);
                 }
             });

@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina;
+package com.dam.peluqueriacanina.peluqueria;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -22,6 +22,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dam.peluqueriacanina.ChatActivity;
+import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.utils.SmsListener;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;

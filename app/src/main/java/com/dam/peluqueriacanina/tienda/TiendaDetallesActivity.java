@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina;
+package com.dam.peluqueriacanina.tienda;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.dam.peluqueriacanina.R;
 
 public class TiendaDetallesActivity extends AppCompatActivity {
 

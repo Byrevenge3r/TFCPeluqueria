@@ -7,7 +7,7 @@
     android:weightSum="4"
     android:orientation="vertical"
     android:background="@color/color_registro"
-    tools:context=".DatosAnimalActivity">
+    tools:context=".peluqueria.DatosAnimalActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

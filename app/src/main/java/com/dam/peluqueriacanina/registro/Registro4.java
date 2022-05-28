@@ -6,29 +6,17 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
-import android.telephony.SmsMessage;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.SmsListener;
-import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.utils.MiApplication;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.ArrayList;
 
 public class Registro4 extends AppCompatActivity implements View.OnClickListener {
 

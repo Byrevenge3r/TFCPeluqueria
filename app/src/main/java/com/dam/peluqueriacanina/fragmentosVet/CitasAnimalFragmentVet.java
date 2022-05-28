@@ -29,6 +29,7 @@ import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.notificacion.Recordatorio;
 import com.dam.peluqueriacanina.utils.CitasAnimalesFotoAdapter;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -117,6 +118,7 @@ public class CitasAnimalFragmentVet extends DialogFragment {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                             now = LocalDateTime.now();
                             fechaActual = now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear();
+                            //Subida a el apartado general de las veterinarias
                             dbr = fdb.getReference("veterinaria/veterinaroRes/"+nom+"/"+mesN);
                             String key = dbr.push().getKey();
                             HashMap<String,Object> listaCitaVet = new HashMap<>();
@@ -124,7 +126,19 @@ public class CitasAnimalFragmentVet extends DialogFragment {
                             listaCitaVet.put("fecha",citaFecha);
                             listaCitaVet.put("hora",citaHora);
 
-                           // dbr.child(key).setValue(listaCitaVet);
+                            dbr.child(key).setValue(listaCitaVet);
+
+                            listaCitaVet.clear();
+
+                            //Subida al apartado independiente de las veterinarias
+                            dbr = fdb.getReference("usuarios/"+keyB+"/reservas");
+                            key = dbr.push().getKey();
+                            listaCitaVet.put("nom",nom);
+                            listaCitaVet.put("citaFecha",citaFecha);
+                            listaCitaVet.put("citaHora",citaHora);
+
+                            dbr.child(key).setValue(listaCitaVet);
+
                             String[] diaMesAnio = citaFecha.split("/");
                             String[] horaSolo = citaHora.split(":");
 

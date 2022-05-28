@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina;
+package com.dam.peluqueriacanina.veterinaria;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -14,10 +14,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.TusCitas;
+import com.dam.peluqueriacanina.peluqueria.DatosAnimalActivity;
+import com.dam.peluqueriacanina.peluqueria.RegistrarAnimal;
 import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -101,10 +104,10 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         if (v.equals(btnAniadirMascotaVet)) {
-            i = new Intent(this,RegistrarAnimal.class);
+            i = new Intent(this, RegistrarAnimal.class);
             arl.launch(i);
         } else if (v.equals(cvVeterinaria)) {
-            i = new Intent(this,MapaVeterinariasActivity.class);
+            i = new Intent(this, MapaVeterinariasActivity.class);
             startActivity(i);
         }
     }

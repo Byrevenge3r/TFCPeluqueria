@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +14,9 @@ import android.widget.Toast;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.TusCitas;
+import com.dam.peluqueriacanina.peluqueria.PeluqueriaActivity;
+import com.dam.peluqueriacanina.registro.LoginActivity;
+import com.dam.peluqueriacanina.veterinaria.VeterinariaActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -200,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }else{
             // no one logged in
-            startActivity(new Intent(this,LoginActivity.class));
+            startActivity(new Intent(this, LoginActivity.class));
             finish();
         }
     }

@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina;
+package com.dam.peluqueriacanina.registro;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -18,10 +18,9 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dam.peluqueriacanina.MainActivity;
+import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.model.User;
-import com.dam.peluqueriacanina.registro.Registro1;
-import com.dam.peluqueriacanina.registro.Registro2;
-import com.dam.peluqueriacanina.registro.Registro5;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

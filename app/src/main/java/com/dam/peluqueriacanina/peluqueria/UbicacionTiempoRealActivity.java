@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina;
+package com.dam.peluqueriacanina.peluqueria;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,10 +9,12 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
+import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.comunicacion.Comunicacion;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.fragmentosPel.CitasPel;
 import com.dam.peluqueriacanina.model.Mapa;
+import com.dam.peluqueriacanina.peluqueria.PeluqueriaActivity;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;

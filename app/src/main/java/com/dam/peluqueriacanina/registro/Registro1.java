@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.dam.peluqueriacanina.LoginActivity;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.fragmentosPel.CitasPel;
 import com.dam.peluqueriacanina.utils.MiApplication;

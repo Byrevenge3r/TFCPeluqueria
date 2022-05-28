@@ -27,7 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PeluqueriaCanina">
         <activity
-            android:name=".MapaVeterinariasActivity"
+            android:name=".veterinaria.MapaVeterinariasActivity"
             android:exported="true">
 
         </activity>
@@ -41,26 +41,26 @@
 
         </activity>
         <activity
-            android:name=".VerDatosTusCitasActivity"
+            android:name=".peluqueria.VerDatosTusCitasActivity"
             android:exported="true" />
         <activity
             android:name=".NoticiasActivity"
             android:exported="false" />
         <activity
-            android:name=".TiendaDetallesActivity"
+            android:name=".tienda.TiendaDetallesActivity"
             android:exported="false" />
         <activity
-            android:name=".Tienda2Activity"
+            android:name=".tienda.Tienda2Activity"
             android:exported="false" />
         <activity
-            android:name=".TiendaActivity"
+            android:name=".tienda.TiendaActivity"
             android:exported="false" />
         <activity
-            android:name=".VerTusCitasActivity"
+            android:name=".peluqueria.VerTusCitasActivity"
             android:exported="true"></activity>
         <receiver android:name=".notificacion.Recordatorio"/>
         <receiver
-            android:name=".SmsListener"
+            android:name=".utils.SmsListener"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -73,24 +73,24 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".UbicacionTiempoRealActivity"
+            android:name=".peluqueria.UbicacionTiempoRealActivity"
             android:exported="false"
             android:label="@string/title_activity_ubicacion_tiempo_real" />
         <activity
-            android:name=".DatosAnimalActivity"
+            android:name=".peluqueria.DatosAnimalActivity"
             android:exported="false" />
         <activity
-            android:name=".VeterinariaActivity"
+            android:name=".veterinaria.VeterinariaActivity"
             android:exported="true" >
 
         </activity>
         <activity
-            android:name=".RegistrarAnimal"
+            android:name=".peluqueria.RegistrarAnimal"
             android:exported="true" >
 
         </activity>
         <activity
-            android:name=".PeluqueriaActivity"
+            android:name=".peluqueria.PeluqueriaActivity"
             android:exported="false" />
         <activity
             android:name=".registro.Registro4"
@@ -108,7 +108,7 @@
             android:name=".registro.Registro1"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".registro.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
