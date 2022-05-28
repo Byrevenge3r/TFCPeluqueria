@@ -283,6 +283,7 @@ public class CitasVet extends DialogFragment {
                     continuar = false;
                 }
             }
+            i = 0;
             continuar = true;
         }
     }

@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -14,7 +13,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -63,8 +61,8 @@ public class CitasAnimalFragmentVet extends DialogFragment {
     Calendar calendar = Calendar.getInstance();
     PendingIntent pendingIntent;
     AlarmManager alarmManager;
-
     ArrayList<AlarmManager> listaAlarmas;
+
 
     public String getCitaHora() {
         return citaHora;
@@ -138,8 +136,9 @@ public class CitasAnimalFragmentVet extends DialogFragment {
                             calendar.set(Calendar.MINUTE, Integer.parseInt(horaSolo[1]));
 
                             Intent i = new Intent(getContext(),Recordatorio.class);
-                            int valorEntero = (int) System.currentTimeMillis();
-                            pendingIntent = PendingIntent.getBroadcast(getContext(),valorEntero,i,PendingIntent.FLAG_ONE_SHOT);
+                            //Solo una larma
+                            int valor = (int) System.currentTimeMillis();
+                            pendingIntent = PendingIntent.getBroadcast(getContext(),valor,i,0);
                             alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
 
                             Long alertTime = (calendar.getTimeInMillis() - System.currentTimeMillis());
