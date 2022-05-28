@@ -20,6 +20,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.Data;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.comunicacion.Comunicacion;
@@ -29,6 +30,7 @@ import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.TusCitas;
+import com.dam.peluqueriacanina.notificacion.Recordatorio;
 import com.dam.peluqueriacanina.utils.CitasAnimalesFotoAdapter;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.firebase.database.DataSnapshot;
@@ -39,7 +41,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class CitasAnimalFragmentVet extends DialogFragment {
 
@@ -62,6 +66,8 @@ public class CitasAnimalFragmentVet extends DialogFragment {
     String fechaActual = "";
     String keyB;
     String nom;
+    Calendar actual = Calendar.getInstance();
+    Calendar calendar = Calendar.getInstance();
 
     public CitasAnimalFragmentVet() {
     }
@@ -116,6 +122,18 @@ public class CitasAnimalFragmentVet extends DialogFragment {
                             listaCitaVet.put("hora",citaHora);
 
                             dbr.child(key).setValue(listaCitaVet);
+                            String[] diaMesAnio = citaFecha.split("/");
+                            String tag = generateKey();
+                            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(diaMesAnio[0]));
+                            calendar.set(Calendar.MONTH, Integer.parseInt(diaMesAnio[1]));
+                            calendar.set(Calendar.YEAR, Integer.parseInt(diaMesAnio[2]));
+
+                            Long alertTime = calendar.getTimeInMillis() - System.currentTimeMillis();
+                            int random = (int) (Math.random() * 50 +1);
+
+                            Data data = guardarData("Hey estas ahi?, tienes una cita" ,"Tienes una cita en la veterinaria: " + nom + "\n a las: " + citaHora,random);
+
+                            Recordatorio.guardarNoti(alertTime,data,"tagNoti");
 
                         }
                         dismiss();
@@ -143,5 +161,16 @@ public class CitasAnimalFragmentVet extends DialogFragment {
         return builder.create();
     }
 
+
+    private String generateKey () {
+        return UUID.randomUUID().toString();
+    }
+
+    private Data guardarData (String titulo, String detalle, int idNoti) {
+        return new Data.Builder()
+                .putString("titulo",titulo)
+                .putString("detalle",detalle)
+                .putInt("id_noti",idNoti).build();
+    }
 
 }

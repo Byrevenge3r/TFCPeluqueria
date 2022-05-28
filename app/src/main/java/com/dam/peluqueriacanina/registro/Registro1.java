@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.dam.peluqueriacanina.LoginActivity;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.fragmentosPel.CitasPel;
 import com.dam.peluqueriacanina.utils.MiApplication;
@@ -61,7 +62,6 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
         String usuario = etUsuario.getText().toString().trim();
 
 
-
         if (v.equals(btnSiguienteRegUno)) {
             if (TextUtils.isEmpty(nombre)) {
                 etNombre.setError("Introduzca un nombre");
@@ -81,6 +81,15 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
                 overridePendingTransition(R.anim.animacion_derecha_izquierda, R.anim.animacion_izquierda_izquierda);
             }
         }
+    }
+
+    @Override
+    public void onBackPressed () {
+        super.onBackPressed();
+        i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+
+        overridePendingTransition(R.anim.animacion_derecha_derecha, R.anim.animacion_izquierda_derecha);
     }
 
 
