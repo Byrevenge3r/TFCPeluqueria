@@ -138,8 +138,8 @@ public class CitasVet extends DialogFragment {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             now = LocalDateTime.now();
-            ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Europe/Paris"));
-            horaActual = time.getHour() +":"+ time.getMinute();
+           // ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Europe/Paris"));
+            horaActual = now.getHour() +":"+ now.getMinute();
             try {
                 horaActualD = formatterH.parse(horaActual);
             } catch (ParseException e) {
@@ -239,6 +239,7 @@ public class CitasVet extends DialogFragment {
                                     }
                                 });
                             } else {
+                                filtrarDia();
                                 adapter = new CitasAdapter(listaCitas);
                                 rv.setAdapter(adapter);
                                 adapter.setListener(new View.OnClickListener() {

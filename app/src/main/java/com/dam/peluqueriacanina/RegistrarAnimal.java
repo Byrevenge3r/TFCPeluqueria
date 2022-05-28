@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -34,7 +35,11 @@ import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.utils.MiApplication;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,7 +57,9 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
     Intent i;
     AnimalesDao dao;
     AnimalesDB db;
-    //CharSequence[] opcion = {"Tomar foto", "Elegir de galeria", "Cancelar"};
+    StorageReference mStorage;
+    StorageReference filePath;
+    Uri uri;
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -60,11 +67,15 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
-                        Bitmap imgBitmap = BitmapFactory.decodeFile(ruta);
+
+                        uri = i.getData();
+                        filePath = mStorage.child("fotos").child(uri.getLastPathSegment());
+
+                       /* Bitmap imgBitmap = BitmapFactory.decodeFile(ruta);
                         tvPonerMascota.setVisibility(View.INVISIBLE);
                         ivFotoAnimal.setStrokeColor(ColorStateList.valueOf(ContextCompat.getColor(getBaseContext(), R.color.color_principal)));
                         ivFotoAnimal.bringToFront();
-                        ivFotoAnimal.setImageBitmap(imgBitmap);
+                        ivFotoAnimal.setImageBitmap(imgBitmap);*/
 
                     }
                 }
@@ -78,6 +89,7 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
 
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
+        mStorage = FirebaseStorage.getInstance().getReference();
 
         btnRegistrarAnimal = findViewById(R.id.btnRegistrarAnimal);
         etNomAnimal = findViewById(R.id.etNomAnimal);
@@ -93,13 +105,17 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if (v.equals(ivFotoAnimal)) {
-
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
                     ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1000);
 
             } else {
-                //TODO: Arreglar error si se rechaza mas de dos veces no sale mas el mensaje
+                i = new Intent(Intent.ACTION_PICK);
+                i.setType("image/*");
+                arl.launch(i);
+
+            }
+
                 i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (i.resolveActivity(getPackageManager()) != null) {
                     File foto = null;
@@ -115,8 +131,7 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                         arl.launch(i);
                     }
                 }
-            }
-        } else {
+            } else {
             nombre = etNomAnimal.getText().toString();
             raza = etRazaAnimal.getText().toString();
 
@@ -130,6 +145,9 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
             }
         }
     }
+
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

@@ -1,40 +1,38 @@
 package com.dam.peluqueriacanina.notificacion;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 
-import androidx.annotation.NonNull;
-import androidx.work.Data;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkManager;
-import androidx.work.Worker;
-import androidx.work.WorkerParameters;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
-import java.util.concurrent.TimeUnit;
+import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.VeterinariaActivity;
+import com.dam.peluqueriacanina.fragmentosVet.CitasAnimalFragmentVet;
 
-public class Recordatorio extends Worker {
 
-    public Recordatorio(@NonNull Context context, @NonNull WorkerParameters workerParams) {
-        super(context, workerParams);
-    }
+public class Recordatorio extends BroadcastReceiver {
 
-    public static void guardarNoti(Long duracion, Data data,String tag) {
-        OneTimeWorkRequest noti = new OneTimeWorkRequest.Builder(Recordatorio.class)
-                .setInitialDelay(duracion, TimeUnit.MILLISECONDS).addTag(tag)
-                .setInputData(data).build();
-
-        WorkManager instance = WorkManager.getInstance();
-        instance.enqueue(noti);
-    }
-
-    @NonNull
     @Override
-    public Result doWork() {
+    public void onReceive(Context context, Intent intent) {
 
-        String titulo = getInputData().getString("titulo");
-        String detalle = getInputData().getString("detalle");
-        int id = (int) getInputData().getLong("idNoti",0);
+        Intent i = new Intent(context, VeterinariaActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        int valorEntero = (int) System.currentTimeMillis();
+        PendingIntent pendingIntent = PendingIntent.getActivity(context,valorEntero,i,0);
 
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context,"hola")
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle("Hey estas ahi?, tienes una cita")
+                .setContentText("Recuerda que tienes una cita en tu centro veterinario")
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_HIGH);
 
-        return Result.success();
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
+        notificationManagerCompat.notify(123,builder.build());
+
     }
 }

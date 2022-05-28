@@ -1,49 +1,43 @@
 package com.dam.peluqueriacanina.fragmentosVet;
 
-import android.Manifest;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.pm.PackageManager;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.work.Data;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.comunicacion.Comunicacion;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.Animal;
-import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.notificacion.Recordatorio;
 import com.dam.peluqueriacanina.utils.CitasAnimalesFotoAdapter;
-import com.dam.peluqueriacanina.utils.MiApplication;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.UUID;
 
 public class CitasAnimalFragmentVet extends DialogFragment {
 
@@ -57,17 +51,28 @@ public class CitasAnimalFragmentVet extends DialogFragment {
     CitasAnimalesFotoAdapter adapter;
     RecyclerView rv;
     LinearLayoutManager llm;
-    String citaFecha = "";
-    String citaHora = "";
+   public String citaFecha = "";
+   public String citaHora = "";
     String mesN = "";
     FirebaseDatabase fdb;
     DatabaseReference dbr;
     LocalDateTime now;
     String fechaActual = "";
     String keyB;
-    String nom;
-    Calendar actual = Calendar.getInstance();
+    public String nom;
     Calendar calendar = Calendar.getInstance();
+    PendingIntent pendingIntent;
+    AlarmManager alarmManager;
+
+    ArrayList<AlarmManager> listaAlarmas;
+
+    public String getCitaHora() {
+        return citaHora;
+    }
+
+    public String getNom() {
+        return nom;
+    }
 
     public CitasAnimalFragmentVet() {
     }
@@ -94,7 +99,7 @@ public class CitasAnimalFragmentVet extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View v = getActivity().getLayoutInflater().inflate(R.layout.fragment_citas_animal, null);
         builder.setView(v);
-
+        listaAlarmas = new ArrayList<>();
 
         getParentFragmentManager().setFragmentResultListener("Key", this, new FragmentResultListener() {
             @Override
@@ -121,19 +126,37 @@ public class CitasAnimalFragmentVet extends DialogFragment {
                             listaCitaVet.put("fecha",citaFecha);
                             listaCitaVet.put("hora",citaHora);
 
-                            dbr.child(key).setValue(listaCitaVet);
+                           // dbr.child(key).setValue(listaCitaVet);
                             String[] diaMesAnio = citaFecha.split("/");
-                            String tag = generateKey();
+                            String[] horaSolo = citaHora.split(":");
+
                             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(diaMesAnio[0]));
-                            calendar.set(Calendar.MONTH, Integer.parseInt(diaMesAnio[1]));
+                            calendar.set(Calendar.MONTH, Integer.parseInt(diaMesAnio[1])-1);
                             calendar.set(Calendar.YEAR, Integer.parseInt(diaMesAnio[2]));
 
-                            Long alertTime = calendar.getTimeInMillis() - System.currentTimeMillis();
-                            int random = (int) (Math.random() * 50 +1);
+                            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(horaSolo[0]));
+                            calendar.set(Calendar.MINUTE, Integer.parseInt(horaSolo[1]));
 
-                            Data data = guardarData("Hey estas ahi?, tienes una cita" ,"Tienes una cita en la veterinaria: " + nom + "\n a las: " + citaHora,random);
+                            Intent i = new Intent(getContext(),Recordatorio.class);
+                            int valorEntero = (int) System.currentTimeMillis();
+                            pendingIntent = PendingIntent.getBroadcast(getContext(),valorEntero,i,PendingIntent.FLAG_ONE_SHOT);
+                            alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
 
-                            Recordatorio.guardarNoti(alertTime,data,"tagNoti");
+                            Long alertTime = (calendar.getTimeInMillis() - System.currentTimeMillis());
+
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                CharSequence name = "Hey estas ahi?, tienes una cita";
+                                String descripcion = "En una hora tienes una cita en la veterinaria: " + nom + "\n A las: " + citaHora;
+                                int importancia = NotificationManager.IMPORTANCE_HIGH;
+                                NotificationChannel channel = new NotificationChannel("hola",name,importancia);
+                                channel.setDescription(descripcion);
+
+                                NotificationManager notificationManager = getContext().getSystemService(NotificationManager.class);
+                                notificationManager.createNotificationChannel(channel);
+
+                            }
+
+                            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,alertTime,AlarmManager.INTERVAL_DAY,pendingIntent);
 
                         }
                         dismiss();
@@ -159,18 +182,6 @@ public class CitasAnimalFragmentVet extends DialogFragment {
         dbr = fdb.getReference();
 
         return builder.create();
-    }
-
-
-    private String generateKey () {
-        return UUID.randomUUID().toString();
-    }
-
-    private Data guardarData (String titulo, String detalle, int idNoti) {
-        return new Data.Builder()
-                .putString("titulo",titulo)
-                .putString("detalle",detalle)
-                .putInt("id_noti",idNoti).build();
     }
 
 }

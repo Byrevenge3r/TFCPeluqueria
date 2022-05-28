@@ -6,6 +6,7 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
@@ -57,7 +58,7 @@
         <activity
             android:name=".VerTusCitasActivity"
             android:exported="true"></activity>
-
+        <receiver android:name=".notificacion.Recordatorio"/>
         <receiver
             android:name=".SmsListener"
             android:enabled="true"
@@ -85,7 +86,9 @@
         </activity>
         <activity
             android:name=".RegistrarAnimal"
-            android:exported="false" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".PeluqueriaActivity"
             android:exported="false" />
@@ -126,6 +129,11 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+        <service android:name=".notificacion.Recordatorio" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
