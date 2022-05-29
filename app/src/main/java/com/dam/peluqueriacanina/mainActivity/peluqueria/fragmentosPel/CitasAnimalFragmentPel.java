@@ -101,6 +101,7 @@ public class CitasAnimalFragmentPel extends DialogFragment {
                 mesN = bundle.getString("mesN");
                 keyB = bundle.getString("KeyB");
                 tel = bundle.getString("tel");
+
                 adapter = new CitasAnimalesFotoAdapter((ArrayList<Animal>) daoAnimal.sacarAnimalKey(keyB));
 
                 adapter.setListener(new View.OnClickListener() {
@@ -163,21 +164,4 @@ public class CitasAnimalFragmentPel extends DialogFragment {
 
         return builder.create();
     }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if (context instanceof Comunicacion) {
-            listener = (Comunicacion) context;
-        } else {
-            throw new RuntimeException(context
-                    + " must implement OnComunicationFragmentListener");
-        }
     }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
-    }
-}

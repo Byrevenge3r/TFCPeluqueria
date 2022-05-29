@@ -11,206 +11,181 @@
         android:id="@+id/img_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_menu_48"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/trans"
-        android:layout_margin="16dp"
-        android:foreground="?attr/selectableItemBackground" />
+        android:foreground="?attr/selectableItemBackground"
+        android:src="@drawable/ic_baseline_menu_48" />
 
-    <ImageView
-        android:id="@+id/image_logo"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_margin="16dp"
-        android:layout_alignParentEnd="true"/>
+    <TextView
+        android:id="@+id/tv_tienda_online"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/img_menu"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/tienda_online"
+        android:textColor="@color/color_blanco_pero_no_tan_blanco"
+        android:textSize="42sp" />
 
-    <ScrollView
-        android:id="@+id/scroll_menu"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/img_menu">
-        <LinearLayout
+        android:layout_below="@+id/tv_tienda_online"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_buscar"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusableInTouchMode="true"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_tienda_online"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="@string/tienda_online"
-                android:textSize="42sp"
-                android:textColor="@color/color_blanco_pero_no_tan_blanco"/>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_buscar"
+            android:layout_margin="16dp"
+            android:hint="@string/hint_buscar"
+            app:startIconDrawable="@drawable/ic_baseline_search_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_buscar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_buscar"
-                app:startIconDrawable="@drawable/ic_baseline_search_24"
-                android:layout_margin="16dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:background="@drawable/fondo_edit_text"
-                    android:id="@+id/edit_text_buscar"
-                    android:layout_width="match_parent"
-                    android:inputType="text"
-                    android:textColor="@color/color_gris"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:id="@+id/tv_tienda_categorias"
+                android:background="@drawable/fondo_edit_text"
+                android:inputType="text"
+                android:textColor="@color/color_gris" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_tienda_categorias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/tienda_categoria"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewPeluqueria">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="@string/tienda_categoria"
-                android:textColor="@color/black"/>
+                android:orientation="horizontal">
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/viewPeluqueria"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="50dp"
-                android:scrollbars="none">
-
-                <LinearLayout
+                <GridLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:alignmentMode="alignMargins"
+                    android:columnOrderPreserved="false"
+                    android:rowCount="1">
 
-                    <GridLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:rowCount="1"
-                        android:alignmentMode="alignMargins"
-                        android:columnOrderPreserved="false">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvUbicacionTiempoReal"
+                        android:layout_width="130dp"
+                        android:layout_height="110dp"
+                        android:layout_margin="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="12dp">
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cvUbicacionTiempoReal"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="12dp"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="12dp">
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:padding="16dp"
-                                android:gravity="center"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginTop="5dp">
 
-                                <ImageView
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/peluqueria_menu" />
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/peluqueria_menu" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="12dp"
-                                    android:text="@string/tv_alimentacion_tienda"
-                                    android:textColor="@color/color_texto_negro"
-                                    android:textSize="18sp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="@string/tv_alimentacion_tienda"
+                                android:textColor="@color/color_texto_negro"
+                                android:textSize="15sp" />
 
-                            </LinearLayout>
+                        </LinearLayout>
 
-                        </androidx.cardview.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cvVerTusCitas"
-                            android:layout_width="wrap_content"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvVerTusCitas"
+                        android:layout_width="130dp"
+                        android:layout_height="110dp"
+                        android:layout_margin="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="12dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:cardElevation="12dp"
-                            app:cardCornerRadius="12dp"
-                            android:layout_margin="12dp">
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginTop="5dp">
 
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:padding="16dp"
-                                android:gravity="center"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/calendario" />
 
-                                <ImageView
-                                    android:src="@drawable/calendario"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="@string/tv_accesorios_tienda"
+                                android:textColor="@color/color_texto_negro"
+                                android:textSize="15sp" />
 
-                                <TextView
-                                    android:textSize="18sp"
-                                    android:layout_marginTop="12dp"
-                                    android:textColor="@color/color_texto_negro"
-                                    android:layout_width="wrap_content"
-                                    android:text="@string/tv_accesorios_tienda"
-                                    android:layout_height="wrap_content"/>
+                        </LinearLayout>
 
-                            </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                        </androidx.cardview.widget.CardView>
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="wrap_content"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="130dp"
+                        android:layout_height="110dp"
+                        android:layout_margin="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="12dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:cardElevation="12dp"
-                            app:cardCornerRadius="12dp"
-                            android:layout_margin="12dp">
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginTop="5dp">
 
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:padding="16dp"
-                                android:gravity="center"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/chat" />
 
-                                <ImageView
-                                    android:src="@drawable/chat"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="@string/tv_juguetes_tienda"
+                                android:textColor="@color/color_texto_negro"
+                                android:textSize="15sp" />
 
-                                <TextView
-                                    android:textSize="18sp"
-                                    android:layout_marginTop="12dp"
-                                    android:textColor="@color/color_texto_negro"
-                                    android:layout_width="wrap_content"
-                                    android:text="@string/tv_juguetes_tienda"
-                                    android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-
-                    </GridLayout>
-                </LinearLayout>
+                </GridLayout>
+            </LinearLayout>
 
 
+        </HorizontalScrollView>
 
-            </HorizontalScrollView>
-            <HorizontalScrollView
-                android:id="@+id/tienda_horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp">
-                <LinearLayout
-                    android:id="@+id/llTienda"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"/>
-            </HorizontalScrollView>
-            <TextView
-                android:id="@+id/tv_productos_populares"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="@string/producto_popular"
-                android:textColor="@color/black"/>
-            <HorizontalScrollView
-                android:id="@+id/producto_horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp">
-                <LinearLayout
-                    android:id="@+id/llProducto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"/>
-            </HorizontalScrollView>
-        </LinearLayout>
-    </ScrollView>
+
+    </LinearLayout>
 </RelativeLayout>
