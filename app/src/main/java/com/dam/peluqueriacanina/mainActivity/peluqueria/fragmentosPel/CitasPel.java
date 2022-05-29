@@ -68,6 +68,7 @@ public class CitasPel extends DialogFragment {
     Date horaBbdd;
     SimpleDateFormat formatterH;
     String key;
+    String tel;
     boolean continuar = true;
     int i = 0;
     public CitasPel() {
@@ -80,6 +81,7 @@ public class CitasPel extends DialogFragment {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
                 key = bundle.getString("keyB");
+                tel = bundle.getString("tel");
             }
         });
     }
@@ -285,7 +287,7 @@ public class CitasPel extends DialogFragment {
         bundle.putString("citaHora", citaHora);
         bundle.putString("mesN", mes);
         bundle.putString("KeyB",key);
-
+        bundle.putString("tel",tel);
         getParentFragmentManager().setFragmentResult("Key", bundle);
 
         citasAnimal.show(getParentFragmentManager(), "CitasAnimal");

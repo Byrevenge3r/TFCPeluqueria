@@ -127,6 +127,7 @@ public class UbicacionTiempoRealActivity
     public boolean onMarkerClick(@NonNull Marker marker) {
         if (marker.equals(markerMap)) {
             bundle.putString("keyB",((MiApplication) getApplicationContext()).getKey());
+            bundle.putString("tel",((MiApplication) getApplicationContext()).getTelefono());
             getSupportFragmentManager().setFragmentResult("key", bundle);
             citasPel.show(getSupportFragmentManager(),"Citas");
         }

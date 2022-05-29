@@ -64,6 +64,7 @@ public class CitasAnimalFragmentPel extends DialogFragment {
     Bundle bundleCita;
     String keyB;
     Comunicacion listener;
+    String tel;
 
     public CitasAnimalFragmentPel() {
     }
@@ -99,7 +100,7 @@ public class CitasAnimalFragmentPel extends DialogFragment {
                 citaHora = bundle.getString("citaHora");
                 mesN = bundle.getString("mesN");
                 keyB = bundle.getString("KeyB");
-
+                tel = bundle.getString("tel");
                 adapter = new CitasAnimalesFotoAdapter((ArrayList<Animal>) daoAnimal.sacarAnimalKey(keyB));
 
                 adapter.setListener(new View.OnClickListener() {
@@ -115,7 +116,7 @@ public class CitasAnimalFragmentPel extends DialogFragment {
                             SmsManager sms = SmsManager.getDefault();
                             String key = dbr.push().getKey();
                             //pasar el numero de telefo por mi aplication peta (sale null)
-                            sms.sendTextMessage("+34" + numeroTelConduc, null,  ((MiApplication) getContext().getApplicationContext()).getTelefono()+ "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
+                            sms.sendTextMessage("+34" + numeroTelConduc, null,  tel+ "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
                         }
                         dismiss();
                     }
