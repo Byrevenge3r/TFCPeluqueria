@@ -97,5 +97,14 @@
     <string name="contrasenia_vacia">Introduzca una contraseña</string>
     <string name="longitud_contra">La contraseña tiene que tener al menos 8 caracteres</string>
     <string name="direccion_vacia">Debes introducir una direccion</string>
-
+    <string name="nom_vet">Veterinaria: %1$s</string>
+    <string name="dia_vet">Dia: %1$s</string>
+    <string name="hora_vet">Hora: %1$s</string>
+    <string name="tv_veterinaria_ver_citas_menu">Recordatorios</string>
+    <string name="tv_mensaje_no_llega_aun_tiempo">Cuando queden 30 minutos se mostrara a la furgoneta en el mapa</string>
+    <string name="nom_animal_pel">Nombre animal: %1$s</string>
+    <string name="dia_anima_pel">Dia: %1$s</string>
+    <string name="hora_animal_vet">Hora: %1$s</string>
+    <string name="tv_mostrar_info">La veterinaria esta a: %1$s</string>
+    <string name="btn_google">Llevame ahi!!</string>
 </resources>

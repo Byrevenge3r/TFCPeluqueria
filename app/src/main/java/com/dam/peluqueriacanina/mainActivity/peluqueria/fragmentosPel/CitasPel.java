@@ -1,14 +1,9 @@
-package com.dam.peluqueriacanina.fragmentosVet;
+package com.dam.peluqueriacanina.mainActivity.peluqueria.fragmentosPel;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CalendarView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +11,12 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CalendarView;
+import android.widget.TextView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.entity.TusCitas;
@@ -36,7 +37,7 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class CitasVet extends DialogFragment {
+public class CitasPel extends DialogFragment {
 
     CalendarView calendarioCitas;
     RecyclerView rv;
@@ -50,7 +51,7 @@ public class CitasVet extends DialogFragment {
     FirebaseDatabase fdb;
     DatabaseReference dbr;
     //Cotiene todas las horas
-    CitasAnimalFragmentVet citasAnimal;
+    CitasAnimalFragmentPel citasAnimal;
     ArrayList<CitasReserva> listaCitas;
     ArrayList<CitasReserva> listaCitasMes;
     TextView tvNoHayCitas;
@@ -67,10 +68,9 @@ public class CitasVet extends DialogFragment {
     Date horaBbdd;
     SimpleDateFormat formatterH;
     String key;
-    String nom;
     boolean continuar = true;
     int i = 0;
-    public CitasVet() {
+    public CitasPel() {
     }
 
     @Override
@@ -80,7 +80,6 @@ public class CitasVet extends DialogFragment {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
                 key = bundle.getString("keyB");
-                nom = bundle.getString("nom");
             }
         });
     }
@@ -124,7 +123,7 @@ public class CitasVet extends DialogFragment {
         listaMeses = new ArrayList<>();
         listaCitasHoy = new ArrayList<>();
 
-        citasAnimal = new CitasAnimalFragmentVet();
+        citasAnimal = new CitasAnimalFragmentPel();
         formatter = new SimpleDateFormat("dd/MM/yyyy");
         formatterH = new SimpleDateFormat("HH:mm");
         diaSeleccionado = new Date();
@@ -138,8 +137,8 @@ public class CitasVet extends DialogFragment {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             now = LocalDateTime.now();
-           // ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Europe/Paris"));
-            horaActual = now.getHour() +":"+ now.getMinute();
+            ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Europe/Paris"));
+            horaActual = time.getHour() +":"+ time.getMinute();
             try {
                 horaActualD = formatterH.parse(horaActual);
             } catch (ParseException e) {
@@ -211,7 +210,7 @@ public class CitasVet extends DialogFragment {
                 } else {
                     tvNoHayCitas.setVisibility(View.INVISIBLE);
                     
-                    dbr.child("veterinaria/veterinaroRes/"+ nom +"/"+ mes).addValueEventListener(new ValueEventListener() {
+                    dbr.child("coche/reservas/" + mes).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
@@ -238,21 +237,12 @@ public class CitasVet extends DialogFragment {
                                         pasarCitaFragment(v, dia, mesD, anio);
                                     }
                                 });
-                            } else {
-                                filtrarDia();
-                                adapter = new CitasAdapter(listaCitas);
-                                rv.setAdapter(adapter);
-                                adapter.setListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        pasarCitaFragment(v, dia, mesD, anio);
-                                    }
-                                });
                             }
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+
                         }
                     });
 
@@ -283,15 +273,14 @@ public class CitasVet extends DialogFragment {
                     continuar = false;
                 }
             }
-            i = 0;
             continuar = true;
         }
     }
-//
+
     private void pasarCitaFragment(View v, int dia, int mesD, int anio) {
         citaFecha = dia + "/" + (mesD + 1) + "/" + anio;
         citaHora = listaCitas.get(rv.getChildAdapterPosition(v)).getHora();
-        bundle.putString("nom",nom);
+
         bundle.putString("citaFecha", citaFecha);
         bundle.putString("citaHora", citaHora);
         bundle.putString("mesN", mes);

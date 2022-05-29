@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.fragmentosVet;
+package com.dam.peluqueriacanina.mainActivity.veterinaria.fragmentosVet;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -119,7 +119,7 @@ public class CitasAnimalFragmentVet extends DialogFragment {
                             now = LocalDateTime.now();
                             fechaActual = now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear();
                             //Subida a el apartado general de las veterinarias
-                            dbr = fdb.getReference("veterinaria/veterinaroRes/"+nom+"/"+mesN);
+                            dbr = fdb.getReference("veterinaria/veterinarioRes/"+nom+"/"+mesN);
                             String key = dbr.push().getKey();
                             HashMap<String,Object> listaCitaVet = new HashMap<>();
 
@@ -131,7 +131,7 @@ public class CitasAnimalFragmentVet extends DialogFragment {
                             listaCitaVet.clear();
 
                             //Subida al apartado independiente de las veterinarias
-                            dbr = fdb.getReference("usuarios/"+keyB+"/reservas");
+                            dbr = fdb.getReference("usuarios/"+keyB+"/reservasVet");
                             key = dbr.push().getKey();
                             listaCitaVet.put("nom",nom);
                             listaCitaVet.put("citaFecha",citaFecha);

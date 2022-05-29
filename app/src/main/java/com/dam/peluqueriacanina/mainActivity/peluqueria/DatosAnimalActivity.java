@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.peluqueria;
+package com.dam.peluqueriacanina.mainActivity.peluqueria;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.veterinaria.VeterinariaActivity;
+import com.dam.peluqueriacanina.mainActivity.veterinaria.VeterinariaActivity;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.entity.Animal;

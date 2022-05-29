@@ -27,38 +27,41 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PeluqueriaCanina">
         <activity
-            android:name=".veterinaria.MapaVeterinariasActivity"
-            android:exported="true">
-
-        </activity>
+            android:name=".mainActivity.veterinaria.citas.VerDatosCitasVetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mainActivity.veterinaria.citas.VerCitasVetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mainActivity.veterinaria.MapaVeterinariasActivity"
+            android:exported="true" />
         <activity
             android:name=".VerPerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".ChatActivity"
+            android:name=".mainActivity.peluqueria.ChatActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name=".peluqueria.VerDatosTusCitasActivity"
+            android:name=".mainActivity.peluqueria.citas.VerDatosTusCitasActivity"
             android:exported="true" />
         <activity
-            android:name=".NoticiasActivity"
+            android:name=".mainActivity.noticias.NoticiasActivity"
             android:exported="false" />
         <activity
-            android:name=".tienda.TiendaDetallesActivity"
+            android:name=".mainActivity.tienda.TiendaDetallesActivity"
             android:exported="false" />
         <activity
-            android:name=".tienda.Tienda2Activity"
+            android:name=".mainActivity.tienda.Tienda2Activity"
             android:exported="false" />
         <activity
-            android:name=".tienda.TiendaActivity"
+            android:name=".mainActivity.tienda.TiendaActivity"
             android:exported="false" />
         <activity
-            android:name=".peluqueria.VerTusCitasActivity"
-            android:exported="true"></activity>
-        <receiver android:name=".notificacion.Recordatorio"/>
+            android:name=".mainActivity.peluqueria.citas.VerTusCitasActivity"
+            android:exported="true" />
+
+        <receiver android:name=".notificacion.Recordatorio" />
         <receiver
             android:name=".utils.SmsListener"
             android:enabled="true"
@@ -73,24 +76,20 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".peluqueria.UbicacionTiempoRealActivity"
+            android:name=".mainActivity.peluqueria.UbicacionTiempoRealActivity"
             android:exported="false"
             android:label="@string/title_activity_ubicacion_tiempo_real" />
         <activity
-            android:name=".peluqueria.DatosAnimalActivity"
+            android:name=".mainActivity.peluqueria.DatosAnimalActivity"
             android:exported="false" />
         <activity
-            android:name=".veterinaria.VeterinariaActivity"
-            android:exported="true" >
-
-        </activity>
+            android:name=".mainActivity.veterinaria.VeterinariaActivity"
+            android:exported="true" />
         <activity
-            android:name=".peluqueria.RegistrarAnimal"
-            android:exported="true" >
-
-        </activity>
+            android:name=".mainActivity.peluqueria.RegistrarAnimal"
+            android:exported="true" />
         <activity
-            android:name=".peluqueria.PeluqueriaActivity"
+            android:name=".mainActivity.peluqueria.PeluqueriaActivity"
             android:exported="false" />
         <activity
             android:name=".registro.Registro4"
@@ -117,8 +116,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:name=".mainActivity.MainActivity"
+            android:exported="true" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -129,9 +128,12 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-        <service android:name=".notificacion.Recordatorio" android:exported="false">
+
+        <service
+            android:name=".notificacion.Recordatorio"
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
     </application>

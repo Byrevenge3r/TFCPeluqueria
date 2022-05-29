@@ -18,7 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.dam.peluqueriacanina.MainActivity;
+import com.dam.peluqueriacanina.mainActivity.MainActivity;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.utils.MiApplication;

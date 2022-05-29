@@ -17,4 +17,8 @@ public class BotonTusCitasLista {
     public ArrayList<BotonTusCitas> getBoton() {
         return boton;
     }
+
+    public void setBoton(ArrayList<BotonTusCitas> boton) {
+        this.boton = boton;
+    }
 }

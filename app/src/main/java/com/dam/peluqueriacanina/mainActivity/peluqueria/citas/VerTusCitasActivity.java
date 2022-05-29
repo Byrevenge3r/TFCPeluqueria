@@ -1,10 +1,11 @@
-package com.dam.peluqueriacanina.peluqueria;
+package com.dam.peluqueriacanina.mainActivity.peluqueria.citas;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.TusCitas;
+import com.dam.peluqueriacanina.model.BotonTusCitas;
 import com.dam.peluqueriacanina.model.datos.BotonTusCitasLista;
 import com.dam.peluqueriacanina.utils.AnimalPeluAdapter;
 import com.dam.peluqueriacanina.utils.MiApplication;
@@ -47,6 +49,8 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
     MostrarDatosTusCitasAdapter adapterDetallesCita;
     SimpleDateFormat formatter;
 
+    RelativeLayout rlaa;
+
     Date fecha;
     Date fechaHoy;
     View vista;
@@ -56,6 +60,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
     Intent i;
     LocalDateTime now;
 
+    ArrayList<BotonTusCitas> listaBoton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +73,8 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         daoTusCitas = dbTusCitas.citaDao();
 
         boton = new BotonTusCitasLista();
+
+        listaBoton = boton.getBoton();
 
         rv = findViewById(R.id.rvVerTusCitas);
         llmDetalles = new LinearLayoutManager(this);
@@ -87,8 +94,10 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         btnCancelarCita.setOnClickListener(this);
         vista = new View(this);
 
-        //Cambuiar por el otre
         adapter = new AnimalPeluAdapter((ArrayList<TusCitas>) daoTusCitas.sacarCitasKey(((MiApplication) getApplicationContext()).getKey()));
+
+        rlaa = findViewById(R.id.rlContainer);
+
         adapterDetallesCita = new MostrarDatosTusCitasAdapter(boton.getBoton());
         rv.setAdapter(adapter);
 
@@ -96,21 +105,18 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
             tvNoHayCitasVTC.setVisibility(View.VISIBLE);
         }
 
+
         adapter.setListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 switch (view.getId()) {
-                    case R.id.llCitasVet:
+                    case R.id.llCitas:
 
-                        if (vista != null && vista.findViewById(R.id.rlContainer) != null) {
-                            rvVerCita = vista.findViewById(R.id.rlContainer).findViewById(R.id.rvVerTusCitasSegundaPantalla);
-                            rvVerCita.removeAllViews();
-                            rvVerCita.removeAllViewsInLayout();
-                        }
 
                         rvVerCita = view.findViewById(R.id.rlContainer).findViewById(R.id.rvVerTusCitasSegundaPantalla);
-                        rvVerCita.setLayoutManager(new LinearLayoutManager(view.findViewById(R.id.llCitasVet).getContext()));
+                        rvVerCita.setLayoutManager(new LinearLayoutManager(view.findViewById(R.id.llCitas).getContext()));
+
                         rvVerCita.setAdapter(adapterDetallesCita);
 
                         adapterDetallesCita.setListener(new View.OnClickListener() {

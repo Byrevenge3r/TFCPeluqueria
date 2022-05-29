@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/llCitasVet"
+    android:id="@+id/llCitas"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/rlContainerVet"
+        android:id="@+id/rlContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -22,6 +22,16 @@
             android:elevation="10dp"
             android:orientation="horizontal">
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/shAnimal"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                app:shapeAppearanceOverlay="@style/Circular"
+                app:strokeColor="@color/color_blanco"
+                app:strokeWidth="3dp" />
+
             <LinearLayout
                 android:id="@+id/llDatosCita"
                 android:layout_width="match_parent"
@@ -31,33 +41,33 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvNomVet"
+                    android:id="@+id/tvNomAnimal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nom_vet"
+                    android:text="@string/nom_animal_pel"
                     android:textColor="@color/color_blanco"
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/tvDiaVet"
+                    android:id="@+id/tvDia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/dia_vet"
+                    android:text="@string/dia_anima_pel"
                     android:textColor="@color/color_blanco"
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/tvHoraVet"
+                    android:id="@+id/tvHora"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hora_vet"
+                    android:text="@string/hora_animal_vet"
                     android:textColor="@color/color_blanco"
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvVerTusCitasSegundaPantallaVet"
+            android:id="@+id/rvVerTusCitasSegundaPantalla"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/llSiguientePagina"

@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina;
+package com.dam.peluqueriacanina.mainActivity.peluqueria;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.model.Chat;
 import com.dam.peluqueriacanina.utils.ChatAdapter;
 import com.dam.peluqueriacanina.utils.MiApplication;

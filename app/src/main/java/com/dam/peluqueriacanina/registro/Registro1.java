@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.fragmentosPel.CitasPel;
+import com.dam.peluqueriacanina.mainActivity.peluqueria.fragmentosPel.CitasPel;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".peluqueria.VerDatosTusCitasActivity"
+    tools:context=".mainActivity.peluqueria.citas.VerDatosTusCitasActivity"
     android:background="@color/color_principal_citas">
 
     <ImageView
@@ -40,14 +40,15 @@
 
     <TextView
         android:id="@+id/tvTiempo"
-        app:layout_constraintBottom_toTopOf="@id/fcvUbicacionConductorDetalles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tv_tiempo_estimado_horas"
+        android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
+        android:text="@string/tv_tiempo_estimado_horas"
         android:textColor="@color/color_gris"
         android:textSize="23sp"
-        android:layout_marginBottom="10dp"/>
+        app:layout_constraintBottom_toTopOf="@id/fcvUbicacionConductorDetalles"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcvUbicacionConductorDetalles"

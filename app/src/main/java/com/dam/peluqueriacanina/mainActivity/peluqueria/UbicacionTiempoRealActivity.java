@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.peluqueria;
+package com.dam.peluqueriacanina.mainActivity.peluqueria;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,9 +12,8 @@ import android.os.Bundle;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.comunicacion.Comunicacion;
 import com.dam.peluqueriacanina.entity.TusCitas;
-import com.dam.peluqueriacanina.fragmentosPel.CitasPel;
+import com.dam.peluqueriacanina.mainActivity.peluqueria.fragmentosPel.CitasPel;
 import com.dam.peluqueriacanina.model.Mapa;
-import com.dam.peluqueriacanina.peluqueria.PeluqueriaActivity;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,8 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class UbicacionTiempoRealActivity
         extends FragmentActivity
         implements OnMapReadyCallback,
-        GoogleMap.OnMarkerClickListener,
-        Comunicacion {
+        GoogleMap.OnMarkerClickListener{
 
     GoogleMap mMap;
     FirebaseDatabase fdb;
@@ -133,13 +131,5 @@ public class UbicacionTiempoRealActivity
             citasPel.show(getSupportFragmentManager(),"Citas");
         }
         return false;
-    }
-
-    @Override
-    public void info(TusCitas cita) {
-        tusCitas = cita;
-        i = new Intent(this, PeluqueriaActivity.class);
-        i.putExtra("cita", tusCitas);
-        startActivity(i);
     }
 }

@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.tienda;
+package com.dam.peluqueriacanina.mainActivity.tienda;
 
 import androidx.appcompat.app.AppCompatActivity;
 

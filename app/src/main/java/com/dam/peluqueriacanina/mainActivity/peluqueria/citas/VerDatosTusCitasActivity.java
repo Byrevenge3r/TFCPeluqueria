@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.peluqueria;
+package com.dam.peluqueriacanina.mainActivity.peluqueria.citas;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -75,13 +75,15 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
         horaA = hora.split(":");
 
         tvMostrarTiempo = findViewById(R.id.tvTiempo);
-        tvMostrarTiempo.setVisibility(View.INVISIBLE);
         bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.furgo_canina);
         b = bitmapdraw.getBitmap();
         smallMarker = Bitmap.createScaledBitmap(b, anchura, altura, false);
 
         locOrigen = new Location("ubicacionOrigen");
         locDestino = new Location("ubicacionDestino");
+        adress = getLocationFromAddress(VerDatosTusCitasActivity.this,((MiApplication) getApplicationContext()).getDireccion());
+        tvMostrarTiempo.setVisibility(View.VISIBLE);
+        tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_mensaje_no_llega_aun_tiempo));
 
         mapFragment.getMapAsync(this);
 
@@ -105,14 +107,8 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
                         markerMap.remove();
                     }
 
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitud, longitud), 10));
-                    markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
-                            .position(new LatLng(latitud, longitud)));
-
                     locOrigen.setLatitude(latitud);
                     locOrigen.setLongitude(longitud);
-
-                    adress = getLocationFromAddress(VerDatosTusCitasActivity.this,((MiApplication) getApplicationContext()).getDireccion());
 
                     locDestino.setLatitude(adress.latitude);
                     locDestino.setLongitude(adress.longitude);
@@ -123,16 +119,20 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
 
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                         now = LocalDateTime.now();
-                        //Esta raro esto mirar
+                        //Esto va raro
                         horaR = Integer.parseInt(horaA[0]);
                         horaB = horaR * 60;
                     }
 
-                    tiempoD += horaB;
+                    if (tiempoD < 30) {
+                        horaB-=tiempoD;
+                        tvMostrarTiempo.setVisibility(View.VISIBLE);
+                        tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_horas, formatearMinutosAHoraMinuto((int) horaB)));
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitud, longitud), 10));
+                        markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
+                                .position(new LatLng(latitud, longitud)));
 
-                    tvMostrarTiempo.setVisibility(View.VISIBLE);
-                    tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_horas, formatearMinutosAHoraMinuto((int) tiempoD)));
-
+                    }
                 }
 
             }

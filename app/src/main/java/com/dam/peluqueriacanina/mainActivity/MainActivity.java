@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina;
+package com.dam.peluqueriacanina.mainActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,12 +11,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.TusCitas;
-import com.dam.peluqueriacanina.peluqueria.PeluqueriaActivity;
+import com.dam.peluqueriacanina.mainActivity.peluqueria.PeluqueriaActivity;
 import com.dam.peluqueriacanina.registro.LoginActivity;
-import com.dam.peluqueriacanina.veterinaria.VeterinariaActivity;
+import com.dam.peluqueriacanina.mainActivity.veterinaria.VeterinariaActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

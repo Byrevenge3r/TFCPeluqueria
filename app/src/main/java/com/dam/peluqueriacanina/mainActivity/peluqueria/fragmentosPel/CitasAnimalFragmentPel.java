@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.fragmentosPel;
+package com.dam.peluqueriacanina.mainActivity.peluqueria.fragmentosPel;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -111,11 +111,11 @@ public class CitasAnimalFragmentPel extends DialogFragment {
                             fechaActual = now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear();
                             dbr = fdb.getReference("coche/reservas/"+mesN);
 
+                            //Acabar de cambiar todas las base de datos
                             SmsManager sms = SmsManager.getDefault();
                             String key = dbr.push().getKey();
-                            sms.sendTextMessage("+34" + numeroTelConduc, null,  ((MiApplication) getContext()).getTelefono()+ "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
-                            listener.info(new TusCitas(animal.getRuta(),keyB,animal.getNombre(),citaFecha,citaHora));
-
+                            //pasar el numero de telefo por mi aplication peta (sale null)
+                            sms.sendTextMessage("+34" + numeroTelConduc, null,  ((MiApplication) getContext().getApplicationContext()).getTelefono()+ "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
                         }
                         dismiss();
                     }

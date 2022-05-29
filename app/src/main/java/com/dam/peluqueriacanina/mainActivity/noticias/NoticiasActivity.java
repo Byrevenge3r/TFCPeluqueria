@@ -1,10 +1,12 @@
-package com.dam.peluqueriacanina;
+package com.dam.peluqueriacanina.mainActivity.noticias;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.dam.peluqueriacanina.R;
 
 public class NoticiasActivity extends AppCompatActivity {
     WebView wVNoticias;

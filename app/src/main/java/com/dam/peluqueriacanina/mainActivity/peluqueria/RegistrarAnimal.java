@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.peluqueria;
+package com.dam.peluqueriacanina.mainActivity.peluqueria;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;

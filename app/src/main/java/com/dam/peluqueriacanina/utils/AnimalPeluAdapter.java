@@ -4,18 +4,13 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.entity.TusCitas;
-import com.dam.peluqueriacanina.model.AnimalReservaPelu;
-import com.dam.peluqueriacanina.model.datos.BotonTusCitasLista;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
@@ -47,7 +42,7 @@ public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.An
     @Override
     public AnimalPeluAdapterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.citas_recicler_view_vet, parent, false);
+                .inflate(R.layout.citas_recicler_view_pel, parent, false);
         v.setOnClickListener(this);
         return new AnimalPeluAdapterVH(v);
     }
@@ -68,6 +63,7 @@ public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.An
         private final TextView tvFecha;
         private final TextView tvHora;
         private final ShapeableImageView shAnimal;
+
         public AnimalPeluAdapterVH(@NonNull View itemView) {
             super(itemView);
             shAnimal = itemView.findViewById(R.id.shAnimal);
@@ -78,9 +74,9 @@ public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.An
 
         public void bindAnimal(TusCitas animal) {
             shAnimal.setImageBitmap(BitmapFactory.decodeFile(animal.getRuta()));
-            tvNom.setText(animal.getNombre());
-            tvFecha.setText(animal.getFecha());
-            tvHora.setText(animal.getHora());
+            tvNom.setText(itemView.getContext().getString(R.string.nom_animal_pel,animal.getNombre()));
+            tvFecha.setText(itemView.getContext().getString(R.string.dia_anima_pel,animal.getFecha()));
+            tvHora.setText(itemView.getContext().getString(R.string.hora_animal_vet,animal.getHora()));
         }
     }
 }

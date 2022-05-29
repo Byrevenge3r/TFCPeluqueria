@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.tienda;
+package com.dam.peluqueriacanina.mainActivity.tienda;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.tienda.TiendaDetallesActivity;
 import com.google.android.material.card.MaterialCardView;
 
 public class Tienda2Activity extends AppCompatActivity implements View.OnClickListener{

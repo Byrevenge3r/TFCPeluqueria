@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.veterinaria;
+package com.dam.peluqueriacanina.mainActivity.veterinaria;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.fragmentosPel.CitasPel;
-import com.dam.peluqueriacanina.fragmentosVet.CitasVet;
+import com.dam.peluqueriacanina.mainActivity.veterinaria.fragmentosVet.CitasVet;
 import com.dam.peluqueriacanina.model.NombreDirVet;
 
 

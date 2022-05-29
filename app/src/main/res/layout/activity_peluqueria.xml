@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".peluqueria.PeluqueriaActivity">
+    tools:context=".mainActivity.peluqueria.PeluqueriaActivity">
 
     <View
         android:id="@+id/viewPeluqueria"
@@ -100,8 +100,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvUbicacionTiempoReal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="138dp"
+                    android:layout_height="170dp"
                     android:layout_margin="12dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="12dp">
@@ -131,8 +131,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvVerTusCitas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="138dp"
+                    android:layout_height="170dp"
                     app:cardElevation="12dp"
                     app:cardCornerRadius="12dp"
                     android:layout_margin="12dp">
@@ -162,8 +162,8 @@
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvChat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="138dp"
+                    android:layout_height="170dp"
                     app:cardElevation="12dp"
                     app:cardCornerRadius="12dp"
                     android:layout_margin="12dp">
@@ -193,13 +193,14 @@
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvPeluqueria"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="138dp"
+                    android:layout_height="170dp"
                     app:cardElevation="12dp"
                     app:cardCornerRadius="12dp"
                     android:layout_margin="12dp">
 
                     <LinearLayout
+
                         android:orientation="vertical"
                         android:padding="16dp"
                         android:gravity="center"
