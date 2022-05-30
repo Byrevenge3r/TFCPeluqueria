@@ -18,6 +18,25 @@
         android:foreground="?attr/selectableItemBackground"
         android:src="@drawable/ic_baseline_menu_48" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_buscar"
+        android:layout_below="@+id/tv_tienda_online"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="@string/hint_buscar"
+        app:startIconDrawable="@drawable/ic_baseline_search_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_buscar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fondo_edit_text"
+            android:inputType="text"
+            android:textColor="@color/color_gris" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <TextView
         android:id="@+id/tv_tienda_online"
         android:layout_width="wrap_content"
@@ -32,30 +51,12 @@
 
 
     <LinearLayout
+        android:id="@+id/llTienda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_tienda_online"
+        android:layout_below="@+id/text_input_buscar"
         android:focusableInTouchMode="true"
         android:orientation="vertical">
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_input_buscar"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="@string/hint_buscar"
-            app:startIconDrawable="@drawable/ic_baseline_search_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_buscar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/fondo_edit_text"
-                android:inputType="text"
-                android:textColor="@color/color_gris" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tv_tienda_categorias"
@@ -69,12 +70,12 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
             android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/viewPeluqueria">
 
             <LinearLayout
+                android:id="@+id/llProducto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -87,19 +88,19 @@
                     android:rowCount="1">
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cvUbicacionTiempoReal"
+                        android:id="@+id/cvAlimentacion"
                         android:layout_width="130dp"
                         android:layout_height="110dp"
                         android:layout_margin="12dp"
                         app:cardCornerRadius="12dp"
-                        app:cardElevation="12dp">
+                        >
 
                         <LinearLayout
+                            android:id="@+id/llAlimentacion"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:gravity="center"
-                            android:orientation="vertical"
-                            android:layout_marginTop="5dp">
+                            android:orientation="vertical">
 
                             <ImageView
                                 android:layout_width="70dp"
@@ -119,19 +120,18 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cvVerTusCitas"
+                        android:id="@+id/cvAccesorios"
                         android:layout_width="130dp"
                         android:layout_height="110dp"
                         android:layout_margin="12dp"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="12dp">
+                        app:cardCornerRadius="12dp">
 
                         <LinearLayout
+                            android:id="@+id/llAccesorios"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:gravity="center"
-                            android:orientation="vertical"
-                            android:layout_marginTop="5dp">
+                            android:orientation="vertical">
 
                             <ImageView
                                 android:layout_width="70dp"
@@ -151,18 +151,18 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/cvJuguetes"
                         android:layout_width="130dp"
                         android:layout_height="110dp"
                         android:layout_margin="12dp"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="12dp">
+                        app:cardCornerRadius="12dp">
 
                         <LinearLayout
+                            android:id="@+id/llJuguetes"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:gravity="center"
-                            android:orientation="vertical"
-                            android:layout_marginTop="5dp">
+                            android:orientation="vertical">
 
                             <ImageView
                                 android:layout_width="70dp"
@@ -179,12 +179,15 @@
 
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
-
                 </GridLayout>
             </LinearLayout>
-
-
         </HorizontalScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMostrarProductos"
+            android:layout_width="match_parent"
+            android:layoutAnimation="@anim/layout_animacion_3"
+            android:layout_height="wrap_content"/>
 
 
     </LinearLayout>
