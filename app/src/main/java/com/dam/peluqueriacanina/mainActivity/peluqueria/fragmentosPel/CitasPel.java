@@ -228,6 +228,7 @@ public class CitasPel extends DialogFragment {
                                 if (listaCitas.isEmpty()) {
                                     tvNoHayCitas.setVisibility(View.VISIBLE);
                                 }
+
                                 listaCitasMes.clear();
 
                                 adapter = new CitasAdapter(listaCitas);
@@ -301,7 +302,9 @@ public class CitasPel extends DialogFragment {
         boolean existe = false;
 
         for (int i = 0; i < listaCitasMes.size(); i++) {
+
             if (listaCitasMes.get(i).getFecha().equals(dia + "/" + mesD + "/" + anio)) {
+
                 for (int x = 0; x < listaCitas.size(); x++) {
                     if (listaCitasMes.get(i).getHora().equals(listaCitas.get(x).getHora())) {
                         existe = true;

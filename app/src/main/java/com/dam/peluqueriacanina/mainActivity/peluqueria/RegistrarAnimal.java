@@ -51,6 +51,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RegistrarAnimal extends AppCompatActivity implements View.OnClickListener {
 
@@ -92,7 +93,7 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
         fb = FirebaseDatabase.getInstance();
         dbRef = fb.getReference();
         fAuth = FirebaseAuth.getInstance();
-        mStorage = FirebaseStorage.getInstance().getReference();
+        mStorage = FirebaseStorage.getInstance().getReference("fotos/"+((MiApplication) getApplicationContext()).getKey()+"/");
 
         btnRegistrarAnimal = findViewById(R.id.btnRegistrarAnimal);
         etNomAnimal = findViewById(R.id.etNomAnimal);
@@ -120,36 +121,29 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
             }
 
         } else {
-            nombre = etNomAnimal.getText().toString();
-            raza = etRazaAnimal.getText().toString();
+            nombre = etNomAnimal.getText().toString().trim();
+            raza = etRazaAnimal.getText().toString().trim();
 
             if (nombre.isEmpty() || raza.isEmpty()) {
                 Toast.makeText(this, R.string.error_registrar_animal_vacio, Toast.LENGTH_SHORT).show();
             } else {
-                String key = ((MiApplication) getApplicationContext()).getKey();
-                //mStorage.child().putFile(uri);
                 String uid = fAuth.getUid();
-                StorageReference filePath = mStorage.child(uid+".jpg");
+                String keyF = dbRef.push().getKey();
+                StorageReference filePath = mStorage.child(keyF+".jpg");
 
                 filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        //Task<Uri> uriDireccFire = taskSnapshot.getStorage().getDownloadUrl();
-                        mStorage.child(uid+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                String urlM  = uri.toString();
-                                String keyP = dbRef.push().getKey();
-                                dbRef.setValue("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/uri/"+keyP).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()){
-                                            Toast.makeText(RegistrarAnimal.this,"guardado correctamente",Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-                            }
-                        });
+
+                        HashMap<String,Object> animal = new HashMap<>();
+
+                        animal.put("key",keyF);
+                        animal.put("nombre",nombre);
+                        animal.put("raza",raza);
+
+                        dbRef.child("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/animales/"+keyF).updateChildren(animal);
+                        setResult(RESULT_OK);
+                        finish();
                     }
                 });
             }

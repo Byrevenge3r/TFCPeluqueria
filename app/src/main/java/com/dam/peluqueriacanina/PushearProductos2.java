@@ -23,7 +23,7 @@ public class PushearProductos2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pushear_productos2);
 
-        listaTienda.add(new DatosTienda("pienso perro", "1kg", "", "Pienso natural con ingredientes naturales","alimentacion"));
+        //listaTienda.add(new DatosTienda("pienso perro", "1kg", "", "Pienso natural con ingredientes naturales","alimentacion"));
 
 
         HashMap<String, Object> usuario = new HashMap<>();

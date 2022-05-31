@@ -9,15 +9,16 @@ public class DatosTienda implements Parcelable {
     private String foto;
     private String detalle;
     private String tipo;
+    private String precio;
 
-    public DatosTienda(String nombre, String cantidad, String foto, String detalle, String tipo) {
+    public DatosTienda(String nombre, String cantidad, String foto, String detalle, String tipo, String precio) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.foto = foto;
         this.detalle = detalle;
         this.tipo = tipo;
+        this.precio = precio;
     }
-
 
     protected DatosTienda(Parcel in) {
         nombre = in.readString();
@@ -25,6 +26,7 @@ public class DatosTienda implements Parcelable {
         foto = in.readString();
         detalle = in.readString();
         tipo = in.readString();
+        precio = in.readString();
     }
 
     public static final Creator<DatosTienda> CREATOR = new Creator<DatosTienda>() {
@@ -55,6 +57,14 @@ public class DatosTienda implements Parcelable {
         this.cantidad = cantidad;
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
     public String getDetalle() {
         return detalle;
     }
@@ -71,8 +81,12 @@ public class DatosTienda implements Parcelable {
         this.tipo = tipo;
     }
 
-    public String getFoto() {
-        return foto;
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
     }
 
     @Override
@@ -87,5 +101,6 @@ public class DatosTienda implements Parcelable {
         dest.writeString(foto);
         dest.writeString(detalle);
         dest.writeString(tipo);
+        dest.writeString(precio);
     }
 }
