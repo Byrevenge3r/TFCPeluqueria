@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+
+
+        <LinearLayout
+            android:id="@+id/llSiguientePagina"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/fondo_btn_registrar"
+            android:elevation="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/llDatosCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvNomCompra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nom_compra_carrito"
+                    android:textColor="@color/color_blanco"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvCantidadCompra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cantidad_compra_carrito"
+                    android:textColor="@color/color_blanco"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPrecioCompra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/precio_compra_carrito"
+                    android:textColor="@color/color_blanco"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+</LinearLayout>

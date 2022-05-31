@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -35,6 +37,8 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
     TextView  tvObjetoNombreTienda;
     EditText etBuscarPorNombre;
 
+    ImageView ivCarrito;
+
     LinearLayout llmAlimentacion, llmAccesorios,llmJuguetes;
 
     ArrayList<DatosTienda> listaTienda = new ArrayList<>();
@@ -44,6 +48,7 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
     AdapterTienda adapter;
     CardView cvAlimentacion, cvAccesorios, cvJuguetes;
 
+    DatosTienda tienda;
     //Tienda
     int[] imageTienda = {};
     String[] nombreObjetoTienda = {};
@@ -65,6 +70,8 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
         linearProducto = findViewById(R.id.llProducto);
         rv = findViewById(R.id.rvMostrarProductos);
 
+        ivCarrito = findViewById(R.id.imagen_compra_tienda_detalles);
+
         llmAlimentacion = findViewById(R.id.llAlimentacion);
         llmJuguetes = findViewById(R.id.llJuguetes);
         llmAccesorios = findViewById(R.id.llAccesorios);
@@ -74,13 +81,13 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
         cvAlimentacion = findViewById(R.id.cvAlimentacion);
 
         rv.setLayoutManager(new GridLayoutManager(this, 2));
-        listaTienda.add(new DatosTienda("Pienso perros","adasd","alimentacion"));
-        listaTienda.add(new DatosTienda("Pienso gato","adasd","alimentacion"));
-        listaTienda.add(new DatosTienda("juguete gato","adasd","accesorio"));
-        listaTienda.add(new DatosTienda("juguete perro","adasd","accesorio"));
-        listaTienda.add(new DatosTienda("yo que se","adasd","alimentacion"));
-        listaTienda.add(new DatosTienda("yo que se","adasd","accesorio"));
-
+        /*listaTienda.add(new DatosTienda("Pienso perros","adasd","alimentacion","pienso de perros puta madre"));
+        listaTienda.add(new DatosTienda("Pienso gato","adasd","alimentacion","pienso de perros puta madre"));
+        listaTienda.add(new DatosTienda("juguete gato","adasd","accesorio","accesorio de gato puta madre"));
+        listaTienda.add(new DatosTienda("juguete perro","adasd","accesorio","accesorio de perros puta madre"));
+        listaTienda.add(new DatosTienda("yo que se","adasd","alimentacion","pienso de perros puta madre"));
+        listaTienda.add(new DatosTienda("yo que se","adasd","accesorio","pienso de perros puta madre"));
+*/
         etBuscarPorNombre = findViewById(R.id.edit_text_buscar);
         adapter = new AdapterTienda(listaTienda);
         rv.setAdapter(adapter);
@@ -90,11 +97,20 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
         cvAlimentacion.setOnClickListener(this);
         cvJuguetes.setOnClickListener(this);
         cvAccesorios.setOnClickListener(this);
+        ivCarrito.setOnClickListener(this);
 
         adapter.setListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!listaTiendaFiltrada.isEmpty()) {
+                    tienda = listaTiendaFiltrada.get(rv.getChildAdapterPosition(v));
+                } else {
+                    tienda = listaTienda.get(rv.getChildAdapterPosition(v));
+                }
 
+                Intent i = new Intent(TiendaActivity.this, TiendaDetallesActivity.class);
+                i.putExtra("tienda", tienda);
+                startActivity(i);
             }
         });
 
@@ -195,6 +211,7 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
             } else {
                 llmAccesorios.setBackgroundColor(getResources().getColor(R.color.white));
                 colorAccesorios = false;
+                listaTiendaFiltrada.clear();
                 adapter.setDatos(listaTienda);
                 rv.setAdapter(adapter);
             }
@@ -210,6 +227,7 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
             } else {
                 llmAlimentacion.setBackgroundColor(getResources().getColor(R.color.white));
                 colorAlimentacion = false;
+                listaTiendaFiltrada.clear();
                 adapter.setDatos(listaTienda);
                 rv.setAdapter(adapter);
             }
@@ -225,9 +243,13 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
             } else {
                 llmJuguetes.setBackgroundColor(getResources().getColor(R.color.white));
                 colorJuguetes = false;
+                listaTiendaFiltrada.clear();
                 adapter.setDatos(listaTienda);
                 rv.setAdapter(adapter);
             }
+        } else if (v.equals(ivCarrito)) {
+            Intent i = new Intent(this,MostrarCompraActivity.class);
+            startActivity(i);
         }
     }
     private void cargarDatosConFiltro(String tipo) {

@@ -23,10 +23,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_margin="6dp"
-        android:src="@drawable/ic_baseline_shopping_cart_24"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
         android:background="@null"
-        android:foreground="?attr/selectableItemBackground"/>
+        android:foreground="?attr/selectableItemBackground"
+        android:src="@drawable/ic_baseline_shopping_cart_24" />
 
     <ScrollView
         android:id="@+id/scroll_tienda_detalle"
@@ -68,21 +71,21 @@
                         android:textColor="@color/black" />
 
                     <TextView
-                        android:id="@+id/tv_pienso_producto_tienda_detalles"
+                        android:id="@+id/tv_cantidad_producto_tienda_detalles"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_nombre_producto_tienda_detalle"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:text="@string/kilo"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"/>
 
                     <RatingBar
                         android:id="@+id/rat_tienda_detalles"
                         style="@style/Widget.AppCompat.RatingBar.Indicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_pienso_producto_tienda_detalles"
+                        android:layout_below="@id/tv_cantidad_producto_tienda_detalles"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:isIndicator="false" />

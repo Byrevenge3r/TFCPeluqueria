@@ -27,6 +27,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PeluqueriaCanina">
         <activity
+            android:name=".mainActivity.tienda.MostrarCompraActivity"
+            android:exported="false" />
+        <activity
             android:name=".mainActivity.veterinaria.citas.VerDatosCitasVetActivity"
             android:exported="false" />
         <activity
@@ -57,11 +60,7 @@
         <activity
             android:name=".mainActivity.tienda.TiendaActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".mainActivity.peluqueria.citas.VerTusCitasActivity"
@@ -93,7 +92,13 @@
             android:exported="true" />
         <activity
             android:name=".mainActivity.peluqueria.RegistrarAnimal"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".mainActivity.peluqueria.PeluqueriaActivity"
             android:exported="false" />
@@ -114,9 +119,7 @@
             android:exported="false" />
         <activity
             android:name=".registro.LoginActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".mainActivity.MainActivity"
             android:exported="true" />

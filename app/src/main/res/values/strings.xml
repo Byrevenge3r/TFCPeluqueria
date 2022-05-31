@@ -107,4 +107,9 @@
     <string name="hora_animal_vet">Hora: %1$s</string>
     <string name="tv_mostrar_info">La veterinaria esta a: %1$s</string>
     <string name="btn_google">Llevame ahi!!</string>
+    <string name="nom_compra_carrito">Nombre: %1$s</string>
+    <string name="cantidad_compra_carrito">Cantidad: %1$s</string>
+    <string name="precio_compra_carrito">Precio: %1$s</string>
+    <string name="btn_pagar">Pagar</string>
+    <string name="precio_total">TOTAL = %1$s</string>
 </resources>

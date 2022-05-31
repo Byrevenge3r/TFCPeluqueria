@@ -51,7 +51,6 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         btnFinalizar = findViewById(R.id.btnSiguienteRegCua);
         btnFinalizar.setOnClickListener(this);
     }
-//ola
 
     @Override
     public void onClick(View v) {
@@ -64,7 +63,6 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
 
 
         }
-
     }
 
 

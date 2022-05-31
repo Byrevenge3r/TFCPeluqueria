@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -36,8 +37,13 @@ import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.utils.MiApplication;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -56,40 +62,36 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
     String nombre;
     String raza;
     Intent i;
-    AnimalesDao dao;
-    AnimalesDB db;
     StorageReference mStorage;
-    StorageReference filePath;
+    FirebaseDatabase fb;
+    DatabaseReference dbRef;
+    FirebaseAuth fAuth;
     Uri uri;
 
-    ActivityResultLauncher<Intent> arl = registerForActivityResult(
+    ActivityResultLauncher<Intent> sForResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == RESULT_OK) {
 
-                        uri = i.getData();
-                        filePath = mStorage.child("fotos").child(uri.getLastPathSegment());
-
-                       /* Bitmap imgBitmap = BitmapFactory.decodeFile(ruta);
+                    if(result.getResultCode() == Activity.RESULT_OK){
+                        Intent data = result.getData();
+                        uri = data.getData();
+                        ivFotoAnimal.setImageURI(uri);
                         tvPonerMascota.setVisibility(View.INVISIBLE);
-                        ivFotoAnimal.setStrokeColor(ColorStateList.valueOf(ContextCompat.getColor(getBaseContext(), R.color.color_principal)));
-                        ivFotoAnimal.bringToFront();
-                        ivFotoAnimal.setImageBitmap(imgBitmap);*/
 
                     }
                 }
-            }
-    );
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_animal);
 
-        db = AnimalesDB.getDatabase(this);
-        dao = db.animalDao();
+        fb = FirebaseDatabase.getInstance();
+        dbRef = fb.getReference();
+        fAuth = FirebaseAuth.getInstance();
         mStorage = FirebaseStorage.getInstance().getReference();
 
         btnRegistrarAnimal = findViewById(R.id.btnRegistrarAnimal);
@@ -111,28 +113,13 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1000);
 
             } else {
-                i = new Intent(Intent.ACTION_PICK);
-                i.setType("image/*");
-                arl.launch(i);
-
+                Intent data = new Intent(Intent.ACTION_PICK);
+                data.setType("image/*");
+                data = Intent.createChooser(data, "Choose File");
+                sForResult.launch(data);
             }
 
-                i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (i.resolveActivity(getPackageManager()) != null) {
-                    File foto = null;
-                    try {
-                        foto = GuardarImagen();
-                    } catch (IOException ex) {
-                        Log.e("error", ex.toString());
-                    }
 
-                    if (foto != null) {
-                        Uri uri = FileProvider.getUriForFile(this, "com.peluqueriacanina.mycamera.fileprovider", foto);
-                        i.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-                        arl.launch(i);
-                    }
-                }
-            } else {
             nombre = etNomAnimal.getText().toString();
             raza = etRazaAnimal.getText().toString();
 
@@ -140,49 +127,32 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                 Toast.makeText(this, R.string.error_registrar_animal_vacio, Toast.LENGTH_SHORT).show();
             } else {
                 String key = ((MiApplication) getApplicationContext()).getKey();
-                dao.insert(new Animal(key,ruta, nombre, raza));
-                setResult(RESULT_OK);
-                finish();
+                //mStorage.child().putFile(uri);
+                String uid = fAuth.getUid();
+                StorageReference filePath = mStorage.child(uid+".jpg");
+
+                filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        //Task<Uri> uriDireccFire = taskSnapshot.getStorage().getDownloadUrl();
+                        mStorage.child(uid+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String urlM  = uri.toString();
+                                String keyP = dbRef.push().getKey();
+                                dbRef.setValue("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/uri/"+keyP).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()){
+                                                Toast.makeText(RegistrarAnimal.this,"guardado correctamente",Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
             }
         }
     }
-
-
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            if (i.resolveActivity(getPackageManager()) != null) {
-                File foto = null;
-                try {
-                    foto = GuardarImagen();
-                } catch (IOException ex) {
-                    Log.e("error", ex.toString());
-                }
-
-                if (foto != null) {
-                    Uri uri = FileProvider.getUriForFile(this, "com.peluqueriacanina.mycamera.fileprovider", foto);
-                    i.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-                    arl.launch(i);
-                }
-            }
-        } else {
-            Toast.makeText(getApplicationContext(), "Se debe dar permisos", Toast.LENGTH_SHORT).show();
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    //TODO: Arreglar que si se pulsa muchas veces se sigue guardando, hay que hacer que se guarde solo en el registrar
-    //TODO: Mira la pagina que esta en marcadores en el android studio
-
-    private File GuardarImagen() throws IOException {
-        String nombreFoto = "Foto_";
-        File directorio = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File foto = File.createTempFile(nombreFoto, ".jpg", directorio);
-        ruta = foto.getAbsolutePath();
-        return foto;
-    }
-
 }
