@@ -18,6 +18,7 @@ public class DatosTienda implements Parcelable {
         this.tipo = tipo;
     }
 
+
     protected DatosTienda(Parcel in) {
         nombre = in.readString();
         cantidad = in.readString();
@@ -68,6 +69,10 @@ public class DatosTienda implements Parcelable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getFoto() {
+        return foto;
     }
 
     @Override
