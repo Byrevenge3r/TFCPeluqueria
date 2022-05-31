@@ -41,7 +41,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     Chat mensaje;
     boolean recoger = true;
     String numeroTelConduc;
-
+//
    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
