@@ -15,6 +15,7 @@ import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.TusCitas;
+import com.dam.peluqueriacanina.mainActivity.noticias.NoticiasActivity;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.PeluqueriaActivity;
 import com.dam.peluqueriacanina.registro.LoginActivity;
 import com.dam.peluqueriacanina.mainActivity.veterinaria.VeterinariaActivity;
@@ -234,7 +235,8 @@ public void logout(){
         } else if (v.equals(cvTienda)) {
             Toast.makeText(this, "Tienda", Toast.LENGTH_SHORT).show();
         } else if (v.equals(cvNoticias)) {
-            Toast.makeText(this, "Noticias", Toast.LENGTH_SHORT).show();
+            i = new Intent(this, NoticiasActivity.class);
+            startActivity(i);
         } else if (v.equals(cvOpciones)) {
             Toast.makeText(this, "Opciones", Toast.LENGTH_SHORT).show();
         }else if (v.equals(cvCerrarSesion)) {
