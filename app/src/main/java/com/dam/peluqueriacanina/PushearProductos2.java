@@ -24,7 +24,7 @@ public class PushearProductos2 extends AppCompatActivity {
         setContentView(R.layout.activity_pushear_productos2);
 
         listaTienda.add(new DatosTienda("pienso perro razas pequeño", "1kg", "drawable/pienso_perro_pequeno.png", "pienso natural especialmente recomendado para perros de razas pequeñas (1-10 kg peso adulto), fabricado en España con ingredientes naturales. ","alimentacion" , "20"));
-        listaTienda.add(new DatosTienda("transportin perro y gato", "1", "drawable/transportin.png", "El bolso de transporte para perros y gatos Kibo Slide naranja tiene un diseño moderno y deportivo, en colores naranja, negro y gris, para que puedas viajar o pasear con tu mascota","accesorios", ""));
+        listaTienda.add(new DatosTienda("transportin perro y gato", "1", "drawable/transportin.png", "El bolso de transporte para perros y gatos Kibo Slide naranja tiene un diseño moderno y deportivo, en colores naranja, negro y gris, para que puedas viajar o pasear con tu mascota","accesorios", "35"));
         listaTienda.add(new DatosTienda("Bozal perro ajuste perfecto", "1", "drawable/bozal.png", "Bozal ajustable tiene la ventaja de adaptarse perfectamente a todos los hocicos largos o medianos.","accesorios", "6"));
         listaTienda.add(new DatosTienda("Correa para perros", "1", "drawable/correa", "Correa muy comoda de usar para pasear a tu perro","accesorios", "9"));
         listaTienda.add(new DatosTienda("Pelota de tenis para perros ", "1", "drawable/pelota_perro.png", "Clasica pelota de tenis canina, forrada por un material resistente y una tela menos abrasiva de lo habitual para que se conserven intactos s","juguetes", "8"));
