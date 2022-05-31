@@ -119,7 +119,7 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                 sForResult.launch(data);
             }
 
-
+        } else {
             nombre = etNomAnimal.getText().toString();
             raza = etRazaAnimal.getText().toString();
 
@@ -144,7 +144,7 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()){
-                                                Toast.makeText(RegistrarAnimal.this,"guardado correctamente",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(RegistrarAnimal.this,"guardado correctamente",Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });

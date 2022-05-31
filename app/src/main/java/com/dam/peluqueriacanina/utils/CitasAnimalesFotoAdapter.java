@@ -14,7 +14,7 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
-public class .CitasAnimalesFotoAdapter extends RecyclerView.Adapter<CitasAnimalesFotoAdapter.CitasAnimalesFotoAdapterVH>
+public class CitasAnimalesFotoAdapter extends RecyclerView.Adapter<CitasAnimalesFotoAdapter.CitasAnimalesFotoAdapterVH>
             implements View.OnClickListener {
 
     private final ArrayList<Animal> datos;
