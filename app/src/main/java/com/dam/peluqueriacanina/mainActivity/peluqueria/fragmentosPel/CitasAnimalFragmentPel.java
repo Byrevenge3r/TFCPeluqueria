@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,9 +116,8 @@ public class CitasAnimalFragmentPel extends DialogFragment {
 
                             //Acabar de cambiar todas las base de datos
                             SmsManager sms = SmsManager.getDefault();
-                            String key = dbr.push().getKey();
                             //pasar el numero de telefo por mi aplication peta (sale null)
-                            sms.sendTextMessage("+34" + numeroTelConduc, null,  tel+ "-" + citaFecha + "-" + citaHora + "-" + key, null, null);
+                            sms.sendTextMessage("+34" + numeroTelConduc, null,  tel+ "-" + citaFecha + "-" + citaHora + "-" + keyB + "-" + animal.getKey(), null, null);
                         }
                         dismiss();
                     }

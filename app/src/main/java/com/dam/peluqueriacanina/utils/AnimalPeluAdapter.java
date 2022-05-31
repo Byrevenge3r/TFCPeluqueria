@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,9 @@ public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.An
         this.datos = datos;
     }
 
+    public void setDatos(ArrayList<TusCitas> datos) {
+        this.datos = datos;
+    }
 
     public void setListener(View.OnClickListener listener) {
         this.listener = listener;
@@ -73,10 +77,10 @@ public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.An
         }
 
         public void bindAnimal(TusCitas animal) {
-            shAnimal.setImageBitmap(BitmapFactory.decodeFile(animal.getRuta()));
-            tvNom.setText(itemView.getContext().getString(R.string.nom_animal_pel,animal.getNombre()));
-            tvFecha.setText(itemView.getContext().getString(R.string.dia_anima_pel,animal.getFecha()));
-            tvHora.setText(itemView.getContext().getString(R.string.hora_animal_vet,animal.getHora()));
+            Picasso.get().load(animal.getUrlI()).resize(50,50).centerCrop().into(shAnimal);
+            tvNom.setText(itemView.getContext().getString(R.string.nom_animal_pel,animal.getNomAnimal()));
+            tvFecha.setText(itemView.getContext().getString(R.string.dia_anima_pel,animal.getCitaFecha()));
+            tvHora.setText(itemView.getContext().getString(R.string.hora_animal_vet,animal.getCitaHora()));
         }
     }
 }

@@ -15,11 +15,11 @@ public interface AnimalesDao {
     @Query("SELECT * FROM ANIMALES")
     List<Animal> sacarTodo();
 
-    @Query("SELECT * FROM ANIMALES WHERE ruta = :ruta")
-    Animal sacarAnimal(String ruta);
+    @Query("SELECT * FROM ANIMALES WHERE urlI = :urlI")
+    Animal sacarAnimal(String urlI);
 
-    @Query("SELECT * FROM ANIMALES WHERE `key` = :key")
-    List<Animal> sacarAnimalKey(String key);
+    @Query("SELECT * FROM ANIMALES WHERE `keyU` = :keyU")
+    List<Animal> sacarAnimalKey(String keyU);
 
     @Insert
     void insert(Animal animal);

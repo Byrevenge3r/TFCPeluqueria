@@ -18,8 +18,12 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dam.peluqueriacanina.dao.AnimalesDao;
+import com.dam.peluqueriacanina.db.AnimalesDB;
+import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.mainActivity.MainActivity;
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.model.Chat;
 import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,6 +37,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "ERROR";
@@ -49,7 +57,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     CheckBox cbRecuerdame;
     User user;
     Intent i;
-
+    AnimalesDao dao;
+    AnimalesDB db;
+    StorageReference mStorage;
+    ArrayList<Animal> listaAnimales;
     ActivityResultLauncher<Intent> startForResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -71,8 +82,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         fAuth = FirebaseAuth.getInstance();
         fUser = fAuth.getCurrentUser();
 
+        listaAnimales = new ArrayList<>();
+
         fdb = FirebaseDatabase.getInstance();
         dbRef = fdb.getReference("usuarios");
+
+        db = AnimalesDB.getDatabase(this);
+        dao = db.animalDao();
 
         cbRecuerdame = findViewById(R.id.chbRecuerdame);
         etCorreo = findViewById(R.id.etCorreo);
@@ -176,6 +192,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     ((MiApplication) getApplicationContext()).setDireccion((datasnap.getValue(User.class)).getDireccion());
                     //dbRef.child(datasnap.getValue(User.class).getNombre()+"/contra").setValue(contra);
                 }
+                if (dao.sacarAnimalKey(((MiApplication)getApplicationContext()).getKey()).isEmpty()) {
+                    dbRef = fdb.getReference("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/animales");
+                    dbRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            for (DataSnapshot sp:task.getResult().getChildren()) {
+                                dao.insert(new Animal(sp.getValue(Animal.class).getKey(),
+                                        sp.getValue(Animal.class).getKeyU(),
+                                        sp.getValue(Animal.class).getUrlI(),
+                                        sp.getValue(Animal.class).getNombre(),
+                                        sp.getValue(Animal.class).getRaza()));
+                            }
+
+                        }
+                    });
+                }
+
             }
 
             @Override

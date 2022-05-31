@@ -38,6 +38,7 @@ import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -68,6 +69,8 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
     DatabaseReference dbRef;
     FirebaseAuth fAuth;
     Uri uri;
+    AnimalesDao dao;
+    AnimalesDB db;
 
     ActivityResultLauncher<Intent> sForResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -93,7 +96,9 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
         fb = FirebaseDatabase.getInstance();
         dbRef = fb.getReference();
         fAuth = FirebaseAuth.getInstance();
-        mStorage = FirebaseStorage.getInstance().getReference("fotos/"+((MiApplication) getApplicationContext()).getKey()+"/");
+        mStorage = FirebaseStorage.getInstance().getReference();
+        db = AnimalesDB.getDatabase(this);
+        dao = db.animalDao();
 
         btnRegistrarAnimal = findViewById(R.id.btnRegistrarAnimal);
         etNomAnimal = findViewById(R.id.etNomAnimal);
@@ -129,21 +134,34 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
             } else {
                 String uid = fAuth.getUid();
                 String keyF = dbRef.push().getKey();
-                StorageReference filePath = mStorage.child(keyF+".jpg");
+                final String urlM  = uri.toString();
+                StorageReference filePath = mStorage.child("fotos/"+((MiApplication) getApplicationContext()).getKey()+"/"+keyF+".jpg");
 
                 filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        mStorage.child("fotos/"+((MiApplication) getApplicationContext()).getKey()+"/"+keyF+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                HashMap<String,Object> animal = new HashMap<>();
 
-                        HashMap<String,Object> animal = new HashMap<>();
+                                animal.put("key",keyF);
+                                animal.put("keyU",((MiApplication) getApplicationContext()).getKey());
+                                animal.put("nombre",nombre);
+                                animal.put("raza",raza);
+                                animal.put("urlI",uri.toString());
 
-                        animal.put("key",keyF);
-                        animal.put("nombre",nombre);
-                        animal.put("raza",raza);
-
-                        dbRef.child("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/animales/"+keyF).updateChildren(animal);
-                        setResult(RESULT_OK);
-                        finish();
+                                dbRef.child("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/animales/"+keyF).updateChildren(animal);
+                                dao.insert(new Animal(keyF,((MiApplication)getApplicationContext()).getKey(),uri.toString(),nombre,raza));
+                                setResult(RESULT_OK);
+                                finish();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle any errors
+                            }
+                        });
                     }
                 });
             }

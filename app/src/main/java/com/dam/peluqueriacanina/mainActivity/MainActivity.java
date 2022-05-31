@@ -214,7 +214,7 @@ public void logout(){
     private void borrarFechasDao() throws ParseException {
         listaCitas = (ArrayList<TusCitas>) daoCitas.sacarTodo();
         for (int i = 0; i < listaCitas.size(); i++) {
-            dateModificar = formatter.parse(listaCitas.get(i).getFecha());
+            dateModificar = formatter.parse(listaCitas.get(i).getCitaFecha());
             if (date1.after(dateModificar)) {
                 daoCitas.delete(listaCitas.get(i));
             }

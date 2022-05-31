@@ -15,6 +15,7 @@ import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -27,7 +28,6 @@ public class DatosAnimalActivity extends AppCompatActivity implements View.OnCli
     AnimalesDao dao;
     AnimalesDB db;
     Animal animal;
-    File foto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class DatosAnimalActivity extends AppCompatActivity implements View.OnCli
         ivfotoDatosAnimal = findViewById(R.id.ivfotoDatosAnimal);
         btnDatosAnimalBorrar = findViewById(R.id.btnDatosAnimalBorrar);
 
-        ivfotoDatosAnimal.setImageBitmap(BitmapFactory.decodeFile(animal.getRuta()));
+        Picasso.get().load(animal.getUrlI()).resize(200,200).centerCrop().into(ivfotoDatosAnimal);
         tvDatosNomAnimal.setText(String.format(getResources().getString(R.string.tv_datos_nom_animal),animal.getNombre()));
         tvDatosRazaAnimal.setText(String.format(getResources().getString(R.string.tv_datos_raza_animal),animal.getRaza()));
 
@@ -59,15 +59,6 @@ public class DatosAnimalActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         dao.delete(animal);
-        foto = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File[] fotos = foto.listFiles();
-
-        for (int i = 0; i < fotos.length; i++) {
-            if (fotos[i].getAbsolutePath().equals(animal.getRuta())) {
-                fotos[i].delete();
-                i = fotos.length;
-            }
-        }
         setResult(RESULT_OK);
         finish();
     }

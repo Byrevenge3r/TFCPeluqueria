@@ -81,8 +81,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
            }
        });
 
-       dbr.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-
+       /*dbr.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/chat").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
            @Override
            public void onComplete(@NonNull Task<DataSnapshot> task) {
                if (recoger) {
@@ -96,7 +95,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                    rv.scrollToPosition(adapter.getItemCount()-1);
                }
            }
-       });
+       });*/
+
        dbr.child("usuarios/"+ ((MiApplication)getApplicationContext()).getKey()+"/chat").addChildEventListener(new ChildEventListener() {
            @Override
            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -125,7 +125,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
            }
        });
-
 
 
        dbr.child("coche/tel").addValueEventListener(new ValueEventListener() {

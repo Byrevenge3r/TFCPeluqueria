@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
@@ -23,7 +24,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.VerPerfilActivity;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.citas.VerTusCitasActivity;
+import com.dam.peluqueriacanina.model.Chat;
 import com.dam.peluqueriacanina.utils.SmsListener;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
@@ -33,7 +36,14 @@ import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -45,41 +55,17 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     MisAnimalesAdapter adapter;
     AnimalesDao dao;
     AnimalesDB db;
-    TusCitasDao daoTusCitas;
-    TusCitasDB dbTusCitas;
     Animal animalPel;
     ShapeableImageView imagenAnimal;
     Button btnAniadirMascotaPel;
-    CardView cvUbicacionTiempoReal, cvTusCitas, cvChat;
+    CardView cvUbicacionTiempoReal, cvTusCitas, cvChat,cvPerfil;
     TextView tvNombrePel;
     Intent i;
     ArrayList<Animal> listaAnimalesPel;
-    TusCitas tusCitas;
-    ArrayList<TusCitas> tusCitasLista;
-
-    SmsListener smsListener = new SmsListener() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            super.onReceive(context, intent);
-             if (msg.contains("confirmado") && tusCitas.getKey() != null) {
-                daoTusCitas.insert(tusCitas);
-            }
-        }
-    };
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        registerReceiver(smsListener, new IntentFilter(SMS_RECEIVED));
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(smsListener);
-    }
-
-
+    StorageReference mStorage;
+    FirebaseDatabase fbr;
+    DatabaseReference dbr;
+    ArrayList<TusCitas> listaCitas;
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -97,32 +83,42 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peluqueria);
+        mStorage = FirebaseStorage.getInstance().getReference("fotos/"+((MiApplication)getApplicationContext()).getKey()+"/");
+        listaCitas = new ArrayList<>();
 
-        tusCitasLista = new ArrayList<>();
-        tusCitas = new TusCitas();
-
-        //Peta aqui pero puede ser por que la ruta es null luego lo miro que me da pereza
-        if ((getIntent().getParcelableExtra("cita")) != null) {
-            tusCitas = getIntent().getParcelableExtra("cita");
-        }
         if ((ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECEIVE_SMS) +
                 ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.SEND_SMS))
                 != PackageManager.PERMISSION_GRANTED) {
-
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECEIVE_SMS, Manifest.permission.SEND_SMS}, 1001);
         }
+
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
 
-        dbTusCitas = TusCitasDB.getDatabase(this);
-        daoTusCitas = dbTusCitas.citaDao();
+        fbr = FirebaseDatabase.getInstance();
+        dbr = fbr.getReference();
+
+        dbr.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                for (DataSnapshot sp:task.getResult().getChildren()) {
+                    listaCitas.add(new TusCitas(sp.getValue(TusCitas.class).getUrlI(),
+                            sp.getValue(TusCitas.class).getKey(),
+                            sp.getValue(TusCitas.class).getKeyE(),
+                            sp.getValue(TusCitas.class).getKeyEC(),
+                            sp.getValue(TusCitas.class).getNomAnimal(),
+                            sp.getValue(TusCitas.class).getCitaFecha(),
+                            sp.getValue(TusCitas.class).getCitaHora()));
+                }
+            }
+        });
 
         imagenAnimal = findViewById(R.id.siAnimal);
         btnAniadirMascotaPel = findViewById(R.id.btnAniadirMascotaPel);
         rv = findViewById(R.id.rvReservarPel);
         cvUbicacionTiempoReal = findViewById(R.id.cvUbicacionTiempoReal);
         cvTusCitas = findViewById(R.id.cvVerTusCitas);
-
+        cvPerfil = findViewById(R.id.cvPerfil);
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
         rv.setLayoutManager(llm);
@@ -140,7 +136,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                     listaAnimalesPel = (ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey());
                     i = new Intent(PeluqueriaActivity.this, DatosAnimalActivity.class);
                     animalPel = listaAnimalesPel.get(rv.getChildAdapterPosition(v));
-                    i.putExtra(CLAVE_ANIMAL, animalPel.getRuta());
+                    i.putExtra(CLAVE_ANIMAL, animalPel.getUrlI());
                     arl.launch(i);
                 }
             });
@@ -155,6 +151,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         cvUbicacionTiempoReal.setOnClickListener(this);
         cvTusCitas.setOnClickListener(this);
         cvChat.setOnClickListener(this);
+        cvPerfil.setOnClickListener(this);
     }
 
     @Override
@@ -174,13 +171,16 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
             i = new Intent(this, VerTusCitasActivity.class);
             startActivity(i);
         } else if (v.equals(cvChat)) {
-            if (!daoTusCitas.sacarTodo().isEmpty()) {
+            if (!listaCitas.isEmpty()) {
                 i = new Intent(this, ChatActivity.class);
                 startActivity(i);
             } else {
                 Toast.makeText(this,R.string.error_no_hay_citas,Toast.LENGTH_SHORT).show();
             }
 
+        } else if (v.equals(cvPerfil)) {
+            i = new Intent(this, VerPerfilActivity.class);
+            startActivity(i);
         }
     }
 

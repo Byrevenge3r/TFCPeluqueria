@@ -192,7 +192,7 @@
 
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cvPeluqueria"
+                    android:id="@+id/cvPerfil"
                     android:layout_width="138dp"
                     android:layout_height="170dp"
                     app:cardElevation="12dp"

@@ -22,6 +22,7 @@ import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.DatosAnimalActivity;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.RegistrarAnimal;
 import com.dam.peluqueriacanina.mainActivity.veterinaria.citas.VerCitasVetActivity;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -50,7 +51,7 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
-                        adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarTodo());
+                        adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()));
                         listenerRv();
                         rv.setAdapter(adapter);
                     }
@@ -70,10 +71,6 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
         rv = findViewById(R.id.rvReservarVet);
         cvVeterinaria = findViewById(R.id.cvVeterinaria);
         cvTusCitasVet = findViewById(R.id.cvTusCitasVet);
-
-        if ((getIntent().getParcelableExtra("cita")) != null) {
-            tusCitas = getIntent().getParcelableExtra("cita");
-        }
 
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -95,10 +92,10 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
         adapter.setListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listaAnimalesVet = (ArrayList<Animal>) dao.sacarTodo();
+                listaAnimalesVet = (ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey());
                 i = new Intent(VeterinariaActivity.this, DatosAnimalActivity.class);
                 animalVet = listaAnimalesVet.get(rv.getChildAdapterPosition(v));
-                i.putExtra(CLAVE_ANIMAL, animalVet.getRuta());
+                //i.putExtra(CLAVE_ANIMAL, animalVet.getRuta());
                 arl.launch(i);
             }
         });

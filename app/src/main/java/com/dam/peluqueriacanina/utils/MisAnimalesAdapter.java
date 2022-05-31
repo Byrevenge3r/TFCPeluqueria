@@ -1,5 +1,6 @@
 package com.dam.peluqueriacanina.utils;
 
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.entity.Animal;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MisAnimalesAdapter extends RecyclerView.Adapter<MisAnimalesAdapter.MisAnimalesAdapterVH>
@@ -47,7 +55,11 @@ public class MisAnimalesAdapter extends RecyclerView.Adapter<MisAnimalesAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MisAnimalesAdapterVH holder, int position) {
-        holder.bindMenu(datos.get(position));
+        try {
+            holder.bindMenu(datos.get(position));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -60,15 +72,14 @@ public class MisAnimalesAdapter extends RecyclerView.Adapter<MisAnimalesAdapter.
 
         private final ShapeableImageView imagenAnimal;
 
-
         public MisAnimalesAdapterVH(@NonNull View itemView) {
             super(itemView);
             imagenAnimal = itemView.findViewById(R.id.siAnimal);
 
         }
 
-        public void bindMenu (Animal animal) {
-            imagenAnimal.setImageBitmap(BitmapFactory.decodeFile(animal.getRuta()));
+        public void bindMenu (Animal animal) throws IOException {
+            Picasso.get().load(animal.getUrlI()).resize(70,70).centerCrop().into(imagenAnimal);
         }
     }
 }

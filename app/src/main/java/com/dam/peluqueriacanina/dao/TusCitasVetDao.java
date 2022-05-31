@@ -16,8 +16,8 @@ public interface TusCitasVetDao {
     @Query("SELECT * FROM TUSCITAS WHERE `key` = :key")
     List<TusCitas> sacarCitasKey(String key);
 
-    @Query("SELECT * FROM TUSCITAS WHERE ruta = :ruta")
-    TusCitas sacarCitaRuta(String ruta);
+    @Query("SELECT * FROM TUSCITAS WHERE urlI = :urlI")
+    TusCitas sacarCitaRuta(String urlI);
 
     @Insert
     void insert(TusCitas animal);

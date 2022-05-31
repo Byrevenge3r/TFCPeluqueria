@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "ANIMALES", indices = {@Index(value={"ruta"},unique = true)})
+@Entity(tableName = "ANIMALES")
 public class Animal {
     @PrimaryKey(autoGenerate = true)
     public int id;
@@ -13,8 +13,11 @@ public class Animal {
     @ColumnInfo(name = "key")
     public String key;
 
-    @ColumnInfo(name = "ruta")
-    public String ruta;
+    @ColumnInfo(name = "keyU")
+    public String keyU;
+
+    @ColumnInfo(name = "urlI")
+    public String urlI;
 
     @ColumnInfo(name = "nombre")
     public String nombre;
@@ -22,11 +25,40 @@ public class Animal {
     @ColumnInfo(name = "raza")
     public String raza;
 
-    public Animal(String key, String ruta, String nombre, String raza) {
+    public Animal(String key, String keyU, String urlI, String nombre, String raza) {
         this.key = key;
-        this.ruta = ruta;
+        this.keyU = keyU;
+        this.urlI = urlI;
         this.nombre = nombre;
         this.raza = raza;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getKeyU() {
+        return keyU;
+    }
+
+    public void setKeyU(String keyU) {
+        this.keyU = keyU;
+    }
+
+    public void setUrlI(String urlI) {
+        this.urlI = urlI;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setRaza(String raza) {
+        this.raza = raza;
+    }
+
+    public String getUrlI() {
+        return urlI;
     }
 
     public String getKey() {
@@ -37,10 +69,6 @@ public class Animal {
 
     public int getId() {
         return id;
-    }
-
-    public String getRuta() {
-        return ruta;
     }
 
     public String getNombre() {

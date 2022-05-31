@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -68,7 +69,7 @@ public class CitasAnimalesFotoAdapter extends RecyclerView.Adapter<CitasAnimales
         }
 
         public void bindMenu (Animal animal) {
-            imagenAnimal.setImageBitmap(BitmapFactory.decodeFile(animal.getRuta()));
+            Picasso.get().load(animal.getUrlI()).resize(200,200).centerCrop().into(imagenAnimal);
         }
     }
 }

@@ -209,7 +209,7 @@ public class CitasVet extends DialogFragment {
                 } else {
                     tvNoHayCitas.setVisibility(View.INVISIBLE);
                     
-                    dbr.child("veterinaria/veterinaroRes/"+ nom +"/"+ mes).addValueEventListener(new ValueEventListener() {
+                    dbr.child("veterinaria/veterinarioRes/"+ nom +"/"+ mes).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {

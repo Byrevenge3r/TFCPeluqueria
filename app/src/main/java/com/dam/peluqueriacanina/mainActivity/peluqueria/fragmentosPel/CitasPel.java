@@ -274,6 +274,7 @@ public class CitasPel extends DialogFragment {
                 }
                 if (listaCitas.size()==i) {
                     continuar = false;
+                    i = 0;
                 }
             }
             continuar = true;
@@ -298,25 +299,36 @@ public class CitasPel extends DialogFragment {
 
     private ArrayList<CitasReserva> filtroLista(ArrayList<CitasReserva> listaCitasMes, int anio, int mesD, int dia) {
         listaCitas = datos.getListaCitas();
+        Date diaSeleccionado = new Date();
+        Date diaHoy = new Date();
+
         int posicion = 0;
         boolean existe = false;
 
-        for (int i = 0; i < listaCitasMes.size(); i++) {
+            for (int i = 0; i < listaCitasMes.size(); i++) {
+                try {
+                    diaHoy = formatter.parse(dia + "/" + mesD + "/" + anio);
+                    diaSeleccionado = formatter.parse(listaCitasMes.get(i).getFecha());
+                    if (diaSeleccionado.equals(diaHoy)) {
+                        for (int x = 0; x < listaCitas.size(); x++) {
+                            if (listaCitasMes.get(i).getHora().equals(listaCitas.get(x).getHora())) {
+                                existe = true;
+                                posicion = x;
+                                x = listaCitas.size();
+                            }
+                        }
 
-            if (listaCitasMes.get(i).getFecha().equals(dia + "/" + mesD + "/" + anio)) {
-
-                for (int x = 0; x < listaCitas.size(); x++) {
-                    if (listaCitasMes.get(i).getHora().equals(listaCitas.get(x).getHora())) {
-                        existe = true;
-                        posicion = x;
                     }
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
+
+                if (existe) {
+                    listaCitas.remove(posicion);
+                }
+                existe = false;
             }
-            if (existe) {
-                listaCitas.remove(posicion);
-            }
-            existe = false;
-        }
+
         return listaCitas;
     }
 

@@ -10,59 +10,85 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-@Entity(tableName = "TUSCITAS", indices = {@Index(value={"ruta"},unique = true)})
-public class TusCitas implements Parcelable{
+@Entity(tableName = "TUSCITAS")
+public class TusCitas {
 
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @ColumnInfo(name="ruta")
-    public String ruta;
+    @ColumnInfo(name="urlI")
+    public String urlI;
 
     @ColumnInfo(name = "key")
     public String key;
 
-    @ColumnInfo(name = "nombre")
-    public String nombre;
+    @ColumnInfo(name = "keyE")
+    public String keyE;
 
-    @ColumnInfo(name="fecha")
-    public String fecha;
+    @ColumnInfo(name = "keyEC")
+    public String keyEC;
 
-    @ColumnInfo(name="hora")
-    public String hora;
+    @ColumnInfo(name = "nomAnimal")
+    public String nomAnimal;
+
+    @ColumnInfo(name="citaFecha")
+    public String citaFecha;
+
+    @ColumnInfo(name="citaHora")
+    public String citaHora;
 
     public TusCitas() {
     }
 
-    public TusCitas(String ruta, String key, String nombre, String fecha, String hora) {
-        this.ruta = ruta;
+    public TusCitas(String urlI, String key, String keyE, String keyEC, String nomAnimal, String citaFecha, String citaHora) {
+        this.urlI = urlI;
         this.key = key;
-        this.nombre = nombre;
-        this.fecha = fecha;
-        this.hora = hora;
+        this.keyE = keyE;
+        this.keyEC = keyEC;
+        this.nomAnimal = nomAnimal;
+        this.citaFecha = citaFecha;
+        this.citaHora = citaHora;
     }
 
-
-    protected TusCitas(Parcel in) {
-        id = in.readInt();
-        ruta = in.readString();
-        key = in.readString();
-        nombre = in.readString();
-        fecha = in.readString();
-        hora = in.readString();
+    public String getKeyEC() {
+        return keyEC;
     }
 
-    public static final Creator<TusCitas> CREATOR = new Creator<TusCitas>() {
-        @Override
-        public TusCitas createFromParcel(Parcel in) {
-            return new TusCitas(in);
-        }
+    public void setKeyEC(String keyEC) {
+        this.keyEC = keyEC;
+    }
 
-        @Override
-        public TusCitas[] newArray(int size) {
-            return new TusCitas[size];
-        }
-    };
+    public String getKeyE() {
+        return keyE;
+    }
+
+    public void setKeyE(String keyE) {
+        this.keyE = keyE;
+    }
+
+    public String getNomAnimal() {
+        return nomAnimal;
+    }
+
+    public void setNomAnimal(String nomAnimal) {
+        this.nomAnimal = nomAnimal;
+    }
+
+    public String getCitaFecha() {
+        return citaFecha;
+    }
+
+    public void setCitaFecha(String citaFecha) {
+        this.citaFecha = citaFecha;
+    }
+
+    public String getUrlI() {
+        return urlI;
+    }
+
+    public void setUrlI(String urlI) {
+        this.urlI = urlI;
+    }
 
     public String getKey() {
         return key;
@@ -72,70 +98,11 @@ public class TusCitas implements Parcelable{
         this.key = key;
     }
 
-    public int getId() {
-        return id;
+    public String getCitaHora() {
+        return citaHora;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getRuta() {
-        return ruta;
-    }
-
-    public void setRuta(String ruta) {
-        this.ruta = ruta;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
-
-    @Override
-    public String toString() {
-        return "TusCitas{" +
-                "ruta='" + ruta + '\'' +
-                ", key='" + key + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", fecha='" + fecha + '\'' +
-                ", hora='" + hora + '\'' +
-                '}';
-    }
-
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
-        parcel.writeString(ruta);
-        parcel.writeString(key);
-        parcel.writeString(nombre);
-        parcel.writeString(fecha);
-        parcel.writeString(hora);
+    public void setCitaHora(String citaHora) {
+        this.citaHora = citaHora;
     }
 }
