@@ -66,7 +66,6 @@ public class AdapterTienda extends RecyclerView.Adapter<AdapterTienda.AdapterTie
 
         public AdapterTiendaVH(@NonNull View itemView) {
             super(itemView);
-
             textoProductoTienda = itemView.findViewById(R.id.textoProductoTienda);
             fotoProductoTienda = itemView.findViewById(R.id.fotoProductoTienda);
         }

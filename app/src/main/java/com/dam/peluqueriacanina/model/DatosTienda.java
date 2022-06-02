@@ -1,17 +1,18 @@
 package com.dam.peluqueriacanina.model;
 
+import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class DatosTienda implements Parcelable {
     private String nombre;
     private String cantidad;
-    private String foto;
+    private Drawable foto;
     private String detalle;
     private String tipo;
     private String precio;
 
-    public DatosTienda(String nombre, String cantidad, String foto, String detalle, String tipo, String precio) {
+    public DatosTienda(String nombre, String cantidad, Drawable foto, String detalle, String tipo, String precio) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.foto = foto;
@@ -23,7 +24,6 @@ public class DatosTienda implements Parcelable {
     protected DatosTienda(Parcel in) {
         nombre = in.readString();
         cantidad = in.readString();
-        foto = in.readString();
         detalle = in.readString();
         tipo = in.readString();
         precio = in.readString();
@@ -57,11 +57,11 @@ public class DatosTienda implements Parcelable {
         this.cantidad = cantidad;
     }
 
-    public String getFoto() {
+    public Drawable getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(Drawable foto) {
         this.foto = foto;
     }
 
@@ -98,7 +98,6 @@ public class DatosTienda implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(nombre);
         dest.writeString(cantidad);
-        dest.writeString(foto);
         dest.writeString(detalle);
         dest.writeString(tipo);
         dest.writeString(precio);
