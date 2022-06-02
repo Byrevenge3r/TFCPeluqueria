@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Locale;
+
 public class Registro2 extends AppCompatActivity implements View.OnClickListener {
 
     EditText etCorreo;
@@ -86,10 +88,18 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
             } else if (!contra.equals(confcontra)) {
                 Snackbar.make(v, R.string.contra_coincide, Snackbar.LENGTH_LONG).show();
 
-            }  else if (TextUtils.isEmpty(direccion)) {
-            Snackbar.make(v, R.string.direccion_vacia, Snackbar.LENGTH_LONG).show();
+            } else if (!hasUpperCase(contra)) {
+                Snackbar.make(v, R.string.contra_minuscula, Snackbar.LENGTH_LONG).show();
 
-        } else {
+            } else if (hasSymbol(contra)) {
+
+                Snackbar.make(v, R.string.simbolo_contra, Snackbar.LENGTH_LONG).show();
+
+
+            } else if (TextUtils.isEmpty(direccion)) {
+                Snackbar.make(v, R.string.direccion_vacia, Snackbar.LENGTH_LONG).show();
+
+            } else {
                 ((MiApplication) getApplicationContext()).setCorreo(correo);
                 ((MiApplication) getApplicationContext()).setContrasenia(contra);
                 ((MiApplication) getApplicationContext()).setDireccion(direccion);
@@ -102,7 +112,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
             }
 
 
-        }else if (v.equals(btnAtrasRegDos)) {
+        } else if (v.equals(btnAtrasRegDos)) {
             i = new Intent(this, Registro1.class);
             startActivity(i);
 
@@ -110,10 +120,23 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
         }
 
 
-
     }
+
+    private boolean hasUpperCase(CharSequence data) {
+        String contra = etContra.getText().toString().trim();
+        contra = String.valueOf((data));
+        return !contra.equals(contra.toLowerCase());
+    }
+
+    private boolean hasSymbol(CharSequence data) {
+        String contra = etContra.getText().toString().trim();
+        contra = String.valueOf((data));
+        return !contra.matches("[A-Za-z0-9]*");
+    }
+
+
     @Override
-    public void onBackPressed () {
+    public void onBackPressed() {
         super.onBackPressed();
         i = new Intent(this, Registro1.class);
         startActivity(i);

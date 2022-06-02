@@ -32,6 +32,7 @@
         android:scaleType="centerCrop"
         app:strokeWidth="3dp" />
 
+
     <LinearLayout
         android:id="@+id/llBotonesMascotasVet"
         android:layout_width="match_parent"

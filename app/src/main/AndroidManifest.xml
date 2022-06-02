@@ -34,6 +34,7 @@
         <activity
             android:name=".mainActivity.tienda.MostrarCompraActivity"
             android:exported="false" />
+
         <activity
             android:name=".mainActivity.veterinaria.citas.VerDatosCitasVetActivity"
             android:exported="false" />
@@ -100,7 +101,11 @@
         <activity
             android:name=".mainActivity.peluqueria.RegistrarAnimal"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".mainActivity.peluqueria.PeluqueriaActivity"

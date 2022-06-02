@@ -177,7 +177,7 @@
                     android:layout_marginRight="48dp"
                     android:background="@drawable/fondo_edit_text"
                     android:hint="@string/et_direccion"
-                    android:inputType="textEmailAddress"
+                    android:inputType=""
                     android:paddingLeft="26dp"
                     android:paddingRight="26dp"
                     android:textColor="@color/color_texto_negro" />

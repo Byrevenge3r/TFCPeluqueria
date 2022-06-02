@@ -112,4 +112,9 @@
     <string name="precio_compra_carrito">Precio: %1$s</string>
     <string name="btn_pagar">Pagar</string>
     <string name="precio_total">TOTAL = %1$s</string>
+    <string name="contra_minuscula">Tienes que introducir una mayuscula</string>
+    <string name="simbolo_contra">Debes introducir un caracter especial</string>
+    <string name="tv_acercade_ajustes">Acerca DE</string>
+    <string name="tv_cambiar_contra">Cambiar contraseña</string>
+    <string name="tv_cerrar_sesion">Cerrar Sesion</string>
 </resources>
