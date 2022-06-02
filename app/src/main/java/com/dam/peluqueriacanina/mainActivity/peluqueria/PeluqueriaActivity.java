@@ -115,7 +115,6 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         rv = findViewById(R.id.rvReservarPel);
         cvUbicacionTiempoReal = findViewById(R.id.cvUbicacionTiempoReal);
         cvTusCitas = findViewById(R.id.cvVerTusCitas);
-        cvPerfil = findViewById(R.id.cvPerfil);
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
         rv.setLayoutManager(llm);

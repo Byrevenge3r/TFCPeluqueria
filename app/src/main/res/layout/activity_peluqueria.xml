@@ -191,46 +191,6 @@
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cvPerfil"
-                    android:layout_width="138dp"
-                    android:layout_height="170dp"
-                    app:cardElevation="12dp"
-                    app:cardCornerRadius="12dp"
-                    android:layout_margin="12dp">
-
-                    <LinearLayout
-
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/ivPerfil"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/foto_perfil"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:shapeAppearanceOverlay="@style/Circular"
-                            app:strokeColor="@color/color_blanco"
-                            android:scaleType="centerCrop"
-                            app:strokeWidth="1dp"/>
-
-                        <TextView
-                            android:textSize="18sp"
-                            android:layout_marginTop="12dp"
-                            android:textColor="@color/color_texto_negro"
-                            android:layout_width="wrap_content"
-                            android:text="@string/tv_perfil_menu"
-                            android:layout_height="wrap_content"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
 
             </GridLayout>
         </LinearLayout>

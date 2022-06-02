@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.dam.peluqueriacanina.mainActivity.tienda.TiendaActivity;
 import com.dam.peluqueriacanina.perfil.AjustesActivity;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
@@ -234,7 +235,8 @@ public void logout(){
             i = new Intent(this, VeterinariaActivity.class);
             startActivity(i);
         } else if (v.equals(cvTienda)) {
-            Toast.makeText(this, "Tienda", Toast.LENGTH_SHORT).show();
+            i = new Intent(this, TiendaActivity.class);
+            startActivity(i);
         } else if (v.equals(cvNoticias)) {
             i = new Intent(this, NoticiasActivity.class);
             startActivity(i);
