@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AjustesActivity"
+    tools:context=".perfil.AjustesActivity"
     android:background="@color/color_principal_citas">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -89,7 +89,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/peluqueria_menu" />
+                    android:src="@drawable/candado" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -122,13 +122,13 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/veterinaria_menu" />
+                    android:src="@drawable/acercade" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="@string/tv_veterinaria_menu"
+                    android:text="@string/tv_acerca_de"
                     android:textColor="@color/color_texto_negro"
                     android:textSize="15sp" />
 
@@ -156,13 +156,13 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/opciones_menu" />
+                    android:src="@drawable/pregyresp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="@string/tv_opciones_menu"
+                    android:text="@string/tv_preguntas_y_respuestas"
                     android:textColor="@color/color_texto_negro"
                     android:textSize="15sp" />
 

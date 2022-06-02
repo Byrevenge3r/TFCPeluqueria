@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.AjustesActivity;
+import com.dam.peluqueriacanina.perfil.AjustesActivity;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.citas.VerTusCitasActivity;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;

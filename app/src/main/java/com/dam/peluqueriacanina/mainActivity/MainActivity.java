@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.dam.peluqueriacanina.AjustesActivity;
+import com.dam.peluqueriacanina.perfil.AjustesActivity;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.TusCitasDB;

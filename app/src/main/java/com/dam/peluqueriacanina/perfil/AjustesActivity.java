@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina;
+package com.dam.peluqueriacanina.perfil;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -16,13 +16,19 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.dam.peluqueriacanina.entity.Animal;
+import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.registro.LoginActivity;
 import com.dam.peluqueriacanina.utils.MiApplication;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -41,6 +47,9 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
     StorageReference mStorage;
     FirebaseDatabase fb;
     DatabaseReference dbRef;
+    FirebaseAuth fAuth;
+    Intent i;
+
 
     ActivityResultLauncher<Intent> sForResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -78,6 +87,7 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         mStorage = FirebaseStorage.getInstance().getReference();
         fb = FirebaseDatabase.getInstance();
         dbRef = fb.getReference();
+        fAuth = FirebaseAuth.getInstance();
 
         cvCambiarContra = findViewById(R.id.cvCambiarContra);
         cvAcercaDe = findViewById(R.id.cvAcercaDe);
@@ -115,6 +125,33 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
                 sForResult.launch(data);
             }
 
+        }else if (v.equals(cvCambiarContra)) {
+            {
+                Toast.makeText(this,
+                        getString(R.string.msj_correço_enviado),
+                        Toast.LENGTH_LONG).show();
+                fAuth.sendPasswordResetEmail(fAuth.getCurrentUser().getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Log.w("CHUPAPOA","No c como va");
+                        }
+                        if (!task.isSuccessful()){
+                            Toast.makeText(AjustesActivity.this, R.string.tst_email_exist, Toast.LENGTH_SHORT).show();
+                        }
+                        if (task.isComplete()){
+                            Log.w("GUARDADO","Se supone q esta cambiado");
+                        }
+                    }
+                });
+            }
+        }else if (v.equals(cvCerrarSesion)) {
+            logout();
+            i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+        }else if (v.equals(cvAcercaDe)) {
+            i = new Intent(this, AcercaDeActivity.class);
+            startActivity(i);
         }
     }
 
@@ -125,5 +162,8 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         data.setType("image/*");
         data = Intent.createChooser(data, "Choose File");
         sForResult.launch(data);
+    }
+    public void logout(){
+        fAuth.signOut();
     }
 }

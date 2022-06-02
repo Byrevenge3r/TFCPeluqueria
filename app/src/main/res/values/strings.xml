@@ -117,4 +117,13 @@
     <string name="tv_acercade_ajustes">Acerca DE</string>
     <string name="tv_cambiar_contra">Cambiar contraseña</string>
     <string name="tv_cerrar_sesion">Cerrar Sesion</string>
+    <string name="tv_cambiar_usuario">Cambiar nombre de usuario</string>
+    <string name="tv_acerca_de">Acerca de</string>
+    <string name="msj_correo_enviado">Se te ha enviado un correo para cambiar la contraseña</string>
+    <string name="msj_correço_enviado">Se te ha enviado un correo electronico para cambiar tu contraseña</string>
+    <string name="tst_email_exist">No existe el correo</string>
+    <string name="tv_preguntas_y_respuestas">Q &amp; A</string>
+    <string name="itulo">The Rolling Dogs</string>
+    <string name="Text2">\n\nVersión \n1.0</string>
+    <string name="Text3">\nThe Rolling Dogs y los logotipos de The Rolling Dogs son marcas comerciales de TheRollingDogs S.L Todos los derechos reservados. \n\nThe Rolling Dogs para Android se ha creado con software de código abierto: licencias. \n\nCreadores: \Fernando Pasquín Cantos\nRodrigo Garvía Gamboa\nSamuel Romero Fuertes</string>
 </resources>
