@@ -153,9 +153,9 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
                 if (colorAlimentacion) {
                     cargarDatosConFiltro("alimentacion");
                 } else if (colorAccesorios) {
-                    cargarDatosConFiltro("accesorio");
+                    cargarDatosConFiltro("accesorios");
                 } else if (colorJuguetes) {
-                    cargarDatosConFiltro("juguete");
+                    cargarDatosConFiltro("juguetes");
                 } else {
                     for (int i = 0; i < listaTienda.size();i++) {
                         if (listaTienda.get(i).getNombre().toLowerCase(Locale.ROOT).contains(etBuscarPorNombre.getText().toString().trim().toLowerCase(Locale.ROOT))) {
