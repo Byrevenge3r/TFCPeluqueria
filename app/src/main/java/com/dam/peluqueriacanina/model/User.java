@@ -5,7 +5,6 @@ public class User {
     private String apellidos;
     private String usuario;
     private String correo;
-    private String contrasenia;
     private String telefono;
     private String direccion;
     private String urlPerfil;
@@ -20,12 +19,11 @@ public class User {
         return direccion;
     }
 
-    public User(String nombre, String apellidos, String usuario, String correo, String contrasenia, String telefono, String direccion, String key,String urlPerfil) {
+    public User(String nombre, String apellidos, String usuario, String correo, String telefono, String direccion, String key,String urlPerfil) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.usuario = usuario;
         this.correo = correo;
-        this.contrasenia = contrasenia;
         this.telefono = telefono;
         this.direccion = direccion;
         this.key = key;
@@ -84,14 +82,6 @@ public class User {
         this.correo = correo;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
-    }
-
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
-
     public String getTelefono() {
         return telefono;
     }
@@ -107,7 +97,6 @@ public class User {
                 ", apellidos='" + apellidos + '\'' +
                 ", usuario='" + usuario + '\'' +
                 ", correo='" + correo + '\'' +
-                ", contrasenia='" + contrasenia + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", direccion='" + direccion + '\'' +
                 '}';

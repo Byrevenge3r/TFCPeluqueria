@@ -57,7 +57,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
 
         if (v.equals(btnFinalizar)) {
            registrar();
-         registrarAuth( user.getCorreo(), user.getContrasenia());
+         registrarAuth( user.getCorreo(), ((MiApplication) getApplicationContext()).getContrasenia());
            i = new Intent(this, LoginActivity.class);
             startActivity(i);
 
@@ -93,7 +93,6 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
                 ((MiApplication) getApplicationContext()).getApellidos(),
                 ((MiApplication) getApplicationContext()).getUsuario(),
                 ((MiApplication) getApplicationContext()).getCorreo(),
-                ((MiApplication) getApplicationContext()).getContrasenia(),
                 ((MiApplication) getApplicationContext()).getTelefono(),
                 ((MiApplication) getApplicationContext()).getDireccion(),
                 ((MiApplication) getApplicationContext()).getKey(),"");
@@ -104,7 +103,6 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         usuario.put("apellidos", user.getApellidos());
         usuario.put("usuario", user.getUsuario());
         usuario.put("correo", user.getCorreo());
-        usuario.put("contrasenia", user.getContrasenia());
         usuario.put("telefono", user.getTelefono());
         usuario.put("direccion", user.getDireccion());
         usuario.put("key",user.getKey());
