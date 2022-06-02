@@ -234,7 +234,7 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
                 colorAccesorios = true;
                 colorAlimentacion = false;
                 colorJuguetes = false;
-                cargarDatosConFiltro("accesorio");
+                cargarDatosConFiltro("accesorios");
             } else {
                 llmAccesorios.setBackgroundColor(getResources().getColor(R.color.white));
                 colorAccesorios = false;
