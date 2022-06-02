@@ -53,7 +53,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     Animal animalPel;
     ShapeableImageView imagenAnimal,ivPerfilPel;
     Button btnAniadirMascotaPel;
-    CardView cvUbicacionTiempoReal, cvTusCitas, cvChat,cvPerfil;
+    CardView cvUbicacionTiempoReal, cvTusCitas, cvChat;
     TextView tvNombrePel;
     Intent i;
     ArrayList<Animal> listaAnimalesPel;
@@ -147,7 +147,6 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         cvUbicacionTiempoReal.setOnClickListener(this);
         cvTusCitas.setOnClickListener(this);
         cvChat.setOnClickListener(this);
-        cvPerfil.setOnClickListener(this);
     }
 
     @Override
@@ -174,9 +173,6 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                 Toast.makeText(this,R.string.error_no_hay_citas,Toast.LENGTH_SHORT).show();
             }
 
-        } else if (v.equals(cvPerfil)) {
-            i = new Intent(this, AjustesActivity.class);
-            startActivity(i);
         }
     }
 
