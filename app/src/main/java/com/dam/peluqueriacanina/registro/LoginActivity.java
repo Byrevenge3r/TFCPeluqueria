@@ -190,7 +190,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     ((MiApplication) getApplicationContext()).setCorreo((datasnap.getValue(User.class)).getCorreo());
                     ((MiApplication) getApplicationContext()).setTelefono((datasnap.getValue(User.class)).getTelefono());
                     ((MiApplication) getApplicationContext()).setDireccion((datasnap.getValue(User.class)).getDireccion());
-                    //dbRef.child(datasnap.getValue(User.class).getNombre()+"/contra").setValue(contra);
+                    ((MiApplication) getApplicationContext()).setUrlPerfil((datasnap.getValue(User.class)).getUrlPerfil());
+
                 }
                 if (dao.sacarAnimalKey(((MiApplication)getApplicationContext()).getKey()).isEmpty()) {
                     dbRef = fdb.getReference("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/animales");

@@ -25,6 +25,7 @@ import com.dam.peluqueriacanina.mainActivity.veterinaria.citas.VerCitasVetActivi
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -38,7 +39,7 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
     AnimalesDao dao;
     AnimalesDB db;
     Animal animalVet;
-    ShapeableImageView imagenAnimal;
+    ShapeableImageView imagenAnimal,ivPerfilVet;
     Button btnAniadirMascotaVet;
     ArrayList<Animal> listaAnimalesVet;
     Intent i;
@@ -65,6 +66,8 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
 
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
+        ivPerfilVet = findViewById(R.id.ivPerfilVet);
+        Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(150,150).centerCrop().into(ivPerfilVet);
 
         imagenAnimal = findViewById(R.id.siAnimal);
         btnAniadirMascotaVet = findViewById(R.id.btnAniadirMascotaVet);

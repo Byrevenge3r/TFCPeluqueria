@@ -47,8 +47,10 @@
 
         </activity>
         <activity
-            android:name=".VerPerfilActivity"
-            android:exported="false" />
+            android:name=".AjustesActivity"
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".mainActivity.peluqueria.ChatActivity"
             android:exported="true"
@@ -101,11 +103,7 @@
         <activity
             android:name=".mainActivity.peluqueria.RegistrarAnimal"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".mainActivity.peluqueria.PeluqueriaActivity"
@@ -137,7 +135,13 @@
 
         <activity
             android:name=".mainActivity.MainActivity"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"

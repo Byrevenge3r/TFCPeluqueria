@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.dam.peluqueriacanina.AjustesActivity;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.TusCitasDB;
@@ -238,7 +239,8 @@ public void logout(){
             i = new Intent(this, NoticiasActivity.class);
             startActivity(i);
         } else if (v.equals(cvOpciones)) {
-            Toast.makeText(this, "Opciones", Toast.LENGTH_SHORT).show();
+            i = new Intent(this, AjustesActivity.class);
+            startActivity(i);
         }else if (v.equals(cvCerrarSesion)) {
           logout();
             i = new Intent(this, LoginActivity.class);

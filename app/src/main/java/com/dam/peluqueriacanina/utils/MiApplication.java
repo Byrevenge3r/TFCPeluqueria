@@ -12,10 +12,19 @@ public class MiApplication extends Application {
     private String telefono;
     private String direccion;
     private String key;
+    private String urlPerfil;
 
     @Override
     public void onCreate() {
         super.onCreate();
+    }
+
+    public String getUrlPerfil() {
+        return urlPerfil;
+    }
+
+    public void setUrlPerfil(String urlPerfil) {
+        this.urlPerfil = urlPerfil;
     }
 
     public String getNombre() {

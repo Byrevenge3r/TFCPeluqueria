@@ -96,7 +96,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
                 ((MiApplication) getApplicationContext()).getContrasenia(),
                 ((MiApplication) getApplicationContext()).getTelefono(),
                 ((MiApplication) getApplicationContext()).getDireccion(),
-                ((MiApplication) getApplicationContext()).getKey());
+                ((MiApplication) getApplicationContext()).getKey(),"");
 
         HashMap<String, Object> usuario = new HashMap<>();
 

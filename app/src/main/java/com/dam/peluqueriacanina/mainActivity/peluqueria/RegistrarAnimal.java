@@ -84,6 +84,8 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                         ivFotoAnimal.setImageURI(uri);
                         tvPonerMascota.setVisibility(View.INVISIBLE);
 
+
+
                     }
                 }
             });
@@ -132,9 +134,7 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
             if (nombre.isEmpty() || raza.isEmpty()) {
                 Toast.makeText(this, R.string.error_registrar_animal_vacio, Toast.LENGTH_SHORT).show();
             } else {
-                String uid = fAuth.getUid();
                 String keyF = dbRef.push().getKey();
-                final String urlM  = uri.toString();
                 StorageReference filePath = mStorage.child("fotos/"+((MiApplication) getApplicationContext()).getKey()+"/"+keyF+".jpg");
 
                 filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

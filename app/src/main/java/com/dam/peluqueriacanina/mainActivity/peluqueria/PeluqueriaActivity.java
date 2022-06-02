@@ -13,9 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
@@ -24,14 +22,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.VerPerfilActivity;
+import com.dam.peluqueriacanina.AjustesActivity;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.citas.VerTusCitasActivity;
-import com.dam.peluqueriacanina.model.Chat;
-import com.dam.peluqueriacanina.utils.SmsListener;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
-import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
-import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.utils.MiApplication;
@@ -44,6 +38,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -56,7 +51,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     AnimalesDao dao;
     AnimalesDB db;
     Animal animalPel;
-    ShapeableImageView imagenAnimal;
+    ShapeableImageView imagenAnimal,ivPerfilPel;
     Button btnAniadirMascotaPel;
     CardView cvUbicacionTiempoReal, cvTusCitas, cvChat,cvPerfil;
     TextView tvNombrePel;
@@ -112,6 +107,8 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                 }
             }
         });
+        ivPerfilPel = findViewById(R.id.ivPerfilPel);
+        Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(150,150).centerCrop().into(ivPerfilPel);
 
         imagenAnimal = findViewById(R.id.siAnimal);
         btnAniadirMascotaPel = findViewById(R.id.btnAniadirMascotaPel);
@@ -179,7 +176,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
             }
 
         } else if (v.equals(cvPerfil)) {
-            i = new Intent(this, VerPerfilActivity.class);
+            i = new Intent(this, AjustesActivity.class);
             startActivity(i);
         }
     }
