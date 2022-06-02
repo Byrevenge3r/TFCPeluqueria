@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
@@ -45,6 +46,7 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
     Intent i;
     TusCitas tusCitas;
     CardView cvVeterinaria,cvTusCitasVet;
+    TextView tvNombreVet;
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -67,6 +69,8 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
         ivPerfilVet = findViewById(R.id.ivPerfilVet);
+        tvNombreVet = findViewById(R.id.tvNombreVet);
+        tvNombreVet.setText(((MiApplication) getApplicationContext()).getNombre() + " " + ((MiApplication) getApplicationContext()).getApellidos());
         Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(150,150).centerCrop().into(ivPerfilVet);
 
         imagenAnimal = findViewById(R.id.siAnimal);
