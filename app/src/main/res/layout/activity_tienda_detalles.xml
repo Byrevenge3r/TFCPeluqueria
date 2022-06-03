@@ -152,8 +152,9 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="16dp"
-                        android:text="AQUI VA LA INFO DE CADA PRODUCTO"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignEnd="@+id/imagen_remove_tienda_detalles"/>
 
                     <TextView
                         android:id="@+id/tv_precio_final_producto_tienda_detalle"
@@ -166,18 +167,6 @@
                         android:layout_marginBottom="16dp"
                         android:text="@string/precio_final_1"
                         android:textColor="@color/black" />
-
-                    <TextView
-                        android:id="@+id/tv_precio_producto_tienda_detalle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_info_tienda_detalle"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:layout_toEndOf="@id/tv_precio_final_producto_tienda_detalle"
-                        android:text="@string/precio_2" />
 
                     <Button
                         android:id="@+id/btn_add_cesta"

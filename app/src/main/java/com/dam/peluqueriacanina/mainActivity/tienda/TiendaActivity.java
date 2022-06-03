@@ -37,6 +37,8 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
     TextView  tvObjetoNombreTienda;
     EditText etBuscarPorNombre;
 
+    LinearLayoutManager llm;
+
     ImageView ivCarrito;
 
     LinearLayout llmAlimentacion, llmAccesorios,llmJuguetes;
@@ -80,14 +82,10 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
         cvJuguetes = findViewById(R.id.cvJuguetes);
         cvAlimentacion = findViewById(R.id.cvAlimentacion);
 
-        rv.setLayoutManager(new GridLayoutManager(this, 2));
-        /*listaTienda.add(new DatosTienda("Pienso perros","adasd","alimentacion","pienso de perros puta madre"));
-        listaTienda.add(new DatosTienda("Pienso gato","adasd","alimentacion","pienso de perros puta madre"));
-        listaTienda.add(new DatosTienda("juguete gato","adasd","accesorio","accesorio de gato puta madre"));
-        listaTienda.add(new DatosTienda("juguete perro","adasd","accesorio","accesorio de perros puta madre"));
-        listaTienda.add(new DatosTienda("yo que se","adasd","alimentacion","pienso de perros puta madre"));
-        listaTienda.add(new DatosTienda("yo que se","adasd","accesorio","pienso de perros puta madre"));
-*/
+        llm = new LinearLayoutManager(this);
+
+        rv.setLayoutManager(llm);
+
         listaTienda.add(new DatosTienda("pienso perro razas pequeño", "1kg", getBaseContext().getDrawable(R.drawable.pienso_perro_pequeno), "pienso natural especialmente recomendado para perros de razas pequeñas (1-10 kg peso adulto), fabricado en España con ingredientes naturales. ","alimentacion" , "20"));
         listaTienda.add(new DatosTienda("transportin perro y gato", "1", getBaseContext().getDrawable(R.drawable.transportin), "El bolso de transporte para perros y gatos Kibo Slide naranja tiene un diseño moderno y deportivo, en colores naranja, negro y gris, para que puedas viajar o pasear con tu mascota","accesorios", "35"));
         listaTienda.add(new DatosTienda("Bozal perro ajuste perfecto", "1", getBaseContext().getDrawable(R.drawable.bozal), "Bozal ajustable tiene la ventaja de adaptarse perfectamente a todos los hocicos largos o medianos.","accesorios", "6"));
@@ -118,13 +116,20 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
         etBuscarPorNombre = findViewById(R.id.edit_text_buscar);
         adapter = new AdapterTienda(listaTienda);
         rv.setAdapter(adapter);
-        cargarTienda();
-        cargarProducto();
+       // cargarTienda();
+       // cargarProducto();
 
         cvAlimentacion.setOnClickListener(this);
         cvJuguetes.setOnClickListener(this);
         cvAccesorios.setOnClickListener(this);
         ivCarrito.setOnClickListener(this);
+        imageProductoTienda = findViewById(R.id.image_producto_tienda);
+        tvObjetoNombreTienda = findViewById(R.id.tv_objeto_nombre_tienda);
+        ImageView imageProduct = findViewById(R.id.image_producto_tienda);
+        TextView tvNombre = findViewById(R.id.tv_nombre_producto);
+        TextView tvpienso = findViewById(R.id.tv_pienso_producto);
+        TextView tvPrecioFinal = findViewById(R.id.tv_precion_final_producto);
+        TextView tvPrecio = findViewById(R.id.tv_precio_producto);
 
         adapter.setListener(new View.OnClickListener() {
             @Override
@@ -137,6 +142,7 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
 
                 Intent i = new Intent(TiendaActivity.this, TiendaDetallesActivity.class);
                 i.putExtra("tienda", tienda);
+                i.putExtra("nombreObj",tienda.getNombre());
                 startActivity(i);
             }
         });
@@ -176,8 +182,6 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
         });
     }
 
-
-
     //Esto no tengo npi de idea de lo que hace pero lo voy a quitar por que no sirve
     public void cargarProducto(){
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -213,8 +217,8 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
                 public void onClick(View view) {
                     String objetoSeleccionado = nombreObjetoTienda[aux];
                     Toast.makeText(getApplicationContext(), "Objeto "+objetoSeleccionado,Toast.LENGTH_LONG).show();
-                    Intent tienda = new Intent(getApplicationContext(), Tienda2Activity.class);
-                    startActivity(tienda);
+                    //Intent tienda = new Intent(getApplicationContext(), Tienda2Activity.class);
+                    //startActivity(tienda);
                 }
             });
 

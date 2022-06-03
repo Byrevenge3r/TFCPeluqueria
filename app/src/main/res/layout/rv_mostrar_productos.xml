@@ -1,42 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvUbicacionTiempoReal"
-        android:layout_width="130dp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_tienda"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="10dp"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/color_blanco"
         app:cardCornerRadius="12dp">
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/fotoProductoTienda"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/peluqueria_menu" />
+                android:id="@+id/image_objeto_tienda"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="6dp" />
 
             <TextView
-                android:id="@+id/textoProductoTienda"
+                android:id="@+id/tv_nombre_producto_tienda"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center_horizontal"
-                android:textColor="@color/color_texto_negro"
-                android:textSize="15sp" />
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@id/image_objeto_tienda"
+                android:text="@string/piensos"
+                android:textColor="@color/black" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tv_pienso_producto_tienda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_nombre_producto_tienda"
+                android:layout_toEndOf="@id/image_objeto_tienda"
+                android:text="@string/pienso_perro"
+                android:textColor="@color/black" />
 
-    </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/tv_precio_final_producto_tienda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_pienso_producto_tienda"
+                android:layout_toEndOf="@+id/image_objeto_tienda"
+                android:text="@string/precio_final_1"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

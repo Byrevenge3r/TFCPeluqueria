@@ -61,17 +61,23 @@ public class AdapterTienda extends RecyclerView.Adapter<AdapterTienda.AdapterTie
 
     public static class AdapterTiendaVH extends RecyclerView.ViewHolder {
         private final TextView textoProductoTienda;
+        private final TextView textoPrecioTienda;
+        private final TextView textoTipoTienda;
         private final ImageView fotoProductoTienda;
 
 
         public AdapterTiendaVH(@NonNull View itemView) {
             super(itemView);
-            textoProductoTienda = itemView.findViewById(R.id.textoProductoTienda);
-            fotoProductoTienda = itemView.findViewById(R.id.fotoProductoTienda);
+            textoProductoTienda = itemView.findViewById(R.id.tv_pienso_producto_tienda);
+            textoTipoTienda = itemView.findViewById(R.id.tv_nombre_producto_tienda);
+            fotoProductoTienda = itemView.findViewById(R.id.image_objeto_tienda);
+            textoPrecioTienda = itemView.findViewById(R.id.tv_precio_final_producto_tienda);
         }
 
         public void bindTienda (DatosTienda tienda) {
             textoProductoTienda.setText(tienda.getNombre());
+            textoTipoTienda.setText(tienda.getTipo());
+            textoPrecioTienda.setText(tienda.getPrecio());
             fotoProductoTienda.setImageDrawable(tienda.getFoto());
         }
     }
