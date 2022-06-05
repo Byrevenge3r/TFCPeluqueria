@@ -6,6 +6,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Database;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -99,13 +100,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         SharedPreferences spf = getSharedPreferences("chekbox", MODE_PRIVATE);
         String checkbox = spf.getString("remember", "");
 
-        if (checkbox.equals("true")) {
-            Intent i = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(i);
-        } else if (checkbox.equals("false")) {
-            Toast.makeText(this, "Por favor registrate", Toast.LENGTH_SHORT).show();
-        }
-
         btnInicSes.setOnClickListener(this);
         btnReg.setOnClickListener(this);
 
@@ -113,14 +107,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (compoundButton.isChecked()) {
-                    SharedPreferences spf = getSharedPreferences("checkbox", MODE_PRIVATE);
-                    SharedPreferences.Editor edt = spf.edit();
+                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                    SharedPreferences.Editor edt = preferences.edit();
                     edt.putString("remember", "true");
                     edt.apply();
                     Toast.makeText(LoginActivity.this, "checked", Toast.LENGTH_SHORT).show();
                 } else if (!compoundButton.isChecked()) {
-                    SharedPreferences spf = getSharedPreferences("checkbox", MODE_PRIVATE);
-                    SharedPreferences.Editor edt = spf.edit();
+                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                    SharedPreferences.Editor edt = preferences.edit();
                     edt.putString("remember", "false");
                     edt.apply();
                     Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
@@ -134,6 +128,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if (v.equals(btnInicSes)) {
             acceder();
+            if (cbRecuerdame.isChecked()) {
+
+                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(i);
+            } else if (cbRecuerdame.equals("false")) {
+                Toast.makeText(this, "Por favor registrate", Toast.LENGTH_SHORT).show();
+            }
+
+
         } else if (v.equals(btnReg)) {
             registrar();
         }

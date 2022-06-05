@@ -131,7 +131,7 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
             nombre = etNomAnimal.getText().toString().trim();
             raza = etRazaAnimal.getText().toString().trim();
 
-            if (nombre.isEmpty() || raza.isEmpty() || ivFotoAnimal.getDrawable() != null) {
+            if (nombre.isEmpty() || raza.isEmpty() || ivFotoAnimal.getDrawable() == null) {
                 Toast.makeText(this, R.string.error_registrar_animal_vacio, Toast.LENGTH_SHORT).show();
             } else {
                 String keyF = dbRef.push().getKey();

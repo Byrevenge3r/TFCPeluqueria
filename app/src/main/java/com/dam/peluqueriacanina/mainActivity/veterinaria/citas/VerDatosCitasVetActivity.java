@@ -70,7 +70,7 @@ public class VerDatosCitasVetActivity extends AppCompatActivity implements View.
 
         tiempoD = ((distancia / 1000) / 23) * 60;
 
-        tvTiempo.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_horas,String.valueOf(tiempoD)));
+        tvTiempo.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_horas,nom, String.valueOf(tiempoD)));
     }
 
     @Override

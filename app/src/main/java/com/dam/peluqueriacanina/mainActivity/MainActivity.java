@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -245,6 +246,13 @@ public void logout(){
             startActivity(i);
         }else if (v.equals(cvCerrarSesion)) {
           logout();
+            SharedPreferences spf = getSharedPreferences("checkbox", MODE_PRIVATE);
+            SharedPreferences.Editor edt = spf.edit();
+            edt.putString("remember", "false");
+            edt.apply();
+
+            finish();
+
             i = new Intent(this, LoginActivity.class);
             startActivity(i);
         } else {

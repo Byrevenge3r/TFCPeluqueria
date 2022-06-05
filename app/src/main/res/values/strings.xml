@@ -83,7 +83,7 @@
     <string name="tst_correo_exist">Este correo ya existe</string>
     <string name="tv_datos_cita">Ver detalles de la cita</string>
     <string name="tv_furgoneta_camino">La furgoneta esta en camino!!!</string>
-    <string name="tv_tiempo_estimado_horas">Hora estimada de llegada: %1$s</string>
+    <string name="tv_tiempo_estimado_horas">La veterinaria %1$s esta a: %2$s</string>
     <string name="tv_tiempo_estimado_minutos">Tiempo estimado: %,.0f minutos</string>
     <string name="et_chat">Escribe un mensaje</string>
     <string name="btn_chat_enviar">Enviar</string>
@@ -105,7 +105,7 @@
     <string name="nom_animal_pel">Nombre animal: %1$s</string>
     <string name="dia_anima_pel">Dia: %1$s</string>
     <string name="hora_animal_vet">Hora: %1$s</string>
-    <string name="tv_mostrar_info">La veterinaria %1$s esta a: %2$s</string>
+    <string name="tv_mostrar_info">Esta a: %1$s</string>
     <string name="btn_google">Llevame ahi!!</string>
     <string name="nom_compra_carrito">Nombre: %1$s</string>
     <string name="cantidad_compra_carrito">Cantidad: %1$s</string>
