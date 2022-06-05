@@ -12,7 +12,10 @@ import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.mainActivity.veterinaria.VeterinariaActivity;
+import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 public class DatosAnimalActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,11 +27,16 @@ public class DatosAnimalActivity extends AppCompatActivity implements View.OnCli
     AnimalesDao dao;
     AnimalesDB db;
     Animal animal;
+    FirebaseDatabase fdb;
+    DatabaseReference dbr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_animal);
+
+        fdb = FirebaseDatabase.getInstance();
+        dbr = fdb.getReference();
 
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
@@ -55,6 +63,9 @@ public class DatosAnimalActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         dao.delete(animal);
+
+        dbr = fdb.getReference("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/animales");
+        dbr.child(animal.getKey()).removeValue();
         setResult(RESULT_OK);
         finish();
     }

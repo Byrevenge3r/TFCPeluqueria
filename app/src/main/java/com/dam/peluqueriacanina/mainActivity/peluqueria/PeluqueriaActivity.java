@@ -65,7 +65,8 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
-                        adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()));
+                        adapter.setDatos((ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()));
+
                         rv.setAdapter(adapter);
                     }
                 }

@@ -18,11 +18,15 @@ import java.util.ArrayList;
 public class MisAnimalesAdapter extends RecyclerView.Adapter<MisAnimalesAdapter.MisAnimalesAdapterVH>
         implements View.OnClickListener {
 
-    private final ArrayList<Animal> datos;
+    private ArrayList<Animal> datos;
     private View.OnClickListener listener;
 
 
     public MisAnimalesAdapter(ArrayList<Animal> datos) {
+        this.datos = datos;
+    }
+
+    public void setDatos(ArrayList<Animal> datos) {
         this.datos = datos;
     }
 
