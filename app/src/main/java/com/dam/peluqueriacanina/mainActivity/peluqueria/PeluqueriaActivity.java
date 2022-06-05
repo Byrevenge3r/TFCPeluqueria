@@ -65,9 +65,18 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK) {
-                        adapter.setDatos((ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()));
-
+                        adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()));
                         rv.setAdapter(adapter);
+                        adapter.setListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                listaAnimalesPel = (ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey());
+                                i = new Intent(PeluqueriaActivity.this, DatosAnimalActivity.class);
+                                animalPel = listaAnimalesPel.get(rv.getChildAdapterPosition(v));
+                                i.putExtra(CLAVE_ANIMAL, animalPel.getKey());
+                                arl.launch(i);
+                            }
+                        });
                     }
                 }
             }
@@ -107,8 +116,10 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
             }
         });
         ivPerfilPel = findViewById(R.id.ivPerfilPel);
-        Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(150, 150).centerCrop().into(ivPerfilPel);
+        if (!((MiApplication) getApplicationContext()).getUrlPerfil().isEmpty()) {
+            Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(150, 150).centerCrop().into(ivPerfilPel);
 
+        }
         imagenAnimal = findViewById(R.id.siAnimal);
         btnAniadirMascotaPel = findViewById(R.id.btnAniadirMascotaPel);
         rv = findViewById(R.id.rvReservarPel);
