@@ -84,8 +84,8 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
         rv.setLayoutManager(llm);
 
-        if (!dao.sacarTodo().isEmpty()) {
-            adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarTodo());
+        if (!dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()).isEmpty()) {
+            adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()));
             listenerRv();
         }
 
