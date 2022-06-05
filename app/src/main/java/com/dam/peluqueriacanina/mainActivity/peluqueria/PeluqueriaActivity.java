@@ -91,7 +91,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         fbr = FirebaseDatabase.getInstance();
         dbr = fbr.getReference();
 
-        dbr.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        dbr.child("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/reservasCoche").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 for (DataSnapshot sp : task.getResult().getChildren()) {

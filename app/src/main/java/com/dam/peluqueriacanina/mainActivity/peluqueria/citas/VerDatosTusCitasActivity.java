@@ -127,7 +127,7 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
                     if (tiempoD < 30) {
                         horaB -= tiempoD;
                         tvMostrarTiempo.setVisibility(View.VISIBLE);
-                        tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_horas, formatearMinutosAHoraMinuto((int) horaB)));
+                        tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_mostrar_info, formatearMinutosAHoraMinuto(horaB)));
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitud, longitud), 10));
                         markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
                                 .position(new LatLng(latitud, longitud)));
