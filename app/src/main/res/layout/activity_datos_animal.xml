@@ -65,25 +65,25 @@
                 app:strokeWidth="3dp" />
 
 
-                <TextView
-                    android:id="@+id/tvDatosNomAnimal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:textSize="20sp"
-                    android:textColor="@color/color_principal"
-                    android:text="@string/tv_datos_nom_animal"
-                    android:layout_gravity="center_horizontal"/>
+            <TextView
+                android:id="@+id/tvDatosNomAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/color_principal"
+                android:text="@string/tv_datos_nom_animal"
+                android:layout_gravity="center_horizontal" />
 
-                <TextView
-                    android:id="@+id/tvDatosRazaAnimal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20sp"
-                    android:textColor="@color/color_principal"
-                    android:text="@string/tv_datos_raza_animal"
-                    android:layout_gravity="center_horizontal"/>
+            <TextView
+                android:id="@+id/tvDatosRazaAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:textColor="@color/color_principal"
+                android:text="@string/tv_datos_raza_animal"
+                android:layout_gravity="center_horizontal" />
 
 
             <LinearLayout

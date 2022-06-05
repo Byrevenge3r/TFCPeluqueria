@@ -1,7 +1,5 @@
 package com.dam.peluqueriacanina.utils;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.entity.Animal;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.imageview.ShapeableImageView;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class MisAnimalesAdapter extends RecyclerView.Adapter<MisAnimalesAdapter.MisAnimalesAdapterVH>
-            implements View.OnClickListener {
+        implements View.OnClickListener {
 
     private final ArrayList<Animal> datos;
     private View.OnClickListener listener;
@@ -78,8 +71,8 @@ public class MisAnimalesAdapter extends RecyclerView.Adapter<MisAnimalesAdapter.
 
         }
 
-        public void bindMenu (Animal animal) throws IOException {
-            Picasso.get().load(animal.getUrlI()).resize(70,70).centerCrop().into(imagenAnimal);
+        public void bindMenu(Animal animal) throws IOException {
+            Picasso.get().load(animal.getUrlI()).resize(70, 70).centerCrop().into(imagenAnimal);
         }
     }
 }

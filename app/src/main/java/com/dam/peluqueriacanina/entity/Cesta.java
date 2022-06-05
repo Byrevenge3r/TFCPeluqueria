@@ -5,18 +5,18 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "CESTA", indices = {@Index(value={"id"},unique = true)})
+@Entity(tableName = "CESTA", indices = {@Index(value = {"id"}, unique = true)})
 public class Cesta {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @ColumnInfo(name="nombre")
+    @ColumnInfo(name = "nombre")
     public String nombre;
 
-    @ColumnInfo(name="cantidad")
+    @ColumnInfo(name = "cantidad")
     public int cantidad;
 
-    @ColumnInfo(name="precio")
+    @ColumnInfo(name = "precio")
     public int precio;
 
     public Cesta(String nombre, int cantidad, int precio) {

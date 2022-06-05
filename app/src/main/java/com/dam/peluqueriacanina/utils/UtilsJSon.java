@@ -8,10 +8,10 @@ import java.io.InputStreamReader;
 
 public class UtilsJSon {
 
-    public static String readFile (Context context, String fileName) throws IOException {
+    public static String readFile(Context context, String fileName) throws IOException {
         BufferedReader reader = null;
 
-        reader = new BufferedReader(new InputStreamReader(context.getAssets().open(fileName),"UTF-8"));
+        reader = new BufferedReader(new InputStreamReader(context.getAssets().open(fileName), "UTF-8"));
 
         String content = "";
         String line;

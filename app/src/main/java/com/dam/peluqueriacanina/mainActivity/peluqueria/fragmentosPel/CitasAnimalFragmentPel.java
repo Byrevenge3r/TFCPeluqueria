@@ -3,10 +3,13 @@ package com.dam.peluqueriacanina.mainActivity.peluqueria.fragmentosPel;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,12 +20,6 @@ import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.telephony.SmsManager;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.comunicacion.Comunicacion;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
@@ -30,9 +27,7 @@ import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.Animal;
-import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.utils.CitasAnimalesFotoAdapter;
-import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -112,12 +107,12 @@ public class CitasAnimalFragmentPel extends DialogFragment {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                             now = LocalDateTime.now();
                             fechaActual = now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear();
-                            dbr = fdb.getReference("coche/reservas/"+mesN);
+                            dbr = fdb.getReference("coche/reservas/" + mesN);
 
                             //Acabar de cambiar todas las base de datos
                             SmsManager sms = SmsManager.getDefault();
                             //pasar el numero de telefo por mi aplication peta (sale null)
-                            sms.sendTextMessage("+34" + numeroTelConduc, null,  tel+ "-" + citaFecha + "-" + citaHora + "-" + keyB + "-" + animal.getKey(), null, null);
+                            sms.sendTextMessage("+34" + numeroTelConduc, null, tel + "-" + citaFecha + "-" + citaHora + "-" + keyB + "-" + animal.getKey(), null, null);
                         }
                         dismiss();
                     }
@@ -164,4 +159,4 @@ public class CitasAnimalFragmentPel extends DialogFragment {
 
         return builder.create();
     }
-    }
+}

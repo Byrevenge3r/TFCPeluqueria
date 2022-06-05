@@ -30,7 +30,7 @@
         app:shapeAppearanceOverlay="@style/Circular"
         app:strokeColor="@color/color_blanco"
         android:scaleType="centerCrop"
-        app:strokeWidth="3dp"/>
+        app:strokeWidth="3dp" />
 
     <LinearLayout
         android:id="@+id/llBotonesMascotasPel"
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal" />
     </LinearLayout>
 
     <TextView
@@ -105,6 +105,7 @@
                     android:layout_margin="12dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="12dp">
+
                     <LinearLayout
                         android:orientation="vertical"
                         android:padding="16dp"
@@ -147,7 +148,7 @@
                         <ImageView
                             android:src="@drawable/calendario"
                             android:layout_width="100dp"
-                            android:layout_height="100dp"/>
+                            android:layout_height="100dp" />
 
                         <TextView
                             android:textSize="18sp"
@@ -155,11 +156,12 @@
                             android:textColor="@color/color_texto_negro"
                             android:layout_width="wrap_content"
                             android:text="@string/tv_ver_tus_citas"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvChat"
                     android:layout_width="138dp"
@@ -178,7 +180,7 @@
                         <ImageView
                             android:src="@drawable/chat"
                             android:layout_width="100dp"
-                            android:layout_height="100dp"/>
+                            android:layout_height="100dp" />
 
                         <TextView
                             android:textSize="18sp"
@@ -186,7 +188,7 @@
                             android:textColor="@color/color_texto_negro"
                             android:layout_width="wrap_content"
                             android:text="@string/tv_chat_peluqueria_menu"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
 
@@ -196,9 +198,7 @@
         </LinearLayout>
 
 
-
     </HorizontalScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

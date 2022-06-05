@@ -1,46 +1,33 @@
 package com.dam.peluqueriacanina.mainActivity.peluqueria;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-
-import android.Manifest;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.utils.MiApplication;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -49,9 +36,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RegistrarAnimal extends AppCompatActivity implements View.OnClickListener {
@@ -78,12 +62,11 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                 @Override
                 public void onActivityResult(ActivityResult result) {
 
-                    if(result.getResultCode() == Activity.RESULT_OK){
+                    if (result.getResultCode() == Activity.RESULT_OK) {
                         Intent data = result.getData();
                         uri = data.getData();
                         ivFotoAnimal.setImageURI(uri);
                         tvPonerMascota.setVisibility(View.INVISIBLE);
-
 
 
                     }
@@ -135,24 +118,24 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                 Toast.makeText(this, R.string.error_registrar_animal_vacio, Toast.LENGTH_SHORT).show();
             } else {
                 String keyF = dbRef.push().getKey();
-                StorageReference filePath = mStorage.child("fotos/"+((MiApplication) getApplicationContext()).getKey()+"/"+keyF+".jpg");
+                StorageReference filePath = mStorage.child("fotos/" + ((MiApplication) getApplicationContext()).getKey() + "/" + keyF + ".jpg");
 
                 filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        mStorage.child("fotos/"+((MiApplication) getApplicationContext()).getKey()+"/"+keyF+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        mStorage.child("fotos/" + ((MiApplication) getApplicationContext()).getKey() + "/" + keyF + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                HashMap<String,Object> animal = new HashMap<>();
+                                HashMap<String, Object> animal = new HashMap<>();
 
-                                animal.put("key",keyF);
-                                animal.put("keyU",((MiApplication) getApplicationContext()).getKey());
-                                animal.put("nombre",nombre);
-                                animal.put("raza",raza);
-                                animal.put("urlI",uri.toString());
+                                animal.put("key", keyF);
+                                animal.put("keyU", ((MiApplication) getApplicationContext()).getKey());
+                                animal.put("nombre", nombre);
+                                animal.put("raza", raza);
+                                animal.put("urlI", uri.toString());
 
-                                dbRef.child("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/animales/"+keyF).updateChildren(animal);
-                                dao.insert(new Animal(keyF,((MiApplication)getApplicationContext()).getKey(),uri.toString(),nombre,raza));
+                                dbRef.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/animales/" + keyF).updateChildren(animal);
+                                dao.insert(new Animal(keyF, ((MiApplication) getApplicationContext()).getKey(), uri.toString(), nombre, raza));
                                 setResult(RESULT_OK);
                                 finish();
                             }
@@ -166,5 +149,17 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                 });
             }
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Intent data = new Intent(Intent.ACTION_PICK);
+            data.setType("image/*");
+            data = Intent.createChooser(data, "Choose File");
+            sForResult.launch(data);
+        }
+
     }
 }

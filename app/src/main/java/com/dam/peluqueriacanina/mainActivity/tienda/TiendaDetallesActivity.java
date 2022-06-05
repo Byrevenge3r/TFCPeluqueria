@@ -1,7 +1,5 @@
 package com.dam.peluqueriacanina.mainActivity.tienda;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,12 +8,13 @@ import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.CestaDao;
 import com.dam.peluqueriacanina.db.CestaDB;
 import com.dam.peluqueriacanina.entity.Cesta;
 import com.dam.peluqueriacanina.model.DatosTienda;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,6 +31,7 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
     FirebaseDatabase fb;
     DatabaseReference dbRef;
     String nombreObj = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,16 +75,16 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View v) {
         contador = Integer.parseInt(tvCantidad.getText().toString());
-        if (v.equals(iBMas)){
-            tvCantidad.setText(String.valueOf(contador+1));
-        } else if (v.equals(iBMenos) && contador-1 >= 1) {
-            tvCantidad.setText(String.valueOf(contador-1));
+        if (v.equals(iBMas)) {
+            tvCantidad.setText(String.valueOf(contador + 1));
+        } else if (v.equals(iBMenos) && contador - 1 >= 1) {
+            tvCantidad.setText(String.valueOf(contador - 1));
         } else if (v.equals(btnCesta)) {
             String[] precio;
             precio = tvPrecioFin.getText().toString().split("€");
-            dao.insert(new Cesta(tienda.getNombre(),Integer.parseInt(tvCantidad.getText().toString()),Integer.parseInt(precio[0])));
+            dao.insert(new Cesta(tienda.getNombre(), Integer.parseInt(tvCantidad.getText().toString()), Integer.parseInt(precio[0])));
         } else if (v.equals(ivCarrito)) {
-            Intent i = new Intent(this,MostrarCompraActivity.class);
+            Intent i = new Intent(this, MostrarCompraActivity.class);
             startActivity(i);
         }
     }

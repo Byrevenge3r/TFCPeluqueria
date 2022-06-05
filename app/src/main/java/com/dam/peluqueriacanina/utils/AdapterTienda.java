@@ -10,13 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.model.DatosTienda;
 
 import java.util.ArrayList;
 
 public class AdapterTienda extends RecyclerView.Adapter<AdapterTienda.AdapterTiendaVH>
-            implements View.OnClickListener {
+        implements View.OnClickListener {
 
     private ArrayList<DatosTienda> datos;
     private View.OnClickListener listener;
@@ -74,7 +73,7 @@ public class AdapterTienda extends RecyclerView.Adapter<AdapterTienda.AdapterTie
             textoPrecioTienda = itemView.findViewById(R.id.tv_precio_final_producto_tienda);
         }
 
-        public void bindTienda (DatosTienda tienda) {
+        public void bindTienda(DatosTienda tienda) {
             textoProductoTienda.setText(tienda.getNombre());
             textoTipoTienda.setText(tienda.getTipo());
             textoPrecioTienda.setText(tienda.getPrecio());

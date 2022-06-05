@@ -15,7 +15,7 @@ public class Recordatorio extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context,"hola")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "hola")
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Hey estas ahi?, tienes una cita")
                 .setContentText("Recuerda que tienes una cita en tu centro veterinario")
@@ -23,7 +23,7 @@ public class Recordatorio extends BroadcastReceiver {
                 .setPriority(NotificationCompat.PRIORITY_HIGH);
 
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
-        notificationManagerCompat.notify(123,builder.build());
+        notificationManagerCompat.notify(123, builder.build());
 
     }
 }

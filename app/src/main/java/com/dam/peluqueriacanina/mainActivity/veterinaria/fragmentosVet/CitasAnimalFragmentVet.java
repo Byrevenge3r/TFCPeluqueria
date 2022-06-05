@@ -29,7 +29,6 @@ import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.notificacion.Recordatorio;
 import com.dam.peluqueriacanina.utils.CitasAnimalesFotoAdapter;
-import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -50,8 +49,8 @@ public class CitasAnimalFragmentVet extends DialogFragment {
     CitasAnimalesFotoAdapter adapter;
     RecyclerView rv;
     LinearLayoutManager llm;
-   public String citaFecha = "";
-   public String citaHora = "";
+    public String citaFecha = "";
+    public String citaHora = "";
     String mesN = "";
     FirebaseDatabase fdb;
     DatabaseReference dbr;
@@ -119,21 +118,21 @@ public class CitasAnimalFragmentVet extends DialogFragment {
                             now = LocalDateTime.now();
                             fechaActual = now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear();
                             //Subida a el apartado general de las veterinarias
-                            dbr = fdb.getReference("veterinaria/veterinarioRes/"+nom+"/"+mesN);
+                            dbr = fdb.getReference("veterinaria/veterinarioRes/" + nom + "/" + mesN);
                             String key = dbr.push().getKey();
-                            HashMap<String,Object> listaCitaVet = new HashMap<>();
+                            HashMap<String, Object> listaCitaVet = new HashMap<>();
 
-                            listaCitaVet.put("fecha",citaFecha);
-                            listaCitaVet.put("hora",citaHora);
+                            listaCitaVet.put("fecha", citaFecha);
+                            listaCitaVet.put("hora", citaHora);
                             dbr.child(key).setValue(listaCitaVet);
 
                             listaCitaVet.clear();
 
                             //Subida al apartado independiente de las veterinarias
-                            dbr = fdb.getReference("usuarios/"+keyB+"/reservasVet");
-                            listaCitaVet.put("nom",nom);
-                            listaCitaVet.put("citaFecha",citaFecha);
-                            listaCitaVet.put("citaHora",citaHora);
+                            dbr = fdb.getReference("usuarios/" + keyB + "/reservasVet");
+                            listaCitaVet.put("nom", nom);
+                            listaCitaVet.put("citaFecha", citaFecha);
+                            listaCitaVet.put("citaHora", citaHora);
                             listaCitaVet.put("keyEV", key);
                             key = dbr.push().getKey();
                             listaCitaVet.put("keyE", key);
@@ -144,16 +143,16 @@ public class CitasAnimalFragmentVet extends DialogFragment {
                             String[] horaSolo = citaHora.split(":");
 
                             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(diaMesAnio[0]));
-                            calendar.set(Calendar.MONTH, Integer.parseInt(diaMesAnio[1])-1);
+                            calendar.set(Calendar.MONTH, Integer.parseInt(diaMesAnio[1]) - 1);
                             calendar.set(Calendar.YEAR, Integer.parseInt(diaMesAnio[2]));
 
                             calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(horaSolo[0]));
                             calendar.set(Calendar.MINUTE, Integer.parseInt(horaSolo[1]));
 
-                            Intent i = new Intent(getContext(),Recordatorio.class);
+                            Intent i = new Intent(getContext(), Recordatorio.class);
                             //Solo una larma
                             int valor = (int) System.currentTimeMillis();
-                            pendingIntent = PendingIntent.getBroadcast(getContext(),valor,i,0);
+                            pendingIntent = PendingIntent.getBroadcast(getContext(), valor, i, 0);
                             alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
 
                             Long alertTime = calendar.getTimeInMillis();
@@ -162,7 +161,7 @@ public class CitasAnimalFragmentVet extends DialogFragment {
                                 CharSequence name = "Hey estas ahi?, tienes una cita";
                                 String descripcion = "En una hora tienes una cita en la veterinaria: " + nom + "\n A las: " + citaHora;
                                 int importancia = NotificationManager.IMPORTANCE_HIGH;
-                                NotificationChannel channel = new NotificationChannel("hola",name,importancia);
+                                NotificationChannel channel = new NotificationChannel("hola", name, importancia);
                                 channel.setDescription(descripcion);
 
                                 NotificationManager notificationManager = getContext().getSystemService(NotificationManager.class);
@@ -170,7 +169,7 @@ public class CitasAnimalFragmentVet extends DialogFragment {
 
                             }
 
-                            alarmManager.setExact(AlarmManager.RTC_WAKEUP,alertTime,pendingIntent);
+                            alarmManager.setExact(AlarmManager.RTC_WAKEUP, alertTime, pendingIntent);
                             dismiss();
                         }
 

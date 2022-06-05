@@ -1,6 +1,5 @@
 package com.dam.peluqueriacanina.utils;
 
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.AnimalPeluAdapterVH>
-        implements View.OnClickListener{
+        implements View.OnClickListener {
 
     private ArrayList<TusCitas> datos;
     private View.OnClickListener listener;
@@ -62,7 +61,7 @@ public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.An
     }
 
 
-    public static class AnimalPeluAdapterVH extends RecyclerView.ViewHolder  {
+    public static class AnimalPeluAdapterVH extends RecyclerView.ViewHolder {
         private final TextView tvNom;
         private final TextView tvFecha;
         private final TextView tvHora;
@@ -77,10 +76,10 @@ public class AnimalPeluAdapter extends RecyclerView.Adapter<AnimalPeluAdapter.An
         }
 
         public void bindAnimal(TusCitas animal) {
-            Picasso.get().load(animal.getUrlI()).resize(50,50).centerCrop().into(shAnimal);
-            tvNom.setText(itemView.getContext().getString(R.string.nom_animal_pel,animal.getNomAnimal()));
-            tvFecha.setText(itemView.getContext().getString(R.string.dia_anima_pel,animal.getCitaFecha()));
-            tvHora.setText(itemView.getContext().getString(R.string.hora_animal_vet,animal.getCitaHora()));
+            Picasso.get().load(animal.getUrlI()).resize(50, 50).centerCrop().into(shAnimal);
+            tvNom.setText(itemView.getContext().getString(R.string.nom_animal_pel, animal.getNomAnimal()));
+            tvFecha.setText(itemView.getContext().getString(R.string.dia_anima_pel, animal.getCitaFecha()));
+            tvHora.setText(itemView.getContext().getString(R.string.hora_animal_vet, animal.getCitaHora()));
         }
     }
 }

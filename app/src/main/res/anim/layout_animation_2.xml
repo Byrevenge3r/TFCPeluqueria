@@ -2,5 +2,4 @@
 <layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
     android:delay="15%"
     android:animationOrder="normal"
-    android:animation="@anim/animacion_arriba_abajo">
-</layoutAnimation>
+    android:animation="@anim/animacion_arriba_abajo"></layoutAnimation>

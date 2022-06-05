@@ -1,8 +1,5 @@
 package com.dam.peluqueriacanina.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class NombreDirVet {
     private String clinica;
     private String lat;

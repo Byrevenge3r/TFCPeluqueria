@@ -4,7 +4,7 @@
     <item>
         <shape android:shape="oval">
 
-            <solid android:color="@color/rosa_btn_registrar"/>
+            <solid android:color="@color/rosa_btn_registrar" />
 
         </shape>
     </item>

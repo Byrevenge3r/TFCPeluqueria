@@ -5,13 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
-import android.widget.EditText;
-
-import com.dam.peluqueriacanina.utils.MiApplication;
 
 public class SmsListener extends BroadcastReceiver {
 
-   public String msg = "";
+    public String msg = "";
 
     @Override
     public void onReceive(Context context, Intent intent) {

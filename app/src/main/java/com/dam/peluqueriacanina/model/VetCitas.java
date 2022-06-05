@@ -19,7 +19,8 @@ public class VetCitas {
         this.keyE = keyE;
         this.keyEV = keyEV;
     }
-//
+
+    //
     public void setNom(String nom) {
         this.nom = nom;
     }

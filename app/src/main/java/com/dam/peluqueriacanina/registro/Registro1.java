@@ -1,13 +1,13 @@
 package com.dam.peluqueriacanina.registro;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.fragmentosPel.CitasPel;
@@ -71,9 +71,9 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
             } else {
                 // citas.show(getSupportFragmentManager(),"onCreateDialog");
 
-                ((MiApplication)getApplicationContext()).setNombre(nombre);
-                ((MiApplication)getApplicationContext()).setApellidos(apellidos);
-                ((MiApplication)getApplicationContext()).setUsuario(usuario);
+                ((MiApplication) getApplicationContext()).setNombre(nombre);
+                ((MiApplication) getApplicationContext()).setApellidos(apellidos);
+                ((MiApplication) getApplicationContext()).setUsuario(usuario);
                 i = new Intent(this, Registro2.class);
                 startActivity(i);
 
@@ -83,7 +83,7 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
     }
 
     @Override
-    public void onBackPressed () {
+    public void onBackPressed() {
         super.onBackPressed();
         i = new Intent(this, LoginActivity.class);
         startActivity(i);

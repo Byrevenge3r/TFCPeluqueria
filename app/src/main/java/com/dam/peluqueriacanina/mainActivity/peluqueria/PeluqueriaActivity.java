@@ -1,5 +1,14 @@
 package com.dam.peluqueriacanina.mainActivity.peluqueria;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -12,22 +21,12 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.perfil.AjustesActivity;
-import com.dam.peluqueriacanina.mainActivity.peluqueria.citas.VerTusCitasActivity;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.TusCitas;
+import com.dam.peluqueriacanina.mainActivity.peluqueria.citas.VerTusCitasActivity;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,14 +43,13 @@ import java.util.ArrayList;
 
 public class PeluqueriaActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String CLAVE_ANIMAL = "ANIMAL_PEL";
-    private static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
     RecyclerView rv;
     LinearLayoutManager llm;
     MisAnimalesAdapter adapter;
     AnimalesDao dao;
     AnimalesDB db;
     Animal animalPel;
-    ShapeableImageView imagenAnimal,ivPerfilPel;
+    ShapeableImageView imagenAnimal, ivPerfilPel;
     Button btnAniadirMascotaPel;
     CardView cvUbicacionTiempoReal, cvTusCitas, cvChat;
     TextView tvNombrePel;
@@ -78,7 +76,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peluqueria);
-        mStorage = FirebaseStorage.getInstance().getReference("fotos/"+((MiApplication)getApplicationContext()).getKey()+"/");
+        mStorage = FirebaseStorage.getInstance().getReference("fotos/" + ((MiApplication) getApplicationContext()).getKey() + "/");
         listaCitas = new ArrayList<>();
 
         if ((ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECEIVE_SMS) +
@@ -96,7 +94,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         dbr.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                for (DataSnapshot sp:task.getResult().getChildren()) {
+                for (DataSnapshot sp : task.getResult().getChildren()) {
                     listaCitas.add(new TusCitas(sp.getValue(TusCitas.class).getUrlI(),
                             sp.getValue(TusCitas.class).getKey(),
                             sp.getValue(TusCitas.class).getKeyE(),
@@ -108,7 +106,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
             }
         });
         ivPerfilPel = findViewById(R.id.ivPerfilPel);
-        Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(150,150).centerCrop().into(ivPerfilPel);
+        Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(150, 150).centerCrop().into(ivPerfilPel);
 
         imagenAnimal = findViewById(R.id.siAnimal);
         btnAniadirMascotaPel = findViewById(R.id.btnAniadirMascotaPel);
@@ -121,7 +119,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         cvChat = findViewById(R.id.cvChat);
         tvNombrePel = findViewById(R.id.tvNombrePel);
 
-        tvNombrePel.setText(((MiApplication) getApplicationContext()).getNombre()+" "+ ((MiApplication) getApplicationContext()).getApellidos());
+        tvNombrePel.setText(((MiApplication) getApplicationContext()).getNombre() + " " + ((MiApplication) getApplicationContext()).getApellidos());
 
         if (!dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()).isEmpty()) {
             adapter = new MisAnimalesAdapter((ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()));
@@ -132,7 +130,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                     listaAnimalesPel = (ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey());
                     i = new Intent(PeluqueriaActivity.this, DatosAnimalActivity.class);
                     animalPel = listaAnimalesPel.get(rv.getChildAdapterPosition(v));
-                    i.putExtra(CLAVE_ANIMAL, animalPel.getUrlI());
+                    i.putExtra(CLAVE_ANIMAL, animalPel.getKey());
                     arl.launch(i);
                 }
             });
@@ -170,7 +168,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                 i = new Intent(this, ChatActivity.class);
                 startActivity(i);
             } else {
-                Toast.makeText(this,R.string.error_no_hay_citas,Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.error_no_hay_citas, Toast.LENGTH_SHORT).show();
             }
 
         }

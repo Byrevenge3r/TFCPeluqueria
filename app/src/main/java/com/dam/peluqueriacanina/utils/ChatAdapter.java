@@ -19,11 +19,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatAdapterVH>
 
     private ArrayList<Chat> datos;
 
-    public ChatAdapter (ArrayList<Chat> datos){
+    public ChatAdapter(ArrayList<Chat> datos) {
         this.datos = datos;
     }
 
-    public void aniadirMensaje (Chat mensaje) {
+    public void aniadirMensaje(Chat mensaje) {
         datos.add(mensaje);
     }
 
@@ -55,7 +55,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatAdapterVH>
             ll = itemView.findViewById(R.id.llChat);
         }
 
-        public void bindMensaje (Chat mensaje) {
+        public void bindMensaje(Chat mensaje) {
             if (!mensaje.getCodigoPer().equals("U")) {
                 ll.setGravity(Gravity.START);
             } else {

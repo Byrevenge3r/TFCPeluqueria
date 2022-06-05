@@ -1,16 +1,15 @@
 package com.dam.peluqueriacanina.mainActivity.peluqueria;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.comunicacion.Comunicacion;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.fragmentosPel.CitasPel;
 import com.dam.peluqueriacanina.model.Mapa;
@@ -32,7 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class UbicacionTiempoRealActivity
         extends FragmentActivity
         implements OnMapReadyCallback,
-        GoogleMap.OnMarkerClickListener{
+        GoogleMap.OnMarkerClickListener {
 
     GoogleMap mMap;
     FirebaseDatabase fdb;
@@ -62,7 +61,7 @@ public class UbicacionTiempoRealActivity
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        bitmapdraw =(BitmapDrawable)getResources().getDrawable(R.drawable.furgo_canina);
+        bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.furgo_canina);
         b = bitmapdraw.getBitmap();
         smallMarker = Bitmap.createScaledBitmap(b, anchura, altura, false);
 
@@ -88,11 +87,11 @@ public class UbicacionTiempoRealActivity
                     latitud = mp.getLatitud();
                     longitud = mp.getLongitud();
 
-                if (markerMap != null) {
-                    markerMap.remove();
-                }
+                    if (markerMap != null) {
+                        markerMap.remove();
+                    }
                     markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
-                        .position(new LatLng(latitud, longitud)));
+                            .position(new LatLng(latitud, longitud)));
                 }
 
             }
@@ -116,7 +115,7 @@ public class UbicacionTiempoRealActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.4165,-3.70256), 11));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.4165, -3.70256), 11));
         markerMap = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((smallMarker)))
                 .position(new LatLng(40.4165, -3.70256)));
         mMap.setOnMarkerClickListener(this);
@@ -126,10 +125,10 @@ public class UbicacionTiempoRealActivity
     @Override
     public boolean onMarkerClick(@NonNull Marker marker) {
         if (marker.equals(markerMap)) {
-            bundle.putString("keyB",((MiApplication) getApplicationContext()).getKey());
-            bundle.putString("tel",((MiApplication) getApplicationContext()).getTelefono());
+            bundle.putString("keyB", ((MiApplication) getApplicationContext()).getKey());
+            bundle.putString("tel", ((MiApplication) getApplicationContext()).getTelefono());
             getSupportFragmentManager().setFragmentResult("key", bundle);
-            citasPel.show(getSupportFragmentManager(),"Citas");
+            citasPel.show(getSupportFragmentManager(), "Citas");
         }
         return false;
     }

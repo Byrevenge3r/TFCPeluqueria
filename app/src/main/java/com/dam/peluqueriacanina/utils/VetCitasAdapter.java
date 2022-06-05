@@ -1,6 +1,5 @@
 package com.dam.peluqueriacanina.utils;
 
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.model.VetCitas;
 
 import java.util.ArrayList;
 
 public class VetCitasAdapter extends RecyclerView.Adapter<VetCitasAdapter.VetCitasAdapterVH>
-            implements View.OnClickListener {
+        implements View.OnClickListener {
 
     private ArrayList<VetCitas> datos;
     private View.OnClickListener listener;
@@ -72,9 +70,9 @@ public class VetCitasAdapter extends RecyclerView.Adapter<VetCitasAdapter.VetCit
         }
 
         public void bindCita(VetCitas cita) {
-            tvNom.setText(itemView.getContext().getString(R.string.nom_vet,cita.getNom()));
-            tvFecha.setText(itemView.getContext().getString(R.string.dia_vet,cita.getCitaFecha()));
-            tvHora.setText(itemView.getContext().getString(R.string.hora_vet,cita.getCitaHora()));
+            tvNom.setText(itemView.getContext().getString(R.string.nom_vet, cita.getNom()));
+            tvFecha.setText(itemView.getContext().getString(R.string.dia_vet, cita.getCitaFecha()));
+            tvHora.setText(itemView.getContext().getString(R.string.hora_vet, cita.getCitaHora()));
         }
     }
 }

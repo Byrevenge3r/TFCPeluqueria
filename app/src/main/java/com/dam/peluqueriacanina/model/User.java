@@ -19,7 +19,7 @@ public class User {
         return direccion;
     }
 
-    public User(String nombre, String apellidos, String usuario, String correo, String telefono, String direccion, String key,String urlPerfil) {
+    public User(String nombre, String apellidos, String usuario, String correo, String telefono, String direccion, String key, String urlPerfil) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.usuario = usuario;

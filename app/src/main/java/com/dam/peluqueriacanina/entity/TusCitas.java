@@ -1,14 +1,8 @@
 package com.dam.peluqueriacanina.entity;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Index;
 import androidx.room.PrimaryKey;
-
-import java.io.Serializable;
 
 @Entity(tableName = "TUSCITAS")
 public class TusCitas {
@@ -16,7 +10,7 @@ public class TusCitas {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @ColumnInfo(name="urlI")
+    @ColumnInfo(name = "urlI")
     public String urlI;
 
     @ColumnInfo(name = "key")
@@ -31,10 +25,10 @@ public class TusCitas {
     @ColumnInfo(name = "nomAnimal")
     public String nomAnimal;
 
-    @ColumnInfo(name="citaFecha")
+    @ColumnInfo(name = "citaFecha")
     public String citaFecha;
 
-    @ColumnInfo(name="citaHora")
+    @ColumnInfo(name = "citaHora")
     public String citaHora;
 
     public TusCitas() {

@@ -5,9 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.Cesta;
-import com.dam.peluqueriacanina.entity.TusCitas;
 
 import java.util.List;
 

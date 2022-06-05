@@ -1,13 +1,5 @@
 package com.dam.peluqueriacanina.registro;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Database;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,12 +11,18 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.mainActivity.MainActivity;
-import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.model.Chat;
 import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,7 +36,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
@@ -196,12 +193,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     ((MiApplication) getApplicationContext()).setUrlPerfil((datasnap.getValue(User.class)).getUrlPerfil());
 
                 }
-                if (dao.sacarAnimalKey(((MiApplication)getApplicationContext()).getKey()).isEmpty()) {
-                    dbRef = fdb.getReference("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/animales");
+                if (dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()).isEmpty()) {
+                    dbRef = fdb.getReference("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/animales");
                     dbRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DataSnapshot> task) {
-                            for (DataSnapshot sp:task.getResult().getChildren()) {
+                            for (DataSnapshot sp : task.getResult().getChildren()) {
                                 dao.insert(new Animal(sp.getValue(Animal.class).getKey(),
                                         sp.getValue(Animal.class).getKeyU(),
                                         sp.getValue(Animal.class).getUrlI(),

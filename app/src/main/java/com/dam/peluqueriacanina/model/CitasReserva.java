@@ -3,8 +3,6 @@ package com.dam.peluqueriacanina.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.Nullable;
-
 public class CitasReserva implements Parcelable {
 
     private String fecha;
@@ -29,7 +27,7 @@ public class CitasReserva implements Parcelable {
     public int getDia() {
         int dia = 0;
 
-        dia = Integer.parseInt(fecha.substring(0,1));
+        dia = Integer.parseInt(fecha.substring(0, 1));
 
         return dia;
     }

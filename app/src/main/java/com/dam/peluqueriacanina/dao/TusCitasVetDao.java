@@ -8,6 +8,7 @@ import androidx.room.Query;
 import com.dam.peluqueriacanina.entity.TusCitas;
 
 import java.util.List;
+
 @Dao
 public interface TusCitasVetDao {
     @Query("SELECT * FROM TUSCITAS")

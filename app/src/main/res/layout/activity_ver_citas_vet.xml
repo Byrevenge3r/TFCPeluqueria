@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layoutAnimation="@anim/layout_animacion"
-        android:layout_height="590dp"/>
+        android:layout_height="590dp" />
 
     <TextView
         android:id="@+id/tvNoHayCitasVTCVet"
@@ -25,8 +25,7 @@
         android:text="@string/tv_no_hay_citas"
         android:textSize="32sp"
         android:gravity="center"
-        android:visibility="invisible"
-        />
+        android:visibility="invisible" />
 
     <android.widget.Button
         android:id="@+id/btnCancelarCitaVet"
@@ -37,8 +36,7 @@
         android:textColor="@color/color_blanco"
         android:background="@drawable/fondo_btn"
         android:visibility="invisible"
-        android:layout_marginBottom="10dp"
-        />
+        android:layout_marginBottom="10dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,7 +25,7 @@
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/ivRegistroDatosTusCitas"
         android:gravity="center"
-        android:text="@string/tv_mostrar_info"/>
+        android:text="@string/tv_mostrar_info" />
 
     <android.widget.Button
         android:id="@+id/btnGoogleMaps"
@@ -35,7 +35,7 @@
         android:text="@string/btn_google"
         android:textColor="@color/color_blanco"
         android:background="@drawable/fondo_btn"
-        app:layout_constraintTop_toBottomOf="@id/tvMostrarInfo"/>
+        app:layout_constraintTop_toBottomOf="@id/tvMostrarInfo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

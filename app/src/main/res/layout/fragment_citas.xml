@@ -8,23 +8,23 @@
     android:background="@color/color_principal_citas">
 
 
-        <CalendarView
-            android:id="@+id/calReserva"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/tvNoHayCitas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No hay ninguna cita"
-            android:textSize="20sp"
-            android:layout_gravity="center_horizontal"/>
+    <CalendarView
+        android:id="@+id/calReserva"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCitasPelu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tvNoHayCitas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No hay ninguna cita"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCitasPelu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

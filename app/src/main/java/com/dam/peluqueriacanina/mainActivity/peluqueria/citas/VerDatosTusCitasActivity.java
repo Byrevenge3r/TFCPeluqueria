@@ -1,9 +1,5 @@
 package com.dam.peluqueriacanina.mainActivity.peluqueria.citas;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -13,6 +9,10 @@ import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.model.Mapa;
@@ -81,7 +81,7 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
 
         locOrigen = new Location("ubicacionOrigen");
         locDestino = new Location("ubicacionDestino");
-        adress = getLocationFromAddress(VerDatosTusCitasActivity.this,((MiApplication) getApplicationContext()).getDireccion());
+        adress = getLocationFromAddress(VerDatosTusCitasActivity.this, ((MiApplication) getApplicationContext()).getDireccion());
         tvMostrarTiempo.setVisibility(View.VISIBLE);
         tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_mensaje_no_llega_aun_tiempo));
 
@@ -125,7 +125,7 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
                     }
 
                     if (tiempoD < 30) {
-                        horaB-=tiempoD;
+                        horaB -= tiempoD;
                         tvMostrarTiempo.setVisibility(View.VISIBLE);
                         tvMostrarTiempo.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_horas, formatearMinutosAHoraMinuto((int) horaB)));
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitud, longitud), 10));

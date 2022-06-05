@@ -12,6 +12,6 @@
         app:strokeWidth="3dp"
         android:scaleType="centerCrop"
         app:strokeColor="@color/color_blanco"
-        app:shapeAppearanceOverlay="@style/Circular"/>
+        app:shapeAppearanceOverlay="@style/Circular" />
 
 </LinearLayout>

@@ -14,7 +14,7 @@ import com.dam.peluqueriacanina.model.BotonTusCitas;
 import java.util.ArrayList;
 
 public class MostrarDatosTusCitasAdapter extends RecyclerView.Adapter<MostrarDatosTusCitasAdapter.MostrarDatosTusCitasAdapterVH>
-            implements View.OnClickListener {
+        implements View.OnClickListener {
 
     private final ArrayList<BotonTusCitas> datos;
 
@@ -62,7 +62,7 @@ public class MostrarDatosTusCitasAdapter extends RecyclerView.Adapter<MostrarDat
             tvDatosCitas = itemView.findViewById(R.id.tvVerDatosCita);
         }
 
-        public void bindBoton (BotonTusCitas dato) {
+        public void bindBoton(BotonTusCitas dato) {
             tvDatosCitas.setText(dato.getVerDatos());
         }
     }

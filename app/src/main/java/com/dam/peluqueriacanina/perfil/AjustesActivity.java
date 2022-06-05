@@ -1,15 +1,5 @@
 package com.dam.peluqueriacanina.perfil;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
@@ -21,6 +11,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.registro.LoginActivity;
@@ -40,8 +40,8 @@ import java.util.HashMap;
 
 public class AjustesActivity extends AppCompatActivity implements View.OnClickListener {
 
-    CardView cvCambiarContra,cvAcercaDe,cvPreguntasRespuestas,cvCerrarSesion;
-    TextView tvUsuarioPerAjustes,tvCorreoPerAjustes;
+    CardView cvCambiarContra, cvAcercaDe, cvPreguntasRespuestas, cvCerrarSesion;
+    TextView tvUsuarioPerAjustes, tvCorreoPerAjustes;
     ImageView ivPerfilPelAjustes;
     Uri uri;
     StorageReference mStorage;
@@ -56,24 +56,24 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    if(result.getResultCode() == Activity.RESULT_OK){
+                    if (result.getResultCode() == Activity.RESULT_OK) {
                         Intent data = result.getData();
                         uri = data.getData();
                         ivPerfilPelAjustes.setImageURI(uri);
-                        StorageReference filePath = mStorage.child("fotosPerfil/"+((MiApplication) getApplicationContext()).getKey()+"/fotoPerfil.jpg");
+                        StorageReference filePath = mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg");
                         filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                 mStorage.child("fotosPerfil/"+((MiApplication) getApplicationContext()).getKey()+"/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                     @Override
-                                     public void onSuccess(Uri uri) {
-                                         HashMap<String,Object> fotoPerfil = new HashMap<>();
-                                         fotoPerfil.put("urlPerfil",uri.toString());
-                                         ((MiApplication) getApplicationContext()).setUrlPerfil(uri.toString());
-                                         dbRef.child("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/urlPerfil").updateChildren(fotoPerfil);
+                                mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        HashMap<String, Object> fotoPerfil = new HashMap<>();
+                                        fotoPerfil.put("urlPerfil", uri.toString());
+                                        ((MiApplication) getApplicationContext()).setUrlPerfil(uri.toString());
+                                        dbRef.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/urlPerfil").updateChildren(fotoPerfil);
 
-                                     }
-                                 });
+                                    }
+                                });
                             }
                         });
                     }
@@ -101,7 +101,7 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         tvCorreoPerAjustes.setText(((MiApplication) getApplicationContext()).getCorreo());
 
         ivPerfilPelAjustes = findViewById(R.id.ivPerfilPelAjustes);
-        Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(153,153).centerCrop().into(ivPerfilPelAjustes);
+        Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(153, 153).centerCrop().into(ivPerfilPelAjustes);
 
         ivPerfilPelAjustes.setOnClickListener(this);
         cvCerrarSesion.setOnClickListener(this);
@@ -125,7 +125,7 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
                 sForResult.launch(data);
             }
 
-        }else if (v.equals(cvCambiarContra)) {
+        } else if (v.equals(cvCambiarContra)) {
             {
                 Toast.makeText(this,
                         getString(R.string.msj_correço_enviado),
@@ -133,23 +133,23 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
                 fAuth.sendPasswordResetEmail(fAuth.getCurrentUser().getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Log.w("CHUPAPOA","No c como va");
+                        if (task.isSuccessful()) {
+                            Log.w("CHUPAPOA", "No c como va");
                         }
-                        if (!task.isSuccessful()){
+                        if (!task.isSuccessful()) {
                             Toast.makeText(AjustesActivity.this, R.string.tst_email_exist, Toast.LENGTH_SHORT).show();
                         }
-                        if (task.isComplete()){
-                            Log.w("GUARDADO","Se supone q esta cambiado");
+                        if (task.isComplete()) {
+                            Log.w("GUARDADO", "Se supone q esta cambiado");
                         }
                     }
                 });
             }
-        }else if (v.equals(cvCerrarSesion)) {
+        } else if (v.equals(cvCerrarSesion)) {
             logout();
             i = new Intent(this, LoginActivity.class);
             startActivity(i);
-        }else if (v.equals(cvAcercaDe)) {
+        } else if (v.equals(cvAcercaDe)) {
             i = new Intent(this, AcercaDeActivity.class);
             startActivity(i);
         }
@@ -163,7 +163,8 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         data = Intent.createChooser(data, "Choose File");
         sForResult.launch(data);
     }
-    public void logout(){
+
+    public void logout() {
         fAuth.signOut();
     }
 }

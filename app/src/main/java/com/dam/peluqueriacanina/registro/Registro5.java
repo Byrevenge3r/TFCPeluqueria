@@ -1,12 +1,12 @@
 package com.dam.peluqueriacanina.registro;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.model.User;
@@ -56,15 +56,14 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
 
         if (v.equals(btnFinalizar)) {
-           registrar();
-         registrarAuth( user.getCorreo(), ((MiApplication) getApplicationContext()).getContrasenia());
-           i = new Intent(this, LoginActivity.class);
+            registrar();
+            registrarAuth(user.getCorreo(), ((MiApplication) getApplicationContext()).getContrasenia());
+            i = new Intent(this, LoginActivity.class);
             startActivity(i);
 
 
         }
     }
-
 
 
     private void registrarAuth(String correo, String contra) {
@@ -95,7 +94,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
                 ((MiApplication) getApplicationContext()).getCorreo(),
                 ((MiApplication) getApplicationContext()).getTelefono(),
                 ((MiApplication) getApplicationContext()).getDireccion(),
-                ((MiApplication) getApplicationContext()).getKey(),"");
+                ((MiApplication) getApplicationContext()).getKey(), "");
 
         HashMap<String, Object> usuario = new HashMap<>();
 
@@ -105,7 +104,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         usuario.put("correo", user.getCorreo());
         usuario.put("telefono", user.getTelefono());
         usuario.put("direccion", user.getDireccion());
-        usuario.put("key",user.getKey());
+        usuario.put("key", user.getKey());
 
         dbRef.child("usuarios").child(key).updateChildren(usuario);
 

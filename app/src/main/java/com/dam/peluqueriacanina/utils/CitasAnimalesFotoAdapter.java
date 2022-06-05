@@ -1,6 +1,5 @@
 package com.dam.peluqueriacanina.utils;
 
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class CitasAnimalesFotoAdapter extends RecyclerView.Adapter<CitasAnimalesFotoAdapter.CitasAnimalesFotoAdapterVH>
-            implements View.OnClickListener {
+        implements View.OnClickListener {
 
     private final ArrayList<Animal> datos;
     private View.OnClickListener listener;
@@ -68,8 +67,8 @@ public class CitasAnimalesFotoAdapter extends RecyclerView.Adapter<CitasAnimales
 
         }
 
-        public void bindMenu (Animal animal) {
-            Picasso.get().load(animal.getUrlI()).resize(200,200).centerCrop().into(imagenAnimal);
+        public void bindMenu(Animal animal) {
+            Picasso.get().load(animal.getUrlI()).resize(200, 200).centerCrop().into(imagenAnimal);
         }
     }
 }

@@ -62,7 +62,7 @@
             android:exported="false" />
         <activity
             android:name=".mainActivity.tienda.TiendaActivity"
-            android:exported="true" >
+            android:exported="true">
 
         </activity>
         <activity
@@ -125,8 +125,7 @@
         </activity>
         <activity
             android:name=".mainActivity.MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"

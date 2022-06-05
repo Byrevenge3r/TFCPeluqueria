@@ -1,27 +1,20 @@
 package com.dam.peluqueriacanina.registro;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.utils.MiApplication;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Locale;
 
 public class Registro2 extends AppCompatActivity implements View.OnClickListener {
 
@@ -132,9 +125,9 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
         String contra = etContra.getText().toString().trim();
         contra = String.valueOf((data));
 
-        for (int i=0; i < contra.length(); i++ ) {
+        for (int i = 0; i < contra.length(); i++) {
 
-            if(Character.isDigit(contra.charAt(i))) {
+            if (Character.isDigit(contra.charAt(i))) {
                 return true;
             }
         }

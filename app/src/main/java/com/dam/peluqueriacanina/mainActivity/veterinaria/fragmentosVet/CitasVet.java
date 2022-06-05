@@ -25,10 +25,8 @@ import com.dam.peluqueriacanina.utils.CitasAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -70,6 +68,7 @@ public class CitasVet extends DialogFragment {
     String nom;
     boolean continuar = true;
     int i = 0;
+
     public CitasVet() {
     }
 
@@ -138,8 +137,8 @@ public class CitasVet extends DialogFragment {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             now = LocalDateTime.now();
-           // ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Europe/Paris"));
-            horaActual = now.getHour() +":"+ now.getMinute();
+            // ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Europe/Paris"));
+            horaActual = now.getHour() + ":" + now.getMinute();
             try {
                 horaActualD = formatterH.parse(horaActual);
             } catch (ParseException e) {
@@ -210,7 +209,7 @@ public class CitasVet extends DialogFragment {
                     rv.setAdapter(adapter);
                 } else {
                     tvNoHayCitas.setVisibility(View.INVISIBLE);
-                    dbr.child("veterinaria/veterinarioRes/"+ nom +"/"+ mes).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    dbr.child("veterinaria/veterinarioRes/" + nom + "/" + mes).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DataSnapshot> task) {
                             if (task.getResult().exists()) {
@@ -271,13 +270,13 @@ public class CitasVet extends DialogFragment {
                     e.printStackTrace();
                 }
 
-                if (horaActualD.after(horaBbdd)){
+                if (horaActualD.after(horaBbdd)) {
                     this.listaCitas.remove(i);
                     i = 0;
                 } else {
                     i++;
                 }
-                if (this.listaCitas.size()==i) {
+                if (this.listaCitas.size() == i) {
                     continuar = false;
                 }
             }
@@ -289,11 +288,11 @@ public class CitasVet extends DialogFragment {
     private void pasarCitaFragment(View v, int dia, int mesD, int anio) {
         citaFecha = dia + "/" + (mesD + 1) + "/" + anio;
         citaHora = listaCitas.get(rv.getChildAdapterPosition(v)).getHora();
-        bundle.putString("nom",nom);
+        bundle.putString("nom", nom);
         bundle.putString("citaFecha", citaFecha);
         bundle.putString("citaHora", citaHora);
         bundle.putString("mesN", mes);
-        bundle.putString("KeyB",key);
+        bundle.putString("KeyB", key);
 
         getParentFragmentManager().setFragmentResult("Key", bundle);
 

@@ -14,13 +14,13 @@ import com.dam.peluqueriacanina.model.CitasReserva;
 import java.util.ArrayList;
 
 public class CitasAdapter extends RecyclerView.Adapter<CitasAdapter.CitasAdapterVH>
-    implements View.OnClickListener {
+        implements View.OnClickListener {
 
     private ArrayList<CitasReserva> datos;
     private View.OnClickListener listener;
 
 
-    public void setDatos (ArrayList<CitasReserva> datos) {
+    public void setDatos(ArrayList<CitasReserva> datos) {
         this.datos = datos;
     }
 

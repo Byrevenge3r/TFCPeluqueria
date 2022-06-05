@@ -19,6 +19,7 @@
         android:background="@null"
         android:foreground="?attr/selectableItemBackground"
         android:src="@drawable/ic_baseline_shopping_cart_24" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_buscar"
         android:layout_below="@+id/tv_tienda_online"
@@ -92,8 +93,7 @@
                         android:layout_width="130dp"
                         android:layout_height="110dp"
                         android:layout_margin="12dp"
-                        app:cardCornerRadius="12dp"
-                        >
+                        app:cardCornerRadius="12dp">
 
                         <LinearLayout
                             android:id="@+id/llAlimentacion"
@@ -102,10 +102,10 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                                <ImageView
-                                    android:layout_width="70dp"
-                                    android:layout_height="70dp"
-                                    android:src="@drawable/comida" />
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/comida" />
 
 
                             <TextView
@@ -135,10 +135,10 @@
                             android:orientation="vertical">
 
 
-                                <ImageView
-                                    android:src="@drawable/accesorios"
-                                    android:layout_width="70dp"
-                                    android:layout_height="70dp"/>
+                            <ImageView
+                                android:src="@drawable/accesorios"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -166,10 +166,10 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                                <ImageView
-                                    android:src="@drawable/juguetes"
-                                    android:layout_width="70dp"
-                                    android:layout_height="70dp" />
+                            <ImageView
+                                android:src="@drawable/juguetes"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -189,7 +189,7 @@
             android:id="@+id/rvMostrarProductos"
             android:layout_width="match_parent"
             android:layoutAnimation="@anim/layout_animacion_3"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
 
     </LinearLayout>

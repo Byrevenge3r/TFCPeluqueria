@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,8 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.dao.TusCitasDao;
-import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.model.BotonTusCitas;
 import com.dam.peluqueriacanina.model.datos.BotonTusCitasLista;
@@ -52,7 +49,6 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
     SimpleDateFormat formatter;
 
 
-
     Date fecha;
     Date fechaHoy;
     View vista;
@@ -64,6 +60,7 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
 
     ArrayList<BotonTusCitas> listaBoton;
     ArrayList<TusCitas> listaCitas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,11 +93,20 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
 
         listaCitas = new ArrayList<>();
 
-        dbr.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/reservasCoche").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            now = LocalDateTime.now();
+            try {
+                fechaHoy = formatter.parse(now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        dbr.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasCoche").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 listaCitas.clear();
-                for (DataSnapshot sp:task.getResult().getChildren()) {
+                for (DataSnapshot sp : task.getResult().getChildren()) {
                     listaCitas.add(new TusCitas(sp.getValue(TusCitas.class).getUrlI(),
                             sp.getValue(TusCitas.class).getKey(),
                             sp.getValue(TusCitas.class).getKeyE(),
@@ -108,6 +114,61 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                             sp.getValue(TusCitas.class).getNomAnimal(),
                             sp.getValue(TusCitas.class).getCitaFecha(),
                             sp.getValue(TusCitas.class).getCitaHora()));
+                    try {
+                        if (fechaHoy.after(formatter.parse(listaCitas.get(listaCitas.size() - 1).getCitaFecha()))) {
+                            String mesN = "";
+                            tusCitas = listaCitas.get(listaCitas.size() - 1);
+                            String[] mesCita = tusCitas.getCitaFecha().split("/");
+                            switch (Integer.parseInt(mesCita[1])) {
+                                case 1:
+                                    mesN = "enero";
+                                    break;
+                                case 2:
+                                    mesN = "febrero";
+                                    break;
+                                case 3:
+                                    mesN = "marzo";
+                                    break;
+                                case 4:
+                                    mesN = "abril";
+                                    break;
+                                case 5:
+                                    mesN = "mayo";
+                                    break;
+                                case 6:
+                                    mesN = "junio";
+                                    break;
+                                case 7:
+                                    mesN = "julio";
+                                    break;
+                                case 8:
+                                    mesN = "agosto";
+                                    break;
+                                case 9:
+                                    mesN = "septiembre";
+                                    break;
+                                case 10:
+                                    mesN = "octubre";
+                                    break;
+                                case 11:
+                                    mesN = "noviembre";
+                                    break;
+                                case 12:
+                                    mesN = "diciembre";
+                                    break;
+                            }
+
+                            dbr = fdb.getReference("coche/reservas/" + mesN + "/" + ((MiApplication) getApplicationContext()).getKey() + "/");
+                            dbr.child(tusCitas.getKeyEC()).removeValue();
+
+                            dbr = fdb.getReference("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasCoche/");
+                            dbr.child(tusCitas.getKeyE()).removeValue();
+
+                            listaCitas.remove(tusCitas);
+                        }
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                 }
                 adapter = new AnimalPeluAdapter(listaCitas);
                 adapterDetallesCita = new MostrarDatosTusCitasAdapter(boton.getBoton());
@@ -138,17 +199,14 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                                 tusCitas = listaCitas.get(rv.getChildAdapterPosition(vista));
                                 try {
                                     fecha = formatter.parse(tusCitas.getCitaFecha());
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                        now = LocalDateTime.now();
-                                        fechaHoy = formatter.parse(now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear());
-                                    }
-                                   // if (fecha.equals(fechaHoy)) {
-                                        i = new Intent(VerTusCitasActivity.this, VerDatosTusCitasActivity.class);
-                                        i.putExtra("hora", tusCitas.getCitaHora());
 
-                                        startActivity(i);
-                                   // } else {
-                                   //     Toast.makeText(VerTusCitasActivity.this, R.string.fecha_distinta_hoy, Toast.LENGTH_SHORT).show();
+                                    // if (fecha.equals(fechaHoy)) {
+                                    i = new Intent(VerTusCitasActivity.this, VerDatosTusCitasActivity.class);
+                                    i.putExtra("hora", tusCitas.getCitaHora());
+
+                                    startActivity(i);
+                                    // } else {
+                                    //     Toast.makeText(VerTusCitasActivity.this, R.string.fecha_distinta_hoy, Toast.LENGTH_SHORT).show();
                                     //}
                                 } catch (ParseException e) {
                                     e.printStackTrace();
@@ -220,10 +278,10 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                 break;
         }
 
-        dbr = fdb.getReference("coche/reservas/" + mesN + "/"+ ((MiApplication) getApplicationContext()).getKey()+"/");
+        dbr = fdb.getReference("coche/reservas/" + mesN + "/");
         dbr.child(tusCitas.getKeyEC()).removeValue();
 
-        dbr = fdb.getReference("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/reservasCoche/");
+        dbr = fdb.getReference("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasCoche/");
         dbr.child(tusCitas.getKeyE()).removeValue();
 
         listaCitas.remove(tusCitas);
@@ -232,6 +290,8 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
 
         if (listaCitas.isEmpty()) {
             tvNoHayCitasVTC.setVisibility(View.VISIBLE);
+            dbr = fdb.getReference("usuarios/" + ((MiApplication) getApplicationContext()).getKey());
+            dbr.child("chat").removeValue();
         }
 
         dbr = fdb.getReference("coche/reservas/" + mesN);

@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/color_principal">
+
         <ImageButton
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -21,7 +22,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="5dp"
-            android:background="@drawable/logo_peluqueria"/>
+            android:background="@drawable/logo_peluqueria" />
     </RelativeLayout>
 
 
@@ -30,8 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scrollbars="vertical"
-        android:layout_weight="1"
-        />
+        android:layout_weight="1" />
 
     <RelativeLayout
         android:id="@+id/llMus"
@@ -51,7 +51,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/fondo_edit_text_chat"
             android:hint="@string/et_chat"
-            android:padding="10dp"/>
+            android:padding="10dp" />
 
 
         <android.widget.Button
@@ -65,7 +65,7 @@
             android:text="@string/btn_chat_enviar"
             android:textAllCaps="false"
             android:textColor="@color/color_texto_blanco"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
     </RelativeLayout>
 </LinearLayout>

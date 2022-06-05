@@ -1,37 +1,29 @@
 package com.dam.peluqueriacanina.mainActivity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.dam.peluqueriacanina.mainActivity.tienda.TiendaActivity;
-import com.dam.peluqueriacanina.perfil.AjustesActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.mainActivity.noticias.NoticiasActivity;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.PeluqueriaActivity;
-import com.dam.peluqueriacanina.registro.LoginActivity;
+import com.dam.peluqueriacanina.mainActivity.tienda.TiendaActivity;
 import com.dam.peluqueriacanina.mainActivity.veterinaria.VeterinariaActivity;
+import com.dam.peluqueriacanina.perfil.AjustesActivity;
+import com.dam.peluqueriacanina.registro.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -50,11 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LocalDateTime now;
     TusCitasDao daoCitas;
     TusCitasDB dbCitas;
-    Date date1;
-    Date date2;
     Date dateModificar;
     SimpleDateFormat formatter;
-    String mes = "";
     ArrayList<TusCitas> listaCitas;
 
     @Override
@@ -63,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         fdb = FirebaseDatabase.getInstance();
-        dbr = fdb.getReference("dia");
+        dbr = fdb.getReference();
 
         fAuth = FirebaseAuth.getInstance();
         fUser = fAuth.getCurrentUser();
@@ -88,141 +77,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cvOpciones.setOnClickListener(this);
         cvCerrarSesion.setOnClickListener(this);
 
-        formatter = new SimpleDateFormat("dd/MM/yyyy");
-        date1 = new Date();
-        date2 = new Date();
-        dateModificar = new Date();
-
-
-
-
-
-        //Borrar fechas anteriores al dia actual
-        dbr.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        try {
-                            dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                            now = LocalDateTime.now();
-                            date1 = formatter.parse(now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear());
-                            date2 = formatter.parse(String.valueOf(snapshot.getValue()));
-
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    if (date1.after(date2)) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            dbr.setValue(now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear());
-                            dbr = fdb.getReference();
-
-                            switch (now.getMonthValue()) {
-                                case 1:
-                                    mes = "enero";
-                                    break;
-                                case 2:
-                                    mes = "febrero";
-                                    break;
-                                case 3:
-                                    mes = "marzo";
-                                    break;
-                                case 4:
-                                    mes = "abril";
-                                    break;
-                                case 5:
-                                    mes = "mayo";
-                                    break;
-                                case 6:
-                                    mes = "junio";
-                                    break;
-                                case 7:
-                                    mes = "julio";
-                                    break;
-                                case 8:
-                                    mes = "agosto";
-                                    break;
-                                case 9:
-                                    mes = "septiembre";
-                                    break;
-                                case 10:
-                                    mes = "octubre";
-                                    break;
-                                case 11:
-                                    mes = "noviembre";
-                                    break;
-                                case 12:
-                                    mes = "diciembre";
-                                    break;
-                            }
-
-
-                            for (int i = 1;i < now.getDayOfMonth();i++) {
-                                Query q = dbr.child("coche/reservas/" + mes).orderByChild("fecha").equalTo((now.getDayOfMonth()-i) + "/" + now.getMonthValue() + "/" + now.getYear());
-                                q.addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                        for (DataSnapshot appleSnapshot : dataSnapshot.getChildren()) {
-                                            appleSnapshot.getRef().removeValue();
-                                            try {
-                                                borrarFechasDao();
-                                            } catch (ParseException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-                                        Log.e("erroraa", "onCancelled", databaseError.toException());
-                                    }
-                                });
-                            }
-
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-
-
-        });
-
-
 
     }
+
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
-        FirebaseUser mFirebaseUser=fAuth.getCurrentUser();
-        if(mFirebaseUser!=null){
+        FirebaseUser mFirebaseUser = fAuth.getCurrentUser();
+        if (mFirebaseUser != null) {
             // there is some user logged in
 
-        }else{
+        } else {
             // no one logged in
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         }
     }
 
-public void logout(){
+    public void logout() {
         fAuth.signOut();
-}
-    private void borrarFechasDao() throws ParseException {
-        listaCitas = (ArrayList<TusCitas>) daoCitas.sacarTodo();
-        for (int i = 0; i < listaCitas.size(); i++) {
-            dateModificar = formatter.parse(listaCitas.get(i).getCitaFecha());
-            if (date1.after(dateModificar)) {
-                daoCitas.delete(listaCitas.get(i));
-            }
-        }
     }
 
 
@@ -244,8 +117,8 @@ public void logout(){
         } else if (v.equals(cvOpciones)) {
             i = new Intent(this, AjustesActivity.class);
             startActivity(i);
-        }else if (v.equals(cvCerrarSesion)) {
-          logout();
+        } else if (v.equals(cvCerrarSesion)) {
+            logout();
             SharedPreferences spf = getSharedPreferences("checkbox", MODE_PRIVATE);
             SharedPreferences.Editor edt = spf.edit();
             edt.putString("remember", "false");

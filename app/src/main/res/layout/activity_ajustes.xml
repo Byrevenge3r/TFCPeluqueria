@@ -42,7 +42,7 @@
         android:gravity="center"
         android:textColor="@color/color_blanco"
         android:textSize="26sp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvCorreoPerAjustes"
@@ -54,7 +54,7 @@
         android:textSize="19sp"
         android:gravity="center"
         android:layout_marginTop="10dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 
     <GridLayout

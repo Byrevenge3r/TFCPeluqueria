@@ -14,7 +14,7 @@
         android:layout_height="52dp"
         android:textAllCaps="false"
         android:textColor="@color/color_texto_blanco"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
 
 </LinearLayout>

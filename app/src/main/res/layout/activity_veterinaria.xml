@@ -108,6 +108,7 @@
                     android:layout_margin="12dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="12dp">
+
                     <LinearLayout
                         android:orientation="vertical"
                         android:padding="16dp"
@@ -149,7 +150,7 @@
                         <ImageView
                             android:src="@drawable/calendario"
                             android:layout_width="100dp"
-                            android:layout_height="100dp"/>
+                            android:layout_height="100dp" />
 
                         <TextView
                             android:textSize="18sp"
@@ -157,7 +158,7 @@
                             android:textColor="@color/color_texto_negro"
                             android:layout_width="wrap_content"
                             android:text="@string/tv_veterinaria_ver_citas_menu"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
 
@@ -165,7 +166,6 @@
 
             </GridLayout>
         </LinearLayout>
-
 
 
     </HorizontalScrollView>

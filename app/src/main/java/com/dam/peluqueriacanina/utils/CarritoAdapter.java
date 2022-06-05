@@ -10,12 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.entity.Cesta;
-import com.dam.peluqueriacanina.model.DatosTienda;
 
 import java.util.ArrayList;
 
 public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoAdapterVH>
-            implements View.OnClickListener {
+        implements View.OnClickListener {
 
     private ArrayList<Cesta> datos;
     private View.OnClickListener listener;
@@ -30,6 +29,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoA
             listener.onClick(v);
         }
     }
+
     public void setListener(View.OnClickListener listener) {
         this.listener = listener;
     }
@@ -64,10 +64,10 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoA
             tvPrecioProducto = itemView.findViewById(R.id.tvPrecioCompra);
         }
 
-        public void bindCarrito (Cesta cesta) {
-            tvNomProducto.setText(itemView.getContext().getString(R.string.nom_compra_carrito,cesta.getNombre()));
-            tvCantidadProducto.setText(itemView.getContext().getString(R.string.cantidad_compra_carrito,String.valueOf(cesta.getCantidad())));
-            tvPrecioProducto.setText(itemView.getContext().getString(R.string.precio_compra_carrito,String.valueOf(cesta.getPrecio())));
+        public void bindCarrito(Cesta cesta) {
+            tvNomProducto.setText(itemView.getContext().getString(R.string.nom_compra_carrito, cesta.getNombre()));
+            tvCantidadProducto.setText(itemView.getContext().getString(R.string.cantidad_compra_carrito, String.valueOf(cesta.getCantidad())));
+            tvPrecioProducto.setText(itemView.getContext().getString(R.string.precio_compra_carrito, String.valueOf(cesta.getPrecio())));
         }
     }
 }

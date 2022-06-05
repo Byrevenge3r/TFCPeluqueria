@@ -43,25 +43,45 @@ public class MiApplication extends Application {
         this.key = key;
     }
 
-    public String getApellidos() { return apellidos; }
+    public String getApellidos() {
+        return apellidos;
+    }
 
-    public void setApellidos(String apellidos) { this.apellidos = apellidos; }
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
 
-    public String getUsuario() { return usuario; }
+    public String getUsuario() {
+        return usuario;
+    }
 
-    public void setUsuario(String usuario) { this.usuario = usuario; }
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 
-    public String getCorreo() { return correo; }
+    public String getCorreo() {
+        return correo;
+    }
 
-    public void setCorreo(String correo) { this.correo = correo; }
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
-    public String getContrasenia() { return contrasenia; }
+    public String getContrasenia() {
+        return contrasenia;
+    }
 
-    public void setContrasenia(String contrasenia) { this.contrasenia = contrasenia; }
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
 
-    public String getTelefono() { return telefono; }
+    public String getTelefono() {
+        return telefono;
+    }
 
-    public void setTelefono(String telefono) { this.telefono = telefono; }
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
     public String getDireccion() {
         return direccion;

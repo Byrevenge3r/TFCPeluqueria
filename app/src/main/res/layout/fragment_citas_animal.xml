@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/color_blanco_pero_no_tan_blanco"
         android:textSize="20sp"
-        android:text="@string/tv_texto_titulo_selecciona_animal"/>
+        android:text="@string/tv_texto_titulo_selecciona_animal" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,6 +21,6 @@
         android:id="@+id/rvCitasDatosFotoAnimal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"/>
+        android:orientation="vertical" />
 
 </LinearLayout>

@@ -4,6 +4,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CalendarView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,12 +16,6 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CalendarView;
-import android.widget.TextView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.entity.TusCitas;
@@ -26,10 +25,8 @@ import com.dam.peluqueriacanina.utils.CitasAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -73,6 +70,7 @@ public class CitasPel extends DialogFragment {
     String tel;
     boolean continuar = true;
     int i = 0;
+
     public CitasPel() {
     }
 
@@ -142,7 +140,7 @@ public class CitasPel extends DialogFragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             now = LocalDateTime.now();
             ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Europe/Paris"));
-            horaActual = time.getHour() +":"+ time.getMinute();
+            horaActual = time.getHour() + ":" + time.getMinute();
             try {
                 horaActualD = formatterH.parse(horaActual);
             } catch (ParseException e) {
@@ -270,13 +268,13 @@ public class CitasPel extends DialogFragment {
                     e.printStackTrace();
                 }
 
-                if (horaActualD.after(horaBbdd)){
+                if (horaActualD.after(horaBbdd)) {
                     listaCitas.remove(i);
                     i = 0;
                 } else {
                     i++;
                 }
-                if (listaCitas.size()==i) {
+                if (listaCitas.size() == i) {
                     continuar = false;
                     i = 0;
                 }
@@ -292,8 +290,8 @@ public class CitasPel extends DialogFragment {
         bundle.putString("citaFecha", citaFecha);
         bundle.putString("citaHora", citaHora);
         bundle.putString("mesN", mes);
-        bundle.putString("KeyB",key);
-        bundle.putString("tel",tel);
+        bundle.putString("KeyB", key);
+        bundle.putString("tel", tel);
         getParentFragmentManager().setFragmentResult("Key", bundle);
 
         citasAnimal.show(getParentFragmentManager(), "CitasAnimal");
@@ -309,29 +307,29 @@ public class CitasPel extends DialogFragment {
         int posicion = 0;
         boolean existe = false;
 
-            for (int i = 0; i < listaCitasMes.size(); i++) {
-                try {
-                    diaHoy = formatter.parse(dia + "/" + mesD + "/" + anio);
-                    diaSeleccionado = formatter.parse(listaCitasMes.get(i).getFecha());
-                    if (diaSeleccionado.equals(diaHoy)) {
-                        for (int x = 0; x < listaCitas.size(); x++) {
-                            if (listaCitasMes.get(i).getHora().equals(listaCitas.get(x).getHora())) {
-                                existe = true;
-                                posicion = x;
-                                x = listaCitas.size();
-                            }
+        for (int i = 0; i < listaCitasMes.size(); i++) {
+            try {
+                diaHoy = formatter.parse(dia + "/" + mesD + "/" + anio);
+                diaSeleccionado = formatter.parse(listaCitasMes.get(i).getFecha());
+                if (diaSeleccionado.equals(diaHoy)) {
+                    for (int x = 0; x < listaCitas.size(); x++) {
+                        if (listaCitasMes.get(i).getHora().equals(listaCitas.get(x).getHora())) {
+                            existe = true;
+                            posicion = x;
+                            x = listaCitas.size();
                         }
-
                     }
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
 
-                if (existe) {
-                    listaCitas.remove(posicion);
                 }
-                existe = false;
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
+
+            if (existe) {
+                listaCitas.remove(posicion);
+            }
+            existe = false;
+        }
 
         return listaCitas;
     }

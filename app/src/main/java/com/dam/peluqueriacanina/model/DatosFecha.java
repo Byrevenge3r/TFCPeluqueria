@@ -6,17 +6,17 @@ public class DatosFecha {
 
     private final ArrayList<CitasReserva> listaCitas;
 
-    public DatosFecha(){
+    public DatosFecha() {
         listaCitas = new ArrayList<>();
 
-        listaCitas.add(new CitasReserva("","10:00"));
-        listaCitas.add(new CitasReserva("","11:00"));
-        listaCitas.add(new CitasReserva("","12:00"));
-        listaCitas.add(new CitasReserva("","13:00"));
-        listaCitas.add(new CitasReserva("","14:00"));
-        listaCitas.add(new CitasReserva("","15:00"));
-        listaCitas.add(new CitasReserva("","21:45"));
-        listaCitas.add(new CitasReserva("","21:49"));
+        listaCitas.add(new CitasReserva("", "10:00"));
+        listaCitas.add(new CitasReserva("", "11:00"));
+        listaCitas.add(new CitasReserva("", "12:00"));
+        listaCitas.add(new CitasReserva("", "13:00"));
+        listaCitas.add(new CitasReserva("", "14:00"));
+        listaCitas.add(new CitasReserva("", "15:00"));
+        listaCitas.add(new CitasReserva("", "21:45"));
+        listaCitas.add(new CitasReserva("", "21:49"));
 
     }
 

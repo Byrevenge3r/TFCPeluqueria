@@ -12,6 +12,6 @@
         app:strokeColor="@color/rosa_btn_registrar"
         app:shapeAppearanceOverlay="@style/Circular"
         android:scaleType="centerCrop"
-        app:strokeWidth="3dp"/>
+        app:strokeWidth="3dp" />
 
 </LinearLayout>

@@ -1,5 +1,11 @@
 package com.dam.peluqueriacanina.mainActivity.veterinaria;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -8,12 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
@@ -40,12 +40,12 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
     AnimalesDao dao;
     AnimalesDB db;
     Animal animalVet;
-    ShapeableImageView imagenAnimal,ivPerfilVet;
+    ShapeableImageView imagenAnimal, ivPerfilVet;
     Button btnAniadirMascotaVet;
     ArrayList<Animal> listaAnimalesVet;
     Intent i;
     TusCitas tusCitas;
-    CardView cvVeterinaria,cvTusCitasVet;
+    CardView cvVeterinaria, cvTusCitasVet;
     TextView tvNombreVet;
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
@@ -61,6 +61,7 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
                 }
             }
     );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +72,7 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
         ivPerfilVet = findViewById(R.id.ivPerfilVet);
         tvNombreVet = findViewById(R.id.tvNombreVet);
         tvNombreVet.setText(((MiApplication) getApplicationContext()).getNombre() + " " + ((MiApplication) getApplicationContext()).getApellidos());
-        Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(150,150).centerCrop().into(ivPerfilVet);
+        Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(150, 150).centerCrop().into(ivPerfilVet);
 
         imagenAnimal = findViewById(R.id.siAnimal);
         btnAniadirMascotaVet = findViewById(R.id.btnAniadirMascotaVet);
@@ -102,7 +103,7 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
                 listaAnimalesVet = (ArrayList<Animal>) dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey());
                 i = new Intent(VeterinariaActivity.this, DatosAnimalActivity.class);
                 animalVet = listaAnimalesVet.get(rv.getChildAdapterPosition(v));
-                //i.putExtra(CLAVE_ANIMAL, animalVet.getRuta());
+                i.putExtra(CLAVE_ANIMAL, animalVet.getKey());
                 arl.launch(i);
             }
         });

@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.entity.Animal;
 
-@Database(entities = {Animal.class},version = 8)
+@Database(entities = {Animal.class}, version = 9)
 public abstract class AnimalesDB extends RoomDatabase {
     public abstract AnimalesDao animalDao();
 
@@ -18,7 +18,7 @@ public abstract class AnimalesDB extends RoomDatabase {
     public static AnimalesDB getDatabase(Context context) {
         if (ANIMAL_DB == null) {
             ANIMAL_DB = Room.databaseBuilder(
-                    context.getApplicationContext(), AnimalesDB.class, "animales-db")
+                            context.getApplicationContext(), AnimalesDB.class, "animales-db")
                     .allowMainThreadQueries()
                     .build();
         }

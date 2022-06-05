@@ -2,7 +2,6 @@ package com.dam.peluqueriacanina.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "ANIMALES")
@@ -65,7 +64,8 @@ public class Animal {
         return key;
     }
 
-    public Animal () {}
+    public Animal() {
+    }
 
     public int getId() {
         return id;
