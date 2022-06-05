@@ -91,7 +91,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
             } else if (!hasUpperCase(contra)) {
                 Snackbar.make(v, R.string.contra_minuscula, Snackbar.LENGTH_LONG).show();
 
-            } else if (hasSymbol(contra)) {
+            } else if (!hasSymbol(contra)) {
 
                 Snackbar.make(v, R.string.simbolo_contra, Snackbar.LENGTH_LONG).show();
 
@@ -131,7 +131,14 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
     private boolean hasSymbol(CharSequence data) {
         String contra = etContra.getText().toString().trim();
         contra = String.valueOf((data));
-        return !contra.matches("[A-Za-z0-9]*");
+
+        for (int i=0; i < contra.length(); i++ ) {
+
+            if(Character.isDigit(contra.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

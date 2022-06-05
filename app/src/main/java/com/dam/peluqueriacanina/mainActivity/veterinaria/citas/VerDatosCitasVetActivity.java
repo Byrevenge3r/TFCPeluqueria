@@ -57,7 +57,7 @@ public class VerDatosCitasVetActivity extends AppCompatActivity implements View.
         tvTiempo = findViewById(R.id.tvMostrarInfo);
         btnGoogleMaps = findViewById(R.id.btnGoogleMaps);
 
-        nom = getIntent().getStringExtra("nom");
+        nom = getIntent().getStringExtra("nombre");
         hora = getIntent().getStringExtra("hora");
         location = new Location("ubicacionOrigen");
         locDestino = new Location("ubicacionDestino");
