@@ -104,6 +104,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         usuario.put("correo", user.getCorreo());
         usuario.put("telefono", user.getTelefono());
         usuario.put("direccion", user.getDireccion());
+        usuario.put("urlPerfil","");
         usuario.put("key", user.getKey());
 
         dbRef.child("usuarios").child(key).updateChildren(usuario);

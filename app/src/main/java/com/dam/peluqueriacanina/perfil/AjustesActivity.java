@@ -70,7 +70,7 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
                                         HashMap<String, Object> fotoPerfil = new HashMap<>();
                                         fotoPerfil.put("urlPerfil", uri.toString());
                                         ((MiApplication) getApplicationContext()).setUrlPerfil(uri.toString());
-                                        dbRef.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/urlPerfil").updateChildren(fotoPerfil);
+                                        dbRef.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey()).updateChildren(fotoPerfil);
 
                                     }
                                 });
@@ -101,8 +101,10 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         tvCorreoPerAjustes.setText(((MiApplication) getApplicationContext()).getCorreo());
 
         ivPerfilPelAjustes = findViewById(R.id.ivPerfilPelAjustes);
-        Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(153, 153).centerCrop().into(ivPerfilPelAjustes);
+        if (!((MiApplication) getApplicationContext()).getUrlPerfil().isEmpty()) {
+            Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(153, 153).centerCrop().into(ivPerfilPelAjustes);
 
+        }
         ivPerfilPelAjustes.setOnClickListener(this);
         cvCerrarSesion.setOnClickListener(this);
         cvPreguntasRespuestas.setOnClickListener(this);
