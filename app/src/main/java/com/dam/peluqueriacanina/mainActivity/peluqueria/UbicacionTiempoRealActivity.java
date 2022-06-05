@@ -74,7 +74,6 @@ public class UbicacionTiempoRealActivity
 
     private void coorMapa() {
         dbr.addChildEventListener(new ChildEventListener() {
-
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 

@@ -83,7 +83,7 @@ public class VerCitasVetActivity extends AppCompatActivity implements View.OnCli
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             now = LocalDateTime.now();
             try {
-                fechaHoy = formatter.parse(now.getDayOfMonth() + "/" + now.getMonth() + "/" + now.getYear());
+                fechaHoy = formatter.parse(now.getDayOfMonth() + "/" + now.getMonthValue() + "/" + now.getYear());
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -227,6 +227,7 @@ public class VerCitasVetActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
+        cita = listaCitasVet.get(rv.getChildAdapterPosition(vista));
         String mesN = "";
         String[] mesCita = cita.getCitaFecha().split("/");
         switch (Integer.parseInt(mesCita[1])) {

@@ -1,6 +1,7 @@
 package com.dam.peluqueriacanina.mainActivity.peluqueria;
 
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -140,10 +141,10 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-       /*if (mensajes.isEmpty()) {
+       if (mensajes.isEmpty()) {
            SmsManager sms = SmsManager.getDefault();
            sms.sendTextMessage("+34" + numeroTelConduc, null,  ((MiApplication) getApplicationContext()).getKey(), null, null);
-       }*/
+       }
 
         rv.setAdapter(adapter);
         if (!mensajes.isEmpty()) {
