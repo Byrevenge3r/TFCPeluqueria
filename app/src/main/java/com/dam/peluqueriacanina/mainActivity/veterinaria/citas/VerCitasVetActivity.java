@@ -98,7 +98,7 @@ public class VerCitasVetActivity extends AppCompatActivity implements View.OnCli
 
         llm = new LinearLayoutManager(this);
         llm.setOrientation(RecyclerView.VERTICAL);
-
+        btnCancelarCitaVet.setOnClickListener(this);
         rv.setLayoutManager(llm);
         //Puede ser null por que este vacio arriba (probar)
 
@@ -115,14 +115,10 @@ public class VerCitasVetActivity extends AppCompatActivity implements View.OnCli
                     switch (v.getId()) {
                         case R.id.llCitasVet:
 
-
-
                             rvVerCita = v.findViewById(R.id.rlContainerVet).findViewById(R.id.rvVerTusCitasSegundaPantallaVet);
                             rvVerCita.setLayoutManager(new LinearLayoutManager(v.findViewById(R.id.llCitasVet).getContext()));
 
                             rvVerCita.setAdapter(adapterDetallesCita);
-
-
 
                             adapterDetallesCita.setListener(new View.OnClickListener() {
                                 @Override
@@ -137,6 +133,7 @@ public class VerCitasVetActivity extends AppCompatActivity implements View.OnCli
                                         // if (fecha.equals(fechaHoy)) {
                                         i = new Intent(VerCitasVetActivity.this, VerDatosCitasVetActivity.class);
                                         i.putExtra("hora", cita.getCitaHora());
+
                                         i.putExtra("nom",cita.getNom());
                                         startActivity(i);
                                         // } else {
@@ -163,6 +160,55 @@ public class VerCitasVetActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
+        String mesN = "";
+        String[] mesCita = cita.getCitaFecha().split("/");
+        switch (Integer.parseInt(mesCita[1])) {
+            case 1:
+                mesN = "enero";
+                break;
+            case 2:
+                mesN = "febrero";
+                break;
+            case 3:
+                mesN = "marzo";
+                break;
+            case 4:
+                mesN = "abril";
+                break;
+            case 5:
+                mesN = "mayo";
+                break;
+            case 6:
+                mesN = "junio";
+                break;
+            case 7:
+                mesN = "julio";
+                break;
+            case 8:
+                mesN = "agosto";
+                break;
+            case 9:
+                mesN = "septiembre";
+                break;
+            case 10:
+                mesN = "octubre";
+                break;
+            case 11:
+                mesN = "noviembre";
+                break;
+            case 12:
+                mesN = "diciembre";
+                break;
+        }
+        cita = listaCitasVet.get(rv.getChildAdapterPosition(vista));
 
+        dbr = fdb.getReference("veterinaria/veterinarioRes/"+cita.getNom()+"/"+mesN+"/");
+        dbr.child(cita.getKeyEV()).removeValue();
+
+        dbr = fdb.getReference("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/reservasVet/");
+        dbr.child(cita.getKeyE()).removeValue();
+
+        listaCitasVet.remove(cita);
+        adapter.setDatos(listaCitasVet);
     }
 }

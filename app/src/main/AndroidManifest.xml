@@ -122,11 +122,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".mainActivity.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+        </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"

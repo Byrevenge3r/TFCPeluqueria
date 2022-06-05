@@ -22,6 +22,8 @@ import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.model.CitasReserva;
 import com.dam.peluqueriacanina.model.DatosFecha;
 import com.dam.peluqueriacanina.utils.CitasAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -208,55 +210,53 @@ public class CitasVet extends DialogFragment {
                     rv.setAdapter(adapter);
                 } else {
                     tvNoHayCitas.setVisibility(View.INVISIBLE);
-                    
-                    dbr.child("veterinaria/veterinarioRes/"+ nom +"/"+ mes).addValueEventListener(new ValueEventListener() {
+                    dbr.child("veterinaria/veterinarioRes/"+ nom +"/"+ mes).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists()) {
-                                for (DataSnapshot ds : snapshot.getChildren()) {
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            if (task.getResult().exists()) {
+                                for (DataSnapshot ds : task.getResult().getChildren()) {
                                     cr = ds.getValue(CitasReserva.class);
                                     listaCitasMes.add(cr);
                                 }
 
                                 listaCitas = filtroLista(listaCitasMes, anio, (mesD + 1), dia);
 
-                                filtrarDia();
-
                                 if (listaCitas.isEmpty()) {
                                     tvNoHayCitas.setVisibility(View.VISIBLE);
+                                } else {
+                                    listaCitasMes.clear();
+                                    adapter = new CitasAdapter(listaCitas);
+                                    rv.setAdapter(adapter);
+
+                                    adapter.setListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            pasarCitaFragment(v, dia, mesD, anio);
+                                        }
+                                    });
                                 }
-                                listaCitasMes.clear();
 
-                                adapter = new CitasAdapter(listaCitas);
-                                rv.setAdapter(adapter);
-
-                                adapter.setListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        pasarCitaFragment(v, dia, mesD, anio);
-                                    }
-                                });
                             } else {
+                                listaCitas = datos.getListaCitas();
                                 filtrarDia();
-                                adapter = new CitasAdapter(listaCitas);
-                                rv.setAdapter(adapter);
-                                adapter.setListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        pasarCitaFragment(v, dia, mesD, anio);
-                                    }
-                                });
+                                if (listaCitas.isEmpty()) {
+                                    tvNoHayCitas.setVisibility(View.VISIBLE);
+                                    adapter = new CitasAdapter(listaCitas);
+                                    rv.setAdapter(adapter);
+                                } else {
+                                    adapter = new CitasAdapter(listaCitas);
+                                    rv.setAdapter(adapter);
+                                    adapter.setListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            pasarCitaFragment(v, dia, mesD, anio);
+                                        }
+                                    });
+                                }
                             }
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                        }
                     });
-
                 }
-
-
             }
         });
         return builder.create();
@@ -266,18 +266,18 @@ public class CitasVet extends DialogFragment {
         if (diaActual.equals(diaSeleccionado)) {
             while (continuar) {
                 try {
-                    horaBbdd = formatterH.parse(listaCitas.get(i).getHora());
+                    horaBbdd = formatterH.parse(this.listaCitas.get(i).getHora());
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
 
                 if (horaActualD.after(horaBbdd)){
-                    listaCitas.remove(i);
+                    this.listaCitas.remove(i);
                     i = 0;
                 } else {
                     i++;
                 }
-                if (listaCitas.size()==i) {
+                if (this.listaCitas.size()==i) {
                     continuar = false;
                 }
             }
@@ -285,7 +285,7 @@ public class CitasVet extends DialogFragment {
             continuar = true;
         }
     }
-//
+
     private void pasarCitaFragment(View v, int dia, int mesD, int anio) {
         citaFecha = dia + "/" + (mesD + 1) + "/" + anio;
         citaHora = listaCitas.get(rv.getChildAdapterPosition(v)).getHora();
@@ -301,11 +301,12 @@ public class CitasVet extends DialogFragment {
         dismiss();
     }
 
-
     private ArrayList<CitasReserva> filtroLista(ArrayList<CitasReserva> listaCitasMes, int anio, int mesD, int dia) {
         listaCitas = datos.getListaCitas();
         int posicion = 0;
         boolean existe = false;
+
+        filtrarDia();
 
         for (int i = 0; i < listaCitasMes.size(); i++) {
             if (listaCitasMes.get(i).getFecha().equals(dia + "/" + mesD + "/" + anio)) {
@@ -313,6 +314,7 @@ public class CitasVet extends DialogFragment {
                     if (listaCitasMes.get(i).getHora().equals(listaCitas.get(x).getHora())) {
                         existe = true;
                         posicion = x;
+                        x = 0;
                     }
                 }
             }

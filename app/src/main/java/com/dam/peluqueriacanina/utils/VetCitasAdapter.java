@@ -21,6 +21,9 @@ public class VetCitasAdapter extends RecyclerView.Adapter<VetCitasAdapter.VetCit
     private ArrayList<VetCitas> datos;
     private View.OnClickListener listener;
 
+    public void setDatos(ArrayList<VetCitas> datos) {
+        this.datos = datos;
+    }
 
     public VetCitasAdapter(ArrayList<VetCitas> datos) {
         this.datos = datos;

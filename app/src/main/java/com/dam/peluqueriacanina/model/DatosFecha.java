@@ -15,7 +15,8 @@ public class DatosFecha {
         listaCitas.add(new CitasReserva("","13:00"));
         listaCitas.add(new CitasReserva("","14:00"));
         listaCitas.add(new CitasReserva("","15:00"));
-        listaCitas.add(new CitasReserva("","16:00"));
+        listaCitas.add(new CitasReserva("","21:45"));
+        listaCitas.add(new CitasReserva("","21:49"));
 
     }
 

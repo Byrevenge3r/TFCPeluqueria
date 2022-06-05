@@ -125,19 +125,20 @@ public class CitasAnimalFragmentVet extends DialogFragment {
 
                             listaCitaVet.put("fecha",citaFecha);
                             listaCitaVet.put("hora",citaHora);
-
                             dbr.child(key).setValue(listaCitaVet);
 
                             listaCitaVet.clear();
 
                             //Subida al apartado independiente de las veterinarias
                             dbr = fdb.getReference("usuarios/"+keyB+"/reservasVet");
-                            key = dbr.push().getKey();
                             listaCitaVet.put("nom",nom);
                             listaCitaVet.put("citaFecha",citaFecha);
                             listaCitaVet.put("citaHora",citaHora);
-
+                            listaCitaVet.put("keyEV", key);
+                            key = dbr.push().getKey();
+                            listaCitaVet.put("keyE", key);
                             dbr.child(key).setValue(listaCitaVet);
+
 
                             String[] diaMesAnio = citaFecha.split("/");
                             String[] horaSolo = citaHora.split(":");
@@ -155,7 +156,7 @@ public class CitasAnimalFragmentVet extends DialogFragment {
                             pendingIntent = PendingIntent.getBroadcast(getContext(),valor,i,0);
                             alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
 
-                            Long alertTime = (calendar.getTimeInMillis() - System.currentTimeMillis());
+                            Long alertTime = calendar.getTimeInMillis();
 
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                                 CharSequence name = "Hey estas ahi?, tienes una cita";
@@ -169,10 +170,10 @@ public class CitasAnimalFragmentVet extends DialogFragment {
 
                             }
 
-                            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,alertTime,AlarmManager.INTERVAL_DAY,pendingIntent);
-
+                            alarmManager.setExact(AlarmManager.RTC_WAKEUP,alertTime,pendingIntent);
+                            dismiss();
                         }
-                        dismiss();
+
                     }
                 });
                 rv.setAdapter(adapter);

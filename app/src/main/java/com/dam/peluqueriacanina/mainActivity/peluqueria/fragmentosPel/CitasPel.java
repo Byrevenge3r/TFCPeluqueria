@@ -23,6 +23,8 @@ import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.model.CitasReserva;
 import com.dam.peluqueriacanina.model.DatosFecha;
 import com.dam.peluqueriacanina.utils.CitasAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -211,12 +213,12 @@ public class CitasPel extends DialogFragment {
                     rv.setAdapter(adapter);
                 } else {
                     tvNoHayCitas.setVisibility(View.INVISIBLE);
-                    
-                    dbr.child("coche/reservas/" + mes).addValueEventListener(new ValueEventListener() {
+
+                    dbr.child("coche/reservas/" + mes).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists()) {
-                                for (DataSnapshot ds : snapshot.getChildren()) {
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            if (task.getResult().exists()) {
+                                for (DataSnapshot ds : task.getResult().getChildren()) {
                                     cr = ds.getValue(CitasReserva.class);
                                     listaCitasMes.add(cr);
                                 }
@@ -240,18 +242,20 @@ public class CitasPel extends DialogFragment {
                                         pasarCitaFragment(v, dia, mesD, anio);
                                     }
                                 });
+                            } else {
+                                listaCitas = datos.getListaCitas();
+                                adapter = new CitasAdapter(listaCitas);
+                                rv.setAdapter(adapter);
+                                adapter.setListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        pasarCitaFragment(v, dia, mesD, anio);
+                                    }
+                                });
                             }
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
                     });
-
                 }
-
-
             }
         });
         return builder.create();
