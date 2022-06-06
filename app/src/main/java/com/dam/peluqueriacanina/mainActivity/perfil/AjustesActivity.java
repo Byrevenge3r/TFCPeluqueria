@@ -135,14 +135,8 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
                 fAuth.sendPasswordResetEmail(fAuth.getCurrentUser().getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Log.w("CHUPAPOA", "No c como va");
-                        }
                         if (!task.isSuccessful()) {
                             Toast.makeText(AjustesActivity.this, R.string.tst_email_exist, Toast.LENGTH_SHORT).show();
-                        }
-                        if (task.isComplete()) {
-                            Log.w("GUARDADO", "Se supone q esta cambiado");
                         }
                     }
                 });

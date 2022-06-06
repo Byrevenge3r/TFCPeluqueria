@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -35,6 +37,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MapaVeterinariasActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -68,7 +71,8 @@ public class MapaVeterinariasActivity extends AppCompatActivity implements OnMap
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.4165, -3.70256), 15));
+        LatLng ubicacionUser = getLocationFromAddress(this,((MiApplication)getApplicationContext()).getDireccion());
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacionUser,15));
         clusterManager = new ClusterManager<>(this, mMap);
         CustomClusterRenderers renderers = new CustomClusterRenderers(this, mMap, clusterManager);
         clusterManager.setRenderer(renderers);
@@ -165,6 +169,29 @@ public class MapaVeterinariasActivity extends AppCompatActivity implements OnMap
         public String getTitle() {
             return title;
         }
+    }
+
+    public LatLng getLocationFromAddress(Context context, String strAddress) {
+        Geocoder coder = new Geocoder(context);
+        List<Address> address;
+        LatLng p1 = null;
+
+        try {
+            address = coder.getFromLocationName(strAddress, 5);
+            if (address == null) {
+                return null;
+            }
+            Address location = address.get(0);
+            location.getLatitude();
+            location.getLongitude();
+
+            p1 = new LatLng(location.getLatitude(), location.getLongitude());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return p1;
+
     }
 
 }
