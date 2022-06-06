@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.mainActivity.perfil;
+package com.dam.peluqueriacanina.utils;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,10 +61,11 @@ public class PreguntasRespuestasAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded, View view, ViewGroup parent) {
 
         view = (LayoutInflater.from(parent.getContext()))
-                .inflate(android.R.layout.simple_expandable_list_item_1,parent,false);
+                .inflate(R.layout.expandable_lista_preguntas_respuesta,parent,false);
 
-        TextView textView = view.findViewById(android.R.id.text1);
+        TextView textView = view.findViewById(R.id.tvDatosPreguntaRespuesta);
 
+        textView.setTextSize(20);
 
         String sGroup = String.valueOf(getGroup(groupPosition));
 
@@ -75,18 +76,20 @@ public class PreguntasRespuestasAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View v, ViewGroup parent) {
         v = (LayoutInflater.from(parent.getContext()))
-                .inflate(android.R.layout.simple_selectable_list_item,parent,false);
+                .inflate(R.layout.expandable_lista_preguntas_respuesta,parent,false);
 
-        TextView textView = v.findViewById(android.R.id.text1);
+        TextView textView = v.findViewById(R.id.tvDatosPreguntaRespuesta);
 
         String sChild = String.valueOf(getChild(groupPosition,childPosition));
 
         textView.setText(sChild);
 
+        textView.setPadding(30,0,20,0);
+
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(parent.getContext(), sChild, Toast.LENGTH_SHORT).show();
+                Toast.makeText(parent.getContext(),groupPosition +" "+sChild, Toast.LENGTH_SHORT).show();
             }
         });
         return v;

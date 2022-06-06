@@ -38,12 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     DatabaseReference dbr;
     FirebaseAuth fAuth;
     FirebaseUser fUser;
-    DateTimeFormatter dtf;
-    LocalDateTime now;
     TusCitasDao daoCitas;
     TusCitasDB dbCitas;
-    Date dateModificar;
-    SimpleDateFormat formatter;
     ArrayList<TusCitas> listaCitas;
 
     @Override

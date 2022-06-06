@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.peluqueriacanina.model.DatosTienda;
+import com.dam.peluqueriacanina.model.PreguntaRespuesta;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -17,12 +18,38 @@ public class PushearProductos2 extends AppCompatActivity {
     FirebaseDatabase fdb = FirebaseDatabase.getInstance();
     DatabaseReference dbRef = fdb.getReference();
     ArrayList<DatosTienda> listaTienda = new ArrayList<>();
-
+    ArrayList<PreguntaRespuesta> listaa = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pushear_productos2);
 
+       // subirProductos();
+
+        aaaaaa();
+
+
+    }
+
+    private void aaaaaa() {
+        listaa.add(new PreguntaRespuesta("aaaaa","aaaaaaa"));
+        listaa.add(new PreguntaRespuesta("bbbbbb","bbbbbbbb"));
+        listaa.add(new PreguntaRespuesta("cccccc","ccccccccc"));
+        listaa.add(new PreguntaRespuesta("hhhhhhhh","hhhhhh"));
+        listaa.add(new PreguntaRespuesta("eeeeeee","eeeeeeeee"));
+        listaa.add(new PreguntaRespuesta("ggggg","ggggg"));
+
+
+        HashMap<String, Object> usuario = new HashMap<>();
+        for (int i = 0; i < listaa.size(); i++) {
+            key = dbRef.push().getKey();
+            usuario.put("titulo", listaa.get(i).getTitulo());
+            usuario.put("respuesta", listaa.get(i).getRespuesta());
+            dbRef.child("preguntasRespuestas").child(key).setValue(usuario);
+        }
+    }
+
+    private void subirProductos() {
         listaTienda.add(new DatosTienda("pienso perro razas pequeño", "1kg", getBaseContext().getDrawable(R.drawable.pienso_perro_pequeno), "pienso natural especialmente recomendado para perros de razas pequeñas (1-10 kg peso adulto), fabricado en España con ingredientes naturales. ", "alimentacion", "20"));
         listaTienda.add(new DatosTienda("transportin perro y gato", "1", getBaseContext().getDrawable(R.drawable.transportin), "El bolso de transporte para perros y gatos Kibo Slide naranja tiene un diseño moderno y deportivo, en colores naranja, negro y gris, para que puedas viajar o pasear con tu mascota", "accesorios", "35"));
         listaTienda.add(new DatosTienda("Bozal perro ajuste perfecto", "1", getBaseContext().getDrawable(R.drawable.bozal), "Bozal ajustable tiene la ventaja de adaptarse perfectamente a todos los hocicos largos o medianos.", "accesorios", "6"));
@@ -61,7 +88,6 @@ public class PushearProductos2 extends AppCompatActivity {
             usuario.put("tipo", listaTienda.get(i).getTipo());
             dbRef.child("productos tienda").child(key).setValue(usuario);
         }
-
     }
 
 }

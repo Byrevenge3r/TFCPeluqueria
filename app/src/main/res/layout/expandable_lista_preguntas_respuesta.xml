@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight">
+
+
+    <CheckedTextView
+        android:id="@+id/tvDatosPreguntaRespuesta"
+        android:layout_width="match_parent"
+        android:textAllCaps="false"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:textAppearance="?android:attr/textAppearanceListItem"
+        android:gravity="center_vertical"
+        android:background="?android:attr/listChoiceBackgroundIndicator"
+        android:paddingStart="30dp"
+        android:paddingEnd="8dip"
+        android:textSize="16sp" />
+
+
+</LinearLayout>
