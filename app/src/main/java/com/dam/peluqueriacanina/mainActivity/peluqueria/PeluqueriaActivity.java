@@ -38,6 +38,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -120,33 +121,21 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
             }
         });*/
 
-        dbr.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasCoche").addChildEventListener(new ChildEventListener() {
+        dbr.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasCoche").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                for (DataSnapshot sp : snapshot.getChildren()) {
-                    listaCitas.add(new TusCitas(sp.getValue(TusCitas.class).getUrlI(),
-                            sp.getValue(TusCitas.class).getKey(),
-                            sp.getValue(TusCitas.class).getKeyE(),
-                            sp.getValue(TusCitas.class).getKeyEC(),
-                            sp.getValue(TusCitas.class).getNomAnimal(),
-                            sp.getValue(TusCitas.class).getCitaFecha(),
-                            sp.getValue(TusCitas.class).getCitaHora()));
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listaCitas.clear();
+                if (snapshot.exists()) {
+                    for (DataSnapshot sp : snapshot.getChildren()) {
+                        listaCitas.add(new TusCitas(sp.getValue(TusCitas.class).getUrlI(),
+                                sp.getValue(TusCitas.class).getKey(),
+                                sp.getValue(TusCitas.class).getKeyE(),
+                                sp.getValue(TusCitas.class).getKeyEC(),
+                                sp.getValue(TusCitas.class).getNomAnimal(),
+                                sp.getValue(TusCitas.class).getCitaFecha(),
+                                sp.getValue(TusCitas.class).getCitaHora()));
+                    }
                 }
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
             }
 
             @Override
@@ -154,6 +143,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
 
             }
         });
+
         ivPerfilPel = findViewById(R.id.ivPerfilPel);
         if (!((MiApplication) getApplicationContext()).getUrlPerfil().isEmpty()) {
             Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(150, 150).centerCrop().into(ivPerfilPel);
