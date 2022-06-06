@@ -9,15 +9,16 @@
 
     <ImageButton
         android:id="@+id/imagen_compra_tienda_detalles"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="6dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginBottom="6dp"
         android:background="@null"
         android:foreground="?attr/selectableItemBackground"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_baseline_shopping_cart_24" />
 
     <com.google.android.material.textfield.TextInputLayout

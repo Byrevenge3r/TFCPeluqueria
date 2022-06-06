@@ -23,6 +23,10 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoA
         this.datos = datos;
     }
 
+    public void setDatos(ArrayList<Cesta> datos) {
+        this.datos = datos;
+    }
+
     @Override
     public void onClick(View v) {
         if (listener != null) {

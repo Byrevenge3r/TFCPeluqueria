@@ -1,12 +1,17 @@
 package com.dam.peluqueriacanina.mainActivity.tienda;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,19 +23,25 @@ import com.dam.peluqueriacanina.model.DatosTienda;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class TiendaDetallesActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton iBMas, iBMenos, ivCarrito;
     Button btnCesta;
-    TextView tvNombreProd, tvPesoPienso, tvDetalle, tvInfo, tvPrecioFin, tvPrecio, tvCantidad;
+    TextView tvNombreProd, tvPesoPienso, tvDetalle, tvInfo, tvPrecioFin, tvCantidad;
     RatingBar rbEstrellas;
     DatosTienda tienda;
     int contador = 0;
     CestaDao dao;
     CestaDB db;
+    ImageView fotoProducto;
     FirebaseDatabase fb;
     DatabaseReference dbRef;
     String nombreObj = "";
+    Cesta cesta;
+    ArrayList<Cesta> listaCompra;
+    boolean existe = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +53,8 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
 
         db = CestaDB.getDatabase(this);
         dao = db.cestaDao();
+
+        listaCompra = new ArrayList<>();
 
         tienda = getIntent().getParcelableExtra("tienda");
         nombreObj = getIntent().getStringExtra("nombreObj");
@@ -62,7 +75,7 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
         iBMenos.setOnClickListener(this);
         btnCesta.setOnClickListener(this);
         ivCarrito.setOnClickListener(this);
-
+        fotoProducto.setImageDrawable(tienda.getFoto());
         tvPesoPienso.setText(tienda.getCantidad());
         tvPrecioFin.setText(tienda.getPrecio());
         tvNombreProd.setText(tienda.getNombre());
@@ -82,10 +95,31 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
         } else if (v.equals(btnCesta)) {
             String[] precio;
             precio = tvPrecioFin.getText().toString().split("€");
-            dao.insert(new Cesta(tienda.getNombre(), Integer.parseInt(tvCantidad.getText().toString()), Integer.parseInt(precio[0])));
+            cesta = new Cesta(tienda.getNombre(), Integer.parseInt(tvCantidad.getText().toString()), Integer.parseInt(precio[0]));
+            listaCompra = (ArrayList<Cesta>) dao.sacarTodo();
+
+            for (int i = 0;i < listaCompra.size();i++) {
+                if (listaCompra.get(i).getNombre().equals(cesta.getNombre())) {
+                    listaCompra.get(i).setCantidad(listaCompra.get(i).getCantidad()+cesta.getCantidad());
+                    existe = true;
+                    dao.delete(listaCompra);
+                    dao.insert(listaCompra);
+                }
+            }
+            if (!existe) {
+                dao.insert(cesta);
+            }
+            existe = false;
+            tvCantidad.setText("1");
         } else if (v.equals(ivCarrito)) {
-            Intent i = new Intent(this, MostrarCompraActivity.class);
-            startActivity(i);
+            if (dao.sacarTodo().isEmpty()) {
+                Toast.makeText(this, R.string.carrito_vacio, Toast.LENGTH_SHORT).show();
+            } else {
+                tvCantidad.setText("1");
+                Intent i = new Intent(this, MostrarCompraActivity.class);
+                startActivity(i);
+            }
+
         }
     }
 }

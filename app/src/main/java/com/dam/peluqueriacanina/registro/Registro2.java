@@ -104,7 +104,6 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
                 //}
             }
 
-
         } else if (v.equals(btnAtrasRegDos)) {
             i = new Intent(this, Registro1.class);
             startActivity(i);

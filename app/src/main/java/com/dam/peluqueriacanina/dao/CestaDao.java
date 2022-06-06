@@ -17,6 +17,9 @@ public interface CestaDao {
     @Insert
     void insert(Cesta cesta);
 
+    @Insert
+    void insert(List<Cesta> cesta);
+
     @Delete
     void delete(List<Cesta> cesta);
 

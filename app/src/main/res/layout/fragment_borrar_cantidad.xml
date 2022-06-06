@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/color_principal_citas"
+    tools:context=".mainActivity.tienda.fragmentos.BorrarCantidadFragment">
+
+
+    <TextView
+        android:text="@string/tv_borrarCantidad"
+        android:layout_width="match_parent"
+        android:textSize="28sp"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/imagen_add_tienda_detalles"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@null"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_add_circle_outline_24" />
+
+        <TextView
+            android:id="@+id/tv_comprar_detalle_producto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:text="1"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="80sp" />
+
+        <ImageButton
+            android:id="@+id/imagen_remove_tienda_detalles"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@null"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_remove_circle_outline_24" />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

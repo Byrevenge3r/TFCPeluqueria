@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.dao.CestaDao;
+import com.dam.peluqueriacanina.db.CestaDB;
 import com.dam.peluqueriacanina.model.DatosTienda;
 import com.dam.peluqueriacanina.utils.AdapterTienda;
 
@@ -58,6 +60,9 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
     String[] precioFinalProducto = {};
     String[] precioProducto = {};
 
+    CestaDao dao;
+    CestaDB db;
+
     boolean colorAlimentacion, colorAccesorios, colorJuguetes = false;
 
     @Override
@@ -67,6 +72,9 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
         linearTienda = findViewById(R.id.llTienda);
         linearProducto = findViewById(R.id.llProducto);
         rv = findViewById(R.id.rvMostrarProductos);
+
+        db = CestaDB.getDatabase(this);
+        dao = db.cestaDao();
 
         ivCarrito = findViewById(R.id.imagen_compra_tienda_detalles);
 
@@ -275,8 +283,13 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
                 rv.setAdapter(adapter);
             }
         } else if (v.equals(ivCarrito)) {
-            Intent i = new Intent(this, MostrarCompraActivity.class);
-            startActivity(i);
+            if (dao.sacarTodo().isEmpty()) {
+                Toast.makeText(this, R.string.carrito_vacio, Toast.LENGTH_SHORT).show();
+            } else {
+                Intent i = new Intent(this, MostrarCompraActivity.class);
+                startActivity(i);
+            }
+
         }
     }
 

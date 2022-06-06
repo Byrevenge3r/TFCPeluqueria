@@ -127,4 +127,6 @@
     <string name="Text2">\n\nVersión \n1.0</string>
     <string name="Text3">\nThe Rolling Dogs y los logotipos de The Rolling Dogs son marcas comerciales de TheRollingDogs S.L Todos los derechos reservados. \n\nThe Rolling Dogs para Android se ha creado con software de código abierto: licencias. \n\nCreadores: \Fernando Pasquín Cantos\nRodrigo Garvía Gamboa\nSamuel Romero Fuertes</string>
     <string name="tv_no_hay_recordatorios">No tienes ningun recordatorio</string>
+    <string name="carrito_vacio">Para ver tu cesta antes debes añadir algo</string>
+    <string name="tv_borrarCantidad">Cuantos quieres borrar?</string>
 </resources>

@@ -10,8 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.dao.CestaDao;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
+import com.dam.peluqueriacanina.db.CestaDB;
 import com.dam.peluqueriacanina.db.TusCitasDB;
+import com.dam.peluqueriacanina.entity.Cesta;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.mainActivity.noticias.NoticiasActivity;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.PeluqueriaActivity;
@@ -41,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TusCitasDao daoCitas;
     TusCitasDB dbCitas;
     ArrayList<TusCitas> listaCitas;
+    CestaDao dao;
+    CestaDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fAuth = FirebaseAuth.getInstance();
         fUser = fAuth.getCurrentUser();
 
+        db = CestaDB.getDatabase(this);
+        dao = db.cestaDao();
+
+        dao.delete(dao.sacarTodo());
 
         dbCitas = TusCitasDB.getDatabase(this);
         daoCitas = dbCitas.citaDao();

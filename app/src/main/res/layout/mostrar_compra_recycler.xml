@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/llCompra"
+    android:orientation="vertical"
     android:layout_marginTop="10dp">
 
 
@@ -48,4 +50,12 @@
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBorrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layoutAnimation="@anim/layout_animation_2" />
+
 </LinearLayout>

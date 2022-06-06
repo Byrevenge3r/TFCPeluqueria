@@ -21,6 +21,7 @@ public class DatosTienda implements Parcelable {
         this.precio = precio;
     }
 
+
     protected DatosTienda(Parcel in) {
         nombre = in.readString();
         cantidad = in.readString();
@@ -88,6 +89,8 @@ public class DatosTienda implements Parcelable {
     public void setPrecio(String precio) {
         this.precio = precio;
     }
+
+
 
     @Override
     public int describeContents() {

@@ -92,8 +92,6 @@ public class MapaVeterinariasActivity extends AppCompatActivity implements OnMap
         });
 
         CargarMarcJson();
-
-
     }
 
     private void CargarMarcJson() {
