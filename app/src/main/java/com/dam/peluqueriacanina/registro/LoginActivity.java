@@ -39,6 +39,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "ERROR";
@@ -53,11 +54,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button btnInicSes;
     Button btnReg;
     CheckBox cbRecuerdame;
-    User user;
     Intent i;
     AnimalesDao dao;
     AnimalesDB db;
-    StorageReference mStorage;
     ArrayList<Animal> listaAnimales;
     ActivityResultLauncher<Intent> startForResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -97,10 +96,45 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         SharedPreferences spf = getSharedPreferences("chekbox", MODE_PRIVATE);
         String checkbox = spf.getString("remember", "");
 
+    if (fAuth.getCurrentUser() != null) {
+        String correo = fAuth.getCurrentUser().getEmail();
+        Query q = dbRef.orderByChild("correo").equalTo(correo);
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot datasnap : snapshot.getChildren()) {
+                    ((MiApplication) getApplicationContext()).setKey(String.valueOf(datasnap.getKey()));
+                    ((MiApplication) getApplicationContext()).setNombre(String.valueOf((datasnap.getValue(User.class)).getNombre()));
+                    ((MiApplication) getApplicationContext()).setApellidos((datasnap.getValue(User.class)).getApellidos());
+                    ((MiApplication) getApplicationContext()).setUsuario((datasnap.getValue(User.class)).getUsuario());
+                    ((MiApplication) getApplicationContext()).setCorreo((datasnap.getValue(User.class)).getCorreo());
+                    ((MiApplication) getApplicationContext()).setTelefono((datasnap.getValue(User.class)).getTelefono());
+                    ((MiApplication) getApplicationContext()).setDireccion((datasnap.getValue(User.class)).getDireccion());
+                    ((MiApplication) getApplicationContext()).setUrlPerfil((datasnap.getValue(User.class)).getUrlPerfil());
+                    ((MiApplication) getApplicationContext()).setRecuerdame((datasnap.getValue(User.class)).getRecuerdame());
+                }
+
+                if (((MiApplication) getApplicationContext()).isRecuerdame()) {
+                    i = new Intent(LoginActivity.this,
+                            MainActivity.class);
+                    i.putExtra(COD_EMAIL, fUser.getEmail());
+                    startActivity(i);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
+
         btnInicSes.setOnClickListener(this);
         btnReg.setOnClickListener(this);
 
-        cbRecuerdame.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*cbRecuerdame.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (compoundButton.isChecked()) {
@@ -117,7 +151,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
 
     }
 
@@ -125,15 +159,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if (v.equals(btnInicSes)) {
             acceder();
-            if (cbRecuerdame.isChecked()) {
-
-                Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(i);
-            } else if (cbRecuerdame.equals("false")) {
-                Toast.makeText(this, "Por favor registrate", Toast.LENGTH_SHORT).show();
-            }
-
-
         } else if (v.equals(btnReg)) {
             registrar();
         }
@@ -162,7 +187,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                         MainActivity.class);
                                 i.putExtra(COD_EMAIL, fUser.getEmail());
 
-                                buscarUsuario(email, contra);
+                                buscarUsuario(email);
 
                                 startActivity(i);
                                 finish();
@@ -177,7 +202,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    private void buscarUsuario(String correo, String contra) {
+    private void buscarUsuario(String correo) {
+        HashMap<String,Object> hmRecuerdame = new HashMap<>();
         Query q = dbRef.orderByChild("correo").equalTo(correo);
         q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -191,7 +217,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     ((MiApplication) getApplicationContext()).setTelefono((datasnap.getValue(User.class)).getTelefono());
                     ((MiApplication) getApplicationContext()).setDireccion((datasnap.getValue(User.class)).getDireccion());
                     ((MiApplication) getApplicationContext()).setUrlPerfil((datasnap.getValue(User.class)).getUrlPerfil());
+                    ((MiApplication) getApplicationContext()).setRecuerdame((datasnap.getValue(User.class)).getRecuerdame());
 
+                    if (cbRecuerdame.isChecked()) {
+                        hmRecuerdame.put("recuerdame",true);
+                        dbRef.child(((MiApplication)getApplicationContext()).getKey()).updateChildren(hmRecuerdame);
+                        hmRecuerdame.clear();
+                    } else {
+                        hmRecuerdame.put("recuerdame",false);
+                        dbRef.child(((MiApplication)getApplicationContext()).getKey()).updateChildren(hmRecuerdame);
+                        hmRecuerdame.clear();
+                    }
                 }
                 if (dao.sacarAnimalKey(((MiApplication) getApplicationContext()).getKey()).isEmpty()) {
                     dbRef = fdb.getReference("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/animales");

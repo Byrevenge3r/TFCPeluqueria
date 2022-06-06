@@ -13,10 +13,19 @@ public class MiApplication extends Application {
     private String direccion;
     private String key;
     private String urlPerfil;
+    private boolean recuerdame;
 
     @Override
     public void onCreate() {
         super.onCreate();
+    }
+
+    public boolean isRecuerdame() {
+        return recuerdame;
+    }
+
+    public void setRecuerdame(boolean recuerdame) {
+        this.recuerdame = recuerdame;
     }
 
     public String getUrlPerfil() {

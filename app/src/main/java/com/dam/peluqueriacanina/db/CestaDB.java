@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.dam.peluqueriacanina.dao.CestaDao;
 import com.dam.peluqueriacanina.entity.Cesta;
 
-@Database(entities = {Cesta.class}, version = 3)
+@Database(entities = {Cesta.class}, version = 3, exportSchema = false)
 public abstract class CestaDB extends RoomDatabase {
     public abstract CestaDao cestaDao();
 

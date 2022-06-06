@@ -148,6 +148,10 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
                 });
             }
         } else if (v.equals(cvCerrarSesion)) {
+            HashMap<String,Object> hmRecuerdame = new HashMap<>();
+            hmRecuerdame.put("recuerdame",false);
+            dbRef = fb.getReference("usuarios/"+((MiApplication)getApplicationContext()).getKey());
+            dbRef.updateChildren(hmRecuerdame);
             logout();
             i = new Intent(this, LoginActivity.class);
             startActivity(i);

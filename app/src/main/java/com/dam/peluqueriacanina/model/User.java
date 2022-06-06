@@ -9,6 +9,7 @@ public class User {
     private String direccion;
     private String urlPerfil;
     private String key;
+    private boolean recuerdame;
 
     public User() {
 
@@ -19,15 +20,24 @@ public class User {
         return direccion;
     }
 
-    public User(String nombre, String apellidos, String usuario, String correo, String telefono, String direccion, String key, String urlPerfil) {
+    public User(String nombre, String apellidos, String usuario, String correo, String telefono, String direccion, String urlPerfil, String key, boolean recuerdame) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.usuario = usuario;
         this.correo = correo;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.key = key;
         this.urlPerfil = urlPerfil;
+        this.key = key;
+        this.recuerdame = recuerdame;
+    }
+
+    public boolean getRecuerdame() {
+        return recuerdame;
+    }
+
+    public void setRecuerdame(boolean recuerdame) {
+        this.recuerdame = recuerdame;
     }
 
     public String getUrlPerfil() {

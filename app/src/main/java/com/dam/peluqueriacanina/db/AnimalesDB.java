@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.entity.Animal;
 
-@Database(entities = {Animal.class}, version = 9)
+@Database(entities = {Animal.class}, version = 9, exportSchema = false)
 public abstract class AnimalesDB extends RoomDatabase {
     public abstract AnimalesDao animalDao();
 

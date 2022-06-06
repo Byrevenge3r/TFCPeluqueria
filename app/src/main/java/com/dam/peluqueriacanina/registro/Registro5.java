@@ -94,7 +94,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
                 ((MiApplication) getApplicationContext()).getCorreo(),
                 ((MiApplication) getApplicationContext()).getTelefono(),
                 ((MiApplication) getApplicationContext()).getDireccion(),
-                ((MiApplication) getApplicationContext()).getKey(), "");
+                ((MiApplication) getApplicationContext()).getKey(), "",false);
 
         HashMap<String, Object> usuario = new HashMap<>();
 
@@ -106,6 +106,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         usuario.put("direccion", user.getDireccion());
         usuario.put("urlPerfil", "");
         usuario.put("key", user.getKey());
+        usuario.put("recuerdame",user.getRecuerdame());
 
         dbRef.child("usuarios").child(key).updateChildren(usuario);
 

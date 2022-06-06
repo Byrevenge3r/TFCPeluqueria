@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.dam.peluqueriacanina.dao.TusCitasVetDao;
 import com.dam.peluqueriacanina.entity.TusCitas;
 
-@Database(entities = {TusCitas.class}, version = 3)
+@Database(entities = {TusCitas.class}, version = 3, exportSchema = false)
 public abstract class TusCitasVetDB extends RoomDatabase {
     public abstract TusCitasVetDao citaDao();
 
