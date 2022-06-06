@@ -14,6 +14,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
@@ -32,7 +33,9 @@ import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -59,6 +62,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     FirebaseDatabase fbr;
     DatabaseReference dbr;
     ArrayList<TusCitas> listaCitas;
+
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -101,7 +105,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         fbr = FirebaseDatabase.getInstance();
         dbr = fbr.getReference();
 
-        dbr.child("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/reservasCoche").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        /*dbr.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasCoche").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 for (DataSnapshot sp : task.getResult().getChildren()) {
@@ -113,6 +117,41 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                             sp.getValue(TusCitas.class).getCitaFecha(),
                             sp.getValue(TusCitas.class).getCitaHora()));
                 }
+            }
+        });*/
+
+        dbr.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasCoche").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                for (DataSnapshot sp : snapshot.getChildren()) {
+                    listaCitas.add(new TusCitas(sp.getValue(TusCitas.class).getUrlI(),
+                            sp.getValue(TusCitas.class).getKey(),
+                            sp.getValue(TusCitas.class).getKeyE(),
+                            sp.getValue(TusCitas.class).getKeyEC(),
+                            sp.getValue(TusCitas.class).getNomAnimal(),
+                            sp.getValue(TusCitas.class).getCitaFecha(),
+                            sp.getValue(TusCitas.class).getCitaHora()));
+                }
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
         ivPerfilPel = findViewById(R.id.ivPerfilPel);

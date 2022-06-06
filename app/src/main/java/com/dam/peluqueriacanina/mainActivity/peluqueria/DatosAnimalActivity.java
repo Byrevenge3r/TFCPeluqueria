@@ -64,7 +64,7 @@ public class DatosAnimalActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         dao.delete(animal);
 
-        dbr = fdb.getReference("usuarios/"+((MiApplication) getApplicationContext()).getKey()+"/animales");
+        dbr = fdb.getReference("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/animales");
         dbr.child(animal.getKey()).removeValue();
         setResult(RESULT_OK);
         finish();

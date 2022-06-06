@@ -37,11 +37,9 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     EditText etMensajeIntroducido;
     Button ibEnviar;
     HashMap<String, Object> chat;
-    Chat mensaje;
     boolean recoger = true;
     String numeroTelConduc;
 
-    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,10 +139,10 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-       if (mensajes.isEmpty()) {
-           SmsManager sms = SmsManager.getDefault();
-           sms.sendTextMessage("+34" + numeroTelConduc, null,  ((MiApplication) getApplicationContext()).getKey(), null, null);
-       }
+        if (mensajes.isEmpty()) {
+            SmsManager sms = SmsManager.getDefault();
+            sms.sendTextMessage("+34" + numeroTelConduc, null, ((MiApplication) getApplicationContext()).getKey(), null, null);
+        }
 
         rv.setAdapter(adapter);
         if (!mensajes.isEmpty()) {
