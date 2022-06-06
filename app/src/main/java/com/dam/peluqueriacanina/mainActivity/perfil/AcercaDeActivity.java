@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.perfil;
+package com.dam.peluqueriacanina.mainActivity.perfil;
 
 import android.os.Bundle;
 

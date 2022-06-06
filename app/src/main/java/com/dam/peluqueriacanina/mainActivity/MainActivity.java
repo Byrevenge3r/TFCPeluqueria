@@ -17,7 +17,7 @@ import com.dam.peluqueriacanina.mainActivity.noticias.NoticiasActivity;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.PeluqueriaActivity;
 import com.dam.peluqueriacanina.mainActivity.tienda.TiendaActivity;
 import com.dam.peluqueriacanina.mainActivity.veterinaria.VeterinariaActivity;
-import com.dam.peluqueriacanina.perfil.AjustesActivity;
+import com.dam.peluqueriacanina.mainActivity.perfil.AjustesActivity;
 import com.dam.peluqueriacanina.registro.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

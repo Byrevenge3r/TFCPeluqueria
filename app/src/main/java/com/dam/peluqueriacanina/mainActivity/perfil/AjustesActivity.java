@@ -1,4 +1,4 @@
-package com.dam.peluqueriacanina.perfil;
+package com.dam.peluqueriacanina.mainActivity.perfil;
 
 import android.Manifest;
 import android.app.Activity;
@@ -153,6 +153,9 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(i);
         } else if (v.equals(cvAcercaDe)) {
             i = new Intent(this, AcercaDeActivity.class);
+            startActivity(i);
+        } else if (v.equals(cvPreguntasRespuestas)) {
+            i = new Intent(this, PreguntasRespuestasActivity.class);
             startActivity(i);
         }
     }

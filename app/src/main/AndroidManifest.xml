@@ -27,11 +27,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PeluqueriaCanina">
         <activity
-            android:name=".perfil.AcercaDeActivity"
+            android:name=".mainActivity.perfil.PreguntasRespuestasActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".mainActivity.perfil.AcercaDeActivity"
             android:exported="false" />
         <activity
             android:name=".PushearProductos2"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".mainActivity.tienda.MostrarCompraActivity"
             android:exported="false" />
@@ -43,10 +52,10 @@
             android:exported="false" />
         <activity
             android:name=".mainActivity.veterinaria.MapaVeterinariasActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
-            android:name=".perfil.AjustesActivity"
-            android:exported="true"></activity>
+            android:name=".mainActivity.perfil.AjustesActivity"
+            android:exported="true" />
         <activity
             android:name=".mainActivity.peluqueria.ChatActivity"
             android:exported="true"
@@ -62,9 +71,7 @@
             android:exported="false" />
         <activity
             android:name=".mainActivity.tienda.TiendaActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".mainActivity.peluqueria.citas.VerTusCitasActivity"
             android:exported="true" />
@@ -86,7 +93,7 @@
         <activity
             android:name=".mainActivity.peluqueria.UbicacionTiempoRealActivity"
             android:exported="true"
-            android:label="@string/title_activity_ubicacion_tiempo_real"></activity>
+            android:label="@string/title_activity_ubicacion_tiempo_real" />
         <activity
             android:name=".mainActivity.peluqueria.DatosAnimalActivity"
             android:exported="false" />
@@ -95,7 +102,7 @@
             android:exported="true" />
         <activity
             android:name=".mainActivity.peluqueria.RegistrarAnimal"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".mainActivity.peluqueria.PeluqueriaActivity"
             android:exported="false" />
@@ -117,15 +124,11 @@
         <activity
             android:name=".registro.LoginActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".mainActivity.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
