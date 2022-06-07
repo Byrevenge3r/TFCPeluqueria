@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.dam.peluqueriacanina.entity.Cesta;
 
@@ -17,6 +18,9 @@ public interface CestaDao {
     @Insert
     void insert(Cesta cesta);
 
+    @Update
+    void update(Cesta cesta);
+
     @Insert
     void insert(List<Cesta> cesta);
 
@@ -25,6 +29,4 @@ public interface CestaDao {
 
     @Delete
     void delete(Cesta cesta);
-
-
 }

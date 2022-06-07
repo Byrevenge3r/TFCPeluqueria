@@ -50,7 +50,7 @@ public class PushearProductos2 extends AppCompatActivity {
     }
 
     private void subirProductos() {
-        listaTienda.add(new DatosTienda("pienso perro razas pequeño", "1kg", getBaseContext().getDrawable(R.drawable.pienso_perro_pequeno), "pienso natural especialmente recomendado para perros de razas pequeñas (1-10 kg peso adulto), fabricado en España con ingredientes naturales. ", "alimentacion", "20"));
+        /*listaTienda.add(new DatosTienda("pienso perro razas pequeño", "1kg", getBaseContext().getDrawable(R.drawable.pienso_perro_pequeno), "pienso natural especialmente recomendado para perros de razas pequeñas (1-10 kg peso adulto), fabricado en España con ingredientes naturales. ", "alimentacion", "20"));
         listaTienda.add(new DatosTienda("transportin perro y gato", "1", getBaseContext().getDrawable(R.drawable.transportin), "El bolso de transporte para perros y gatos Kibo Slide naranja tiene un diseño moderno y deportivo, en colores naranja, negro y gris, para que puedas viajar o pasear con tu mascota", "accesorios", "35"));
         listaTienda.add(new DatosTienda("Bozal perro ajuste perfecto", "1", getBaseContext().getDrawable(R.drawable.bozal), "Bozal ajustable tiene la ventaja de adaptarse perfectamente a todos los hocicos largos o medianos.", "accesorios", "6"));
         listaTienda.add(new DatosTienda("Correa para perros", "1", getBaseContext().getDrawable(R.drawable.correa), "Correa muy comoda de usar para pasear a tu perro", "accesorios", "9"));
@@ -75,7 +75,7 @@ public class PushearProductos2 extends AppCompatActivity {
         listaTienda.add(new DatosTienda("Acuario de cristal", "1", getBaseContext().getDrawable(R.drawable.acuario), "Elaborado con materiales de calidad, que lo convierten en un artículo de alta gama para este tipo de mascotas.", "accesorios", "110"));
         listaTienda.add(new DatosTienda("Hormiguero", "1", getBaseContext().getDrawable(R.drawable.hormiguero), "Hormiguero de acrilico pequeño con zona de forrajeo de gran altura con tapa. Perfecto para las colonias de especies de gran tamaño.", "accesorios", "40"));
         listaTienda.add(new DatosTienda("Suplemento alimenticio para caballos", "10kg", getBaseContext().getDrawable(R.drawable.pienso_caballo), "suplemento nutricional desarrollado para aumentar la masa muscular en los caballos de competición o de trabajo forzado, también para los preparativos para apareamiento. ", "alimentacion", "60"));
-
+*/
 
         HashMap<String, Object> usuario = new HashMap<>();
 

@@ -62,8 +62,8 @@ public class MostrarDatosTusCitasAdapter extends RecyclerView.Adapter<MostrarDat
             tvDatosCitas = itemView.findViewById(R.id.tvVerDatosCita);
         }
 
-        public void bindBoton(BotonTusCitas dato) {
-            tvDatosCitas.setText(dato.getVerDatos());
+        public void bindBoton(BotonTusCitas datos) {
+            tvDatosCitas.setText(datos.getVerDatos());
         }
     }
 }

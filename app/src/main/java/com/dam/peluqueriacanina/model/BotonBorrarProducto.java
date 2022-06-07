@@ -8,7 +8,7 @@ public class BotonBorrarProducto {
     public BotonBorrarProducto() {
         boton = new ArrayList<>();
 
-        boton.add(new BotonTusCitas("Borrar"));
+        boton.add(new BotonTusCitas("Editar"));
     }
 
     public ArrayList<BotonTusCitas> getBoton() {

@@ -87,17 +87,18 @@
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/activity_ver_perfil.xml" value="0.3111111111111111" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/activity_ver_tus_citas.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/activity_veterinaria.xml" value="0.25177809388335703" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/btn_datos_cita.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/chat_layout_usuario.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/citas_recicler_view_citas_adapter.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/citas_recicler_view_pel.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/citas_recicler_view_pel.xml" value="0.31565656565656564" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/citas_recicler_view_pelu_crear_cita.xml" value="0.31979166666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/citas_recicler_view_pelu_crear_cita_prueba.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/citas_recicler_view_vet.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/expandable_lista_preguntas_respuesta_grupo.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/fragment_borrar_cantidad.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/fragment_borrar_cantidad.xml" value="0.22962962962962963" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/fragment_citas.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/mascotas_recicler_view.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/mostrar_compra_recycler.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/mostrar_compra_recycler.xml" value="0.22" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/objetos_tienda.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/recicler_view_opciones_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Fernando/Desktop/TFCPeluqueriaMaster/app/src/main/res/layout/rv_mostrar_productos.xml" value="0.15555555555555556" />

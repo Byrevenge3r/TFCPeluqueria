@@ -58,7 +58,6 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
     Intent i;
     LocalDateTime now;
 
-    ArrayList<BotonTusCitas> listaBoton;
     ArrayList<TusCitas> listaCitas;
 
     @Override
@@ -70,8 +69,6 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
         dbr = fdb.getReference();
 
         boton = new BotonTusCitasLista();
-
-        listaBoton = boton.getBoton();
 
         rv = findViewById(R.id.rvVerTusCitas);
         llmDetalles = new LinearLayoutManager(this);

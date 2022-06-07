@@ -7,12 +7,12 @@ import android.os.Parcelable;
 public class DatosTienda implements Parcelable {
     private String nombre;
     private String cantidad;
-    private Drawable foto;
+    private int foto;
     private String detalle;
     private String tipo;
     private String precio;
 
-    public DatosTienda(String nombre, String cantidad, Drawable foto, String detalle, String tipo, String precio) {
+    public DatosTienda(String nombre, String cantidad, int foto, String detalle, String tipo, String precio) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.foto = foto;
@@ -21,10 +21,10 @@ public class DatosTienda implements Parcelable {
         this.precio = precio;
     }
 
-
     protected DatosTienda(Parcel in) {
         nombre = in.readString();
         cantidad = in.readString();
+        foto = in.readInt();
         detalle = in.readString();
         tipo = in.readString();
         precio = in.readString();
@@ -58,11 +58,11 @@ public class DatosTienda implements Parcelable {
         this.cantidad = cantidad;
     }
 
-    public Drawable getFoto() {
+    public int getFoto() {
         return foto;
     }
 
-    public void setFoto(Drawable foto) {
+    public void setFoto(int foto) {
         this.foto = foto;
     }
 
@@ -90,8 +90,6 @@ public class DatosTienda implements Parcelable {
         this.precio = precio;
     }
 
-
-
     @Override
     public int describeContents() {
         return 0;
@@ -101,6 +99,7 @@ public class DatosTienda implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(nombre);
         dest.writeString(cantidad);
+        dest.writeInt(foto);
         dest.writeString(detalle);
         dest.writeString(tipo);
         dest.writeString(precio);

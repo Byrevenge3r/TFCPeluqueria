@@ -1,10 +1,13 @@
 package com.dam.peluqueriacanina.mainActivity.tienda;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,6 +16,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.peluqueriacanina.R;
@@ -20,10 +24,18 @@ import com.dam.peluqueriacanina.dao.CestaDao;
 import com.dam.peluqueriacanina.db.CestaDB;
 import com.dam.peluqueriacanina.entity.Cesta;
 import com.dam.peluqueriacanina.model.DatosTienda;
+import com.dam.peluqueriacanina.model.Rating;
+import com.dam.peluqueriacanina.model.RatingUser;
+import com.dam.peluqueriacanina.utils.MiApplication;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TiendaDetallesActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -42,6 +54,9 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
     Cesta cesta;
     ArrayList<Cesta> listaCompra;
     boolean existe = false;
+    Rating ratingO;
+    RatingUser ratingUser;
+    boolean hecho = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +70,33 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
         dao = db.cestaDao();
 
         listaCompra = new ArrayList<>();
-
         tienda = getIntent().getParcelableExtra("tienda");
         nombreObj = getIntent().getStringExtra("nombreObj");
 
+        dbRef.child("rating/"+tienda.getNombre()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.getResult().exists()) {
+                    ratingO = task.getResult().getValue(Rating.class);
+                    rbEstrellas.setRating(ratingO.getRating()/ratingO.getContUser());
+
+                    dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            if (task.getResult().exists()) {
+                                ratingUser = task.getResult().getValue(RatingUser.class);
+                                hecho = ratingUser.isHecho();
+                            }
+                        }
+                    });
+
+                } else {
+                    ratingO = new Rating(0,0);
+                }
+            }
+        });
+
+        fotoProducto = findViewById(R.id.producto_detalle_tienda);
         iBMas = findViewById(R.id.imagen_add_tienda_detalles);
         iBMenos = findViewById(R.id.imagen_remove_tienda_detalles);
         ivCarrito = findViewById(R.id.imagen_compra_tienda_detalles);
@@ -75,20 +113,47 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
         iBMenos.setOnClickListener(this);
         btnCesta.setOnClickListener(this);
         ivCarrito.setOnClickListener(this);
-        fotoProducto.setImageDrawable(tienda.getFoto());
+
+        fotoProducto.setImageDrawable(getBaseContext().getDrawable(tienda.getFoto()));
         tvPesoPienso.setText(tienda.getCantidad());
-        tvPrecioFin.setText(tienda.getPrecio());
+        tvPrecioFin.setText(getString(R.string.precio, tienda.getPrecio()));
         tvNombreProd.setText(tienda.getNombre());
         tvPesoPienso.setText(tienda.getCantidad());
         tvInfo.setText(tienda.getDetalle());
 
         //Hacer el rating y terminar con la interfaz de la tienda (SAMU TE FOLLO)
+        rbEstrellas.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                HashMap<String,Object> ratingHM = new HashMap<>();
+                if (fromUser) {
+                    if (hecho) {
+                        if (ratingUser.getRating()>rating) {
+                            ratingHM.put("rating",(ratingUser.getRating()-rating)+ratingO.getRating());
+                            dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
+                        } else {
+                            ratingHM.put("rating",(rating-ratingUser.getRating())+ratingO.getRating());
+                            dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
+                        }
+
+                    } else {
+                        HashMap<String,Object> ratingObj = new HashMap<>();
+                        ratingObj.put("hecho",true);
+                        ratingObj.put("rating",rating);
+                        dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
+                        ratingHM.put("rating",rating+ratingO.getRating());
+                        ratingHM.put("contUser",ratingO.getContUser()+1);
+                        dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
+                    }
+                }
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
         contador = Integer.parseInt(tvCantidad.getText().toString());
-        if (v.equals(iBMas)) {
+        if (v.equals(iBMas)&& contador + 1 <= 99) {
             tvCantidad.setText(String.valueOf(contador + 1));
         } else if (v.equals(iBMenos) && contador - 1 >= 1) {
             tvCantidad.setText(String.valueOf(contador - 1));
@@ -122,4 +187,5 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
 
         }
     }
+
 }

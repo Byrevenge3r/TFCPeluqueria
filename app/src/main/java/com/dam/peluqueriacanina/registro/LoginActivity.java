@@ -58,18 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     AnimalesDao dao;
     AnimalesDB db;
     ArrayList<Animal> listaAnimales;
-    ActivityResultLauncher<Intent> startForResult = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == RESULT_OK) {
-                        etCorreo.setText(result.getData().getStringExtra(Registro5.CLAVE_USER));
-                        etContrasenia.setText(result.getData().getStringExtra(Registro5.CLAVE_CONTRA));
-                    }
-                }
-            }
-    );
+    String contadorUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,7 +156,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void registrar() {
         Intent i = new Intent(this, Registro1.class);
-        startForResult.launch(i);
+        startActivity(i);
+        overridePendingTransition(R.anim.animacion_derecha_izquierda, R.anim.animacion_izquierda_izquierda);
     }
 
 

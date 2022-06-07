@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.model.ContadorUser;
 import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,9 +17,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Registro5 extends AppCompatActivity implements View.OnClickListener {
@@ -33,7 +36,9 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
     FirebaseAuth fAuth;
     DatabaseReference dbRef;
     String key;
-
+    String contadorUser = "";
+    ContadorUser contUser;
+    ArrayList<ContadorUser> cantUser;
     // creating a variable for our Database
     // Reference for Firebase.
     DatabaseReference databaseReference;
@@ -46,6 +51,8 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         fb = FirebaseDatabase.getInstance();
         fAuth = FirebaseAuth.getInstance();
         dbRef = fb.getReference();
+
+        cantUser = new ArrayList<>();
 
         user = new User();
         btnFinalizar = findViewById(R.id.btnSiguienteRegCua);
@@ -96,6 +103,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
                 ((MiApplication) getApplicationContext()).getDireccion(),
                 ((MiApplication) getApplicationContext()).getKey(), "",false);
 
+
         HashMap<String, Object> usuario = new HashMap<>();
 
         usuario.put("nombre", user.getNombre());
@@ -109,6 +117,11 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
         usuario.put("recuerdame",user.getRecuerdame());
 
         dbRef.child("usuarios").child(key).updateChildren(usuario);
+
+        fb = FirebaseDatabase.getInstance();
+        dbRef = fb.getReference();
+
+        usuario.clear();
 
     }
 

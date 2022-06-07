@@ -79,8 +79,8 @@ public class AdapterTienda extends RecyclerView.Adapter<AdapterTienda.AdapterTie
         public void bindTienda(DatosTienda tienda) {
             textoProductoTienda.setText(tienda.getNombre());
             textoTipoTienda.setText(tienda.getTipo());
-            textoPrecioTienda.setText(tienda.getPrecio());
-            fotoProductoTienda.setImageDrawable(tienda.getFoto());
+            textoPrecioTienda.setText(itemView.getContext().getString(R.string.precio, tienda.getPrecio()));
+            fotoProductoTienda.setImageDrawable(itemView.getContext().getDrawable(tienda.getFoto()));
         }
     }
 }

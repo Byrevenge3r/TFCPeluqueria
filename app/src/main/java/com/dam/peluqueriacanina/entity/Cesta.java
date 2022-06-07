@@ -8,6 +8,8 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+
 @Entity(tableName = "CESTA", indices = {@Index(value = {"id"}, unique = true)})
 public class Cesta implements Parcelable {
     @PrimaryKey(autoGenerate = true)
@@ -33,6 +35,14 @@ public class Cesta implements Parcelable {
         nombre = in.readString();
         cantidad = in.readInt();
         precio = in.readInt();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public static final Creator<Cesta> CREATOR = new Creator<Cesta>() {

@@ -101,7 +101,7 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
                 startActivity(i);
 
                 overridePendingTransition(R.anim.animacion_derecha_izquierda, R.anim.animacion_izquierda_izquierda);
-                //}
+
             }
 
         } else if (v.equals(btnAtrasRegDos)) {

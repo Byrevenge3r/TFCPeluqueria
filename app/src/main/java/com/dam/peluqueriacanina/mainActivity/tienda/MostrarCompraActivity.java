@@ -1,7 +1,5 @@
 package com.dam.peluqueriacanina.mainActivity.tienda;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,21 +10,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.comunicacion.ComunicacionProductos;
 import com.dam.peluqueriacanina.dao.CestaDao;
 import com.dam.peluqueriacanina.db.CestaDB;
 import com.dam.peluqueriacanina.entity.Cesta;
-import com.dam.peluqueriacanina.mainActivity.peluqueria.citas.VerDatosTusCitasActivity;
-import com.dam.peluqueriacanina.mainActivity.peluqueria.citas.VerTusCitasActivity;
 import com.dam.peluqueriacanina.mainActivity.tienda.fragmentos.BorrarCantidadFragment;
 import com.dam.peluqueriacanina.model.BotonBorrarProducto;
-import com.dam.peluqueriacanina.model.DatosTienda;
 import com.dam.peluqueriacanina.utils.CarritoAdapter;
 import com.dam.peluqueriacanina.utils.MostrarDatosTusCitasAdapter;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 
-public class MostrarCompraActivity extends AppCompatActivity implements View.OnClickListener {
+public class MostrarCompraActivity extends AppCompatActivity implements View.OnClickListener, ComunicacionProductos {
 
     RecyclerView rv,rvBorrar;
     LinearLayoutManager llm;
@@ -34,7 +29,6 @@ public class MostrarCompraActivity extends AppCompatActivity implements View.OnC
     ArrayList<Cesta> listaCompra;
     CestaDB db;
     CestaDao dao;
-    int precioTotal;
     TextView tvPrecioTotal;
     Button btnPagar;
     MostrarDatosTusCitasAdapter adapterDetallesCita;
@@ -68,6 +62,7 @@ public class MostrarCompraActivity extends AppCompatActivity implements View.OnC
 
         listaCompra = (ArrayList<Cesta>) dao.sacarTodo();
         adapterDetallesCita = new MostrarDatosTusCitasAdapter(boton.getBoton());
+        calcularPrecioTotal();
         adapter = new CarritoAdapter(listaCompra);
         rv.setAdapter(adapter);
 
@@ -77,41 +72,33 @@ public class MostrarCompraActivity extends AppCompatActivity implements View.OnC
                 switch (v.getId()) {
                     case R.id.llCompra:
 
-                        rvBorrar = v.findViewById(R.id.rlContainer).findViewById(R.id.rvVerTusCitasSegundaPantalla);
+                        rvBorrar = v.findViewById(R.id.rlContainerCompra).findViewById(R.id.rvBorrar);
                         rvBorrar.setLayoutManager(new LinearLayoutManager(v.findViewById(R.id.llCompra).getContext()));
-
                         rvBorrar.setAdapter(adapterDetallesCita);
 
                         adapterDetallesCita.setListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                cesta = listaCompra.get(rv.getChildAdapterPosition(view));
+                                cesta = listaCompra.get(rv.getChildAdapterPosition(v));
 
-                                if (cesta.getCantidad()>=2) {
-                                  //  bundle.putString("");
-                                } else if (cesta.getCantidad()<2) {
-                                    cesta.setCantidad(cesta.getCantidad()-1);
-                                    if (cesta.getCantidad()==0) {
-                                        dao.delete(cesta);
-                                        listaCompra = (ArrayList<Cesta>) dao.sacarTodo();
-                                        adapter.setDatos(listaCompra);
-                                        rv.setAdapter(adapter);
-                                    }
-                                }
+                                bundle.putParcelable("producto",cesta);
+                                getSupportFragmentManager().setFragmentResult("key", bundle);
+                                borrar.show(getSupportFragmentManager(),"Borrar");
+
                             }
                         });
-
-                        break;
+                    break;
                 }
             }
         });
+    }
 
-        if (!listaCompra.isEmpty()) {
-            for (int i = 0; i < listaCompra.size(); i++) {
-                precioTotal += listaCompra.get(i).getPrecio() * listaCompra.get(i).getCantidad();
-            }
-            tvPrecioTotal.setText(getString(R.string.precio_total, String.valueOf(precioTotal)));
+    private void calcularPrecioTotal() {
+        int precioTotal = 0;
+        for (int i = 0; i < listaCompra.size(); i++) {
+            precioTotal += listaCompra.get(i).getPrecio() * listaCompra.get(i).getCantidad();
         }
+        tvPrecioTotal.setText(getString(R.string.precio_total, String.valueOf(precioTotal)));
     }
 
     @Override
@@ -119,5 +106,14 @@ public class MostrarCompraActivity extends AppCompatActivity implements View.OnC
         if (v.equals(btnPagar)) {
 
         }
+    }
+
+    @Override
+    public void comunicacion(Cesta cesta) {
+        listaCompra = (ArrayList<Cesta>) dao.sacarTodo();
+        adapter.setDatos(listaCompra);
+        rv.setAdapter(adapter);
+        calcularPrecioTotal();
+
     }
 }

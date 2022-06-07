@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.comunicacion.Comunicacion;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
@@ -59,7 +58,6 @@ public class CitasAnimalFragmentPel extends DialogFragment {
     String numeroTelConduc = "";
     Bundle bundleCita;
     String keyB;
-    Comunicacion listener;
     String tel;
 
     public CitasAnimalFragmentPel() {

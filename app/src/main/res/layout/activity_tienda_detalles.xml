@@ -7,27 +7,35 @@
     android:background="@color/color_principal_citas"
     tools:context=".mainActivity.tienda.TiendaDetallesActivity">
 
-    <ImageButton
-        android:id="@+id/imagen_compra_tienda_detalles"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="6dp"
-        android:scaleType="centerCrop"
-        android:background="@null"
-        android:foreground="?attr/selectableItemBackground"
-        android:src="@drawable/ic_baseline_shopping_cart_24" />
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="128dp">
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/imagen_compra_tienda_detalles"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="end"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp"
+            android:background="@null"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_shopping_cart_24" />
 
+        <ImageButton
+            android:id="@+id/producto_detalle_tienda"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"/>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_tienda"
@@ -147,7 +155,6 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
-                    android:text="@string/precio_final_1"
                     android:textColor="@color/black" />
 
                 <Button

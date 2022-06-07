@@ -8,7 +8,7 @@
     tools:context=".mainActivity.tienda.TiendaActivity">
 
     <ImageButton
-        android:id="@+id/imagen_compra_tienda_detalles"
+        android:id="@+id/imagen_compra_tienda"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"

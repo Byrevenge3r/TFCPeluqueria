@@ -14,10 +14,19 @@ public class MiApplication extends Application {
     private String key;
     private String urlPerfil;
     private boolean recuerdame;
+    private int contUsuarios;
 
     @Override
     public void onCreate() {
         super.onCreate();
+    }
+
+    public int getContUsuarios() {
+        return contUsuarios;
+    }
+
+    public void setContUsuarios(int contUsuarios) {
+        this.contUsuarios = contUsuarios;
     }
 
     public boolean isRecuerdame() {

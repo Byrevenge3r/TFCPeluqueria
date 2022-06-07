@@ -10,19 +10,19 @@
 
     <TextView
         android:text="@string/tv_borrarCantidad"
-        android:layout_width="match_parent"
-        android:textSize="28sp"
-        android:layout_height="wrap_content"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_horizontal">
 
         <ImageButton
-            android:id="@+id/imagen_add_tienda_detalles"
+            android:id="@+id/imagen_add_tienda_eliminar"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@null"
@@ -31,17 +31,15 @@
             android:src="@drawable/ic_baseline_add_circle_outline_24" />
 
         <TextView
-            android:id="@+id/tv_comprar_detalle_producto"
+            android:id="@+id/tv_cantidad_eliminar_producto"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:text="1"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
             android:textSize="80sp" />
 
         <ImageButton
-            android:id="@+id/imagen_remove_tienda_detalles"
+            android:id="@+id/imagen_remove_tienda_eliminar"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@null"
@@ -49,8 +47,20 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_baseline_remove_circle_outline_24" />
 
-
-
     </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/btnAceptarCambios"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:text="@string/btn_cancelar"
+        android:layout_gravity="end"
+        android:textColor="@color/white"
+        android:background="@drawable/fondo_btn_registrar"
+        android:layout_marginEnd="5dp"
+        android:padding="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"/>
+
 
 </LinearLayout>
