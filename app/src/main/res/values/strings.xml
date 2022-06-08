@@ -131,4 +131,7 @@
     <string name="carrito_vacio">Para ver tu cesta antes debes añadir algo</string>
     <string name="tv_borrarCantidad">En cuantos lo quieres dejar?</string>
     <string name="btn_cancelar">Aceptar cambios</string>
+    <string name="buy_with_googlepay_button_content_description">Buy with Google Pay</string>
+    <string name="googlepay_status_unavailable">Google pay no esta disponible en este dispositivo</string>
+    <string name="payments_show_name">Successfully received payment data for %s!</string>
 </resources>

@@ -18,16 +18,18 @@
         android:id="@+id/precioTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/btnPagar"
+        app:layout_constraintBottom_toTopOf="@id/googlePayButton"
         android:text="@string/precio_total"
         android:textSize="30sp" />
 
-    <Button
-        android:id="@+id/btnPagar"
+    <include
+        android:id="@+id/googlePayButton"
+        layout="@layout/buy_with_googlepay_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48sp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/btn_pagar" />
+        android:visibility="gone" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

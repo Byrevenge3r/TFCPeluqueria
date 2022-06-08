@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.dam.peluqueriacanina.dao.CestaDao;
 import com.dam.peluqueriacanina.entity.Cesta;
 
-@Database(entities = {Cesta.class}, version = 4, exportSchema = false)
+@Database(entities = {Cesta.class}, version = 6, exportSchema = false)
 public abstract class CestaDB extends RoomDatabase {
     public abstract CestaDao cestaDao();
 
@@ -19,6 +19,7 @@ public abstract class CestaDB extends RoomDatabase {
         if (CESTA_DB == null) {
             CESTA_DB = Room.databaseBuilder(
                             context.getApplicationContext(), CestaDB.class, "cesta-db")
+                    .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build();
         }
