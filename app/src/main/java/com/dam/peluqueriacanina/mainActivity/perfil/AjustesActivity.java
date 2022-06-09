@@ -70,7 +70,7 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
                                         HashMap<String, Object> fotoPerfil = new HashMap<>();
                                         fotoPerfil.put("urlPerfil", uri.toString());
                                         ((MiApplication) getApplicationContext()).setUrlPerfil(uri.toString());
-                                        dbRef.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey()).updateChildren(fotoPerfil);
+  //                                      dbRef.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey()).updateChildren(fotoPerfil);
 
                                     }
                                 });

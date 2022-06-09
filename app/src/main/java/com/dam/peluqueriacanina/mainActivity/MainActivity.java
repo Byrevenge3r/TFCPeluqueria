@@ -35,7 +35,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    CardView cvPeluqueria, cvVeterinaria, cvTienda, cvNoticias, cvOpciones, cvCerrarSesion;
+    CardView cvPeluqueria, cvVeterinaria, cvTienda, cvNoticias, cvOpciones ;
     Intent i;
     FirebaseDatabase fdb;
     DatabaseReference dbr;
@@ -73,14 +73,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cvTienda = findViewById(R.id.cvTienda);
         cvNoticias = findViewById(R.id.cvNoticias);
         cvOpciones = findViewById(R.id.cvOpciones);
-        cvCerrarSesion = findViewById(R.id.cvCerrarSesion);
+
 
         cvPeluqueria.setOnClickListener(this);
         cvVeterinaria.setOnClickListener(this);
         cvTienda.setOnClickListener(this);
         cvNoticias.setOnClickListener(this);
         cvOpciones.setOnClickListener(this);
-        cvCerrarSesion.setOnClickListener(this);
 
 
     }
@@ -122,19 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v.equals(cvOpciones)) {
             i = new Intent(this, AjustesActivity.class);
             startActivity(i);
-        } else if (v.equals(cvCerrarSesion)) {
-            logout();
-            SharedPreferences spf = getSharedPreferences("checkbox", MODE_PRIVATE);
-            SharedPreferences.Editor edt = spf.edit();
-            edt.putString("remember", "false");
-            edt.apply();
-
-            finish();
-
-            i = new Intent(this, LoginActivity.class);
-            startActivity(i);
-        } else {
-            Toast.makeText(this, "Cerrar sesion", Toast.LENGTH_SHORT).show();
         }
 
 
