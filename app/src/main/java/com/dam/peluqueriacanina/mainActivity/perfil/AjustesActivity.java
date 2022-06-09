@@ -23,6 +23,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.dam.peluqueriacanina.R;
+import com.dam.peluqueriacanina.dao.UriDao;
+import com.dam.peluqueriacanina.db.UriDB;
+import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.registro.LoginActivity;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,8 +40,10 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
+import java.util.concurrent.Semaphore;
 
 public class AjustesActivity extends AppCompatActivity implements View.OnClickListener {
+
 
     CardView cvCambiarContra, cvAcercaDe, cvPreguntasRespuestas, cvCerrarSesion;
     TextView tvUsuarioPerAjustes, tvCorreoPerAjustes;
@@ -49,7 +54,9 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
     DatabaseReference dbRef;
     FirebaseAuth fAuth;
     Intent i;
-
+    HashMap<String, Object> fotoPerfil;
+    UriDao dao;
+    UriDB db;
 
     ActivityResultLauncher<Intent> sForResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -61,33 +68,33 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
                         uri = data.getData();
                         ivPerfilPelAjustes.setImageURI(uri);
                         StorageReference filePath = mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg");
-                        filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        HashMap<String, Object> fotoPerfil = new HashMap<>();
-                                        fotoPerfil.put("urlPerfil", uri.toString());
-                                        ((MiApplication) getApplicationContext()).setUrlPerfil(uri.toString());
-  //                                      dbRef.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey()).updateChildren(fotoPerfil);
+                        filePath.putFile(uri);
+                        ((MiApplication) getApplicationContext()).setUrlPerfil(uri.toString());
 
-                                    }
-                                });
-                            }
-                        });
+                        if (dao.sacarUri(((MiApplication) getApplicationContext()).getKey()) == null) {
+                            dao.insert(new com.dam.peluqueriacanina.entity.Uri(((MiApplication) getApplicationContext()).getKey(), uri.toString()));
+                        } else {
+                            dao.update(new com.dam.peluqueriacanina.entity.Uri(((MiApplication) getApplicationContext()).getKey(), uri.toString()));
+                        }
                     }
                 }
             });
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
+
+        db = UriDB.getDatabase(this);
+        dao = db.uriDao();
+
         mStorage = FirebaseStorage.getInstance().getReference();
         fb = FirebaseDatabase.getInstance();
         dbRef = fb.getReference();
         fAuth = FirebaseAuth.getInstance();
+
+        fotoPerfil = new HashMap<>();
 
         cvCambiarContra = findViewById(R.id.cvCambiarContra);
         cvAcercaDe = findViewById(R.id.cvAcercaDe);
@@ -101,17 +108,24 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         tvCorreoPerAjustes.setText(((MiApplication) getApplicationContext()).getCorreo());
 
         ivPerfilPelAjustes = findViewById(R.id.ivPerfilPelAjustes);
-        if (!((MiApplication) getApplicationContext()).getUrlPerfil().isEmpty()) {
-            Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(153, 153).centerCrop().into(ivPerfilPelAjustes);
-
+        if (dao.sacarUri(((MiApplication) getApplicationContext()).getKey()) != null) {
+            com.dam.peluqueriacanina.entity.Uri uri = dao.sacarUri(((MiApplication) getApplicationContext()).getKey());
+            StorageReference filePath = mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg");
+            mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri.toString()).resize(153, 153).centerCrop().into(ivPerfilPelAjustes);
+                }
+            });
         }
+
         ivPerfilPelAjustes.setOnClickListener(this);
         cvCerrarSesion.setOnClickListener(this);
         cvPreguntasRespuestas.setOnClickListener(this);
         cvAcercaDe.setOnClickListener(this);
         cvCambiarContra.setOnClickListener(this);
-
     }
+
 
     @Override
     public void onClick(View v) {
@@ -170,4 +184,5 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
     public void logout() {
         fAuth.signOut();
     }
+
 }

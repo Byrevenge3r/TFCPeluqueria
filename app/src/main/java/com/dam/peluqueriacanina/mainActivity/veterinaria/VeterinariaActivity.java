@@ -1,6 +1,7 @@
 package com.dam.peluqueriacanina.mainActivity.veterinaria;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
+import com.dam.peluqueriacanina.dao.UriDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
+import com.dam.peluqueriacanina.db.UriDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.DatosAnimalActivity;
@@ -25,7 +28,10 @@ import com.dam.peluqueriacanina.mainActivity.peluqueria.RegistrarAnimal;
 import com.dam.peluqueriacanina.mainActivity.veterinaria.citas.VerCitasVetActivity;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -44,9 +50,11 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
     Button btnAniadirMascotaVet;
     ArrayList<Animal> listaAnimalesVet;
     Intent i;
-    TusCitas tusCitas;
     CardView cvVeterinaria, cvTusCitasVet;
     TextView tvNombreVet;
+    StorageReference mStorageP;
+    UriDao daoU;
+    UriDB dbU;
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -66,14 +74,26 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_veterinaria);
-
+        mStorageP = FirebaseStorage.getInstance().getReference();
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
+
+        dbU = UriDB.getDatabase(this);
+        daoU = dbU.uriDao();
+
         ivPerfilVet = findViewById(R.id.ivPerfilVet);
         tvNombreVet = findViewById(R.id.tvNombreVet);
         tvNombreVet.setText(((MiApplication) getApplicationContext()).getNombre() + " " + ((MiApplication) getApplicationContext()).getApellidos());
-        Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(150, 150).centerCrop().into(ivPerfilVet);
 
+        if (daoU.sacarUri(((MiApplication) getApplicationContext()).getKey()) != null) {
+            com.dam.peluqueriacanina.entity.Uri uri = daoU.sacarUri(((MiApplication) getApplicationContext()).getKey());
+            mStorageP.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri.toString()).resize(150, 150).centerCrop().into(ivPerfilVet);
+                }
+            });
+        }
         imagenAnimal = findViewById(R.id.siAnimal);
         btnAniadirMascotaVet = findViewById(R.id.btnAniadirMascotaVet);
         rv = findViewById(R.id.rvReservarVet);

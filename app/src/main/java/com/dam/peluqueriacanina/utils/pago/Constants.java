@@ -103,7 +103,7 @@ public class Constants {
    *
    * @value #PAYMENT_GATEWAY_TOKENIZATION_NAME
    */
-  public static final String PAYMENT_GATEWAY_TOKENIZATION_NAME = "TheRollingDogs";
+  public static final String PAYMENT_GATEWAY_TOKENIZATION_NAME = "acquired";
 
   /**
    * Custom parameters required by the processor/gateway.

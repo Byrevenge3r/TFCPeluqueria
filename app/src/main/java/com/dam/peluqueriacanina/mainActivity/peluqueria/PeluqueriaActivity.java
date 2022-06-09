@@ -3,6 +3,7 @@ package com.dam.peluqueriacanina.mainActivity.peluqueria;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,13 +25,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
+import com.dam.peluqueriacanina.dao.UriDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
+import com.dam.peluqueriacanina.db.UriDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.citas.VerTusCitasActivity;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.database.ChildEventListener;
@@ -63,6 +67,9 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     FirebaseDatabase fbr;
     DatabaseReference dbr;
     ArrayList<TusCitas> listaCitas;
+    StorageReference mStorageP;
+    UriDao daoU;
+    UriDB dbU;
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -93,7 +100,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_peluqueria);
         mStorage = FirebaseStorage.getInstance().getReference("fotos/" + ((MiApplication) getApplicationContext()).getKey() + "/");
         listaCitas = new ArrayList<>();
-
+        mStorageP = FirebaseStorage.getInstance().getReference();
         if ((ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECEIVE_SMS) +
                 ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.SEND_SMS))
                 != PackageManager.PERMISSION_GRANTED) {
@@ -102,6 +109,9 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
 
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
+
+        dbU = UriDB.getDatabase(this);
+        daoU = dbU.uriDao();
 
         fbr = FirebaseDatabase.getInstance();
         dbr = fbr.getReference();
@@ -121,36 +131,22 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
             }
         });*/
 
-        dbr.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasCoche").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listaCitas.clear();
-                if (snapshot.exists()) {
-                    for (DataSnapshot sp : snapshot.getChildren()) {
-                        listaCitas.add(new TusCitas(sp.getValue(TusCitas.class).getUrlI(),
-                                sp.getValue(TusCitas.class).getKey(),
-                                sp.getValue(TusCitas.class).getKeyE(),
-                                sp.getValue(TusCitas.class).getKeyEC(),
-                                sp.getValue(TusCitas.class).getNomAnimal(),
-                                sp.getValue(TusCitas.class).getCitaFecha(),
-                                sp.getValue(TusCitas.class).getCitaHora()));
-                    }
-                }
-            }
-
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
         ivPerfilPel = findViewById(R.id.ivPerfilPel);
-        if (!((MiApplication) getApplicationContext()).getUrlPerfil().isEmpty()) {
-            Picasso.get().load(((MiApplication) getApplicationContext()).getUrlPerfil()).resize(150, 150).centerCrop().into(ivPerfilPel);
 
+
+
+        if (daoU.sacarUri(((MiApplication) getApplicationContext()).getKey()) != null) {
+            com.dam.peluqueriacanina.entity.Uri uri = daoU.sacarUri(((MiApplication) getApplicationContext()).getKey());
+            StorageReference filePath = mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg");
+            mStorageP.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri.toString()).resize(150, 150).centerCrop().into(ivPerfilPel);
+                }
+            });
         }
+
+
         imagenAnimal = findViewById(R.id.siAnimal);
         btnAniadirMascotaPel = findViewById(R.id.btnAniadirMascotaPel);
         rv = findViewById(R.id.rvReservarPel);

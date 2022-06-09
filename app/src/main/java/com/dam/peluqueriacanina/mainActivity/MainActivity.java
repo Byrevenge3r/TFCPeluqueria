@@ -84,20 +84,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser mFirebaseUser = fAuth.getCurrentUser();
-        if (mFirebaseUser != null) {
-            // there is some user logged in
-
-        } else {
-            // no one logged in
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        }
-    }
-
     public void logout() {
         fAuth.signOut();
     }
