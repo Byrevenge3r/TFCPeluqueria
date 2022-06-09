@@ -58,7 +58,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     AnimalesDao dao;
     AnimalesDB db;
     ArrayList<Animal> listaAnimales;
-    String contadorUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     if (fAuth.getCurrentUser() != null) {
         String correo = fAuth.getCurrentUser().getEmail();
         Query q = dbRef.orderByChild("correo").equalTo(correo);
-        q.addValueEventListener(new ValueEventListener() {
+        q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot datasnap : snapshot.getChildren()) {
@@ -122,25 +121,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         btnInicSes.setOnClickListener(this);
         btnReg.setOnClickListener(this);
-
-        /*cbRecuerdame.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (compoundButton.isChecked()) {
-                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-                    SharedPreferences.Editor edt = preferences.edit();
-                    edt.putString("remember", "true");
-                    edt.apply();
-                    Toast.makeText(LoginActivity.this, "checked", Toast.LENGTH_SHORT).show();
-                } else if (!compoundButton.isChecked()) {
-                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-                    SharedPreferences.Editor edt = preferences.edit();
-                    edt.putString("remember", "false");
-                    edt.apply();
-                    Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });*/
 
     }
 

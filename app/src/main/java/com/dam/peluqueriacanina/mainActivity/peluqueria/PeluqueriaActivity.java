@@ -15,7 +15,6 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
@@ -37,12 +36,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -101,6 +97,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         mStorage = FirebaseStorage.getInstance().getReference("fotos/" + ((MiApplication) getApplicationContext()).getKey() + "/");
         listaCitas = new ArrayList<>();
         mStorageP = FirebaseStorage.getInstance().getReference();
+
         if ((ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECEIVE_SMS) +
                 ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.SEND_SMS))
                 != PackageManager.PERMISSION_GRANTED) {
@@ -116,7 +113,7 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         fbr = FirebaseDatabase.getInstance();
         dbr = fbr.getReference();
 
-        /*dbr.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasCoche").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        dbr.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasCoche").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 for (DataSnapshot sp : task.getResult().getChildren()) {
@@ -129,15 +126,12 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                             sp.getValue(TusCitas.class).getCitaHora()));
                 }
             }
-        });*/
+        });
 
         ivPerfilPel = findViewById(R.id.ivPerfilPel);
 
 
-
         if (daoU.sacarUri(((MiApplication) getApplicationContext()).getKey()) != null) {
-            com.dam.peluqueriacanina.entity.Uri uri = daoU.sacarUri(((MiApplication) getApplicationContext()).getKey());
-            StorageReference filePath = mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg");
             mStorageP.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
@@ -192,12 +186,12 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
             i = new Intent(this, RegistrarAnimal.class);
             arl.launch(i);
         } else if (v.equals(cvUbicacionTiempoReal)) {
-            // if (((dao.sacarTodo()).isEmpty())) {
-            // Toast.makeText(this,R.string.error_no_hay_animales,Toast.LENGTH_SHORT).show();
-            //  } else {
-            i = new Intent(this, UbicacionTiempoRealActivity.class);
-            startActivity(i);
-            //}
+            if (((dao.sacarTodo()).isEmpty())) {
+                Toast.makeText(this, R.string.error_no_hay_animales, Toast.LENGTH_SHORT).show();
+            } else {
+                i = new Intent(this, UbicacionTiempoRealActivity.class);
+                startActivity(i);
+            }
 
         } else if (v.equals(cvTusCitas)) {
             i = new Intent(this, VerTusCitasActivity.class);

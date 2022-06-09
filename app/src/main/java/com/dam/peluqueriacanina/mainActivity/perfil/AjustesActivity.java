@@ -109,8 +109,6 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
 
         ivPerfilPelAjustes = findViewById(R.id.ivPerfilPelAjustes);
         if (dao.sacarUri(((MiApplication) getApplicationContext()).getKey()) != null) {
-            com.dam.peluqueriacanina.entity.Uri uri = dao.sacarUri(((MiApplication) getApplicationContext()).getKey());
-            StorageReference filePath = mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg");
             mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {

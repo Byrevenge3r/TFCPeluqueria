@@ -84,11 +84,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void logout() {
-        fAuth.signOut();
-    }
-
-
     @Override
     public void onClick(View v) {
         //TODO transladar a los activities seleccionados

@@ -67,8 +67,6 @@ public class RegistrarAnimal extends AppCompatActivity implements View.OnClickLi
                         uri = data.getData();
                         ivFotoAnimal.setImageURI(uri);
                         tvPonerMascota.setVisibility(View.INVISIBLE);
-
-
                     }
                 }
             });
