@@ -30,6 +30,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -65,7 +66,7 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_datos_tus_citas);
         fdb = FirebaseDatabase.getInstance();
-        dbr = fdb.getReference("coche");
+        dbr = fdb.getReference("coche/coor");
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fcvUbicacionConductorDetalles);
@@ -90,14 +91,9 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
     }
 
     private void coorMapa() {
-        dbr.addChildEventListener(new ChildEventListener() {
+        dbr.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Mapa mp = snapshot.getValue(Mapa.class);
                 if (mp.getLatitud() != 0.0 && mp.getLongitud() != 0.0) {
                     latitud = mp.getLatitud();
@@ -134,17 +130,6 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
 
                     }
                 }
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
             }
 
             @Override

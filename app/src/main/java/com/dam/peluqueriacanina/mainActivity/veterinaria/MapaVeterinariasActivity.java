@@ -71,6 +71,7 @@ public class MapaVeterinariasActivity extends AppCompatActivity implements OnMap
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
+        //cambiar a oncreate
         LatLng ubicacionUser = getLocationFromAddress(this,((MiApplication)getApplicationContext()).getDireccion());
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacionUser,15));
         clusterManager = new ClusterManager<>(this, mMap);

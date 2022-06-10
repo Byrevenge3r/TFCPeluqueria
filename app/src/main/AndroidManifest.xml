@@ -30,15 +30,19 @@
         android:theme="@style/Theme.PeluqueriaCanina">
         <activity
             android:name=".mainActivity.perfil.PreguntasRespuestasActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".mainActivity.perfil.AcercaDeActivity"
             android:exported="false" />
         <activity
             android:name=".PushearProductos2"
-            android:exported="true"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".mainActivity.tienda.MostrarCompraActivity"
             android:exported="false" />
@@ -50,17 +54,17 @@
             android:exported="false" />
         <activity
             android:name=".mainActivity.veterinaria.MapaVeterinariasActivity"
-            android:exported="true" />
+            android:exported="false"/>
         <activity
             android:name=".mainActivity.perfil.AjustesActivity"
-            android:exported="true" />
+            android:exported="false"/>
         <activity
             android:name=".mainActivity.peluqueria.ChatActivity"
-            android:exported="true"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
             android:name=".mainActivity.peluqueria.citas.VerDatosTusCitasActivity"
-            android:exported="true" />
+            android:exported="false"/>
         <activity
             android:name=".mainActivity.noticias.NoticiasActivity"
             android:exported="false" />
@@ -69,10 +73,10 @@
             android:exported="false" />
         <activity
             android:name=".mainActivity.tienda.TiendaActivity"
-            android:exported="true"></activity>
+            android:exported="false"/>
         <activity
             android:name=".mainActivity.peluqueria.citas.VerTusCitasActivity"
-            android:exported="true" />
+            android:exported="false"/>
 
         <receiver android:name=".notificacion.Recordatorio" />
         <receiver
@@ -90,17 +94,17 @@
 
         <activity
             android:name=".mainActivity.peluqueria.UbicacionTiempoRealActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/title_activity_ubicacion_tiempo_real" />
         <activity
             android:name=".mainActivity.peluqueria.DatosAnimalActivity"
             android:exported="false" />
         <activity
             android:name=".mainActivity.veterinaria.VeterinariaActivity"
-            android:exported="true" />
+            android:exported="false"/>
         <activity
             android:name=".mainActivity.peluqueria.RegistrarAnimal"
-            android:exported="true" />
+            android:exported="false"/>
         <activity
             android:name=".mainActivity.peluqueria.PeluqueriaActivity"
             android:exported="false" />
@@ -109,9 +113,7 @@
             android:exported="false" />
         <activity
             android:name=".registro.Registro5"
-            android:exported="true">
-
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".registro.Registro3"
             android:exported="false" />
@@ -124,15 +126,11 @@
         <activity
             android:name=".registro.LoginActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".mainActivity.MainActivity"
-            android:exported="true" />
+            android:exported="false"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

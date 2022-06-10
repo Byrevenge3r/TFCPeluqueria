@@ -37,8 +37,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -113,10 +115,11 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         fbr = FirebaseDatabase.getInstance();
         dbr = fbr.getReference();
 
-        dbr.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasCoche").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        dbr.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasCoche").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                for (DataSnapshot sp : task.getResult().getChildren()) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listaCitas.clear();
+                for (DataSnapshot sp : snapshot.getChildren()) {
                     listaCitas.add(new TusCitas(sp.getValue(TusCitas.class).getUrlI(),
                             sp.getValue(TusCitas.class).getKey(),
                             sp.getValue(TusCitas.class).getKeyE(),
@@ -125,6 +128,11 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
                             sp.getValue(TusCitas.class).getCitaFecha(),
                             sp.getValue(TusCitas.class).getCitaHora()));
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.peluqueriacanina.R;
@@ -28,8 +29,11 @@ import com.dam.peluqueriacanina.model.Rating;
 import com.dam.peluqueriacanina.model.RatingUser;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -57,6 +61,7 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
     Rating ratingO;
     RatingUser ratingUser;
     boolean hecho = false;
+    float ratingAnterior = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,17 +89,17 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                         @Override
                         public void onComplete(@NonNull Task<DataSnapshot> task) {
                             if (task.getResult().exists()) {
-                                ratingUser = task.getResult().getValue(RatingUser.class);
+                                ratingUser =task.getResult().getValue(RatingUser.class);
                                 hecho = ratingUser.isHecho();
                             }
                         }
                     });
-
                 } else {
                     ratingO = new Rating(0,0);
                 }
             }
         });
+
 
         fotoProducto = findViewById(R.id.producto_detalle_tienda);
         iBMas = findViewById(R.id.imagen_add_tienda_detalles);
@@ -122,22 +127,50 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
         tvInfo.setText(tienda.getDetalle());
 
         //Hacer el rating y terminar con la interfaz de la tienda (SAMU TE FOLLO)
+        //Falla en tema de las subidas en antes de subir a la base de datos restarle el anterior rating y luego subirle el nuevo
         rbEstrellas.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 HashMap<String,Object> ratingHM = new HashMap<>();
+                HashMap<String,Object> ratingObj = new HashMap<>();
                 if (fromUser) {
                     if (hecho) {
-                        if (ratingUser.getRating()>rating) {
-                            ratingHM.put("rating",(ratingUser.getRating()-rating)+ratingO.getRating());
+                        dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                if (task.getResult().exists()) {
+                                    ratingUser =task.getResult().getValue(RatingUser.class);
+                                    hecho = ratingUser.isHecho();
+                                }
+                                if (rating-ratingUser.getRating() > 0) {
+                                    ratingHM.put("rating",rating-ratingUser.getRating());
+                                    dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
+                                }
+                                ratingObj.put("hecho",true);
+                                ratingObj.put("rating",rating);
+                                dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
+
+                            }
+                        });
+
+                        /*if (ratingO.getRating()>rating) {
+                            //Problema aqui no lo sube en la segunda ejecucion
+                            ratingHM.put("rating",ratingO.getRating()-rating);
                             dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
+                            ratingObj.put("hecho",true);
+                            ratingObj.put("rating",rating);
+                            dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
+
                         } else {
-                            ratingHM.put("rating",(rating-ratingUser.getRating())+ratingO.getRating());
+                            ratingHM.put("rating",(rating-ratingO.getRating()));
                             dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
-                        }
+                            ratingObj.put("hecho",true);
+                            ratingObj.put("rating",rating);
+                            dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
+
+                        }*/
 
                     } else {
-                        HashMap<String,Object> ratingObj = new HashMap<>();
                         ratingObj.put("hecho",true);
                         ratingObj.put("rating",rating);
                         dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
