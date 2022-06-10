@@ -114,17 +114,34 @@
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/drawable/background_tienda.xml" value="0.1" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/drawable/forma_header.xml" value="0.187" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.1" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_acerca_de.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_ajustes.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_chat.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_datos_animal.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_detalle_tienda.xml" value="0.2578125" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_mapa_veterinarias.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_mostrar_compra.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_noticias.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_peluqueria.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_pushear_productos2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_registrar_animal.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_registro1.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_registro2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_registro3.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_registro4.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_registro5.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_tienda.xml" value="0.264" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_tienda2.xml" value="0.4" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_tienda_detalles.xml" value="0.264" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_ubicacion_tiempo_real.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_ver_citas_vet.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_ver_datos_citas_vet.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/activity_veterinaria.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/fondo_btn_aniadir_mascota.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/mascotas_recicler_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/mostrar_compra_recycler.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/objeto_producto.xml" value="0.264" />
         <entry key="..\:/Users/samue/AndroidStudioProjects/TFCPeluqueria/app/src/main/res/layout/objetos_tienda.xml" value="0.264" />
       </map>
