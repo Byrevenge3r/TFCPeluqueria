@@ -214,7 +214,7 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                         ratingObj.put("hecho",true);
                         ratingObj.put("rating",rating);
                         dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
-                        ratingHM.put("rating",rating+ratingO.getRating());
+                        ratingHM.put("rating",ratingBar.getRating()+ratingO.getRating());
                         ratingHM.put("contUser",ratingO.getContUser()+1);
                         dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
                     }
