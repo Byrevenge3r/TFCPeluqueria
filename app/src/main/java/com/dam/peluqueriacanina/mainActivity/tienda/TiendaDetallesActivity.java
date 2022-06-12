@@ -135,7 +135,46 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                 HashMap<String,Object> ratingObj = new HashMap<>();
                 if (fromUser) {
                     if (hecho) {
-                        dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                        dbRef.child("rating/"+tienda.getNombre()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                if (task.getResult().exists()) {
+                                    ratingO = task.getResult().getValue(Rating.class);
+
+                                    dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                            if (task.getResult().exists()) {
+                                                ratingHM.clear();
+                                                ratingObj.clear();
+                                                ratingUser =task.getResult().getValue(RatingUser.class);
+                                                hecho = ratingUser.isHecho();
+
+                                                //if ((ratingO.getRating()-rating) < 0) {
+                                                    ratingHM.put("rating",(ratingO.getRating()-ratingUser.getRating()) + ratingBar.getRating());
+                                                    dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
+
+                                                    ratingObj.put("hecho",true);
+                                                    ratingObj.put("rating",(ratingO.getRating()-ratingUser.getRating()) + ratingBar.getRating());
+                                                    dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
+
+                                               /* } else {
+                                                    ratingHM.put("rating",ratingO.getRating()-rating);
+                                                    dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
+
+                                                    ratingObj.put("hecho",true);
+                                                    ratingObj.put("rating",ratingO.getRating()-rating);
+                                                    dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
+
+                                                }*/
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        });
+
+                       /* dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<DataSnapshot> task) {
                                 //BORRAR RATING ANTERIOR Y SUBIR NUEVO RATING
@@ -145,10 +184,9 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                                     ratingUser =task.getResult().getValue(RatingUser.class);
                                     hecho = ratingUser.isHecho();
 
-                                    if (ratingBar.getRating()-ratingUser.getRating() > 0) {
-                                        ratingHM.put("rating",ratingBar.getRating()-ratingUser.getRating());
-                                        dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
-                                    }
+                                    ratingHM.put("rating",rating+ratingO.getRating());
+                                    dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
+
                                     ratingObj.put("hecho",true);
                                     ratingObj.put("rating",ratingBar.getRating());
                                     dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
@@ -156,7 +194,7 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                                 }
 
                             }
-                        });
+                        });*/
 
                     } else {
                         ratingObj.put("hecho",true);
