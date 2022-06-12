@@ -152,13 +152,23 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                                                 ratingUser =task.getResult().getValue(RatingUser.class);
                                                 hecho = ratingUser.isHecho();
 
+                                                if ((ratingUser.getRating()-ratingBar.getRating()) < 0) {
+                                                    ratingHM.put("rating",((ratingO.getRating()-ratingBar.getRating())));
+                                                    dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
 
-                                                ratingHM.put("rating",((ratingO.getRating()-ratingUser.getRating()) + ratingBar.getRating()));
-                                                dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
+                                                    ratingObj.put("hecho",true);
+                                                    ratingObj.put("rating",(ratingBar.getRating()));
+                                                    dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
 
-                                                ratingObj.put("hecho",true);
-                                                ratingObj.put("rating",(ratingBar.getRating()));
-                                                dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
+                                                } else {
+                                                    ratingHM.put("rating",((ratingO.getRating()-ratingUser.getRating()) + ratingBar.getRating()));
+                                                    dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
+
+                                                    ratingObj.put("hecho",true);
+                                                    ratingObj.put("rating",(ratingBar.getRating()));
+                                                    dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
+
+                                                }
 
 
                                                     /*ratingHM.put("rating",((ratingO.getRating()+ratingUser.getRating()) + ratingBar.getRating()));
