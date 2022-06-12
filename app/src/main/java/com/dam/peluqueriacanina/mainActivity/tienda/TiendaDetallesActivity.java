@@ -138,37 +138,25 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                         dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                //BORRAR RATING ANTERIOR Y SUBIR NUEVO RATING
                                 if (task.getResult().exists()) {
+                                    ratingHM.clear();
+                                    ratingObj.clear();
                                     ratingUser =task.getResult().getValue(RatingUser.class);
                                     hecho = ratingUser.isHecho();
+
+                                    if (ratingBar.getRating()-ratingUser.getRating() > 0) {
+                                        ratingHM.put("rating",ratingBar.getRating()-ratingUser.getRating());
+                                        dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
+                                    }
+                                    ratingObj.put("hecho",true);
+                                    ratingObj.put("rating",ratingBar.getRating());
+                                    dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
+
                                 }
-                                if (rating-ratingUser.getRating() > 0) {
-                                    ratingHM.put("rating",rating-ratingUser.getRating());
-                                    dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
-                                }
-                                ratingObj.put("hecho",true);
-                                ratingObj.put("rating",rating);
-                                dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
 
                             }
                         });
-
-                        /*if (ratingO.getRating()>rating) {
-                            //Problema aqui no lo sube en la segunda ejecucion
-                            ratingHM.put("rating",ratingO.getRating()-rating);
-                            dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
-                            ratingObj.put("hecho",true);
-                            ratingObj.put("rating",rating);
-                            dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
-
-                        } else {
-                            ratingHM.put("rating",(rating-ratingO.getRating()));
-                            dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
-                            ratingObj.put("hecho",true);
-                            ratingObj.put("rating",rating);
-                            dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
-
-                        }*/
 
                     } else {
                         ratingObj.put("hecho",true);
