@@ -173,6 +173,7 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                                 }
                             }
                         });
+                        //
 
                        /* dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                             @Override
