@@ -150,7 +150,7 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                                                 ratingUser =task.getResult().getValue(RatingUser.class);
                                                 hecho = ratingUser.isHecho();
 
-                                                if ((ratingO.getRating()-ratingBar.getRating()) > 0) {
+
                                                     ratingHM.put("rating",((ratingO.getRating()-ratingUser.getRating()) + ratingBar.getRating()));
                                                     dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
 
@@ -158,15 +158,15 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                                                     ratingObj.put("rating",(ratingBar.getRating()));
                                                     dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
 
-                                                } else {
-                                                    ratingHM.put("rating",((ratingO.getRating()+ratingUser.getRating()) + ratingBar.getRating()));
+
+                                                    /*ratingHM.put("rating",((ratingO.getRating()+ratingUser.getRating()) + ratingBar.getRating()));
                                                     dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
 
                                                     ratingObj.put("hecho",true);
                                                     ratingObj.put("rating",(ratingBar.getRating()));
                                                     dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
 
-                                                }
+                                                */
                                             }
                                         }
                                     });
