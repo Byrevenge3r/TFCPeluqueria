@@ -32,12 +32,17 @@ public class PushearProductos2 extends AppCompatActivity {
     }
 
     private void aaaaaa() {
-        listaa.add(new PreguntaRespuesta("aaaaa","aaaaaaa"));
-        listaa.add(new PreguntaRespuesta("bbbbbb","bbbbbbbb"));
-        listaa.add(new PreguntaRespuesta("cccccc","ccccccccc"));
-        listaa.add(new PreguntaRespuesta("hhhhhhhh","hhhhhh"));
-        listaa.add(new PreguntaRespuesta("eeeeeee","eeeeeeeee"));
-        listaa.add(new PreguntaRespuesta("ggggg","ggggg"));
+        listaa.add(new PreguntaRespuesta("¿La fugoneta de lavado recoge y entrega la mascota en casa?","Así es, elige dia y hora y nosotros te la recogemos y entregamos totalmente limpia."));
+        listaa.add(new PreguntaRespuesta("¿Puedo ver en cada momento donde se encuentra mi mascota??","Sí, en nuestra ubicacion, en el apartado mapa de lavado, indica la ubicación exacta"));
+        listaa.add(new PreguntaRespuesta("¿Que centros veterinarios puedo elegir con la aplicación?","De momento, todos los de la Comunidad de Madrid, actualizados al día"));
+        listaa.add(new PreguntaRespuesta("¿Puedo registrar más de una mascota?","En efecto, tantas como tengas"));
+        listaa.add(new PreguntaRespuesta("¿Cuesta dinero usar la aplicación?","No, la aplicación es totalmente gratuita"));
+        listaa.add(new PreguntaRespuesta("¿Que puedo comprar en la tienda?","Desde alimentos, juguetes hasta accesorios para cualquier tipo de mascota"));
+        listaa.add(new PreguntaRespuesta("¿El chat es en tiempo real?","Así es, es en tiempo real y directo con la veterinaria o el centro de lavado"));
+        listaa.add(new PreguntaRespuesta("¿Puedo registrar más de una cuenta?","Sólo una por email y teléfono movil"));
+        listaa.add(new PreguntaRespuesta("¿Puedo cancelar una cita una vez ya está hecha?","Sí, puedes cancelar citas en cualquier momento"));
+        listaa.add(new PreguntaRespuesta("¿Cómo ver las citas activas?","En el apartado citas, dentro de lavado o veterinario según sea el caso, puedes ver el centro veterinario dia y hora de la cita elegida"));
+
 
 
         HashMap<String, Object> usuario = new HashMap<>();
