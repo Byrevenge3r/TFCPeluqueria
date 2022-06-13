@@ -92,6 +92,7 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                                 ratingUser =task.getResult().getValue(RatingUser.class);
                                 hecho = ratingUser.isHecho();
                             } else {
+                                ratingUser = new RatingUser(false,0);
                                 hecho = false;
                             }
                         }
