@@ -148,8 +148,6 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                                         @Override
                                         public void onComplete(@NonNull Task<DataSnapshot> task) {
                                             if (task.getResult().exists()) {
-                                                ratingHM.clear();
-                                                ratingObj.clear();
                                                 ratingUser =task.getResult().getValue(RatingUser.class);
                                                 hecho = ratingUser.isHecho();
 
@@ -212,17 +210,17 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                         });*/
 
                     } else {
+                        ratingObj.put("hecho",true);
+                        ratingObj.put("rating",rating);
+                        dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
+
+                        ratingHM.put("contUser",ratingO.getContUser()+1);
                         if (ratingO.getContUser() == 0) {
                             ratingHM.put("rating",(ratingBar.getRating()+ratingO.getRating()));
                         } else {
-                            ratingObj.put("hecho",true);
-                            ratingObj.put("rating",rating);
-                            dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
                             ratingHM.put("rating",(ratingBar.getRating()+ratingO.getRating())/ratingO.getContUser());
-                            ratingHM.put("contUser",ratingO.getContUser()+1);
-                            dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
                         }
-
+                        dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
                     }
                 }
             }
