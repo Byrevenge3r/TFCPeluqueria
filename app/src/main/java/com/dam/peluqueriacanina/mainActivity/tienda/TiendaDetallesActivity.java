@@ -83,7 +83,7 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.getResult().exists()) {
                     ratingO = task.getResult().getValue(Rating.class);
-                    rbEstrellas.setRating(ratingO.getRating()/ratingO.getContUser());
+                    rbEstrellas.setRating(ratingO.getRating());
 
                     dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                         @Override
@@ -162,7 +162,7 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                                                     dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
 
                                                 } else {
-                                                    ratingHM.put("rating",((ratingO.getRating()-ratingUser.getRating()) + ratingBar.getRating()));
+                                                    ratingHM.put("rating",((ratingO.getRating()-ratingUser.getRating()) + ratingBar.getRating())/ratingO.getContUser());
                                                     dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
 
                                                     ratingObj.put("hecho",true);
@@ -215,7 +215,7 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                         ratingObj.put("hecho",true);
                         ratingObj.put("rating",rating);
                         dbRef.child("usuarios/"+((MiApplication)getApplicationContext()).getKey()+"/hechoRating/"+tienda.getNombre()).updateChildren(ratingObj);
-                        ratingHM.put("rating",ratingBar.getRating()+ratingO.getRating());
+                        ratingHM.put("rating",(ratingBar.getRating()+ratingO.getRating()/ratingO.getContUser()));
                         ratingHM.put("contUser",ratingO.getContUser()+1);
                         dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
                     }
