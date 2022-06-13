@@ -151,7 +151,7 @@ public class TiendaDetallesActivity extends AppCompatActivity implements View.On
                                                 ratingUser =task.getResult().getValue(RatingUser.class);
                                                 hecho = ratingUser.isHecho();
 
-                                                if ((ratingUser.getRating()-ratingBar.getRating()) < 0) {
+                                                if (ratingBar.getRating() == 0) {
                                                     ratingHM.put("rating",((ratingO.getRating()-ratingBar.getRating())));
                                                     dbRef.child("rating/"+tienda.getNombre()).updateChildren(ratingHM);
 
