@@ -16,6 +16,7 @@ import com.dam.peluqueriacanina.model.Mapa;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -57,8 +58,7 @@ public class UbicacionTiempoRealActivity
 
         setContentView(R.layout.activity_ubicacion_tiempo_real);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        MapFragment mapFragment = (MapFragment) getFragmentManager() .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.furgo_canina);

@@ -85,14 +85,15 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
         tvNombreVet = findViewById(R.id.tvNombreVet);
         tvNombreVet.setText(((MiApplication) getApplicationContext()).getNombre() + " " + ((MiApplication) getApplicationContext()).getApellidos());
 
-        if (daoU.sacarUri(((MiApplication) getApplicationContext()).getKey()) != null) {
-            mStorageP.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
+        mStorageP.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if (!uri.toString().isEmpty()) {
                     Picasso.get().load(uri.toString()).resize(150, 150).centerCrop().into(ivPerfilVet);
                 }
-            });
-        }
+            }
+        });
+
         imagenAnimal = findViewById(R.id.siAnimal);
         btnAniadirMascotaVet = findViewById(R.id.btnAniadirMascotaVet);
         rv = findViewById(R.id.rvReservarVet);

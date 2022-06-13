@@ -20,6 +20,7 @@ import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.UtilsJSon;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
@@ -57,8 +58,8 @@ public class MapaVeterinariasActivity extends AppCompatActivity implements OnMap
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa_veterinarias);
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.mapVet);
+
+        MapFragment mapFragment = (MapFragment) getFragmentManager() .findFragmentById(R.id.mapVet);
         mapFragment.getMapAsync(this);
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);

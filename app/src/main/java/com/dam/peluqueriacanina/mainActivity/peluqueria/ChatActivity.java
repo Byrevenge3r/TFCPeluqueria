@@ -163,7 +163,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
                 chat.put("mensaje", mensaje);
                 chat.put("codigoPer", "U");
-                //Cambiar todo por la ruta correcta
                 dbr.child("usuarios").child(((MiApplication) getApplicationContext()).getKey()).child("chat").child(key).setValue(chat);
 
                 recoger = false;

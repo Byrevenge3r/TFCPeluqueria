@@ -115,7 +115,6 @@ public class VerDatosTusCitasActivity extends AppCompatActivity implements OnMap
 
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                         now = LocalDateTime.now();
-                        //Esto va raro
                         horaR = Integer.parseInt(horaA[0]);
                         horaB = horaR * 60;
                     }
