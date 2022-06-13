@@ -30,7 +30,7 @@ public class PushearProductos2 extends AppCompatActivity {
 
 
     }
-//
+//a
     private void aaaaaa() {
         listaa.add(new PreguntaRespuesta("¿La furgoneta de lavado recoge y entrega la mascota en casa?","Así es, elige dia y hora y nosotros te la recogemos y entregamos totalmente limpia."));
         listaa.add(new PreguntaRespuesta("¿Puedo ver en cada momento donde se encuentra mi mascota??","Sí, la aplicación permite ver en tiempo real donde está tu mascota."));
