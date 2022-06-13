@@ -29,6 +29,9 @@ import com.dam.peluqueriacanina.dao.CestaDao;
 import com.dam.peluqueriacanina.db.CestaDB;
 import com.dam.peluqueriacanina.model.DatosTienda;
 import com.dam.peluqueriacanina.utils.AdapterTienda;
+import com.dam.peluqueriacanina.utils.MiApplication;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -80,6 +83,7 @@ public class TiendaActivity extends AppCompatActivity implements View.OnClickLis
         linearTienda = findViewById(R.id.llTienda);
         linearProducto = findViewById(R.id.llProducto);
         rv = findViewById(R.id.rvMostrarProductos);
+
 
         db = CestaDB.getDatabase(this);
         dao = db.cestaDao();

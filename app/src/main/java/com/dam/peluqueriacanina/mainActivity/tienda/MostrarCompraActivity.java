@@ -155,7 +155,7 @@ public class MostrarCompraActivity extends AppCompatActivity implements View.OnC
             precioTotal += listaCompra.get(i).getPrecio() * listaCompra.get(i).getCantidad();
         }
         precioTotalGoogle = precioTotal;
-        tvPrecioTotal.setText(getString(R.string.precio_total, String.valueOf(precioTotal)));
+        tvPrecioTotal.setText(getString(R.string.precio_total, String.valueOf(precioTotal))+"€");
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

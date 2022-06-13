@@ -44,7 +44,6 @@ public class PushearProductos2 extends AppCompatActivity {
         listaa.add(new PreguntaRespuesta("¿Cómo ver las citas activas?","En el apartado citas, dentro de lavado o veterinario según sea el caso, puedes ver el centro veterinario dia y hora de la cita elegida."));
 
 
-
         HashMap<String, Object> usuario = new HashMap<>();
         for (int i = 0; i < listaa.size(); i++) {
             key = dbRef.push().getKey();

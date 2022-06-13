@@ -108,14 +108,13 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         tvCorreoPerAjustes.setText(((MiApplication) getApplicationContext()).getCorreo());
 
         ivPerfilPelAjustes = findViewById(R.id.ivPerfilPelAjustes);
-        if (dao.sacarUri(((MiApplication) getApplicationContext()).getKey()) != null) {
             mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     Picasso.get().load(uri.toString()).resize(153, 153).centerCrop().into(ivPerfilPelAjustes);
                 }
             });
-        }
+
 
         ivPerfilPelAjustes.setOnClickListener(this);
         cvCerrarSesion.setOnClickListener(this);
