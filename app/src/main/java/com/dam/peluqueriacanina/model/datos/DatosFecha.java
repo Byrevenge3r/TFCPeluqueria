@@ -1,4 +1,6 @@
-package com.dam.peluqueriacanina.model;
+package com.dam.peluqueriacanina.model.datos;
+
+import com.dam.peluqueriacanina.model.CitasReserva;
 
 import java.util.ArrayList;
 

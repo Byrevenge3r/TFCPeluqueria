@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.model.CitasReserva;
-import com.dam.peluqueriacanina.model.DatosFecha;
+import com.dam.peluqueriacanina.model.datos.DatosFecha;
 import com.dam.peluqueriacanina.utils.CitasAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
