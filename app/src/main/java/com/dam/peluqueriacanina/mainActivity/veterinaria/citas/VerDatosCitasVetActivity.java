@@ -34,36 +34,23 @@ import java.io.IOException;
 
 public class VerDatosCitasVetActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView tvNombreVet,tvHoraVet,tvFechaVet,tvDistanciaTiempoVet;
+    TextView tvNombreVet,tvHoraVet,tvFechaVet;
     Button btnGoogleMaps;
-    NombreDirVet clinica;
     String nom;
     String hora;
     String fecha;
-    LocationCallback locationCallback;
-    Location location;
     Location locDestino;
-    float distancia;
-    float tiempoD;
-    FusedLocationProviderClient fusedLocationProviderClient;
-    LocationRequest locationRequest;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.dam.peluqueriacanina.R.layout.activity_ver_datos_citas_vet);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
-
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 3);
-
-        }
-
         tvNombreVet = findViewById(R.id.tvNombreVet);
         tvHoraVet = findViewById(R.id.tvHoraVet);
         tvFechaVet = findViewById(R.id.tvFechaVet);
-        tvDistanciaTiempoVet = findViewById(R.id.tvDistanciaTiempoVet);
+
 
         btnGoogleMaps = findViewById(R.id.btnGoogleMaps);
 
@@ -71,12 +58,7 @@ public class VerDatosCitasVetActivity extends AppCompatActivity implements View.
         nom = getIntent().getStringExtra("nom");
         hora = getIntent().getStringExtra("hora");
 
-        location = new Location("ubicacionOrigen");
-        locDestino = new Location("ubicacionDestino");
         btnGoogleMaps.setOnClickListener(this);
-
-        cargarMarcJson();
-        initFused();
 
         tvNombreVet.setText(getBaseContext().getString(R.string.tv_nombre_vet, nom));
         tvFechaVet.setText(getBaseContext().getString(R.string.tv_fecha_vet, fecha));
@@ -85,29 +67,6 @@ public class VerDatosCitasVetActivity extends AppCompatActivity implements View.
 
     }
 
-    @SuppressLint("MissingPermission")
-    private void initFused() {
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
-        buildLocationRequest();
-        buildLocationCallBack();
-
-        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
-
-    }
-    @SuppressLint("MissingPermission")
-    private void buildLocationCallBack() {
-        locationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(@NonNull LocationResult locationResult) {
-                super.onLocationResult(locationResult);
-                location = locationResult.getLocations().get(locationResult.getLocations().size() - 1);
-                distancia = location.distanceTo(locDestino);
-                tiempoD = ((distancia / 1000) / 23) * 60;
-                tvDistanciaTiempoVet.setText(getBaseContext().getString(R.string.tv_tiempo_estimado_horas,  tiempoD));
-            }
-        };
-    }
 
     @Override
     public void onClick(View v) {
@@ -115,39 +74,9 @@ public class VerDatosCitasVetActivity extends AppCompatActivity implements View.
                 + "(veterinaria)"));
         intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
         startActivity(intent);
-    }
-
-    private void cargarMarcJson() {
-        try {
-            String jsonFileContent = UtilsJSon.readFile(getApplicationContext(), "veterinarias.json");
-            JSONArray jsonArray = new JSONArray(jsonFileContent);
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                clinica = new NombreDirVet(jsonObject.getString("clinica"),
-                        jsonObject.getString("lat"),
-                        jsonObject.getString("lon"));
-
-                if (clinica.getClinica().trim().equals(nom)) {
-                    i = jsonArray.length();
-                    locDestino.setLatitude(Double.parseDouble(clinica.getLat()));
-                    locDestino.setLongitude(Double.parseDouble(clinica.getLon()));
-                }
-            }
 
 
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
-    private void buildLocationRequest() {
-        locationRequest = LocationRequest.create()
-                .setInterval(5000)
-                .setFastestInterval(3000)
-                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setMaxWaitTime(100);
-    }
 
 }

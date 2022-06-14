@@ -44,15 +44,6 @@
         app:layout_constraintTop_toBottomOf="@id/tvFechaVet"
         android:gravity="center"/>
 
-    <TextView
-        android:id="@+id/tvDistanciaTiempoVet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/tvHoraVet"
-        android:gravity="center"/>
-
     <android.widget.Button
         android:id="@+id/btnGoogleMaps"
         android:layout_width="match_parent"
@@ -61,7 +52,7 @@
         android:text="@string/btn_google"
         android:textColor="@color/color_blanco"
         android:background="@drawable/fondo_btn"
-        app:layout_constraintTop_toBottomOf="@id/tvDistanciaTiempoVet" />
+        app:layout_constraintTop_toBottomOf="@id/tvHoraVet" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
