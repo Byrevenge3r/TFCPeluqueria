@@ -130,16 +130,15 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
         ivPerfilPel = findViewById(R.id.ivPerfilPel);
 
 
-            mStorageP.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    if (!uri.toString().isEmpty()) {
-                        Picasso.get().load(uri.toString()).resize(150, 150).centerCrop().into(ivPerfilPel);
+        mStorageP.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                if (!uri.toString().isEmpty()) {
+                    Picasso.get().load(uri.toString()).resize(150, 150).centerCrop().into(ivPerfilPel);
 
-                    }
                 }
-            });
-
+            }
+        });
 
 
         imagenAnimal = findViewById(R.id.siAnimal);

@@ -1,16 +1,10 @@
 package com.dam.peluqueriacanina.mainActivity.tienda;
 
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -30,13 +24,7 @@ import com.dam.peluqueriacanina.db.CestaDB;
 import com.dam.peluqueriacanina.model.DatosTienda;
 import com.dam.peluqueriacanina.model.datos.ProductosTienda;
 import com.dam.peluqueriacanina.utils.AdapterTienda;
-import com.dam.peluqueriacanina.utils.MiApplication;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.squareup.picasso.Picasso;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Locale;
 

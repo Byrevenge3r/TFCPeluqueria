@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.entity.TusCitas;
-import com.dam.peluqueriacanina.model.BotonTusCitas;
 import com.dam.peluqueriacanina.model.datos.BotonTusCitasLista;
 import com.dam.peluqueriacanina.utils.AnimalPeluAdapter;
 import com.dam.peluqueriacanina.utils.MiApplication;
@@ -196,14 +196,13 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
                                 try {
                                     fecha = formatter.parse(tusCitas.getCitaFecha());
 
-                                    // if (fecha.equals(fechaHoy)) {
-                                    i = new Intent(VerTusCitasActivity.this, VerDatosTusCitasActivity.class);
-                                    i.putExtra("hora", tusCitas.getCitaHora());
-
-                                    startActivity(i);
-                                    // } else {
-                                    //     Toast.makeText(VerTusCitasActivity.this, R.string.fecha_distinta_hoy, Toast.LENGTH_SHORT).show();
-                                    //}
+                                    if (fecha.equals(fechaHoy)) {
+                                        i = new Intent(VerTusCitasActivity.this, VerDatosTusCitasActivity.class);
+                                        i.putExtra("hora", tusCitas.getCitaHora());
+                                        startActivity(i);
+                                    } else {
+                                        Toast.makeText(VerTusCitasActivity.this, R.string.fecha_distinta_hoy, Toast.LENGTH_SHORT).show();
+                                    }
                                 } catch (ParseException e) {
                                     e.printStackTrace();
                                 }

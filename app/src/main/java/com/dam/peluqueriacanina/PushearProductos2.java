@@ -19,29 +19,31 @@ public class PushearProductos2 extends AppCompatActivity {
     DatabaseReference dbRef = fdb.getReference();
     ArrayList<DatosTienda> listaTienda = new ArrayList<>();
     ArrayList<PreguntaRespuesta> listaa = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pushear_productos2);
 
-       // subirProductos(); a
+        // subirProductos(); a
 
         aaaaaa();
 
 
     }
-//a
+
+    //a
     private void aaaaaa() {
-        listaa.add(new PreguntaRespuesta("¿La furgoneta de lavado recoge y entrega la mascota en casa?","Así es, elige dia y hora y nosotros te la recogemos y entregamos totalmente limpia."));
-        listaa.add(new PreguntaRespuesta("¿Puedo ver en cada momento donde se encuentra mi mascota??","Sí, la aplicación permite ver en tiempo real donde está tu mascota."));
-        listaa.add(new PreguntaRespuesta("¿Que centros veterinarios puedo elegir con la aplicación?","De momento, todos los de la Comunidad de Madrid, actualizados al día."));
-        listaa.add(new PreguntaRespuesta("¿Puedo registrar más de una mascota?","En efecto, tantas como tengas."));
-        listaa.add(new PreguntaRespuesta("¿Cuesta dinero usar la aplicación?","No, la aplicación es totalmente gratuita."));
-        listaa.add(new PreguntaRespuesta("¿Que puedo comprar en la tienda?","Desde alimentos, juguetes hasta accesorios para cualquier tipo de mascota."));
-        listaa.add(new PreguntaRespuesta("¿El chat es en tiempo real?","Así es, es en tiempo real y directo con la veterinaria o el centro de lavado."));
-        listaa.add(new PreguntaRespuesta("¿Puedo registrar más de una cuenta?","Sólo una por email y teléfono movil."));
-        listaa.add(new PreguntaRespuesta("¿Puedo cancelar una cita una vez ya está hecha?","Sí, puedes cancelar citas en cualquier momento."));
-        listaa.add(new PreguntaRespuesta("¿Cómo ver las citas activas?","En el apartado citas, dentro de lavado o veterinario según sea el caso, puedes ver el centro veterinario dia y hora de la cita elegida."));
+        listaa.add(new PreguntaRespuesta("¿La furgoneta de lavado recoge y entrega la mascota en casa?", "Así es, elige dia y hora y nosotros te la recogemos y entregamos totalmente limpia."));
+        listaa.add(new PreguntaRespuesta("¿Puedo ver en cada momento donde se encuentra mi mascota??", "Sí, la aplicación permite ver en tiempo real donde está tu mascota."));
+        listaa.add(new PreguntaRespuesta("¿Que centros veterinarios puedo elegir con la aplicación?", "De momento, todos los de la Comunidad de Madrid, actualizados al día."));
+        listaa.add(new PreguntaRespuesta("¿Puedo registrar más de una mascota?", "En efecto, tantas como tengas."));
+        listaa.add(new PreguntaRespuesta("¿Cuesta dinero usar la aplicación?", "No, la aplicación es totalmente gratuita."));
+        listaa.add(new PreguntaRespuesta("¿Que puedo comprar en la tienda?", "Desde alimentos, juguetes hasta accesorios para cualquier tipo de mascota."));
+        listaa.add(new PreguntaRespuesta("¿El chat es en tiempo real?", "Así es, es en tiempo real y directo con la veterinaria o el centro de lavado."));
+        listaa.add(new PreguntaRespuesta("¿Puedo registrar más de una cuenta?", "Sólo una por email y teléfono movil."));
+        listaa.add(new PreguntaRespuesta("¿Puedo cancelar una cita una vez ya está hecha?", "Sí, puedes cancelar citas en cualquier momento."));
+        listaa.add(new PreguntaRespuesta("¿Cómo ver las citas activas?", "En el apartado citas, dentro de lavado o veterinario según sea el caso, puedes ver el centro veterinario dia y hora de la cita elegida."));
 
 
         HashMap<String, Object> usuario = new HashMap<>();

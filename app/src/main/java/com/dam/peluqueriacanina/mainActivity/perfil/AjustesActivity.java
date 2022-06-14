@@ -93,12 +93,12 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
         tvCorreoPerAjustes.setText(((MiApplication) getApplicationContext()).getCorreo());
 
         ivPerfilPelAjustes = findViewById(R.id.ivPerfilPelAjustes);
-            mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri.toString()).resize(153, 153).centerCrop().into(ivPerfilPelAjustes);
-                }
-            });
+        mStorage.child("fotosPerfil/" + ((MiApplication) getApplicationContext()).getKey() + "/fotoPerfil.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri.toString()).resize(153, 153).centerCrop().into(ivPerfilPelAjustes);
+            }
+        });
 
 
         ivPerfilPelAjustes.setOnClickListener(this);
@@ -138,9 +138,9 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
                 });
             }
         } else if (v.equals(cvCerrarSesion)) {
-            HashMap<String,Object> hmRecuerdame = new HashMap<>();
-            hmRecuerdame.put("recuerdame",false);
-            dbRef = fb.getReference("usuarios/"+((MiApplication)getApplicationContext()).getKey());
+            HashMap<String, Object> hmRecuerdame = new HashMap<>();
+            hmRecuerdame.put("recuerdame", false);
+            dbRef = fb.getReference("usuarios/" + ((MiApplication) getApplicationContext()).getKey());
             dbRef.updateChildren(hmRecuerdame);
             logout();
             i = new Intent(this, LoginActivity.class);

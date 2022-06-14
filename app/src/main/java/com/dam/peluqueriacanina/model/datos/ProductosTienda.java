@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ProductosTienda {
 
-    private ArrayList<DatosTienda> listaTienda;
+    private final ArrayList<DatosTienda> listaTienda;
 
 
     public ProductosTienda() {
@@ -37,7 +37,7 @@ public class ProductosTienda {
         listaTienda.add(new DatosTienda("Alimento para peces", "4kg", R.drawable.pienso_peces, "Alimento completo para peces de fondo con una formula unica a base de insectos, enriquecida con multiples proteinas y carbohidratos de primera calidad", "alimentacion", "10"));
         listaTienda.add(new DatosTienda("Acuario de cristal", "1", R.drawable.acuario, "Elaborado con materiales de calidad, que lo convierten en un artículo de alta gama para este tipo de mascotas.", "accesorios", "110"));
         listaTienda.add(new DatosTienda("Hormiguero", "1", R.drawable.hormiguero, "Hormiguero de acrilico pequeño con zona de forrajeo de gran altura con tapa. Perfecto para las colonias de especies de gran tamaño.", "accesorios", "40"));
-        listaTienda.add(new DatosTienda("Suplemento alimenticio para caballos", "10kg",R.drawable.pienso_caballo, "suplemento nutricional desarrollado para aumentar la masa muscular en los caballos de competición o de trabajo forzado, también para los preparativos para apareamiento. ", "alimentacion", "60"));
+        listaTienda.add(new DatosTienda("Suplemento alimenticio para caballos", "10kg", R.drawable.pienso_caballo, "suplemento nutricional desarrollado para aumentar la masa muscular en los caballos de competición o de trabajo forzado, también para los preparativos para apareamiento. ", "alimentacion", "60"));
 
     }
 

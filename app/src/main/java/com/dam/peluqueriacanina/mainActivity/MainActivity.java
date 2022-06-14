@@ -1,10 +1,8 @@
 package com.dam.peluqueriacanina.mainActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -14,28 +12,22 @@ import com.dam.peluqueriacanina.dao.CestaDao;
 import com.dam.peluqueriacanina.dao.TusCitasDao;
 import com.dam.peluqueriacanina.db.CestaDB;
 import com.dam.peluqueriacanina.db.TusCitasDB;
-import com.dam.peluqueriacanina.entity.Cesta;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.mainActivity.noticias.NoticiasActivity;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.PeluqueriaActivity;
+import com.dam.peluqueriacanina.mainActivity.perfil.AjustesActivity;
 import com.dam.peluqueriacanina.mainActivity.tienda.TiendaActivity;
 import com.dam.peluqueriacanina.mainActivity.veterinaria.VeterinariaActivity;
-import com.dam.peluqueriacanina.mainActivity.perfil.AjustesActivity;
-import com.dam.peluqueriacanina.registro.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    CardView cvPeluqueria, cvVeterinaria, cvTienda, cvNoticias, cvOpciones ;
+    CardView cvPeluqueria, cvVeterinaria, cvTienda, cvNoticias, cvOpciones;
     Intent i;
     FirebaseDatabase fdb;
     DatabaseReference dbr;

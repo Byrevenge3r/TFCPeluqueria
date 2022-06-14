@@ -30,10 +30,8 @@ import com.dam.peluqueriacanina.utils.CitasAnimalesFotoAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -62,7 +60,8 @@ public class CitasAnimalFragmentPel extends DialogFragment {
     String keyB;
     String tel;
 
-    public CitasAnimalFragmentPel() {}
+    public CitasAnimalFragmentPel() {
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

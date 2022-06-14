@@ -4,19 +4,17 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentResultListener;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.comunicacion.ComunicacionProductos;
@@ -28,12 +26,13 @@ public class BorrarCantidadFragment extends DialogFragment implements View.OnCli
 
     Cesta cesta;
     TextView tvCantidad;
-    ImageButton imgMas,imgMenos;
+    ImageButton imgMas, imgMenos;
     Button btnAceptarCambios;
     int contador;
     CestaDao dao;
     CestaDB db;
     ComunicacionProductos listener;
+
     public BorrarCantidadFragment() {
         // Required empty public constructor
     }
@@ -84,11 +83,11 @@ public class BorrarCantidadFragment extends DialogFragment implements View.OnCli
     public void onClick(View v) {
         if (v.equals(imgMas) && cesta.getCantidad() + 1 <= 99) {
             tvCantidad.setText(String.valueOf(cesta.getCantidad() + 1));
-            cesta.setCantidad(cesta.getCantidad()+1);
+            cesta.setCantidad(cesta.getCantidad() + 1);
             dao.update(cesta);
         } else if (v.equals(imgMenos) && cesta.getCantidad() - 1 >= 0) {
             tvCantidad.setText(String.valueOf(cesta.getCantidad() - 1));
-            cesta.setCantidad(cesta.getCantidad()-1);
+            cesta.setCantidad(cesta.getCantidad() - 1);
             dao.update(cesta);
         } else if (v.equals(btnAceptarCambios)) {
             if (cesta.getCantidad() == 0) {
@@ -107,7 +106,7 @@ public class BorrarCantidadFragment extends DialogFragment implements View.OnCli
         if (context instanceof ComunicacionProductos) {
             listener = (ComunicacionProductos) context;
         } else {
-            throw new RuntimeException(context.toString()
+            throw new RuntimeException(context
                     + " must implement OnComunicationFragmentListener");
         }
     }

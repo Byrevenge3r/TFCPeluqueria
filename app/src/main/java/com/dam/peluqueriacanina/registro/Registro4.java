@@ -1,10 +1,8 @@
 package com.dam.peluqueriacanina.registro;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -12,10 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.utils.MiApplication;
@@ -35,14 +30,14 @@ public class Registro4 extends AppCompatActivity implements View.OnClickListener
         public void onReceive(Context context, Intent intent) {
             super.onReceive(context, intent);
 
-        codigo = msg;
+            codigo = msg;
 
-        inputCode1.setText(String.valueOf(codigo.charAt(0)));
-        inputCode2.setText(String.valueOf(codigo.charAt(1)));
-        inputCode3.setText(String.valueOf(codigo.charAt(2)));
-        inputCode4.setText(String.valueOf(codigo.charAt(3)));
-        inputCode5.setText(String.valueOf(codigo.charAt(4)));
-        inputCode6.setText(String.valueOf(codigo.charAt(5)));
+            inputCode1.setText(String.valueOf(codigo.charAt(0)));
+            inputCode2.setText(String.valueOf(codigo.charAt(1)));
+            inputCode3.setText(String.valueOf(codigo.charAt(2)));
+            inputCode4.setText(String.valueOf(codigo.charAt(3)));
+            inputCode5.setText(String.valueOf(codigo.charAt(4)));
+            inputCode6.setText(String.valueOf(codigo.charAt(5)));
 
         }
     };

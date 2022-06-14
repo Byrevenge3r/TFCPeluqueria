@@ -22,7 +22,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -59,7 +58,7 @@ public class MapaVeterinariasActivity extends AppCompatActivity implements OnMap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa_veterinarias);
 
-        MapFragment mapFragment = (MapFragment) getFragmentManager() .findFragmentById(R.id.mapVet);
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.mapVet);
         mapFragment.getMapAsync(this);
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -73,8 +72,8 @@ public class MapaVeterinariasActivity extends AppCompatActivity implements OnMap
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
         //cambiar a oncreate
-        LatLng ubicacionUser = getLocationFromAddress(this,((MiApplication)getApplicationContext()).getDireccion());
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacionUser,15));
+        LatLng ubicacionUser = getLocationFromAddress(this, ((MiApplication) getApplicationContext()).getDireccion());
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacionUser, 15));
         clusterManager = new ClusterManager<>(this, mMap);
         CustomClusterRenderers renderers = new CustomClusterRenderers(this, mMap, clusterManager);
         clusterManager.setRenderer(renderers);
@@ -123,10 +122,10 @@ public class MapaVeterinariasActivity extends AppCompatActivity implements OnMap
 
 
     public class CustomClusterRenderers extends DefaultClusterRenderer<MyItem> {
-        private Context context;
-        private GoogleMap map;
-        private ClusterManager<MyItem> clusterManager;
-        private IconGenerator mClusterIconGenerator;
+        private final Context context;
+        private final GoogleMap map;
+        private final ClusterManager<MyItem> clusterManager;
+        private final IconGenerator mClusterIconGenerator;
 
         public CustomClusterRenderers(Context context, GoogleMap map, ClusterManager<MyItem> clusterManager) {
             super(context, map, clusterManager);

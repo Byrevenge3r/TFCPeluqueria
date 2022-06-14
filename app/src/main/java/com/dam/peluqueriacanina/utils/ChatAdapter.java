@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatAdapterVH> {
 
-    private ArrayList<Chat> datos;
+    private final ArrayList<Chat> datos;
 
     public ChatAdapter(ArrayList<Chat> datos) {
         this.datos = datos;
@@ -46,8 +46,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatAdapterVH>
     }
 
     public class ChatAdapterVH extends RecyclerView.ViewHolder {
-        private TextView tvUsuario;
-        private LinearLayout ll;
+        private final TextView tvUsuario;
+        private final LinearLayout ll;
 
         public ChatAdapterVH(@NonNull View itemView) {
             super(itemView);

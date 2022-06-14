@@ -11,11 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.mainActivity.MainActivity;
 import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.utils.MiApplication;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -129,7 +126,6 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
 
                 }
             });
-
 
 
         } else if (v.equals(btnAtrasRegDos)) {

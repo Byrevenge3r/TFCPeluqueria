@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class PreguntasRespuestasAdapter extends BaseExpandableListAdapter {
 
     ArrayList<String> listGroup;
-    HashMap<String,ArrayList<String>> listChild;
+    HashMap<String, ArrayList<String>> listChild;
 
     public PreguntasRespuestasAdapter(ArrayList<String> listGroup, HashMap<String, ArrayList<String>> listChild) {
         this.listGroup = listGroup;
@@ -61,7 +61,7 @@ public class PreguntasRespuestasAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded, View view, ViewGroup parent) {
 
         view = (LayoutInflater.from(parent.getContext()))
-                .inflate(R.layout.expandable_lista_preguntas_respuesta,parent,false);
+                .inflate(R.layout.expandable_lista_preguntas_respuesta, parent, false);
 
         TextView textView = view.findViewById(R.id.tvDatosPreguntaRespuesta);
 
@@ -76,20 +76,20 @@ public class PreguntasRespuestasAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View v, ViewGroup parent) {
         v = (LayoutInflater.from(parent.getContext()))
-                .inflate(R.layout.expandable_lista_preguntas_respuesta,parent,false);
+                .inflate(R.layout.expandable_lista_preguntas_respuesta, parent, false);
 
         TextView textView = v.findViewById(R.id.tvDatosPreguntaRespuesta);
 
-        String sChild = String.valueOf(getChild(groupPosition,childPosition));
+        String sChild = String.valueOf(getChild(groupPosition, childPosition));
 
         textView.setText(sChild);
 
-        textView.setPadding(30,0,20,0);
+        textView.setPadding(30, 0, 20, 0);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(parent.getContext(),groupPosition +" "+sChild, Toast.LENGTH_SHORT).show();
+                Toast.makeText(parent.getContext(), groupPosition + " " + sChild, Toast.LENGTH_SHORT).show();
             }
         });
         return v;

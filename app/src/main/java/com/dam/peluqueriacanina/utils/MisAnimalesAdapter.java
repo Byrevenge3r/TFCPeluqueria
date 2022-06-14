@@ -67,7 +67,7 @@ public class MisAnimalesAdapter extends RecyclerView.Adapter<MisAnimalesAdapter.
 
     public static class MisAnimalesAdapterVH extends RecyclerView.ViewHolder {
 
-        private ShapeableImageView imagenAnimal;
+        private final ShapeableImageView imagenAnimal;
 
         public MisAnimalesAdapterVH(@NonNull View itemView) {
             super(itemView);

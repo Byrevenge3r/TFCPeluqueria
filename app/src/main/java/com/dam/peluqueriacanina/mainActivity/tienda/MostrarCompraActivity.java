@@ -1,12 +1,7 @@
 package com.dam.peluqueriacanina.mainActivity.tienda;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,8 +34,6 @@ import com.google.android.gms.wallet.IsReadyToPayRequest;
 import com.google.android.gms.wallet.PaymentData;
 import com.google.android.gms.wallet.PaymentDataRequest;
 import com.google.android.gms.wallet.PaymentsClient;
-import com.google.android.gms.wallet.Wallet;
-import com.google.android.gms.wallet.WalletConstants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,7 +44,7 @@ import java.util.Optional;
 
 public class MostrarCompraActivity extends AppCompatActivity implements View.OnClickListener, ComunicacionProductos {
 
-    RecyclerView rv,rvBorrar;
+    RecyclerView rv, rvBorrar;
     LinearLayoutManager llm;
     CarritoAdapter adapter;
     ArrayList<Cesta> listaCompra;
@@ -133,9 +125,9 @@ public class MostrarCompraActivity extends AppCompatActivity implements View.OnC
                             public void onClick(View view) {
                                 cesta = listaCompra.get(rv.getChildAdapterPosition(v));
 
-                                bundle.putParcelable("producto",cesta);
+                                bundle.putParcelable("producto", cesta);
                                 getSupportFragmentManager().setFragmentResult("key", bundle);
-                                borrar.show(getSupportFragmentManager(),"Borrar");
+                                borrar.show(getSupportFragmentManager(), "Borrar");
 
                                 calcularPrecioTotal();
                                 adapter.setDatos(listaCompra);
@@ -143,7 +135,7 @@ public class MostrarCompraActivity extends AppCompatActivity implements View.OnC
 
                             }
                         });
-                    break;
+                        break;
                 }
             }
         });
@@ -155,7 +147,7 @@ public class MostrarCompraActivity extends AppCompatActivity implements View.OnC
             precioTotal += listaCompra.get(i).getPrecio() * listaCompra.get(i).getCantidad();
         }
         precioTotalGoogle = precioTotal;
-        tvPrecioTotal.setText(getString(R.string.precio_total, String.valueOf(precioTotal))+"€");
+        tvPrecioTotal.setText(getString(R.string.precio_total, String.valueOf(precioTotal)) + "€");
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -165,7 +157,6 @@ public class MostrarCompraActivity extends AppCompatActivity implements View.OnC
             requestPayment(v);
         }
     }
-
 
 
     @Override

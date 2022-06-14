@@ -8,8 +8,6 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import java.util.ArrayList;
-
 @Entity(tableName = "CESTA", indices = {@Index(value = {"id"}, unique = true)})
 public class Cesta implements Parcelable {
     @PrimaryKey(autoGenerate = true)

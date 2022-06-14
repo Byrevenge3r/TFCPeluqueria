@@ -1,10 +1,10 @@
 package com.dam.peluqueriacanina.mainActivity.perfil;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ExpandableListView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.model.PreguntaRespuesta;
@@ -22,7 +22,7 @@ public class PreguntasRespuestasActivity extends AppCompatActivity {
 
     ExpandableListView elvPreguntasRespuestas;
     ArrayList<String> listGroup = new ArrayList<>();
-    HashMap<String,ArrayList<String>> listChild = new HashMap<>();
+    HashMap<String, ArrayList<String>> listChild = new HashMap<>();
     ArrayList<PreguntaRespuesta> listaPreguntasRespuestas = new ArrayList<>();
     PreguntasRespuestasAdapter adapter;
     FirebaseDatabase fdb;
@@ -40,25 +40,25 @@ public class PreguntasRespuestasActivity extends AppCompatActivity {
         dbr.child("preguntasRespuestas").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                 if (task.getResult().exists()) {
-                     for (DataSnapshot sp:task.getResult().getChildren()) {
-                         listaPreguntasRespuestas.add(sp.getValue(PreguntaRespuesta.class));
-                     }
+                if (task.getResult().exists()) {
+                    for (DataSnapshot sp : task.getResult().getChildren()) {
+                        listaPreguntasRespuestas.add(sp.getValue(PreguntaRespuesta.class));
+                    }
 
-                     for (int i = 0; i < listaPreguntasRespuestas.size();i++) {
-                         listGroup.add(listaPreguntasRespuestas.get(i).getTitulo());
+                    for (int i = 0; i < listaPreguntasRespuestas.size(); i++) {
+                        listGroup.add(listaPreguntasRespuestas.get(i).getTitulo());
 
-                         ArrayList<String> arrayList = new ArrayList<>();
+                        ArrayList<String> arrayList = new ArrayList<>();
 
-                         arrayList.add(listaPreguntasRespuestas.get(i).getRespuesta());
+                        arrayList.add(listaPreguntasRespuestas.get(i).getRespuesta());
 
-                         listChild.put(listGroup.get(i),arrayList);
-                     }
+                        listChild.put(listGroup.get(i), arrayList);
+                    }
 
-                     adapter = new PreguntasRespuestasAdapter(listGroup,listChild);
-                     elvPreguntasRespuestas.setAdapter(adapter);
+                    adapter = new PreguntasRespuestasAdapter(listGroup, listChild);
+                    elvPreguntasRespuestas.setAdapter(adapter);
 
-                 }
+                }
             }
         });
     }
