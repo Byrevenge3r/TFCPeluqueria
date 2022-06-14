@@ -41,7 +41,7 @@
     <string name="msj_no_accede">Has introducido algun dato incorrecto</string>
     <string name="tst_fill">Rellena todos los campos</string>
     <string name="mas_btn">+</string>
-    <string name="enhorabuena">Enhorabuena has completado el registro!</string>
+    <string name="enhorabuena">Gracias por registrarte con nosotros!!!</string>
     <string name="btn_registro_final">Finalizar</string>
     <string name="et_nombre_animal">Introduce su nombre</string>
     <string name="tv_registro_animal">Que bien vas a guardar a una mascota!!!</string>
