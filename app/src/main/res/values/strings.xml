@@ -84,7 +84,7 @@
     <string name="tst_correo_exist">Este correo ya existe</string>
     <string name="tv_datos_cita">Ver detalles de la cita</string>
     <string name="tv_furgoneta_camino">La furgoneta esta en camino!!!</string>
-    <string name="tv_tiempo_estimado_horas">La veterinaria %1$s esta a: %2$s</string>
+    <string name="tv_tiempo_estimado_horas">Esta a:  %,.2f H</string>
     <string name="tv_tiempo_estimado_minutos">Tiempo estimado: %,.0f minutos</string>
     <string name="et_chat">Escribe un mensaje</string>
     <string name="btn_chat_enviar">Enviar</string>
@@ -114,7 +114,7 @@
     <string name="btn_pagar">Pagar</string>
     <string name="precio_total">TOTAL = %1$s</string>
     <string name="contra_minuscula">Tienes que introducir una mayuscula</string>
-    <string name="simbolo_contra">Debes introducir un caracter especial</string>
+    <string name="simbolo_contra">Debes introducir un numero como minimo</string>
     <string name="tv_acercade_ajustes">Acerca DE</string>
     <string name="tv_cambiar_contra">Cambiar contraseña</string>
     <string name="tv_cerrar_sesion">Cerrar Sesion</string>
@@ -134,4 +134,9 @@
     <string name="buy_with_googlepay_button_content_description">Buy with Google Pay</string>
     <string name="googlepay_status_unavailable">Google pay no esta disponible en este dispositivo</string>
     <string name="payments_show_name">Successfully received payment data for %s!</string>
+    <string name="tv_mensaje_recordatorio">Selecciona con que mascota quieres hacer el recordatorio</string>
+    <string name="cancelar_recordatorio">cancelar recordatorio</string>
+    <string name="tv_nombre_vet">Veterinaria: %1$s</string>
+    <string name="tv_fecha_vet">Fecha: %1$s</string>
+    <string name="tv_hora_vet">A las: %1$s</string>
 </resources>

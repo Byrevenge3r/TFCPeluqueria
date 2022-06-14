@@ -18,24 +18,50 @@
         android:background="@drawable/logo_peluqueria" />
 
     <TextView
-        android:id="@+id/tvMostrarInfo"
+        android:id="@+id/tvNombreVet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/ivRegistroDatosTusCitas"
-        android:gravity="center"
-        android:text="@string/tv_mostrar_info" />
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvFechaVet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/tvNombreVet"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvHoraVet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/tvFechaVet"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvDistanciaTiempoVet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/tvHoraVet"
+        android:gravity="center"/>
 
     <android.widget.Button
         android:id="@+id/btnGoogleMaps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="100dp"
         android:text="@string/btn_google"
         android:textColor="@color/color_blanco"
         android:background="@drawable/fondo_btn"
-        app:layout_constraintTop_toBottomOf="@id/tvMostrarInfo" />
+        app:layout_constraintTop_toBottomOf="@id/tvDistanciaTiempoVet" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

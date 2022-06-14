@@ -20,18 +20,6 @@
             android:layout_marginStart="140dp"
             android:background="@drawable/logo_peluqueria" />
 
-        <TextView
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ivRegistro"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="-30dp"
-            android:gravity="center"
-            android:text="@string/tv_registro_cinco"
-            android:textColor="@color/color_blanco_pero_no_tan_blanco"
-            android:textSize="20sp"
-            android:textStyle="italic" />
-
     </RelativeLayout>
 
 

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.model.VetCitas;
 import com.dam.peluqueriacanina.model.datos.BotonTusCitasLista;
+import com.dam.peluqueriacanina.model.datos.BotonTusCitasVetLista;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MostrarDatosTusCitasAdapter;
 import com.dam.peluqueriacanina.utils.VetCitasAdapter;
@@ -45,7 +46,7 @@ public class VerCitasVetActivity extends AppCompatActivity implements View.OnCli
     LinearLayoutManager llm;
     VetCitasAdapter adapter;
     MostrarDatosTusCitasAdapter adapterDetallesCita;
-    BotonTusCitasLista boton;
+    BotonTusCitasVetLista boton;
     ArrayList<VetCitas> listaCitasVet;
     VetCitas cita;
     View vista;
@@ -74,7 +75,7 @@ public class VerCitasVetActivity extends AppCompatActivity implements View.OnCli
         diaActual = new Date();
         diaSeleccionado = new Date();
         //RecyclerView inferior
-        boton = new BotonTusCitasLista();
+        boton = new BotonTusCitasVetLista();
         tvNoHayCitasVet = findViewById(R.id.tvNoHayCitasVTCVet);
         adapterDetallesCita = new MostrarDatosTusCitasAdapter(boton.getBoton());
         vista = new View(this);
@@ -92,12 +93,11 @@ public class VerCitasVetActivity extends AppCompatActivity implements View.OnCli
         rv = findViewById(R.id.rvVerTusCitasVet);
         tvNoHayCitasVet = findViewById(R.id.tvNoHayCitasVTCVet);
         btnCancelarCitaVet = findViewById(R.id.btnCancelarCitaVet);
-
+        btnCancelarCitaVet.setText(R.string.cancelar_recordatorio);
         llm = new LinearLayoutManager(this);
         llm.setOrientation(RecyclerView.VERTICAL);
         btnCancelarCitaVet.setOnClickListener(this);
         rv.setLayoutManager(llm);
-        //Puede ser null por que este vacio arriba (probar)
 
         dbr.child("usuarios/" + ((MiApplication) getApplicationContext()).getKey() + "/reservasVet").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -200,6 +200,7 @@ public class VerCitasVetActivity extends AppCompatActivity implements View.OnCli
                                         if (fecha.equals(fechaHoy)) {
                                             i = new Intent(VerCitasVetActivity.this, VerDatosCitasVetActivity.class);
                                             i.putExtra("hora", cita.getCitaHora());
+                                            i.putExtra("fecha", cita.getCitaFecha());
 
                                             i.putExtra("nom", cita.getNom());
                                             startActivity(i);

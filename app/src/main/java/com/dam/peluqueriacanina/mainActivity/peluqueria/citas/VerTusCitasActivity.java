@@ -48,7 +48,6 @@ public class VerTusCitasActivity extends AppCompatActivity implements View.OnCli
     MostrarDatosTusCitasAdapter adapterDetallesCita;
     SimpleDateFormat formatter;
 
-
     Date fecha;
     Date fechaHoy;
     View vista;

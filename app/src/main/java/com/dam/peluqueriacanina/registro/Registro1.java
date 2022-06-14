@@ -67,9 +67,8 @@ public class Registro1 extends AppCompatActivity implements View.OnClickListener
             } else if (TextUtils.isEmpty(apellidos)) {
                 etApellido.setError("Introduzca los apellidos");
             } else if (TextUtils.isEmpty(usuario)) {
-                etUsuario.setError("Introduzca una contraseña");
+                etUsuario.setError("Introduzca un usuario");
             } else {
-                // citas.show(getSupportFragmentManager(),"onCreateDialog");
 
                 ((MiApplication) getApplicationContext()).setNombre(nombre);
                 ((MiApplication) getApplicationContext()).setApellidos(apellidos);

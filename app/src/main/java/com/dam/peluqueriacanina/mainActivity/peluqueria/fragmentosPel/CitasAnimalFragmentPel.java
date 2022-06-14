@@ -27,6 +27,8 @@ import com.dam.peluqueriacanina.db.AnimalesDB;
 import com.dam.peluqueriacanina.db.TusCitasDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.utils.CitasAnimalesFotoAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -60,8 +62,7 @@ public class CitasAnimalFragmentPel extends DialogFragment {
     String keyB;
     String tel;
 
-    public CitasAnimalFragmentPel() {
-    }
+    public CitasAnimalFragmentPel() {}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -140,17 +141,12 @@ public class CitasAnimalFragmentPel extends DialogFragment {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.RECEIVE_SMS, Manifest.permission.SEND_SMS}, 1001);
         }
 
-        dbr.child("coche/tel").addValueEventListener(new ValueEventListener() {
+        dbr.child("coche/tel").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    numeroTelConduc = String.valueOf(snapshot.getValue());
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.getResult().exists()) {
+                    numeroTelConduc = String.valueOf(task.getResult().getValue());
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
         dbr = fdb.getReference();

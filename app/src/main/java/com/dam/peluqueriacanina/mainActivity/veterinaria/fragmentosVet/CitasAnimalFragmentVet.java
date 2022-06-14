@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -62,7 +63,7 @@ public class CitasAnimalFragmentVet extends DialogFragment {
     PendingIntent pendingIntent;
     AlarmManager alarmManager;
     ArrayList<AlarmManager> listaAlarmas;
-
+    TextView tvMensaje;
 
     public String getCitaHora() {
         return citaHora;
@@ -98,7 +99,8 @@ public class CitasAnimalFragmentVet extends DialogFragment {
         View v = getActivity().getLayoutInflater().inflate(R.layout.fragment_citas_animal, null);
         builder.setView(v);
         listaAlarmas = new ArrayList<>();
-
+        tvMensaje = v.findViewById(R.id.tvMensaje);
+        tvMensaje.setText(R.string.tv_mensaje_recordatorio);
         getParentFragmentManager().setFragmentResultListener("Key", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {

@@ -36,12 +36,7 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
     FirebaseAuth fAuth;
     DatabaseReference dbRef;
     String key;
-    String contadorUser = "";
-    ContadorUser contUser;
     ArrayList<ContadorUser> cantUser;
-    // creating a variable for our Database
-    // Reference for Firebase.
-    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +66,6 @@ public class Registro5 extends AppCompatActivity implements View.OnClickListener
 
         }
     }
-
 
     private void registrarAuth(String correo, String contra) {
         fAuth.createUserWithEmailAndPassword(correo, contra)

@@ -8,10 +8,12 @@
     android:background="@color/color_principal_citas">
 
     <TextView
+        android:id="@+id/tvMensaje"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/color_blanco_pero_no_tan_blanco"
         android:textSize="20sp"
+        android:gravity="center"
         android:text="@string/tv_texto_titulo_selecciona_animal" />
 
 

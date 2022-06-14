@@ -29,8 +29,6 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
 
     DatabaseReference dbRef;
     FirebaseDatabase fb;
-    boolean check = false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +60,16 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
         String contra = etContra.getText().toString().trim();
         String confcontra = etConfContra.getText().toString().trim();
         String direccion = etdireccion.getText().toString().trim();
-        if (v.equals(btnSiguienteRegDos)) {
 
+        if (v.equals(btnSiguienteRegDos)) {
             if (TextUtils.isEmpty(correo)) {
                 etCorreo.setError("Introduzca un correo");
-            } else if (TextUtils.isEmpty(confcorreo)) {
-                etConfCorreo.setError("Introduzca una confirmacion de correo");
+            } else if (!comprobarArroba(correo)) {
+                etCorreo.setError("El correo debe contener un @");
+            }
+
+            if (TextUtils.isEmpty(confcorreo)) {
+                 etConfCorreo.setError("Introduzca una confirmacion de correo");
             } else if (TextUtils.isEmpty(contra)) {
                 Snackbar.make(v, R.string.contrasenia_vacia, Snackbar.LENGTH_LONG).show();
             } else if (TextUtils.isEmpty(confcontra)) {
@@ -80,18 +82,12 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
                 Snackbar.make(v, R.string.correo_coincide, Snackbar.LENGTH_LONG).show();
             } else if (!contra.equals(confcontra)) {
                 Snackbar.make(v, R.string.contra_coincide, Snackbar.LENGTH_LONG).show();
-
             } else if (!hasUpperCase(contra)) {
                 Snackbar.make(v, R.string.contra_minuscula, Snackbar.LENGTH_LONG).show();
-
             } else if (!hasSymbol(contra)) {
-
                 Snackbar.make(v, R.string.simbolo_contra, Snackbar.LENGTH_LONG).show();
-
-
             } else if (TextUtils.isEmpty(direccion)) {
                 Snackbar.make(v, R.string.direccion_vacia, Snackbar.LENGTH_LONG).show();
-
             } else {
                 ((MiApplication) getApplicationContext()).setCorreo(correo);
                 ((MiApplication) getApplicationContext()).setContrasenia(contra);
@@ -101,7 +97,6 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
                 startActivity(i);
 
                 overridePendingTransition(R.anim.animacion_derecha_izquierda, R.anim.animacion_izquierda_izquierda);
-
             }
 
         } else if (v.equals(btnAtrasRegDos)) {
@@ -112,6 +107,15 @@ public class Registro2 extends AppCompatActivity implements View.OnClickListener
         }
 
 
+    }
+
+    private boolean comprobarArroba(String correo) {
+        for (int i = 0; i < correo.length(); i++) {
+            if (correo.charAt(i) == 64) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean hasUpperCase(CharSequence data) {
