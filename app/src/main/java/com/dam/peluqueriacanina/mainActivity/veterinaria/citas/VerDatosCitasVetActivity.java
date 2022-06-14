@@ -75,7 +75,7 @@ public class VerDatosCitasVetActivity extends AppCompatActivity implements View.
         intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
         startActivity(intent);
 
-
+    }
 
 
 
