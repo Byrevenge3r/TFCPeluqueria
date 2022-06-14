@@ -24,17 +24,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
-import com.dam.peluqueriacanina.dao.UriDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
-import com.dam.peluqueriacanina.db.UriDB;
 import com.dam.peluqueriacanina.entity.Animal;
 import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.citas.VerTusCitasActivity;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.dam.peluqueriacanina.utils.MisAnimalesAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -66,8 +62,6 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
     DatabaseReference dbr;
     ArrayList<TusCitas> listaCitas;
     StorageReference mStorageP;
-    UriDao daoU;
-    UriDB dbU;
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -108,9 +102,6 @@ public class PeluqueriaActivity extends AppCompatActivity implements View.OnClic
 
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
-
-        dbU = UriDB.getDatabase(this);
-        daoU = dbU.uriDao();
 
         fbr = FirebaseDatabase.getInstance();
         dbr = fbr.getReference();

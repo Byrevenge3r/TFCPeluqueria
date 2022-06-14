@@ -64,7 +64,6 @@ public class VerDatosCitasVetActivity extends AppCompatActivity implements View.
         tvFechaVet.setText(getBaseContext().getString(R.string.tv_fecha_vet, fecha));
         tvHoraVet.setText(getBaseContext().getString(R.string.tv_hora_vet, hora));
 
-
     }
 
 

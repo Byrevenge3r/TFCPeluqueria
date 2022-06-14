@@ -18,11 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.peluqueriacanina.R;
 import com.dam.peluqueriacanina.dao.AnimalesDao;
-import com.dam.peluqueriacanina.dao.UriDao;
 import com.dam.peluqueriacanina.db.AnimalesDB;
-import com.dam.peluqueriacanina.db.UriDB;
 import com.dam.peluqueriacanina.entity.Animal;
-import com.dam.peluqueriacanina.entity.TusCitas;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.DatosAnimalActivity;
 import com.dam.peluqueriacanina.mainActivity.peluqueria.RegistrarAnimal;
 import com.dam.peluqueriacanina.mainActivity.veterinaria.citas.VerCitasVetActivity;
@@ -53,8 +50,6 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
     CardView cvVeterinaria, cvTusCitasVet;
     TextView tvNombreVet;
     StorageReference mStorageP;
-    UriDao daoU;
-    UriDB dbU;
 
     ActivityResultLauncher<Intent> arl = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -77,9 +72,6 @@ public class VeterinariaActivity extends AppCompatActivity implements View.OnCli
         mStorageP = FirebaseStorage.getInstance().getReference();
         db = AnimalesDB.getDatabase(this);
         dao = db.animalDao();
-
-        dbU = UriDB.getDatabase(this);
-        daoU = dbU.uriDao();
 
         ivPerfilVet = findViewById(R.id.ivPerfilVet);
         tvNombreVet = findViewById(R.id.tvNombreVet);

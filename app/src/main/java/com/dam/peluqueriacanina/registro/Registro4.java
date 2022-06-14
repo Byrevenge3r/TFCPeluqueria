@@ -27,7 +27,6 @@ public class Registro4 extends AppCompatActivity implements View.OnClickListener
     Button btnSiguienteRegCuatro, btnMandarOtraVezRegCuatro;
     Intent i;
     String codigo;
-    SmsManager sms;
     int numeroConfirmar;
     EditText inputCode1, inputCode2, inputCode3, inputCode4, inputCode5, inputCode6;
 

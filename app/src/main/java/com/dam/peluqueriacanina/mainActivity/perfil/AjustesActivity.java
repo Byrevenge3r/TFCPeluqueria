@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,9 +22,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.dam.peluqueriacanina.R;
-import com.dam.peluqueriacanina.dao.UriDao;
-import com.dam.peluqueriacanina.db.UriDB;
-import com.dam.peluqueriacanina.model.User;
 import com.dam.peluqueriacanina.registro.LoginActivity;
 import com.dam.peluqueriacanina.utils.MiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,11 +32,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
-import java.util.concurrent.Semaphore;
 
 public class AjustesActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -55,8 +49,7 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
     FirebaseAuth fAuth;
     Intent i;
     HashMap<String, Object> fotoPerfil;
-    UriDao dao;
-    UriDB db;
+
 
     ActivityResultLauncher<Intent> sForResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -71,11 +64,6 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
                         filePath.putFile(uri);
                         ((MiApplication) getApplicationContext()).setUrlPerfil(uri.toString());
 
-                        if (dao.sacarUri(((MiApplication) getApplicationContext()).getKey()) == null) {
-                            dao.insert(new com.dam.peluqueriacanina.entity.Uri(((MiApplication) getApplicationContext()).getKey(), uri.toString()));
-                        } else {
-                            dao.update(new com.dam.peluqueriacanina.entity.Uri(((MiApplication) getApplicationContext()).getKey(), uri.toString()));
-                        }
                     }
                 }
             });
@@ -85,9 +73,6 @@ public class AjustesActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
-
-        db = UriDB.getDatabase(this);
-        dao = db.uriDao();
 
         mStorage = FirebaseStorage.getInstance().getReference();
         fb = FirebaseDatabase.getInstance();
